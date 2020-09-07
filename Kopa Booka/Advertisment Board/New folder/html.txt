@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="./fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="BookAd.css">
+<title>Kopa Booka | Ad Board</title>
+</head>
+<body>
+
+	<div class="menu" id="Topnav">
+		<div class="logo">
+				<i class="fa fa-book"></i>
+			<a href="#" class="log-name">Kopa Booka</a>
+		</div>
+
+		<div class="nav">
+			<li><a href="#" class="link">Home</a></li>
+			<li><a href="#" class="link" style="color:#0acdff;">Book Advertisers</a></li>
+			<li><a href="#" class="link">About Us</a></li>
+			<li><a href="#" class="link">Contact Us</a></li>
+		</div>
+	</div>
+
+
+  <section id="Sellers">
+  <div class="categories-cont">
+			<div class="all-categories" id="all-categories">
+				<div class="category">
+					<h4 class="category-title">Catagory</h4>
+					<i class="fa fa-caret-down lip" id="closeOpen-list"></i>
+				</div>
+				<ul class="faculty" id="facultyLists">
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Art Design and Architecture
+							<i class="faculty-arrow fa fa-caret-down" ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Architecture</li>
+							<li class="department-link">Fashion</li>
+							<li class="department-link">Graphic Design</li>
+							<li class="department-link">Industrial Design</li>
+							<li class="department-link">Interior Design</li>
+							<li class="department-link">Jewel Design & Manufacture</li>
+							<li class="department-link">Multimedia</li>
+							<li class="department-link">Visual Art</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							College of Business and Economics
+							<i class="faculty-arrow fa fa-caret-down" ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Applied Information Systems</li>
+							<li class="department-link">Accountancy</li>
+							<li class="department-link">Business Management</li>
+							<li class="department-link">Finance & Investment Management</li>
+							<li class="department-link">Industrial Psychology & People Management</li>
+							<li class="department-link">Information & Knowledge Management</li>
+							<li class="department-link">Marketing Management</li>
+							<li class="department-link">Transport & Supply Chain Management</li>
+							<li class="department-link">Economics</li>
+							<li class="department-link">Public Management</li>
+							<li class="department-link">Governance & Public Policy</li>
+							<li class="department-link">Tourism & Hospitality</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Education
+							<i class="faculty-arrow fa fa-caret-down" ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Childhood Education</li>
+							<li class="department-link">Education & Curriculum Studies</li>
+							<li class="department-link">Education Leadership & Management</li>
+							<li class="department-link">Educational Psychology</li>
+							<li class="department-link">Science & Technology Education</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Engineering and Built Environment
+							<i class="faculty-arrow fa fa-caret-down " ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Chemical Engineering Technology</li>
+							<li class="department-link">Civil Engineering</li>
+							<li class="department-link">Construction Management & Quantity Survey</li>
+							<li class="department-link">Electric Engineering</li>
+							<li class="department-link">Mechanical Engineering</li>
+							<li class="department-link">Metallurgy</li>
+							<li class="department-link">Mine Surveying</li>
+							<li class="department-link">Mining</li>
+							<li class="department-link">Quality & Operation Management</li>
+							<li class="department-link">Town & Regional Planning</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Health Sciences
+							<i class="faculty-arrow fa fa-caret-down " ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Biomedical Technology</li>
+							<li class="department-link">Chiropractic</li>
+							<li class="department-link">Emergency Medical Care</li>
+							<li class="department-link">Environmental Health</li>
+							<li class="department-link">Homoeopathy</li>
+							<li class="department-link">Human Anatomy & Physiology</li>
+							<li class="department-link">Nursing</li>
+							<li class="department-link">Optometry</li>
+							<li class="department-link">Podiatry</li>
+							<li class="department-link">Radiography</li>
+							<li class="department-link">Somatology</li>
+							<li class="department-link">Sport & Movement Studies</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Humanities
+							<i class="faculty-arrow fa fa-caret-down" ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">African Languages</li>
+							<li class="department-link">Afrikaans</li>
+							<li class="department-link">Anthropology & Development Studies</li>
+							<li class="department-link">Communication Studies</li>
+							<li class="department-link">English</li>
+							<li class="department-link">French</li>
+							<li class="department-link">Greek & Latin Studies</li>
+							<li class="department-link">Historical Studie</li>
+							<li class="department-link">Journalism, Film & Television</li>
+							<li class="department-link">Linguistics</li>
+							<li class="department-link">Philosophy</li>
+							<li class="department-link">Politics & International Relation</li>
+							<li class="department-link">Religion Studies</li>
+							<li class="department-link">Social Work</li>
+							<li class="department-link">Sociology</li>
+							<li class="department-link">Strategic Communication</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Law
+							<i class="faculty-arrow fa fa-caret-down" ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Mercantile Law</li>
+							<li class="department-link">Private Law</li>
+							<li class="department-link">Public Law</li>
+						</ul>
+					</li>
+					
+					<li class="faculty-list">
+						<div class="faculty-title">
+							Science
+							<i class="faculty-arrow fa fa-caret-down" ></i>
+						</div>
+						<ul class="department-list">
+							<li class="department-link">Computer Science</li>
+							<li class="department-link">Applied Physics & Engineering Mathematics</li>
+							<li class="department-link">Biochemistry</li>
+							<li class="department-link">Biotechnology & Food Technology</li>
+							<li class="department-link">Botany & Plant Biotechnology</li>
+							<li class="department-link">Chemistry</li>
+							<li class="department-link">Geography,Environmental Management</li>
+							<li class="department-link">Physics</li>
+							<li class="department-link">Applied Mathematics</li>
+							<li class="department-link">Statistics</li>
+							<li class="department-link">Zoology</li>
+						</ul>
+					</li>
+				</ul>
+				
+				<div class="category">
+					<h4 class="arrow category-title">Campus</h4>
+					<i class="fa fa-caret-down"></i>
+				</div>
+				
+				<ul class="campus-options" id="CampusList">
+					<li class="campusOptions-link">Every Campus</li>
+					<li class="campusOptions-link">Auckland Park Campus</li>
+					<li class="campusOptions-link">Bunting Campus</li>
+					<li class="campusOptions-link">Soweto Campus</li>
+					<li class="campusOptions-link">Doornfontein Campus</li>
+				</ul>
+			</div>
+		</div>
+  
+  
+  <div class="advertisersment">
+  <div class="Ad-title">
+		<h1>Book Advertisers</h1>
+	</div>
+	<div class="AdTracker-SortByDiv">
+		<div class="AdTracker-TotalNum">
+			<p class="AdTrackerNum"> <b>1</b> to <b>5</b> of <b>20</b> Ads</p>
+		</div>
+		<div class="SortBy-List">
+			<button class="SortBy-Btn icon" id="SortBy-Btn">
+				Sort by<i class="fa fa-caret-up icon" id="collapser"></i>
+			</button>
+			<ul class="Sort-List" id="Sort-List">
+				<li class="SortList-link icon"><i class="fa fa-star-o fa-fw icon"></i>Latest Ads</li>
+				<li class="SortList-link icon"><i class="fa fa-arrow-circle-o-up fa-fw icon"></i>Price Low to High</li>
+				<li class="SortList-link icon"><i class="fa fa-arrow-circle-o-down fa-fw icon"></i>Price High to Low</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="Sellers-item">
+		<div class="Sellers-img">
+			<img src="ACC.jpg" id="img">
+			<h1 class="look">
+				<i class="fa fa-camera"></i>
+				+2
+			</h1>
+		</div>
+		<div class="Sellers-descript">
+			<h1 class="head">Acounting Textbook for sale</h1>
+			<p class="tex lex">orem Ipsum is simply dummy text of
+			the printing and typesetting industry. 
+			Lorem Ipsum has been the industry's standard dummy text e
+			ver since the 1500s, when an unknown printer took a galley 
+			f type and scrambled it to make a type specimen book. 
+			It has survived not only five centuries, 
+			but also the leap into electronic typesetting, 
+			remaining essentially unchanged. </p>
+			<div class="timer">	
+				 <h3 class="location">
+				   <i class="fa fa-map-marker"></i>
+				 Auckland Park Campus
+				</h3> 
+				<h3 class="time">
+				   <i class="fa fa-clock"></i>
+				 19 hours
+				</h3> 					
+			</div>
+		</div>
+		 <div class="Sellers-price">
+			<div class="price-div">
+				<h3 class="price-num">300</h3>
+			</div>
+			<div class="Sellers-cont">
+				<button class="cont-btn">
+					Contact Advertiser
+				</button>
+			</div>
+		 </div>
+	</div>
+	
+	<div id="formMod" class="modal">
+		<div class="modal-content" id="modal-content">
+			<div class="formTitle">
+				<div class="formhead">
+					<h1>Contact Seller</h1>
+				</div>
+				<div class="shut">
+					<span class="modal-closer">&times </span>
+				</div>
+			</div>
+			<div class="form">
+				 <form method= "" action="" style="width:95%;">
+				 
+					<div class="label-cont">
+						<label for="Username" class="validifier" id="Username-Err">
+						</label>
+					</div>
+					
+					<div class="input">
+						<i class="fa fa-user ikon"></i>
+						<input type="text" class="fill" id="Username" name="firstname" placeholder="Enter Your Name (Required)">
+					</div>
+					
+					<div class="label-cont">
+						<label for="Users-contact" class="validifier" id="contactNum-Err">
+						</label>
+					</div>
+					
+					<div class="input">
+						<i class="fa fa-phone ikon"></i>
+						<input type="tel" class="fill" id="Users-contact" name="tel" placeholder="Contact Number (Optional)">
+					</div>
+					
+					<div class="label-cont">
+						<label for="Users-email" class="validifier" id="mailErr">
+						</label>
+					</div>
+					
+					<div class="input">
+						<i class="fa fa-envelope ikon"></i>
+						<input type="email" class="fill" id="Users-email" name="email" placeholder="Email (Required)">
+					</div>
+					
+					<div class="letter">
+						<label for="subject">Message</label>
+						<textarea id="subject" name="subject" placeholder="Send seller a message..."></textarea>
+					</div>
+					<input type="submit" id="submitFormInfo" value="Send Message">
+				 </form>
+			</div>
+			<div class="termPol">
+				<p>By sending a reply to the seller, you accept our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+			</div>
+		</div>
+	</div>
+	
+	<div class="Sellers-item">
+		<div class="Sellers-img">
+			<img src="ACC.jpg" id="img" >
+				<h1 class="look">
+				<i class="fa fa-camera"></i>
+				+2
+				</h1>
+		</div>
+		<div class="Sellers-descript" >
+			<h1 class="head">Acounting Textbook</h1>
+			<p class="tex lex">orem Ipsum is simply dummy text of
+			the printing and typesetting industry. 
+			Lorem Ipsum has been the industry's standard dummy text e
+			ver since the 1500s, when an unknown printer took a galley 
+			f type and scrambled it to make a type specimen book. 
+			It has survived not only five centuries, 
+			but also the leap into electronic typesetting, 
+			remaining essentially unchanged. </p>
+			<div class="timer">	
+				 <h3 class="location">
+				   <i class="fa fa-map-marker"></i>
+				 Auckland Park Campus
+				</h3> 
+				<h3 class="time">
+				   <i class="fa fa-clock"></i>
+				 19 hours
+				</h3> 					
+			</div>
+		</div>
+		 <div class="Sellers-price">
+			<div class="price-div">
+				<h3 class="price-num">300</h3>
+			</div>
+			<div class="Sellers-cont">
+				<button class="cont-btn">
+					Contact Advertiser
+				</button>
+			</div>
+		 </div>
+	</div>
+	
+	<div class="Sellers-item">
+		<div class="Sellers-img">
+			<img src="ACC.jpg" id="img">
+			<h1 class="look">
+			<i class="fa fa-camera"></i>
+			+2
+			</h1>
+		</div>
+		<div class="Sellers-descript">
+			<h1 class="head">Law Textbook for sale</h1>
+			<p class="tex lex">orem Ipsum is simply dummy text of
+			the printing and typesetting industry. 
+			Lorem Ipsum has been the industry's standard dummy text e
+			ver since the 1500s, when an unknown printer took a galley 
+			f type and scrambled it to make a type specimen book. 
+			It has survived not only five centuries, 
+			but also the leap into electronic typesetting, 
+			remaining essentially unchanged. It was popularised in</p>
+			<div class="timer">	
+				 <h3 class="location">
+				   <i class="fa fa-map-marker"></i>
+				 Auckland Park Campus
+				</h3> 
+				<h3 class="time">
+				   <i class="fa fa-clock"></i>
+				 19 hours
+				</h3> 					
+			</div>
+		</div>
+		 <div class="Sellers-price">
+			<div class="price-div">
+				<h3 class="price-num">300</h3>
+			</div>
+			<div class="Sellers-cont">
+				<button class="cont-btn">
+					Contact Advertiser
+				</button>
+			</div>
+		 </div>
+	</div>
+	
+	<div class="Sellers-item">
+		<div class="Sellers-img">
+			<img src="ACC.jpg" id="img">
+				<h1 class="look">
+				<i class="fa fa-camera"></i>
+				+2
+				</h1>
+		</div>
+			<div class="Sellers-descript" >
+				<h1 class="head">Banking Textbook for sale</h1>
+				<p class="tex lex">orem Ipsum is simply dummy text of
+				the printing and typesetting industry. 
+				Lorem Ipsum has been the industry's standard dummy text e
+				ver since the 1500s, when an unknown printer took a galley 
+				f type and scrambled it to make a type specimen book. 
+				It has survived not only five centuries, 
+				but also the leap into electronic typesetting, 
+				remaining essentially unchanged. It was popularised in</p>
+				<div class="timer">	
+                     <h3 class="location">
+	                   <i class="fa fa-map-marker"></i>
+					 Auckland Park Campus
+					</h3> 
+					<h3 class="time">
+	                   <i class="fa fa-clock"></i>
+					 19 hours
+					</h3> 					
+				</div>
+			</div>
+			<div class="Sellers-price">
+				<div class="price-div">
+					<h3 class="price-num">300</h3>
+				</div>
+				<div class="Sellers-cont">
+					<button class="cont-btn">
+						Contact Advertiser
+					</button>
+				</div>
+			</div>
+	</div>
+	
+	<div class="pageNumberTracker">
+		<div class="pageNumber-cont">
+			<ul class="pageNumber-list">
+				<li class="pageNumber-link active"><a href="#">1</a></li>
+				<li class="pageNumber-link"><a href="#">2</a></li>
+				<li class="pageNumber-link"><a href="#">3</a></li>
+				<li class="pageNumber-link"><a href="#">4</a></li>
+				<li class="pageNumber-link"><a href="#">5</a></li>
+				<li class="pageNumber-link"><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	</div>
+  </section>
+  
+	<footer id="foot">
+		<div class="foot-info">
+			<div class="logo"style="margin-left: 2rem;" >
+				<i class="fa fa-book" style="font-size: 1.5rem;"></i>
+					<a href="#" class="log-name bot-name" style="font-family: montserrat, sans-serif;">Kopa Booka</a>
+			</div>
+			<div class="foot-content">
+				<div class="foot-web">
+					<h1><a href="#" class="foot-link">Privacy Policy</a></h1>
+					<h1><a href="#" class="foot-link">Terms of Use</a></h1>
+					<h1><a href="#" class="foot-link">Browser Support</a></h1>
+				</div>
+				<div class="foot-title">
+					<h1>&copy;2020 DESIGNED BY: <a href="http://juniormosemeng.000webhostapp.com/" target="_blank">MONOAMETSI</a></h1>
+				</div>
+			</div>
+			<div class="shooter shoot">
+				<i class="fa fa-chevron-up"></i>
+			</div>
+		</div>
+	</footer>
+
+  <script src="Book Ad.js"></script>
+  <script src="formValidation.js"></script>
+</body>
+</html>

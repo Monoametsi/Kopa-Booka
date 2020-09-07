@@ -1,0 +1,367 @@
+*{
+	box-sizing: border-box;
+}
+
+body{
+	background-color: #eee7;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+section{
+	margin-bottom: 2rem;
+}
+
+#about-header{
+	display: flex;
+	flex-direction: column;
+	transition: .6s;
+	background-attachment: fixed;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../About Us Images/Sell.jpg'); 
+}
+
+.active{
+	color: #0acdff;
+}
+
+#active{
+	color: #0acdff;
+}
+
+.menu{
+	display: flex;
+	justify-content: space-around;
+	background: transparent;
+	font-family: 'Roboto', sans-serif;
+	position: fixed;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	top: 0;
+	z-index: 50;
+	white-space: nowrap;
+}
+
+.menu2{
+	background-color: rgba(0,0,0,0.6);
+}
+
+.menu2:hover{
+	background-color: rgba(0,0,0,1);
+}
+
+.logo{
+	padding: 1rem;
+}
+
+.logo > .fa-bars{
+	display: none;
+	color: #fff;
+	padding-right: 2rem;
+}
+
+.logo i, .nav i, .mobileLogo i{
+	font-size: 2rem;
+	color: orange;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.nav i{
+	font-size: 1.4em;
+	padding-right: 0.8rem;
+}
+
+.log-name{
+	font-family: montserrat, sans-serif;
+	transition: 0.2s;
+	font-size: 2em;
+	font-weight: 600;
+	padding: 9px 5px;
+}
+
+.log-name, .link, .share a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.nav{
+	list-style-type: none;
+	align-self: center;
+}
+
+.nav li{
+	display: inline-block;
+	cursor: pointer;
+	transition: 0.2s;
+	font-size: 1.4em;
+	padding: 11.5px 25px;
+}
+
+.link{
+	transition: 0.2s;
+}
+
+.link:hover i{
+	color:#0acdff;
+}
+
+.log-name:hover .fa-book{
+	color: #0acdff;
+}
+
+.link:hover, .log-name:hover, .fa-bars:hover {
+	color: #0acdff;
+}
+
+.fa-facebook-square{
+	transition: color 650ms;
+	font-size: 3em;
+}
+
+.fa-facebook-square:hover{
+	color: #4267b2
+}
+
+.aboutHeader-title{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 18rem;
+	text-shadow: 0px 0px 8px #000;
+	font-size: 2.5rem;
+	color: #fff;
+	font-family: montserrat, sans-serif;
+	z-index: 0;
+}
+
+.aboutHeaderMobile-title{
+	display: none;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 18rem;
+	text-shadow: 0px 0px 8px #000;
+	font-size: 2.5rem;
+	color: #fff;
+	font-family: montserrat, sans-serif;
+	z-index: 0;
+}
+
+.goal-header{
+	display: flex;
+	justify-content: center;
+	font-size: 2.2rem;
+	color: grey;
+	text-shadow: 0px 0px 2px #000;
+	font-family: montserrat, sans-serif;
+}
+
+.goal-description{
+	display: flex;
+	justify-content: center;
+}
+
+.goal-description p{
+	font-size: 1.2rem;
+	line-height: 1.8rem;
+	width: 74%;
+	text-align: center;
+}
+
+.MJ{
+	color: #0acdff;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+.MJ:hover{
+	color: rgba(0,0,250,1);
+	text-decoration: underline;
+}
+
+.followUs-header{
+	display: flex;
+	justify-content: center;
+	font-size: 2.2rem;
+	color: grey;
+	text-shadow: 0px 0px 2px #000;
+	font-family: montserrat, sans-serif;
+}
+
+.followUsMobile-header{
+	display: none;
+	justify-content: center;
+	text-align: center;
+	font-size: 2.2rem;
+	color: grey;
+	text-shadow: 0px 0px 2px #000;
+	font-family: montserrat, sans-serif;
+}
+
+.socials{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icons{
+	margin: 2rem;
+	font-size: 4rem;
+	color: #fff;
+	transition: color 650ms;
+	text-shadow: 0 0 4px #000;
+}
+
+.fa-twitter-square:hover{
+	color: #38a1f3;
+}
+
+.fa-instagram:hover{
+  color: #e3e3;
+}
+
+.flip-up{
+	transform: rotate(-180deg);
+}
+
+.mobileLogo{
+	display: none;
+	justify-content: center;
+	margin-right: 1.1rem;
+}
+
+.footMobileWeb-title{
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 10%;
+	cursor: pointer;
+}
+
+.footMobile-title{
+	font-size: 1.2rem;
+	color: #fff;
+}
+
+.fa-caret-down{
+	color: #fff;
+	cursor: pointer;
+	font-size: 1.2rem;
+	transition: 0.3s;
+}
+
+.footMobile-web{
+	display: none;
+	margin: 1.5rem;
+	flex-direction: column;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.footMobile-list{
+	list-style: none;
+	overflow: hidden;
+	max-height: 0;
+	transition: 1s;
+	opacity: 1;
+}
+
+.footMobileWeb-link{
+	font-size: 1.2rem;
+	color: #fff;
+	transition: 0.3s;
+	text-decoration: none;
+}
+
+.footMobile-list li{
+	padding: 5px;
+}
+
+.foot-link{
+	font-size: 1.2rem;
+	padding-right: 1rem;
+	color: #fff; 
+	transition: 0.6s;
+	text-decoration: none;
+}
+
+.foot-info{
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+	background-color: #2f4f4f;
+	font-family: montserrat, sans-serif;
+}
+
+.foot-title{
+	align-self: center;
+	font-size: 0.5rem;
+	color: #fff;
+	margin-left: -2.8rem;
+}
+
+.foot-title a{
+	color: #0acdff;
+	text-decoration: none;
+	transition: 0.5s;
+}
+
+.foot-title a:hover{
+	color: #fff;
+}
+
+.foot-content{
+	display: flex;
+	flex-direction: column;
+	margin-right: 4.5rem;
+}
+
+.foot-web{
+	display: flex;
+	flex-direction: row;
+}
+
+.foot-link{
+	font-size: 1.2rem;
+	padding-right: 1rem;
+	color: #fff; 
+	transition: 0.6s;
+	text-decoration: none;
+}
+
+.foot-link:hover, .footMobileWeb-link:hover{
+	color:#0acdff;
+}
+
+.fa-chevron-up{
+	padding: 1rem;
+	border-radius:100%;
+	font-size: 1.5rem;
+	margin-right:2rem;
+	background:#fff;
+	cursor: pointer;
+	text-align: center;
+	transition: 0.3s; 
+}
+
+.fa-chevron-up:hover{
+	background-color:#0acdff;
+	color: #fff;
+}
+
+.bot-name{
+	font-family: montserrat, sans-serif;
+	transition: 0.35s;
+	font-size: 1.5em;
+	text-decoration: none;
+	color: #fff;
+}
+
+.bot-name:hover{
+	color:#0acdff;
+}

@@ -1,0 +1,246 @@
+@media screen and (max-width: 1125px){
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 15px;
+	}
+	
+	.reg-agreement{
+		white-space: normal;
+		line-height: 1.8rem;
+	}
+	
+	.foot-content{
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 1100px){
+	.reg-agreement{
+		white-space: normal;
+		line-height: 1.8rem;
+	}
+	
+	.logo{
+		padding: 0.5rem;
+	}
+	
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 3px 5px;
+		
+	}
+}
+
+@media screen and (max-width: 980px){
+	.menu{
+		justify-content: stretch;
+		flex-direction: column;
+	}
+
+	.logo{
+		white-space: nowrap;
+	}
+
+	.logo > .fa-bars{
+		display: inline-block;
+		padding-left: 1rem;
+	}
+
+	.nav{
+		list-style-type: none;
+		background-color: #fff;
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+	}
+
+	.nav li{
+		display: block;
+	}
+
+	.nav li{
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 1rem;
+		border-bottom: 1px solid #000;
+	}
+
+	.nav li:last-child{
+		border-bottom: 0;
+	}
+
+	.nav li:hover .link{
+		color: #fff;
+	}
+	
+	.nav li:hover .active{
+		color: #fff;
+	}
+	
+	.nav li:hover #active{
+		color: #fff;
+	}
+
+	.nav li:hover i{
+		color: #fff;
+	}
+
+	.nav li:hover{
+		background-color: #0acdff;
+	}
+
+	.link{
+		transition: 0.2s;
+		display: block;
+	}
+	
+	.reg-card{
+		flex-direction: column;
+		margin: 1rem;
+		width: 80%;
+	}
+	
+	.reg-form{
+		width: 100%;
+	}
+	
+	.form{
+		width: 100%;
+	}
+	
+	.regben-title{
+		display: none;
+	}
+
+	.regbenMobile-title{
+		display: inline-block;
+	}
+	
+	.reg-benefits{
+		padding-top: 0;
+		width: 100%;
+	}
+	
+	.reg-agreement{
+		white-space: normal;
+		line-height: 1.8rem;
+	}
+}
+
+@media screen and (max-width: 890px){
+	
+	#register{
+		margin-top: 5.5rem;
+	}
+
+	#register-form{
+		margin-top: 0;
+		margin-bottom: 7.5rem;
+	}
+
+	.reg-cont{
+		display: none;
+	}
+
+	.regMobile-cont{
+		display: flex;
+		text-align: center;
+	}
+
+	.regben-title{
+		display: inline-block;
+	}
+
+	.regbenMobile-title{
+		display: none;
+	}
+	
+	.foot-web{
+		display: none;
+		flex-direction: row;
+	}
+	
+	.footMobile-web{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.footMobileWeb-link{
+		white-space: nowrap;
+	}
+	
+	.foot-title{
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 790px){
+
+	.reg-card{
+		flex-direction: column;
+		margin: 1;
+		width: 95%;
+	}
+	
+	.reg-form{
+		width: 100%;
+	}
+	
+	.form{
+		width: 100%;
+	}
+	
+	.foot-title{
+		white-space: nowrap;
+	
+	}
+}
+
+@media screen and (max-width: 650px){
+
+	#register{
+		margin-top: 7.5rem;
+		margin-left: 1.5rem;
+		margin-right: 1.5rem;
+	}
+	
+	.mobileLogo{
+		display: flex;
+		justify-content: center;
+		margin-right: 1.1rem;
+	}
+	
+	.regMobile-title{
+		font-size: 2.4rem;
+		font-family: montserrat, sans-serif;
+		text-shadow: 0 0 2px rgba(0,0,0,0.6);
+	}
+	
+	.validifier{
+		text-align: center;
+	}
+	
+	.footMobile-web{
+		display: flex;
+		margin-right: 2.5rem;
+	}
+	
+	.foot-info > .logo{
+		display: none;
+	}
+	
+	.foot-info{
+		justify-content: space-around;
+	}
+	
+	.foot-title{
+		white-space: nowrap;
+	}
+}

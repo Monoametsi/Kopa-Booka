@@ -1,0 +1,360 @@
+@media screen and (max-width: 1125px){
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 15px;
+	}
+	
+	.slide-container{
+		width: 42%;
+		margin-left: 0;
+	}
+	
+	.slideCont{
+		
+	}
+	
+	.sell-info{
+		
+	}
+	
+	.form-content{
+		flex-basis: 120%;	
+	}
+	
+	.ad-head{
+		white-space: normal;
+		line-height: 2.1rem;
+	}
+	
+	.ad-amount{
+		white-space: normal;
+		line-height: 1.8rem;
+	}
+	
+	.foot-content{
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 1100px){	
+	.logo{
+		padding: 0.5rem;
+	}
+	
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 3px 5px;
+	}
+	
+	.sec{
+		
+	}
+	
+	.slide-container{
+		
+	}
+	
+	.prev, .next{
+		top: 18%;
+	}
+	
+	.sell-info{
+		
+	}
+	
+	.form-content{
+		margin-top: -1rem;
+		flex-basis: 130%;
+	}
+}
+
+@media screen and (max-width: 1070px){
+	
+	.prev, .next{
+		top: 15%;
+	}
+	
+	.slides > img{
+		height: 20rem;
+	}
+	
+	.form-content{
+		margin-top: -1rem;
+		flex-basis: 160%;
+	}
+}
+
+@media screen and (max-width: 980px){
+	.menu{
+		justify-content: stretch;
+		flex-direction: column;
+	}
+
+	.logo{
+		white-space: nowrap;
+	}
+
+	.logo > .fa-bars{
+		display: inline-block;
+		padding-left: 1rem;
+	}
+
+	.nav{
+		list-style-type: none;
+		background-color: #fff;
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+	}
+
+	.nav li{
+		display: block;
+	}
+
+	.nav li{
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 1rem;
+		border-bottom: 1px solid #000;
+	}
+
+	.nav li:last-child{
+		border-bottom: 0;
+	}
+
+	.nav li:hover .link{
+		color: #fff;
+	}
+	
+	.nav li:hover .active{
+		color: #fff;
+	}
+	
+	.nav li:hover #active{
+		color: #fff;
+	}
+
+	.nav li:hover i{
+		color: #fff;
+	}
+
+	.nav li:hover{
+		background-color: #0acdff;
+	}
+
+	.link{
+		transition: 0.2s;
+		display: block;
+	}
+	
+	.slideCont{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		margin-right: 8px;
+	}
+
+	.slide-container{
+		width: 95%;
+		margin-top: 0;
+		margin-left: 0;
+	}
+	
+	.slides > img{
+		height: 35rem;
+	}
+	
+	.form-content{
+		margin-top: -1rem;
+		flex-basis: 80%;
+	}
+	
+	.fa-envelope{
+		width: 11.2%;
+	}
+	
+	.sell-info{
+		width: 95%;
+		align-self: center;
+	}
+	
+	.prev, .next{
+		top: 25%;
+	}
+}
+
+@media screen and (max-width: 890px){
+
+	.slideCont{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		margin-right: 8px;
+	}
+
+	.slide-container{
+		width: 95%;
+	}
+	
+	.fa-envelope{
+		width: 12%;
+	}
+	
+	.foot-web{
+		display: none;
+		flex-direction: row;
+	}
+	
+	.footMobile-web{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.foot-content{
+		margin-right: 2.5rem;
+	}
+	
+	.footMobileWeb-link{
+		white-space: nowrap;
+	}
+	
+	.foot-title{
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 790px){
+	
+	.sec{
+		flex-direction: column;
+	}
+	
+	.slideCont{
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		margin-right: 0;
+	}
+	
+	.slide-container{
+		width: 80%;
+		margin-top: 1rem;
+	}
+	
+	.form-content{
+		margin-top: 2.5rem;
+		border-radius: 5px;
+		align-self: center;
+		flex-basis: 100%;
+		box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	}
+	
+	.sell-info{
+		width: 90%;
+		box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	}
+	
+	form{
+		padding: 1.5rem;
+	}
+	
+	.ikon{
+		width: 6%;
+	}
+	
+	.foot-title{
+		white-space: nowrap;
+	}
+}
+
+@media screen and (max-width: 669px){
+	.mobileLogo{
+		display: flex;
+		justify-content: center;
+		margin-right: 1.1rem;
+	}
+	
+	.regMobile-title{
+		font-size: 2.4rem;
+		font-family: montserrat, sans-serif;
+		text-shadow: 0 0 2px rgba(0,0,0,0.6);
+	}
+	
+	.footMobile-web{
+		display: flex;
+		margin-right: 2.5rem;
+	}
+	
+	.foot-info > .logo{
+		display: none;
+	}
+	
+	.foot-info{
+		justify-content: space-around;
+	}
+	
+	.foot-title{
+		white-space: nowrap;
+	}
+}
+
+@media screen and (max-width: 650px){
+	
+	.slide-container{
+		width: 80%;
+		margin-top: 1rem;
+	}
+	
+	.slides > img{
+		height: 30rem;
+	}
+	
+	.modal-content{
+		width: 75%;
+	}
+	
+	.ikon{
+		width: 8%;
+	}
+}
+
+@media screen and (max-width: 580px){
+	
+	.sec{
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.slide-container{
+		width: 90%;
+	}
+	
+	.ikon{
+		width: 10%;
+	}
+}
+
+@media screen and (max-width: 480px){
+	
+	.prev, .next{
+		top: 20%;
+	}
+	
+	.slide-container{
+		width: 90%;
+	}
+	
+	.ikon{
+		width: 10%;
+	}
+}

@@ -1,0 +1,100 @@
+function passwordValidation(){
+	let pwdVal = pwd.value;
+	let passConfVal = passConfirm.value;
+	let pwdErr = document.getElementById('passwordErr');
+	let passConfErr = document.getElementById('passConfErr');
+	let findUpperCase = pwdVal.search(/[A-Z]/);
+	let findLowerCase = pwdVal.search(/[a-z]/);
+	let findSpecialChar = pwdVal.search(/[!@#$%&'*+-/=?^_`{|}~]/);
+	let findDigit = pwdVal.search(/[0-9]/);
+	
+	if(pwdVal === '' && passConfVal === ''){
+		pwdErr.style.display = 'flex';
+		passConfErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		passConfirm.classList.add('redBox');
+		pwdErr.innerText = 'Please enter Password';
+		passConfErr.innerText = 'Please confirm password';
+		return false;
+		
+	}else if(pwdVal === '' && passConfVal.length > 0){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Please enter Password';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!!';
+		passConfirm.classList.add('redBox');
+		return false;
+		
+	}else if(!(pwdVal.length >= 7) || !(pwdVal.length <= 16) && (pwdVal !== passConfVal) || !(pwdVal.length >= 7) || !(pwdVal.length <= 16)){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Password must be between 7 and 16 characters';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		return false;
+		
+	}else if((findLowerCase === -1) && (pwdVal !== passConfVal) || findLowerCase === -1){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Include atleast 1 lowecase character';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		return false;
+		
+	}else if((findUpperCase === -1) && (pwdVal !== passConfVal) || (findUpperCase === -1)){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Include atleast 1 Uppercase character';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		return false;
+		
+	}else if((findDigit === -1) && (pwdVal !== passConfVal) || (findDigit === -1)){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Include atleast 1 numeric digit';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		return false;
+		
+	}else if((findSpecialChar === -1) && (pwdVal !== passConfVal) || (findSpecialChar === -1)){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Include atleast 1 special character';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		console.log(findSpecialChar === -1);
+		return false;
+		
+	}else if((findSpecialChar === -1) && (pwdVal !== passConfVal) || (findSpecialChar === -1)){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		pwdErr.innerText = 'Include atleast 1 special character';
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		console.log(findSpecialChar === -1);
+		return false;
+		
+	}else if(pwdVal !== passConfVal){
+		pwdErr.style.display = 'flex';
+		pwd.classList.add('redBox');
+		passConfErr.style.display = 'flex';
+		passConfErr.innerText = 'Passwords dont match!';
+		passConfirm.classList.add('redBox');
+		return false;
+		
+	}else{
+		pwdErr.style.display = 'none';
+		passConfErr.style.display = 'none';
+		pwd.classList.remove('redBox');
+		passConfirm.classList.remove('redBox');
+		userData.UserPwd = passConfVal;
+	}
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../Profile Images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="../fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../Profile CSS/Profile.css">
+<link rel="stylesheet" href="../Profile CSS/ProfileMobile.css">
+<title>Kopa Booka | My Profile</title>
+</head>
+<body>
+
+	<nav class="menu" id="Topnav">
+		<div class="logo">
+			<i class="fa fa-bars" id="menu-DropDown"></i>
+			<a href="#" class="log-name"><i class="fa fa-book" style="padding: 8px;"></i>Kopa Booka</a>
+		</div>
+
+		<div class="nav">
+			<li><a href="#" class="link"><i class="fa fa-home"></i><span style="white-space: nowrap;">Home</span></a></li>
+			<li><a href="../../../Advertisment Board/BookAd.html" class="link"><i class="fa fa-newspaper"></i><span style="white-space: nowrap;">Book Advertisers</span></a></li>
+			<li><a href="../../../About Us/About Us.html" class="link"><i class="fa fa-users"></i><span style="white-space: nowrap;">About Us</span></a></li>
+			<li><a href="../../../Contact/Contact.html" class="link"><i class="fa fa-phone active"></i><span style="white-space: nowrap;">Contact Us</span></a></li>
+		</div>
+	</nav>
+	
+	<section id="profile">
+		<div class="profile-header">
+			<h1 class="profile-title">My Profile</h1>
+		</div>
+	</section>
+	
+	<section id="profile-form">
+		<div class="profileform-card">
+			<div class="profile-contact">
+				<form method="POST" action="" class="form">
+					<div class="contact-details">
+						<div class="profilecont-header">
+							<h1 class="profileheader-title">Contact Details</h1>
+						</div>
+						<div class="nameAddress-details input">
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
+									<span class="validifier" id="first-name-Err"></span>
+								</div>
+								<input type="text" class="inputField-styling" placeholder="Enter you name..." name="name" id="first-name">
+							</div>
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
+									<span class="validifier" id="last-name-Err"></span>
+								</div>
+								<input type="text" class="inputField-styling" placeholder="Enter your surname..." name="surname" id="last-name">
+							</div>
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="mail" class="label">Email <span class="required">*</span></label></label>
+									<span class="validifier" id="mail-Err"></span>
+								</div>
+								<input type="email" class="inputField-styling" placeholder="Enter you email..." name="email" id="mail">
+							</div>
+						</div>
+						<div class="number-details input">
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
+									<span class="validifier" id="telNum-Err"></span>
+								</div>
+								<input type="tel" class="inputField-styling" placeholder="Mobile or telephone number..." name="tel" id="telNum">
+							</div>
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
+									<span class="validifier" id="select-campus-Err"></span>
+								</div>
+								<select name="campus" id="select-campus" >
+									<option value="select campus">Select campus</option>
+									<option value="anyy campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							</div>
+						</div>
+						<div class="sub-cont">
+							<input type="submit" id="submit-update" class="sub" value="Update Profile">
+						</div>
+					</div>
+				</form>
+				<form  method="POST" action="" class="formPassword">
+					<div class="change-password">
+						<div class="changepass-header">
+							<h1 class="changepass-title">Change Password</h1>
+						</div>
+						<div class="changepass-cont">
+							<div class="inputlabel-cont input">
+								<div class="label-cont">
+									<label for="password" class="label">Current Password <span class="required">*</span></label>
+									<span class="validifier" id="oldPass-Err"></span>
+								</div>
+								<input type="password" class="inputField-styling"  placeholder="Enter your current password..." name="password" id="Oldpass">
+							</div>
+							<div class="inputlabel-cont input">
+								<div class="label-cont">
+									<label for="passConf" class="label">New password <span class="required">*</span></label>
+									<span class="validifier" id="newPass-Err"></span>
+								</div>
+								<input type="password" class="inputField-styling" name="passwordConfirmation" placeholder="Enter 7 or more characters..." id="newPass">
+							</div>
+						</div>
+						<div class="sub-cont">
+							<input type="submit" id="submitPassWord" class="sub" value="Update Password">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+	
+	<footer id="foot">
+		<div class="foot-info">
+			<div class="logo"style="margin-left: 0.5rem;" >
+				<a href="#" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+			</div>
+
+			<div class="foot-content">
+				<div class="foot-web">
+					<h1><a href="../../../Privacy Policy/Privacy HTML/Privacy Policy.html" class="foot-link" >Privacy Policy</a></h1>
+					<h1><a href="../../../Terms of Use/Terms of Use HTML/Terms of Use.html" class="foot-link">Terms of Use</a></h1>
+					<h1><a href="#" class="foot-link">Browser Support</a></h1>
+				</div>
+				
+				<div class="mobileLogo">
+					<a href="#" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+				</div>
+			
+				<div class="footMobile-web">
+					<div class="footMobileWeb-title" id="btn">
+						<span class="footMobile-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Our policies</span>
+						<i class="fa fa-caret-up arrowDown flip-up" id="arrow"></i>
+					</div>
+					<ul class="footMobile-list">
+						<li><a href="../../../Privacy Policy/Privacy HTML/Privacy Policy.html" class="footMobileWeb-link" >Privacy Policy</a></li>
+						<li><a href="../../../Terms of Use/Terms of Use HTML/Terms of Use.html" class="footMobileWeb-link">Terms of Use</a></li>
+						<li><a href="#" class="footMobileWeb-link">Browser Support</a></li>
+					</ul>
+				</div>
+				
+				<div class="foot-title">
+					<h1>&copy;2020 DESIGNED BY: <a href="http://juniormosemeng.000webhostapp.com/" target="_blank">MONOAMETSI</a></h1>
+				</div>
+			</div>
+
+			<div class="shooter" >
+				<i class="fa fa-chevron-up shoot" id="scrollTopper"></i>
+			</div>
+		</div>
+	</footer>
+
+	<script src="../Profile JS/Profile.js"></script>
+	<script src="../Profile JS/formValidation.js"></script>
+</body>

@@ -1,0 +1,318 @@
+@media screen and (max-width: 1145px){
+
+	.postAdForm-card{
+		width: 80%;
+		align-items: stretch;
+	}
+
+}
+
+@media screen and (max-width: 1125px){
+
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 15px;
+	}
+	
+	.postAdForm-card{
+		width: 80%;
+		align-items: stretch;
+	}
+		
+	.foot-content{
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 1100px){
+	
+	.postAdForm-cont{
+		margin-right: 1rem;
+		margin-left: 1rem;
+	}
+	
+	.postAdForm-card{
+		width: 90%;
+	}
+	
+	.logo{
+		padding: 0.5rem;
+	}
+	
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 3px 5px;	
+	}
+	
+}
+
+@media screen and (max-width: 1050px){
+
+	.postAdForm-card{
+		width: 95%;
+	}
+	
+}
+
+@media screen and (max-width: 980px){
+
+	.menu{
+		justify-content: stretch;
+		flex-direction: column;
+	}
+
+	.logo{
+		white-space: nowrap;
+	}
+
+	.logo > .fa-bars{
+		display: inline-block;
+		padding-left: 1rem;
+	}
+
+	.nav{
+		list-style-type: none;
+		background-color: #fff;
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+	}
+
+	.nav li{
+		display: block;
+	}
+
+	.nav li{
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 1rem;
+		border-bottom: 1px solid #000;
+	}
+
+	.nav li:last-child{
+		border-bottom: 0;
+	}
+
+	.nav li:hover .link{
+		color: #fff;
+	}
+	
+	.nav li:hover .active{
+		color: #fff;
+	}
+	
+	.nav li:hover #active{
+		color: #fff;
+	}
+
+	.nav li:hover i{
+		color: #fff;
+	}
+
+	.nav li:hover{
+		background-color: #0acdff;
+	}
+
+	.link{
+		transition: 0.2s;
+		display: block;
+	}
+	
+	.postAdForm-cont{
+		margin-left: 2.5rem;
+		margin-right: 2.5rem;
+	}
+	
+	.validifier{
+		margin-right: 3px;
+	}
+	
+	.postAdForm-card{
+		width: 100%;
+		align-items: stretch;
+	}
+	
+	.form{
+		width: 100%;
+	}
+	
+	.category, .adverterName, .textbook-details, .textbook-price{
+		justify-content: stretch;
+		flex-direction: column;
+		align-items: stretch;
+		margin-bottom: 0;
+	}
+	
+	.campus{
+		justify-content: stretch;
+	}
+	
+	#catChoices, #subCatChoices{
+		margin-right: 0;
+		margin-left: 0;
+	}
+	
+	.bottomMobile-spacing{
+		margin-bottom: 2rem;
+	}
+	
+	.whatsapp-cont{
+		flex-direction: column;
+	}
+	
+	.check{
+		align-self: flex-start;
+		margin-left: 0;
+	}
+	
+	.inputField-styling{
+		width: 100%;
+		margin-right: 0;
+		margin-left: 0;
+	}
+	
+	.campus > .inputlabel-cont{
+		width: 100%;
+	}
+	
+	.conAndNeg{
+		width: 100%;	
+	}
+
+	.selectWidth{
+		width: 100%;
+		margin-right: 0;
+		margin-left: 0;
+	}
+	
+	.textbook-price > .inputlabel-cont{
+		width: 100%;
+	}
+
+	.category  > .main-cat{
+		width: 100%;
+	}
+
+	.category  > .sub-cat{
+		width: 100%;
+	}
+	
+	.adverterName > .inputlabel-cont{
+		width: 100%;
+	}
+
+	.whatsapp-cont > .inputlabel-cont{
+		width: 100%;
+	}
+
+	.textbook-details > .inputlabel-cont{
+		width: 100%;
+	}
+		
+	textarea{
+		width: 100%;
+		margin-right: 0;
+		margin-left: 0;
+	}
+	
+	.file-names{
+		flex-wrap: nowrap;
+		overflow-x: auto;
+	}
+	
+	.UploadDrop-title{
+		text-align: center;
+		line-height: 2rem;
+	}
+	
+	.btn{
+		margin-bottom: 1rem;
+	}
+}
+
+@media screen and (max-width: 890px){
+
+	.foot-web{
+		display: none;
+		flex-direction: row;
+	}
+	
+	.footMobile-web{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.foot-content{
+		margin-right: 2.5rem;
+	}
+	
+	.footMobileWeb-link{
+		white-space: nowrap;
+	}
+	
+	.foot-title{
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 790px){
+	
+	#postAd-form{
+		margin-left: 2rem;
+		margin-right: 2rem;
+	}
+	
+	
+	
+	.postAd-title{
+		font-size: 3.2rem;
+	}
+	
+	.postAdForm-cont{
+		margin-left: 0rem;
+		margin-right: 0rem;
+	}
+	
+	.foot-title{
+		white-space: nowrap;
+	}
+}
+
+@media screen and (max-width: 650px){
+
+	.mobileLogo{
+		display: flex;
+		justify-content: center;
+		margin-right: 1.1rem;
+	}
+	
+	.regMobile-title{
+		font-size: 2.4rem;
+		font-family: montserrat, sans-serif;
+		text-shadow: 0 0 2px rgba(0,0,0,0.6);
+	}
+	
+	.footMobile-web{
+		display: flex;
+		margin-right: 2.5rem;
+	}
+	
+	.foot-info > .logo{
+		display: none;
+	}
+	
+	.foot-info{
+		justify-content: space-around;
+	}
+	
+	.foot-title{
+		white-space: nowrap;
+	}
+}
