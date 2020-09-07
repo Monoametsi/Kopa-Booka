@@ -114,7 +114,7 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 70vh;
+	margin: 6rem 0;
 }
 
 .dashboard-notifications,.dashboard-message,.dashboard-ads,.dashboard-profile{

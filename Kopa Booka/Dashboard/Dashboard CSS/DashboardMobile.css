@@ -45,7 +45,7 @@
 	}
 	
 	#dashboard-links{
-		margin: 6.5rem 0;
+		margin: 4rem 0;
 	}
 }
 
@@ -115,10 +115,6 @@
 	
 	.dash-link{
 		margin: 1.8rem 1rem;
-	}
-	
-	#dashboard-links{
-		margin: 6.5rem 0;
 	}
 }
 
