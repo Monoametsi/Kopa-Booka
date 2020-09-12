@@ -167,6 +167,10 @@
 		flex-direction: row;
 	}
 	
+	.foot-content{
+		margin-right: 2.5rem;
+	}
+	
 	.footMobile-web{
 		display: flex;
 		justify-content: center;
@@ -203,7 +207,7 @@
 	}
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 668px){
 
 	#register{
 		margin-top: 7.5rem;

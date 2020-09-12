@@ -1,12 +1,3 @@
-@media screen and (max-width: 1315px){
-	
-	#login-form{
-		margin-top: 4rem;
-		margin-bottom: 4rem;
-	}
-
-}
-
 @media screen and (max-width: 1125px){
 	.nav li{
 		display: inline-block;
@@ -96,6 +87,10 @@
 
 @media screen and (max-width: 890px){
 	
+	#login-form{
+		margin-top: 7rem;
+	}
+	
 	.foot-web{
 		display: none;
 		flex-direction: row;
@@ -110,6 +105,10 @@
 		white-space: nowrap;
 	}
 	
+	.foot-content{
+		margin-right: 2.5rem;
+	}
+	
 	.foot-title{
 		margin-left: 0;
 	}
@@ -118,8 +117,7 @@
 @media screen and (max-width: 790px){
 	
 	#login-form{
-		margin-top: 2rem;
-		margin-bottom: 2rem;
+		margin-top: 6.5rem;
 	}
 	
 	.login-cont{
@@ -130,7 +128,7 @@
 	}
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 668px){
 	
 	.mobileLogo{
 		display: flex;
