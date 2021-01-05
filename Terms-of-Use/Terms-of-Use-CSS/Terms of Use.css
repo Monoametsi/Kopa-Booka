@@ -49,13 +49,21 @@ p{
 	line-height: 1.9rem;
 }
 
-#active{
+a{
+	text-decoration: none;
+}
+
+.active{
 	color:#0acdff;
+}
+
+#active{
+	color: #0acdff;
 }
 
 .menu{
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	background-color: #fff;
 	box-shadow: 0 0 25px rgba(0,0,0,0.3);
 	font-family: 'Roboto', sans-serif;
@@ -79,21 +87,20 @@ p{
 }
 
 .logo i, .nav i, .mobileLogo i{
-	font-size: 2rem;
+	font-size: 1.8rem;
 	color: orange;
 	transition: 0.2s;
 	cursor: pointer;
 }
 
 .nav i{
-	font-size: 1.4em;
-	padding-right: 0.8rem;
+	padding-right: 0.5rem;
 }
 
 .log-name{
 	font-family: montserrat, sans-serif;
 	transition: 0.2s;
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: 600;
 	padding: 9px 5px;
 }
@@ -113,7 +120,7 @@ p{
 	cursor: pointer;
 	transition: 0.2s;
 	font-size: 1.4em;
-	padding: 11.5px 25px;
+	padding: 11.5px 15px;
 }
 
 .link{
@@ -128,7 +135,34 @@ p{
 	color: #0acdff;
 }
 
-.link:hover, .log-name:hover, .fa-bars:hover {
+.register-logIn{
+	align-self: center;
+	padding-right: 1rem;
+}
+
+.register-logIn{
+	align-self: center;
+	padding-right: 1rem;
+}
+
+.regLogin-link > i, .register-logIn > .regLogin-link:first-child{
+	padding-right: 10px;
+}
+
+.regLogin-link > i{
+	color: orange;
+	font-size: 1.5rem;
+	transition: 0.2s;
+	text-align: center;
+}
+
+.regLogin-link{
+	font-size: 1.4em;
+	transition: 0.2s;
+	color: #000;
+}
+
+.link:hover, .log-name:hover, .fa-bars:hover, .regLogin-link:hover, .regLogin-link:hover i{
 	color: #0acdff;
 }
 
