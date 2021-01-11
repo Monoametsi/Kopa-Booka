@@ -23,7 +23,7 @@ function passwordValidation(){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
 		passConfErr.style.display = 'none';
-		pwdErr.innerText = 'Please enter Password';
+		pwdErr.innerText = 'Required';
 		return false;
 		
 	}else if(!(pwdVal.length >= 7) || !(pwdVal.length <= 16)){
@@ -80,7 +80,7 @@ function passwordCofirmation(){
 	if (pwdVal === ''){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
-		pwdErr.innerText = 'Please enter Password';
+		pwdErr.innerText = 'Required';
 		return false;
 		
 	}else if(pwdVal === passConfVal){
