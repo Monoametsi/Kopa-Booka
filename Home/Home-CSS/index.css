@@ -167,7 +167,7 @@ a{
 }
 
 .homePage-freeAds a:hover{
-	color: rgba(80, 80, 280, 1);
+	color: #007cc2;
 	text-decoration: none;
 }
 
@@ -189,4 +189,65 @@ a{
 	font-family: montserrat, sans-serif;
 	font-size: 1.8rem;
 	font-weight: bold;
+}
+
+.categories{
+	display: flex;
+	justify-content: space-around;
+}
+
+.categorieyBox-cont{
+	display: flex;
+	margin-bottom: 1.8rem;
+}
+
+.categoriey-box{
+	flex-direction: column;
+	border: 3px solid #ddd;
+}
+
+.categorieyBox-header{
+	border-bottom: 3px solid #ddd;
+}
+
+.categorieyBox-header span{
+	font-weight: 600;
+}
+
+.categorieyBox-header h1, .categorieyBox-footer h1{
+	font-family: montserrat, sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	text-align: center;
+	padding: 8px;
+}
+
+.categorieyBox-footer h1{
+	font-weight: 600;
+	color: #0acdff;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.categorieyBox-list{
+	display: flex;
+	list-style: none;
+	flex-direction: column;
+	padding: 0;
+}
+
+.categorieyBox-link{
+	display: flex;
+}
+
+.categorieyBox-link h5{
+	flex-direction: column;
+}
+
+.categorieyBox-footer h1:hover{
+	color: #007cc2;
+}
+
+.categorieyBox-footer{
+	border-top: 3px solid #ddd;
 }
