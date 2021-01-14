@@ -107,7 +107,11 @@
 	}
 	
 	.homePage-Tite h1{
-		line-height: ;
+		line-height: 3rem;
+	}
+	
+	.homePage-freeAds h3{
+		line-height: 2.5rem;
 	}
 }
 
@@ -132,6 +136,20 @@
 	
 	.foot-title{
 		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 850px){	
+	.homePage-Tite h1{
+		font-size: 2rem;
+	}
+	
+	.homePage-freeAds{
+		font-size: 1.3rem;
+	}
+	
+	.homePage-descript p{
+		font-size: 1.1rem;
 	}
 }
 
