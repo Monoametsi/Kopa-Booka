@@ -187,7 +187,7 @@ a{
 }
 
 .browserCategory-title{
-	margin-bottom: 9px;
+	margin: 3px 10px;
 }
 
 .browserCategory-title h1{
@@ -212,6 +212,7 @@ a{
 	border: 3px solid #ddd;
 	background-color: #fff;
 	width: 300px;
+	margin: 3px 10px;
 }
 
 .categorieyBox-header{

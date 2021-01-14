@@ -101,6 +101,19 @@
 	}
 }
 
+@media screen and (max-width: 1030px){
+	.categorieyBox-cont{
+		width: 100%;
+	}
+
+	.categoriey-box{
+		width: 100%;
+	}
+	.browserCategory-title h1{
+		text-align: center;
+	}
+}
+
 @media screen and (max-width: 1020px){
 	.homePageTite-cont{
 		padding: 0 3rem;
@@ -160,7 +173,7 @@
 	}
 }
 
-@media screen and (max-width: 650px){
+@media screen and (max-width: 670px){
 	.mobileLogo{
 		display: flex;
 		justify-content: center;
