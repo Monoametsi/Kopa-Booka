@@ -101,6 +101,16 @@
 	}
 }
 
+@media screen and (max-width: 1020px){
+	.homePageTite-cont{
+		padding: 0 3rem;
+	}
+	
+	.homePage-Tite h1{
+		line-height: ;
+	}
+}
+
 @media screen and (max-width: 890px){
 	.foot-web{
 		display: none;
