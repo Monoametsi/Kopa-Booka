@@ -145,7 +145,7 @@ a{
 .homePage-Tite h1{
 	text-align: center;
 	font-family: montserrat, sans-serif;
-	font-size: 2.5rem;
+	font-size: 2.3rem;
 	text-shadow: 0 0 2px rgba(0,0,0,0.6);
 	margin-bottom: 0;
 }
@@ -184,6 +184,10 @@ a{
 	flex-direction: column;
 	padding: 0 1.5rem;
 	margin-bottom: 3.5rem;
+}
+
+.browserCategory-title{
+	margin-bottom: 9px;
 }
 
 .browserCategory-title h1{
@@ -324,8 +328,8 @@ a{
 	font-family: montserrat, sans-serif;
     background-color: #0acdff;
     white-space: nowrap;
-    font-size: 1rem;
-    padding: 15px 25px;
+    font-size: 1.2rem;
+    padding: 12px 22px;
     border-radius: 5px;
     cursor: pointer;
     border: none;
