@@ -1,3 +1,100 @@
+@media screen and (max-width: 1280px){
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4rem;
+		padding: 8px 10px;
+	}
+
+	.logo, .register-logIn{
+		padding: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 1220px){
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 3px 5px;
+		
+	}
+}
+
+@media screen and (max-width: 1180px){
+	.menu{
+		justify-content: stretch;
+		flex-direction: column;
+	}
+
+	.logo{
+		white-space: nowrap;
+	}
+
+	.logo > .fa-bars{
+		display: inline-block;
+		padding-left: 1rem;
+	}
+
+	.nav{
+		list-style-type: none;
+		background-color: #fff;
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+	}
+	
+	.register-logIn{
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+		padding: 0;
+	}
+
+	.nav li,.regLogin-link{
+		display: block;
+	}
+
+	.nav li, .regLogin-link{
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 1rem;
+		border-bottom: 1px solid #000;
+	}
+
+	.nav li:hover .link, .regLogin-link:hover{
+		color: #fff;
+	}
+	
+	.nav li:hover .active{
+		color: #fff;
+	}
+	
+	.regLogin-link:last-child{
+		border-bottom: 0 solid #000;
+	}
+	
+	.nav li:hover #active{
+		color: #fff;
+	}
+
+	.nav li:hover i, .regLogin-link:hover i{
+		color: #fff;
+	}
+
+	.nav li:hover, .regLogin-link:hover{
+		background-color: #0acdff;
+	}
+
+	.link{
+		transition: 0.2s;
+		display: block;
+	}
+}
+
 @media screen and (max-width: 1145px){
 
 	.postAdForm-card{
@@ -8,15 +105,6 @@
 }
 
 @media screen and (max-width: 1125px){
-
-	.nav li{
-		display: inline-block;
-		cursor: pointer;
-		transition: 0.2s;
-		font-size: 1.4em;
-		padding: 8px 15px;
-	}
-	
 	.postAdForm-card{
 		width: 80%;
 		align-items: stretch;
@@ -41,90 +129,15 @@
 	.logo{
 		padding: 0.5rem;
 	}
-	
-	.nav li{
-		display: inline-block;
-		cursor: pointer;
-		transition: 0.2s;
-		font-size: 1.4em;
-		padding: 3px 5px;	
-	}
-	
 }
 
 @media screen and (max-width: 1050px){
-
 	.postAdForm-card{
 		width: 95%;
 	}
-	
 }
 
 @media screen and (max-width: 980px){
-
-	.menu{
-		justify-content: stretch;
-		flex-direction: column;
-	}
-
-	.logo{
-		white-space: nowrap;
-	}
-
-	.logo > .fa-bars{
-		display: inline-block;
-		padding-left: 1rem;
-	}
-
-	.nav{
-		list-style-type: none;
-		background-color: #fff;
-		max-height: 0;
-		overflow: hidden;
-		align-self: stretch;
-	}
-
-	.nav li{
-		display: block;
-	}
-
-	.nav li{
-		cursor: pointer;
-		transition: 0.2s;
-		font-size: 1.4em;
-		padding: 8px 1rem;
-		border-bottom: 1px solid #000;
-	}
-
-	.nav li:last-child{
-		border-bottom: 0;
-	}
-
-	.nav li:hover .link{
-		color: #fff;
-	}
-	
-	.nav li:hover .active{
-		color: #fff;
-	}
-	
-	.nav li:hover #active{
-		color: #fff;
-	}
-
-	.nav li:hover i{
-		color: #fff;
-	}
-
-	.nav li:hover{
-		background-color: #0acdff;
-	}
-
-	.link{
-		transition: 0.2s;
-		display: block;
-	}
-	
 	.postAdForm-cont{
 		margin-left: 2.5rem;
 		margin-right: 2.5rem;
@@ -285,8 +298,7 @@
 	}
 }
 
-@media screen and (max-width: 650px){
-
+@media screen and (max-width: 670px){
 	.mobileLogo{
 		display: flex;
 		justify-content: center;

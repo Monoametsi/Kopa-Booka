@@ -1,55 +1,33 @@
-@media screen and (max-width: 1125px){
+@media screen and (max-width: 1280px){
 	.nav li{
 		display: inline-block;
 		cursor: pointer;
 		transition: 0.2s;
-		font-size: 1.4em;
-		padding: 8px 15px;
+		font-size: 1.4rem;
+		padding: 8px 10px;
 	}
-	
-	.foot-content{
-		margin-right: 0;
-	}
-}
-	
-@media screen and (max-width: 1100px){
-	
-	.logo{
+
+	.logo, .register-logIn{
 		padding: 0.5rem;
 	}
 	
+	.dashboard-header{
+		margin-top: 3.5rem;
+	}
+}
+
+@media screen and (max-width: 1220px){
 	.nav li{
 		display: inline-block;
 		cursor: pointer;
 		transition: 0.2s;
 		font-size: 1.4em;
 		padding: 3px 5px;
-	}
-	
-	.dashboard-header{
-		margin-top: 4rem;
-	}
-	
-	.dashboard-cont{
-		margin: 0 1rem;
+		
 	}
 }
 
-@media screen and (max-width: 1065px){
-	.dashboard-cont{
-		align-items: center;
-	}
-	
-	.dash-link{
-		margin: 1.8rem 1rem;
-	}
-	
-	#dashboard-links{
-		margin: 4rem 0;
-	}
-}
-
-@media screen and (max-width: 980px){
+@media screen and (max-width: 1180px){
 	.menu{
 		justify-content: stretch;
 		flex-direction: column;
@@ -71,12 +49,19 @@
 		overflow: hidden;
 		align-self: stretch;
 	}
+	
+	.register-logIn{
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+		padding: 0;
+	}
 
-	.nav li{
+	.nav li,.regLogin-link{
 		display: block;
 	}
 
-	.nav li{
+	.nav li, .regLogin-link{
 		cursor: pointer;
 		transition: 0.2s;
 		font-size: 1.4em;
@@ -84,11 +69,7 @@
 		border-bottom: 1px solid #000;
 	}
 
-	.nav li:last-child{
-		border-bottom: 0;
-	}
-
-	.nav li:hover .link{
+	.nav li:hover .link, .regLogin-link:hover{
 		color: #fff;
 	}
 	
@@ -96,15 +77,19 @@
 		color: #fff;
 	}
 	
+	.regLogin-link:last-child{
+		border-bottom: 0 solid #000;
+	}
+	
 	.nav li:hover #active{
 		color: #fff;
 	}
 
-	.nav li:hover i{
+	.nav li:hover i, .regLogin-link:hover i{
 		color: #fff;
 	}
 
-	.nav li:hover{
+	.nav li:hover, .regLogin-link:hover{
 		background-color: #0acdff;
 	}
 
@@ -112,14 +97,41 @@
 		transition: 0.2s;
 		display: block;
 	}
+}
+
+@media screen and (max-width: 1125px){	
+	.foot-content{
+		margin-right: 0;
+	}
+}
 	
+@media screen and (max-width: 1100px){	
+	.dashboard-cont{
+		margin: 0 1rem;
+	}
+}
+
+@media screen and (max-width: 1065px){
+	.dashboard-cont{
+		align-items: center;
+	}
+	
+	.dash-link{
+		margin: 1.8rem 1rem;
+	}
+	
+	#dashboard-links{
+		margin: 4rem 0;
+	}
+}
+
+@media screen and (max-width: 980px){	
 	.dash-link{
 		margin: 1.8rem 1rem;
 	}
 }
 
 @media screen and (max-width: 890px){
-
 	.foot-web{
 		display: none;
 		flex-direction: row;
@@ -212,8 +224,5 @@
 	
 	#dashboard{
 		width: 440px;
-	}
-	
-	
+	}	
 }
-

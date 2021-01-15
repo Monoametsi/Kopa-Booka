@@ -83,14 +83,19 @@ let listDropper =  document.getElementById('menu-DropDown');
 
 function menuDropDown(list){
 	let divisionList = list.parentElement.nextElementSibling;
+	let divisionList2 = list.parentElement.nextElementSibling.nextElementSibling;
 
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
+		divisionList2.style.maxHeight = null;
 		divisionList.style.transition = '0.3s';
+		divisionList2.style.transition = '0.3s';
 
 	}else{
 		divisionList.style.transition = '0.3s';
+		divisionList2.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
+		divisionList2.style.maxHeight = divisionList2.scrollHeight  + 'px';
 	}
 }
 
