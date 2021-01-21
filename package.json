@@ -2,9 +2,10 @@
   "name": "Kopa-Booka",
   "version": "1.0.0",
   "description": "<h1>Kopa-Booka</h1><br> This is the soon to be a well needed solution to UJ students",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node Server/server",
+    "dev": "nodemon Server/server"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Monoametsi/Kopa-Booka/issues"
   },
-  "homepage": "https://github.com/Monoametsi/Kopa-Booka#readme"
+  "homepage": "https://github.com/Monoametsi/Kopa-Booka#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
