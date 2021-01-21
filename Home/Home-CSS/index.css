@@ -150,6 +150,18 @@ a{
 	margin-bottom: 0;
 }
 
+.MobilehomePage-Tite{
+	display: none;
+}
+
+.MobilehomePage-Tite h1{
+	text-align: center;
+	font-family: montserrat, sans-serif;
+	font-size: 2.3rem;
+	text-shadow: 0 0 2px rgba(0,0,0,0.6);
+	margin-bottom: 0;
+}
+
 .homePage-freeAds{
 	text-align: center;
 	font-family: montserrat, sans-serif;

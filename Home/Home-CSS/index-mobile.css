@@ -6,7 +6,7 @@
 		font-size: 1.4rem;
 		padding: 8px 10px;
 	}
-	
+
 	.logo, .register-logIn{
 		padding: 0.5rem;
 	}
@@ -170,6 +170,21 @@
 	.foot-title{
 		white-space: nowrap;
 	
+	}
+}
+
+@media screen and (max-width: 760px){
+	.MobilehomePage-Tite{
+		display: flex;
+	}
+	
+	.MobilehomePage-Tite h1{
+		font-size: 2rem;
+		line-height: 3rem;
+	}
+	
+	.homePage-Tite{
+		display: none;
 	}
 }
 

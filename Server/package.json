@@ -1,0 +1,19 @@
+{
+  "name": "kopa-booka",
+  "version": "1.0.0",
+  "description": "Textbook Advertisement site",
+  "main": "Server\server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monoametsi/Kopa-Booka.git"
+  },
+  "author": "Junior Mosemeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monoametsi/Kopa-Booka/issues"
+  },
+  "homepage": "https://github.com/Monoametsi/Kopa-Booka#readme"
+}
