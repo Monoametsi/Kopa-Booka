@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Monoametsi/Kopa-Booka.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Junior Mosemeng",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Monoametsi/Kopa-Booka/issues"
@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Monoametsi/Kopa-Booka#readme",
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
