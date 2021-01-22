@@ -4,6 +4,7 @@ const url = require('url');
 const app = express();
 const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
 
+app.use(express.static(path.join(dirname, 'Home')));
 app.use(express.static(path.join(dirname)));
 
 const homePath = path.join(dirname, 'Home', 'Home-HTML', 'index.html');
