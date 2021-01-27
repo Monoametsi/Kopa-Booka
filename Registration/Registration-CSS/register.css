@@ -157,6 +157,7 @@ a{
 
 .regMobile-title{
 	font-size: 2.8rem;
+	line-height: 3rem;
 	font-family: montserrat, sans-serif;
 	text-shadow: 0 0 2px rgba(0,0,0,0.6);
 }

@@ -1,11 +1,13 @@
 let pwd = document.getElementById('password');
 let passConfirm = document.getElementById('passConf');
 
-pwd.oninput = function(){
+pwd.oninput = () => {
 	passwordValidation();
 }
 
-passConfirm.oninput = function(){
+pwd.addEventListener("focusout", passwordCofirmation);
+
+passConfirm.oninput = () => {
 	passwordCofirmation();
 }
 
@@ -23,72 +25,58 @@ function passwordValidation(){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
 		passConfErr.style.display = 'none';
+		passConfirm.classList.remove('redBox');
 		pwdErr.innerText = 'Required';
 		return false;
 		
 	}else if(!(pwdVal.length >= 7) || !(pwdVal.length <= 16)){
 		pwdErr.style.display = 'flex';
-		passConfErr.style.display = 'none';
 		pwd.classList.add('redBox');
-		passConfirm.classList.remove('redBox');
 		pwdErr.innerText = 'Must be between 7 to 16 characters';
 		return false;
 		
 	}else if(findLowerCase === -1){
 		pwdErr.style.display = 'flex';
-		passConfErr.style.display = 'none';
 		pwd.classList.add('redBox');
 		pwdErr.innerText = 'Include atleast 1 lowecase character';
 		return false;
 		
 	}else if(findUpperCase === -1){
 		pwdErr.style.display = 'flex';
-		passConfErr.style.display = 'none';
 		pwd.classList.add('redBox');
 		pwdErr.innerText = 'Include atleast 1 Uppercase character';
 		return false;
 		
 	}else if(findDigit === -1){
 		pwdErr.style.display = 'flex';
-		passConfErr.style.display = 'none';
 		pwd.classList.add('redBox');
-		passConfirm.classList.remove('redBox');
 		pwdErr.innerText = 'Include atleast 1 numeric digit';
 		return false;
 		
 	}else if(findSpecialChar === -1){
 		pwdErr.style.display = 'flex';
-		passConfErr.style.display = 'none';
 		pwd.classList.add('redBox');
-		passConfirm.classList.remove('redBox');
 		pwdErr.innerText = 'Include atleast 1 special character';
 		return false;
-		
+
 	}else{
 		pwdErr.style.display = 'none';
 		pwd.classList.remove('redBox');
+		return true;
 	}
 }
 
 function passwordCofirmation(){
-	
 	let pwdVal = pwd.value;
 	let passConfVal = passConfirm.value;
 	let pwdErr = document.getElementById('passwordErr');
 	let passConfErr = document.getElementById('passConfErr');
 	
-	if (pwdVal === ''){
-		pwdErr.style.display = 'flex';
-		pwd.classList.add('redBox');
-		pwdErr.innerText = 'Required';
-		return false;
-		
-	}else if(pwdVal === passConfVal){
+	if(pwdVal === passConfVal){
 		passConfErr.style.display = 'none';
 		passConfirm.classList.remove('redBox');
-		
+		return true;
 	}else{
-		pwd.classList.add('redBox');
 		passConfErr.style.display = 'flex';
 		passConfErr.innerText = 'Passwords dont match!';
 		passConfirm.classList.add('redBox');
@@ -97,61 +85,59 @@ function passwordCofirmation(){
 }
 
 //Email address validation
-let email = document.getElementById('Usersemail');
+let emailField = document.getElementById('Usersemail');
 
-email.oninput =	function (){
-	emailValidator();
+emailField.oninput =	() => {
+	emailValidation();
 }
 
-function emailValidator(){
-	let emailVal = email.value;
-	
-	let threeDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
-	let oneDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,15}$/;
-	let twoDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
-	
-	let threeDotFormat = threeDot.test(emailVal);
-	let oneDotFormat = oneDot.test(emailVal);
-	let twoDotFormat = twoDot.test(emailVal);
-	
-	let emailFormats = threeDotFormat || twoDotFormat || oneDotFormat;
-	let mailErr = document.getElementById('mailErr');
-	
-	if(emailVal === ''){
-		mailErr.style.display = 'flex';
-		mailErr.innerText = 'Required';
-		email.classList.add('redBox');
+emailField.oninput = function(){
+	emailValidation();
+}
+
+function emailValidation(){
+	let emailFieldVal = emailField.value;
+	let emailErr = document.getElementById('mailErr');
+	let emailOneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
+	let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+	let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+	let emailRegEx = emailOneDot.test(emailFieldVal) || emailTwoDots.test(emailFieldVal) || emailThreeDots.test(emailFieldVal);
+
+	if(emailFieldVal === ''){
+		emailErr.style.display = 'flex';
+		emailErr.innerHTML = 'Required';
+		emailField.classList.add('redBox');
 		return false;
-	
-	}else if(emailFormats){
-		mailErr.style.display = 'none';
-		email.classList.remove('redBox');
-	
+
+	}else if(emailRegEx === false){
+		emailErr.style.display = 'flex';
+		emailErr.innerHTML = 'Invalid';
+		emailField.classList.add('redBox');
+		return false;
+
 	}else{
-		mailErr.style.display = 'flex';
-		mailErr.innerText = 'Invalid email';
-		email.classList.add('redBox');
-		return false;
+		emailErr.style.display = 'none';
+		emailField.classList.remove('redBox');
+		return true;
 	}
 }
 
 //Submit validation 
 let subBtn = document.getElementById('sub');
-subBtn.onclick = function(){
-	submitData(event);
-}
+subBtn.onclick = () => {
+	emailValidation();
+	passwordValidation();
+	passwordCofirmation();
 
-function submitData(action){
-	action.preventDefault();
+	if(emailValidation() === false){
+		return emailValidation();
 
-	if(emailValidator()){
-		return emailValidator();
-
-	}else if(passwordValidation()){
+	}else if(passwordValidation() === false){
 		return passwordValidation();
 		
-	}else if(passwordCofirmation()){
+	}else if(passwordCofirmation() === false){
 		return passwordCofirmation();
-
+	}else{
+		return true;
 	}
 }

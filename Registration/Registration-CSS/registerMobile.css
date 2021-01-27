@@ -225,9 +225,8 @@
 }
 
 @media screen and (max-width: 668px){
-
 	#register{
-		margin-top: 7.5rem;
+		margin-top: 5.5rem;
 		margin-left: 1.5rem;
 		margin-right: 1.5rem;
 	}

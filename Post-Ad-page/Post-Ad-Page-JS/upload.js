@@ -6,7 +6,8 @@ let add = [];
 function uploadValidator(){
 	if(add.length === 0){
 		
-		setTimeout(function(){
+	setTimeout(
+		() => {
 			alert('Please upload atleast 1 image');
 			return false;
 		},380);
@@ -36,9 +37,9 @@ function uploader(){
 		let editedType = fileType.slice(editType);
 		let replaceType = editedType.replace("/", "");
 		let fileObject = {
-			imageName: `${edited}`,
-			imageSize: byteConverter(fileSize), 
-			imageType: `${replaceType}`
+				imageName: `${edited}`,
+				imageSize: byteConverter(fileSize),
+				imageType: `${replaceType}`
 			};
 		console.log(fileObject);
 		let img_div = document.createElement("div");
