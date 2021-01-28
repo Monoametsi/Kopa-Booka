@@ -8,8 +8,8 @@ const uuid = require('uuid');
 const bodyParser = require('body-parser');
 const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
 const {passwordEmailValidation} = validator;
-let not_Verified = [];
-const jsonFilePath = path.join(__dirname, 'formData.json');
+let x = true;
+const jsonFilePath = path.join(__dirname, 'registrationData.json');
 
 app.use(express.static(path.join(dirname, 'Home')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,31 +35,59 @@ app.post('/register', (req, res) => {
 			status: 'active'
 		}
 		
-	let newUser = {};
-	
-	let jsonFileStrcuture = (k,v) => {
-		if(v instanceof Array)
-		return JSON.stringify(v);
-		return v;
-	}
+	let newUser = {
+		not_Verified: [],
+		Verified: []
+	};
+
+	//let name = (newAdverter) => {
+	//	for(i = 0; i < newAdverter.not_Verified.length; i++){
+	//		return newAdverter.not_Verified[i].Email;
+	//	}
+	//}
 
 	if(passwordEmailValidation(password, passConfirmation, res, email) === false){
 		return passwordEmailValidation(password, passConfirmation, res, email);
 
 	}else{
-		not_Verified.push(newEntry);
-		newUser.Not_Verified = not_Verified;
-
-		//for(i = 0; i < not_Verified.length; i++){
-		//	console.log(i);
-		//}
-
-		fs.appendFile(jsonFilePath, JSON.stringify(newUser, jsonFileStrcuture, 3), (err) => {
-		  if (err) throw err;
+		let jsonData = fs.readFileSync(jsonFilePath);
+		//newUser.not_Verified.push(newEntry);
+		let prom = new Promise((resolve, reject) => {
+			if(x){
+				console.log('1the');
+				newUser.not_Verified.push(newEntry);
+				resolve('User Added');
+			}else{
+				reject('Not added');
+			}
 		});
 		
-		console.log(newUser);
-		res.json(newUser);
+		prom.then(() => {
+			if(Object.keys(jsonData).length === 0){
+				fs.writeFile(jsonFilePath, JSON.stringify(newUser, null, " "), (err) => {
+					if (err) throw err;
+				});
+			}
+
+		}).then(() => {
+			let formData = JSON.parse(jsonData);
+			console.log(formData);
+			let { not_Verified } = formData;
+			not_Verified.push(newEntry);
+			console.log(not_Verified);
+			if(Object.keys(jsonData).length > 0){
+				fs.writeFile(jsonFilePath, JSON.stringify(formData, null, " "), (err) => {
+					if (err) throw err;
+				});
+			}
+		}).then(() => {
+			res.send('Done');
+		}).catch(() => {
+			//console.log(JSON.parse(jsonData));
+			console.log('failed');
+		});
+
+		//console.log(name() === newEntry.Email);
 	}
 });
 

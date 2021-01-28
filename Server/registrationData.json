@@ -1,0 +1,61 @@
+{
+ "not_Verified": [
+  {
+   "UserId": "acda5256",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "547f5173",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "b2f79cc8",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "2d618ee0",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "1d8bd55e",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "bdf7b34d",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "5fe11909",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  },
+  {
+   "UserId": "8cd7eab9",
+   "Email": "216026633@student.uj.ac.za",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
+  }
+ ],
+ "Verified": []
+}

@@ -1,0 +1,24 @@
+
+		let prom = new Promise((resolve, reject) => {
+			if(x === true){
+				console.log('1the');
+				newUser.not_Verified.push(newEntry);
+				console.log(newUser);
+				resolve('User Added');
+			}else{
+				reject('Not added');
+			}
+		});
+
+		prom.then(() => {
+			fs.appendFile(jsonFilePath, JSON.stringify(newUser, jsonFileStrcuture, 3), (err, content) => {
+			  if (err) throw err;
+			  console.log('content');
+			});
+
+		}).then(() => {
+			console.log('done');
+			res.json(newUser);
+		}).catch(() => {
+			console.log('Failed');
+		});
