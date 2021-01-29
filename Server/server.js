@@ -1,4 +1,5 @@
 const express = require('express');
+const ejs = require('ejs');
 const fs = require('fs');
 const validator = require('./validator');
 const path = require('path');
@@ -8,22 +9,23 @@ const uuid = require('uuid');
 const bodyParser = require('body-parser');
 const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
 const {passwordEmailValidation} = validator;
-let x = true;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 
 app.use(express.static(path.join(dirname, 'Home')));
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(express.static(path.join(dirname, 'Advertisment-Board')));
+app.use(express.static(path.join(dirname, 'Registration')));
 app.use(express.static(dirname));
+//app.set('views', './views');
+app.set('view engine', 'ejs');
 
 const homePath = path.join(dirname, 'Home', 'Home-HTML', 'index.html');
-//const homePath2 = path.join(dirname, 'Advertisment-Board', 'Advertisement-HTML', 'Book.html');
+const homePath2 = path.join(dirname, 'Advertisment-Board', 'Advertisement-HTML', 'Book.html');
 
 app.get('/', (req, res) => {
-	res.sendFile(homePath);
+	res.render('index');
 });
 
-app.post('/register', (req, res) => {
+app.post('/user-registration', (req, res) => {
 	let json = req.body;
 	let {email, password, passConfirmation} = json;
 	
@@ -34,66 +36,64 @@ app.post('/register', (req, res) => {
 			PasswordConfirmation: passConfirmation,
 			status: 'active'
 		}
-		
+
 	let newUser = {
 		not_Verified: [],
 		Verified: []
 	};
 
-	//let name = (newAdverter) => {
-	//	for(i = 0; i < newAdverter.not_Verified.length; i++){
-	//		return newAdverter.not_Verified[i].Email;
-	//	}
-	//}
+	let emailMatcher = (not) => {
+		for(i = 0; i < not.length; i++){
+			return not[i].Email;
+		}
+	}
 
 	if(passwordEmailValidation(password, passConfirmation, res, email) === false){
 		return passwordEmailValidation(password, passConfirmation, res, email);
 
 	}else{
 		let jsonData = fs.readFileSync(jsonFilePath);
-		//newUser.not_Verified.push(newEntry);
+
 		let prom = new Promise((resolve, reject) => {
-			if(x){
-				console.log('1the');
+			if(newEntry){
 				newUser.not_Verified.push(newEntry);
 				resolve('User Added');
 			}else{
 				reject('Not added');
 			}
 		});
-		
 		prom.then(() => {
 			if(Object.keys(jsonData).length === 0){
 				fs.writeFile(jsonFilePath, JSON.stringify(newUser, null, " "), (err) => {
 					if (err) throw err;
 				});
+				res.send('Done');
 			}
 
 		}).then(() => {
 			let formData = JSON.parse(jsonData);
-			console.log(formData);
+
 			let { not_Verified } = formData;
 			not_Verified.push(newEntry);
-			console.log(not_Verified);
-			if(Object.keys(jsonData).length > 0){
+
+			if(Object.keys(jsonData).length > 0 && emailMatcher(not_Verified) !== email){
 				fs.writeFile(jsonFilePath, JSON.stringify(formData, null, " "), (err) => {
 					if (err) throw err;
 				});
+			}else{
+				res.send('An account with this email address has already been registered. Please Login or Reset your Password.');
 			}
 		}).then(() => {
 			res.send('Done');
 		}).catch(() => {
-			//console.log(JSON.parse(jsonData));
 			console.log('failed');
 		});
-
-		//console.log(name() === newEntry.Email);
 	}
 });
 
-//app.get('/books', (req, res) => {
-//	res.sendFile(homePath2);
-//});
+app.get('/register', (req, res) => {
+	res.render('register');
+});
 
 const PORT = process.env.PORT || 8500;
 
