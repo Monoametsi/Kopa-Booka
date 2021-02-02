@@ -155,6 +155,30 @@ a{
 	align-items: center;
 }
 
+.registered{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 8px;
+}
+
+.registered a{
+	padding: 0 3.5px;
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+.registered a:hover{
+	text-decoration: underline;
+}
+
+.registered .ejs-validifier{
+	padding: 3px;
+	font-weight: 300;
+}
+
 .regMobile-title{
 	font-size: 2.8rem;
 	line-height: 3rem;
@@ -200,6 +224,18 @@ a{
 
 .validifier{
 	display: none;
+	background-color: red;
+	font-weight: 600;
+	font-family: montserrat, sans-serif;
+	padding: 0 8px;
+	border-radius: 3px;
+	animation-name: smooth-appearance;
+	animation-duration: 0.3s;
+	color: #fff;
+}
+
+.ejs-validifier{
+	display: flex;
 	background-color: red;
 	font-weight: 600;
 	font-family: montserrat, sans-serif;

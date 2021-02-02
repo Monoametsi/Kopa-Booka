@@ -1,29 +1,15 @@
 {
  "not_Verified": [
   {
-   "UserId": "a64e277d",
+   "UserId": "aa18979f",
    "Email": "216026633@student.uj.ac.za",
    "Password": "12345678Mose@1",
    "PasswordConfirmation": "12345678Mose@1",
    "status": "active"
   },
   {
-   "UserId": "bdbb27c4",
-   "Email": "jun@student.uj.ac.za",
-   "Password": "12345678Mose@1",
-   "PasswordConfirmation": "12345678Mose@1",
-   "status": "active"
-  },
-  {
-   "UserId": "4236b21f",
-   "Email": "2160@student.uj.ac.za",
-   "Password": "12345678Mose@1",
-   "PasswordConfirmation": "12345678Mose@1",
-   "status": "active"
-  },
-  {
-   "UserId": "5e733917",
-   "Email": "2@student.uj.ac.za",
+   "UserId": "3fcd493d",
+   "Email": "inherejump@gmail.com",
    "Password": "12345678Mose@1",
    "PasswordConfirmation": "12345678Mose@1",
    "status": "active"

@@ -24,8 +24,6 @@ function passwordValidation(){
 	if(pwdVal === ''){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
-		passConfErr.style.display = 'none';
-		passConfirm.classList.remove('redBox');
 		pwdErr.innerText = 'Required';
 		return false;
 		

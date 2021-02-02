@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%20|%20Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%20|%20Hind:300,400,500,600,700');
+
 *{
 	box-sizing: border-box;
 }
 
 body{
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
-	background-color: #eee7;
+	padding: 0;
+	font-family: "Poppins",sans-serif;
+	background-color: #eee7;`
 }
 
 a{
@@ -125,266 +129,80 @@ a{
 	color: #0acdff;
 }
 
-#register{
-	margin-top: 7.5rem;
-}
-
-#register-form{
-	margin-top: 2.5rem;
-	margin-bottom: 7.5rem;
-	display: flex;
-	justify-content: center;
-}
-
-.reg-cont{
+.successBox-cont{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.reg-title{
-	font-size: 2.8rem;
-	font-family: montserrat, sans-serif;
-	text-shadow: 0 0 2px rgba(0,0,0,0.6);
-}
-
-.regMobile-cont{
-	display: none;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-}
-
-.registered{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 8px;
-}
-
-.registered a{
-	padding: 0 3.5px;
-	font-weight: 600;
-	color: #fff;
-	text-decoration: none;
-	transition: 0.3s;
-}
-
-.registered a:hover{
-	text-decoration: underline;
-}
-
-.registered .ejs-validifier{
-	padding: 3px;
-	font-weight: 300;
-}
-
-.regMobile-title{
-	font-size: 2.8rem;
-	line-height: 3rem;
-	font-family: montserrat, sans-serif;
-	text-shadow: 0 0 2px rgba(0,0,0,0.6);
-}
-
-.reg-card{
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
+	min-height: 76.5vh;
 	margin: 2rem;
-	width: 90%;
+	margin-bottom: 0;
+}
+
+.success-box{
+	text-align: center;
+	width: 550px;
+	flex-direction: column;
+	border-radius: 5px;
 	background-color: #fff;
-	border-radius: 5px;
-	box-shadow: 0 5px 11px -2px rgba(0, 0, 0, 0.2), 2px 2px 11px -3px rgba(0, 0, 0, 0.2);
-}
-
-.reg-form{
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 	padding: 2rem;
-	width: 65%;
 }
 
-.regform-title{
-	font-size: 1.8rem;
+.fa-check{
+	font-size: 4.5rem;
+	color: 	#7FFF00;
+}
+
+.fa-check:before{
+	animation-name: glow;
+	animation-duration: 1.8s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes glow{
+	0%, 100%{text-shadow: 0 0 0 rgb(127, 255, 0);}
+	50%{text-shadow: 0 0 4px rgb(127, 255, 0);}
+	75%{text-shadow: 0 0 6px rgb(127, 255, 0);}
+	95%{text-shadow: 0 0 2px rgb(127, 255, 0);}
+}
+
+.successTitle{
+	margin-top: 0;
+	font-size: 2rem;
+	color: 	#7FFF00;
 	font-family: montserrat, sans-serif;
-	font-weight: 300;
 }
 
-.form{
-	display: flex;
-	flex-direction: column;
-	width: 90%;
+.successMessage{
+	font-size: 1.4rem;
 }
 
-.label-cont{
-	display: flex;
-	justify-content: space-between;
+.successBoxRedirect-cont{
+	margin-top: 2rem;
 }
 
-.validifier{
-	display: none;
-	background-color: red;
-	font-weight: 600;
-	font-family: montserrat, sans-serif;
-	padding: 0 8px;
-	border-radius: 3px;
-	animation-name: smooth-appearance;
-	animation-duration: 0.3s;
-	color: #fff;
-}
-
-.ejs-validifier{
-	display: flex;
-	background-color: red;
-	font-weight: 600;
-	font-family: montserrat, sans-serif;
-	padding: 0 8px;
-	border-radius: 3px;
-	animation-name: smooth-appearance;
-	animation-duration: 0.3s;
-	color: #fff;
-}
-
-@keyframes smooth-appearance{
-	0%{background-color: white; opacity:0;}
-    100%{background-color: red; opacity:1;}
-}
-
-.inputField-styling{
-	padding: 8px;
-	width: 100%;
-	border-radius: 3px;
-	outline: none;
-	border: 1px solid #0acdff;
-	transition: 0.3s;
-	font-weight: 600;
-	font-size: 1rem;
-	margin: 5px;
-}
-
-.inputField-styling:focus{
-	box-shadow: 0 0 3px 1.5px #6acdff;
-}
-
-.redBox{
-	border: 1px solid red;
-}
-
-.redBox:focus{
-	border: 1px solid red;
-	box-shadow: 0 0 5px 3px rgba(255, 0, 0, 0.3);
-}
-
-::placeholder{
-	color: #bbb;
-	font-weight: 900;
-	font-size: 0.9em;
-}
-
-.label{
-	padding-left: 3.3px;
-}
-
-.required{
-	color: red;
-}
-
-.inputField-cont{
-	margin-bottom:1.5rem;
-}
-
-.password-rules{
-	padding-left:3.8px;
-	margin-top: 3px;
-}
-
-.password-conformation{
-	margin-top: -1rem;
-}
-
-.reg-agreement{
-	margin-top: -1rem;
-	padding-left: 3.8px;
-	white-space: nowrap;
-}
-
-.reg-link{
-	color: #0acdff;
+.successBoxRedirect-cont a{
 	text-decoration: none;
-	transition: 0.3s;
 }
 
-.reg-link:hover{
-	color: rgba(0,0,250,1);
-	text-decoration: underline;
-}
-
-input[type=submit]{
-	max-width:6rem;
-	width:100%;
-	padding: 8px;
-	font-size: 1rem;
-	background-color: #0acdff;
-	border-radius: 5px;
+.successBoxRedirect{
+	outline: none;
 	border: none;
-	color: #fff;
+	border-radius: 5px;
+	white-space: nowrap;
+	padding: 8px 12px;
+	background-color: rgb(91, 172, 222);
 	cursor: pointer;
 	transition: 0.3s;
-	font-family: montserrat, sans-serif;
-	margin-left: 3.8px;
+	color: #fff;
+	font-size: 1rem;
+	font-family: "Poppins",sans-serif;
 }
 
-input[type=submit]:hover{
-	background-color: #0eee;
+.successBoxRedirect:hover{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	background-color: rgb(80, 160, 280);
 	color: #000;
-	box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
-}
-
-.accholder-info{
-	padding-left:3.8px;
-}
-
-.reg-benefits{
-	display: flex;
-	flex-direction: column;
-	padding: 2rem;
-	align-self: flex-start;
-	padding-top: 2.1rem;
-	width: 48%;
-}
-
-.regben-title{
-	text-align: left;
-}
-
-.regbenMobile-title{
-	display: none;
-}
-
-.regbenMobile-name{
-	white-space: nowrap;
-	font-size: 1.8rem;
-	padding-right: 4.8px;
-	font-weight: 300;
-	font-family: montserrat, sans-serif;
-}
-
-.regben-name{
-	white-space: nowrap;
-	font-size: 1.8rem;
-	padding-right: 4.8px;
-	font-weight: 300;
-	font-family: montserrat, sans-serif;
-}
-
-.regben-list{
-	margin-top: -1rem;
-}
-
-.benefit{
-	padding-bottom: 0.8rem;
-	line-height: 1.5rem;
 }
 
 .flip-up{
@@ -443,6 +261,7 @@ input[type=submit]:hover{
 
 .footMobile-list li{
 	padding: 5px;
+	list-style: none;
 }
 
 .foot-link{
@@ -527,4 +346,4 @@ input[type=submit]:hover{
 
 .bot-name:hover{
 	color:#0acdff;
-}asasasa
+}
