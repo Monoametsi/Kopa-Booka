@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const ejs = require('ejs');
 const fs = require('fs');
 const ejsLint = require('ejs-lint');
@@ -70,9 +71,8 @@ app.post('/register', (req, res) => {
 	};
 
 	let emailMatcher = (not) => {
-		for(i = 0; i < not.length; i++){
-			return not[i].Email;
-		}
+		//console.log(not.Email);
+		return not.Email === email;
 	}
 
 	let jsonData = fs.readFileSync(jsonFilePath);
@@ -102,16 +102,16 @@ app.post('/register', (req, res) => {
 		}).then(() => {
 			let formData = JSON.parse(jsonData);
 
-			let { not_Verified } = formData;
-			not_Verified.push(newEntry);
-
-			if(Object.keys(jsonData).length > 0 && emailMatcher(not_Verified) !== email){
+			let { not_Verified, Verified } = formData;
+			
+			if(Object.keys(jsonData).length > 0 && Boolean(not_Verified.find(emailMatcher)) !== true && Boolean(Verified.find(emailMatcher)) !== true){
+				not_Verified.push(newEntry);
 				fs.writeFile(jsonFilePath, JSON.stringify(formData, null, " "), (err) => {
 					if (err) throw err;
 				});
 				res.redirect('/register-email-verification');
 			}else{
-				res.render('register', { not_Verified, jsonData, emailMatcher, validationPasswordChecks, emailRegexChecks, password, passConfirmation, email, json});
+				res.render('register', {jsonData, emailMatcher, validationPasswordChecks, emailRegexChecks, password, passConfirmation, email, json});
 			}
 		}).catch(() => {
 			console.log('failed');
@@ -132,11 +132,41 @@ app.get('/register-email-verification', (req, res) => {
 	let formData = JSON.parse(jsonData);
 
 	let { not_Verified } = formData;
+
 	mailDeliverer(not_Verified[not_Verified.length - 1].Email, res);
 });
 
-app.get('/register-success', (req, res) => {
+app.get('/register-success', (req, res) => {	
 	res.sendFile(homePath3);
+});
+
+app.get(/email-verification/, (req, res) => {
+	let jsonData = fs.readFileSync(jsonFilePath);
+	let formData = JSON.parse(jsonData);
+
+	let { not_Verified, Verified} = formData;
+	
+	let strConvert = /email-verification/;
+	let q = url.parse(req.url, true);
+	let email = q.pathname.slice(strConvert.toString().length, q.pathname.length);
+
+	let moveObject = (array, array2, email) => {
+	  for(var i = 0, len = array.length; i < len; i++) {
+		  if (array[i].Email === email) {
+			  index = i;
+			  array2.push(array[index]);
+			  array.splice(index, 1);
+			  fs.writeFile(jsonFilePath, JSON.stringify(formData, null, " "), (err) => {
+					if (err) throw err;
+				});
+			  break;
+		  }
+	  }
+	}
+
+	moveObject(not_Verified, Verified, email);
+
+	res.redirect('/verify-account-success');
 });
 
 app.get('/verify-account-success', (req, res) => {

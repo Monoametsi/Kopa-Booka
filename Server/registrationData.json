@@ -1,19 +1,26 @@
 {
- "not_Verified": [
+ "not_Verified": [],
+ "Verified": [
   {
-   "UserId": "aa18979f",
+   "UserId": "cde17098",
    "Email": "216026633@student.uj.ac.za",
    "Password": "12345678Mose@1",
    "PasswordConfirmation": "12345678Mose@1",
    "status": "active"
   },
   {
-   "UserId": "3fcd493d",
+   "UserId": "45b272b7",
    "Email": "inherejump@gmail.com",
    "Password": "12345678Mose@1",
    "PasswordConfirmation": "12345678Mose@1",
    "status": "active"
+  },
+  {
+   "UserId": "bf32d4e6",
+   "Email": "juniormosemeng@gmail.com",
+   "Password": "12345678Mose@1",
+   "PasswordConfirmation": "12345678Mose@1",
+   "status": "active"
   }
- ],
- "Verified": []
+ ]
 }

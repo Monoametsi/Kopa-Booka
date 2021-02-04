@@ -21,7 +21,7 @@ function passwordValidation(){
 	let findSpecialChar = pwdVal.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/);
 	let findDigit = pwdVal.search(/[0-9]/);
 	
-	if(pwdVal === ''){
+	if(pwdVal === '' || pwdVal === undefined){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
 		pwdErr.innerText = 'Required';
@@ -101,7 +101,7 @@ function emailValidation(){
 	let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 	let emailRegEx = emailOneDot.test(emailFieldVal) || emailTwoDots.test(emailFieldVal) || emailThreeDots.test(emailFieldVal);
 
-	if(emailFieldVal === ''){
+	if(emailFieldVal === '' || emailFieldVal === undefined){
 		emailErr.style.display = 'flex';
 		emailErr.innerHTML = 'Required';
 		emailField.classList.add('redBox');

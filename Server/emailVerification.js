@@ -11,12 +11,18 @@ let transporter = nodeMailer.createTransport({
 let success = true;
 
 const mailDeliverer = (email, ress) => {
+	let mailUrl = `http://localhost:8500/email-verification/${email}`;
 
 	let mailOptions = {
 		from: 'pt.projects.submission@gmail.com',
 		to: email,
 		subject: 'Please verify your email address',
-		html: '<p>Hi</p> <p>You have successfully created your Kopa Booka account.</p> <p>Your email has not been verified yet. Please do so by clicking on the link bellow:</p> <p><a href="/verify-account-success">Verify your email address</a></p> After you have verified your email address you will be able to log in and use your Kopa Booka account.<br><br> <b>The Kopa Booka team</b> <br> <i>Copyright © Kopa Booka, All rights reserved.</i>'
+		html: `<p>Hi</p> <p>You have successfully created your Kopa Booka account.</p> 
+		<p>Your email has not been verified yet. Please do so by clicking on the link bellow:</p>
+		<p><a href="${mailUrl}" target="_blank">Verify your email address</a></p> 
+		<p>After you have verified your email address you will be able to log in and use your Kopa Booka account.<p>
+		<b>The Kopa Booka team</b>
+		<i>Copyright © Kopa Booka, All rights reserved.</i>`
 	}
 
 	let sendMailPromise = new Promise((resolve, reject) => {
