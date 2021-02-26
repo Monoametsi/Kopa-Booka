@@ -28,7 +28,7 @@
 		</div>
 		
 		<div class="register-logIn">
-			<a href="register.html" class="regLogin-link"><i class="fa fa-pencil" id="active"></i><span class="active">Register</span></a>
+			<a href="/register" class="regLogin-link"><i class="fa fa-pencil" id="active"></i><span class="active">Register</span></a>
 			<a href="../../Login/Login-HTML/login.html" class="regLogin-link"><i class="fa fa-sign-in"></i>Login</a>
 		</div>
 	</nav> 
@@ -42,18 +42,15 @@
 		</div>
 	</section>
 
-	<% if(Object.keys(jsonData).length > 0) { %>
-	<% let formData = JSON.parse(jsonData); let { not_Verified, Verified } = formData; %>
-	<% if(Boolean(not_Verified.find(emailMatcher)) === true || Boolean(Verified.find(emailMatcher)) === true) {%>
+	<% if(Boolean(result.find(emailMatcher)) === true) {%>
 		<div class="registered">
-			<span class="ejs-validifier"><%= "An account with this email address has already been registered. Please" %><a href="../../Login/Login-HTML/login.html"><%= "Login" %></a> <%= "or" %> <a href="#"> <%= "Reset your Password." %></a> </span>
+			<span class="ejs-validifier"> <%= "An account with this email address has already been registered. Please" %> <a href="../../Login/Login-HTML/login.html"> <%= "Login" %> </a> <%= "or" %> <a href="#"> <%= "Reset your Password." %></a> </span>
 		</div>
-	<%} %>
-	<%} else { %>
+	<% } else { %>
 		<div class="registered" style="display: none;">
 		</div>
-	<% }%>
-	
+	<% } %>
+
 	<section id="register-form">
 
 		<div class="reg-card">
