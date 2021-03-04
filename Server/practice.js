@@ -20,24 +20,20 @@ app.use(express.json());
 dotenv.config({path:path.join(__dirname, '.env')});
 
 let verifyToken = (req, res, next) => {
+	req.headers['authorization'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI4NDU2MTAxZSIsIkVtYWlsIjoiMjE2MDI2NjMzQHN0dWRlbnQudWouYWMuemEiLCJQYXNzd29yZCI6IiQyYSQxMCRwRThZTnU3MHJSNzI0QzN5YjRxQ1NPemJxSWVadjh2YWdqN2w2dXdnMUx0ZkdjMko1OXFudSIsImlzVmVyaWZpZWQiOnRydWUsIl9fdiI6MCwiaWF0IjoxNjE0MzgyMTQzfQ.qey6uSw7v7QCm0hWS_T7JEvVX1JZVpUG9874F9Jq0M0';
 	const header = req.headers['authorization'];
-
-	const bearer = header.split(' ');
-		
-	const bearerToken = bearer[1];
 	
-	let reqToken = header && bearerToken;
-
+	let reqToken = header;
+	//console.log(reqToken);
 	//if(typeof header == 'undefined' ){
-	if(reqToken != null ){
+	if(reqToken != null || reqToken != 'undefined'){
 
-		req.token = bearerToken;
-			
-		jwt.verify(reqToken, process.env.ACCESS_TOKEN_SECRET, (err, data) => {
+		jwt.verify(reqToken, process.env.ACCESS_TOKEN_SECRET, (err, result) => {
 			if(err){
 				res.sendStatus(403);
 			} else {
-				result[0] = data;
+				req.result = result;
+				//console.log(req.result);
 				next();
 			}
 		});
@@ -60,18 +56,15 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/post', verifyToken, (req, res) => {
-	//req.method = 'POST';
-	res.json({token});
-	
+	let result = req.result;
+	res.json({result});
 });
-
-console.log(process.env.PORT);
 
 const PORT = process.env.PORT || 7500;
 
 mongoose.connect(mongoUrl, {useNewUrlParser: true, useUnifiedTopology: true}).then(() =>{
 	app.listen(PORT, () => {
-		console.log('WE LIVE!!!!!');
+		console.log(`Live At ${process.env.PORT}`);
 	});
 }).catch((err) => {
 	console.log(err);

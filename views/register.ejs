@@ -41,6 +41,7 @@
 			<h1 class="regMobile-title">Register Your Account<br>Today</h1>
 		</div>
 	</section>
+	<% let { email, password, passConfirmation } = json; %>
 
 	<% if(Boolean(result.find(emailMatcher)) === true) {%>
 		<div class="registered">
@@ -61,7 +62,6 @@
 				</div>
 
 				<form action="/register" method="POST" class="form">
-
 					<div class="inputField-cont">
 					<% if(email === "" || email === undefined) { %>
 						<div class="label-cont">

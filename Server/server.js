@@ -14,7 +14,7 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const mongoDb = require('mongodb');
 const mongoose = require('mongoose');
-const mongoUrl = 'mongodb+srv://Book-Advertisers:1234Mose@cluster0.f8oit.mongodb.net/Book-Advertisers?retryWrites=true&w=majority';
+const mongoUrl = process.env.Database.toString();
 const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
 const { passwordEmailValidation } = validator;
 const { mailDeliverer } = emailVerification;
@@ -40,18 +40,6 @@ const homePath4 = path.join(dirname, 'Account-verification', 'HTML', 'verficatio
 app.get('/', (req, res) => {
 	res.status(200).render('index');
 });
-
-let encyptedkey, encyptedstr, decryptStr, decryptKey;
-
-let cryptoNiser = (email, key, str, cipher, encoding, type) => {
-	key = cipher;
-
-	str = key.update(email, encoding, type);
-
-	str += key.final(type);
-
-	return str;
-}
 
 app.post('/register', async (req, res) => {
 	let json = req.body;
@@ -93,7 +81,7 @@ app.post('/register', async (req, res) => {
 	}
 
 	if(passwordEmailValidation(password, passConfirmation, email) === false){
-		return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, password, passConfirmation, email, json});
+		return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json});
 
 	}else{
 
@@ -112,7 +100,7 @@ app.post('/register', async (req, res) => {
 				});
 
 			}else{
-				res.render('register', {result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, password, passConfirmation, email, json});
+				res.render('register', {result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json});
 			}
 
 		}).catch((err) => {
@@ -122,20 +110,8 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-	if(req.method === "GET"){
-		res.sendFile(homePath2);
-	}else if(req.method === "POST"){
-		res.render('register');
-	}
+	res.sendFile(homePath2);
 });
-
-//app.get('/register-email-verification/:encyptedMail', async (req, res) => {
-//	let { encyptedMail } = req.params;
-	
-//	let decyptedMail = cryptoNiser(encyptedMail, decryptKey, decryptStr, crypto.createDecipher('aes-128-cbc', 'mypassword'), 'hex', 'utf8');
-
-//	await mailDeliverer(decyptedMail, res);
-//});
 
 app.get('/register-success', (req, res) => {	
 	res.sendFile(homePath3);
@@ -144,29 +120,32 @@ app.get('/register-success', (req, res) => {
 app.get('/email-verification/:token', async (req, res) => {
 
 	let { token } = req.params;
-	
-	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
-		if(err){
-			return res.status(400).json({err});
-		}else{
 
-			let { email } = decodedToken;
-			console.log(decodedToken);
+	if(token){
+		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
+			if(err){
+				return res.status(400).json({err});
+			}else{
 
-			let moveObject = (email, res) => {
-				let myquery = { Email: email };
-				let newvalues = { $set: { isVerified: true } };
+				let { email } = decodedToken;
 
-				Users.updateOne(myquery, newvalues, (err, res) => {
-					if(err) throw err;
-				});
+				let moveObject = (email, res) => {
+					let myquery = { Email: email };
+					let newvalues = { $set: { isVerified: true } };
+
+					Users.updateOne(myquery, newvalues, (err, res) => {
+						if(err) throw err;
+					});
+				}
+
+				await moveObject(email);
+				res.redirect('/verify-account-success');
+		
 			}
-
-			await moveObject(email);
-			res.redirect('/verify-account-success');
-	
-		}
-	});
+		});
+	}else{
+		return res.status(401).json({error: 'There\'s a problem'})
+	}
 
 });
 

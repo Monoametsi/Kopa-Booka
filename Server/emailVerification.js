@@ -1,7 +1,6 @@
 const nodeMailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-const crypto = require('crypto');
 const path = require('path');
 
 dotenv.config({path:path.join(__dirname, '.env')});
