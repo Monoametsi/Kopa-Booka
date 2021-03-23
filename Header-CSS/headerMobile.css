@@ -1,0 +1,176 @@
+@media screen and (max-width: 1290px){
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4rem;
+		padding: 8px 10px;
+	}
+
+	.register-logIn{
+		padding: 0.5rem;
+	}
+}
+
+@media screen and (max-width: 1250px){
+	.nav li{
+		display: inline-block;
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 3px 5px;
+		
+	}
+}
+
+@media screen and (max-width: 1235px){
+	.menu{
+		justify-content: stretch;
+		flex-direction: column;
+	}
+
+	.logo{
+		white-space: normal;
+	}
+
+	.logo > .fa-bars{
+		display: inline-block;
+		padding-left: 1rem;
+	}
+
+	.nav{
+		list-style-type: none;
+		background-color: #fff;
+		max-height: 0;
+		overflow: hidden;
+		align-self: stretch;
+	}
+
+	.register-logIn{
+		flex-direction: column;
+		max-height: 0;
+		overflow: hidden;
+		align-items: stretch;
+		padding: 0;
+	}
+
+	.nav li, .regLogin-link{
+		display: block;
+	}
+
+	.nav li, .regLogin-link{
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 1rem;
+		border-bottom: 1px solid #000;
+	}
+	
+	.dashboard-link{
+		cursor: pointer;
+		transition: 0.2s;
+		font-size: 1.4em;
+		padding: 8px 1rem;
+	}
+
+	.dashboard-links li{
+		border-bottom: 1px solid #000;
+	}
+
+	.nav li:hover .link, .regLogin-link:hover, .dashboard-link:hover{
+		color: #fff;
+	}
+	
+	.nav li:hover .active, .regLogin-link:hover .active{
+		color: #fff;
+	}
+	
+	.regLogin-link:last-child{
+		border-bottom: 0 solid #000;
+	}
+	
+	.nav li:hover #active, .regLogin-link:hover #active{
+		color: #fff;
+	}
+
+	.nav li:hover i, .regLogin-link:hover i, .dashboard-link:hover > i{
+		color: #fff;
+	}
+
+	.nav li:hover, .regLogin-link:hover, .dashboard-link:hover{
+		background-color: #0acdff;
+	}
+
+	.link{
+		transition: 0.2s;
+		display: block;
+	}
+	
+	.ad-btn{
+		display: none;
+	}
+	
+	.logo > .mobile-btn{
+		display: inline-block;
+		margin-left: 5px;
+	}
+	
+	.post-ad-btn{
+		font-family: montserrat, sans-serif;
+		background-color: #0acdff;
+		white-space: normal;
+		font-size: 1.5rem;
+		padding: 8px 12px;
+		border-radius: 5px;
+		cursor: pointer;
+		border: none;
+		margin: 0;
+		transition: 0.3s;
+		font-weight: bold;
+		outline: none;
+		color: #000;
+	}
+
+	.dashboard-links{
+		overflow: visible;
+		position: static;
+		z-index: auto;
+		width: 100%;
+		border-radius: 0;
+		max-width:100%;
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
+	}
+
+	.dashboard-links li:first-child{
+		border-radius: 0;
+	}
+
+	.dashboard-links li:last-child{
+		border-radius: 0;
+		border-bottom: 0 solid #fff;
+	}
+
+	.login-menu{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 670px){
+	
+	.logo > .log-name{
+		padding: 9px 5px;
+		font-size: 1.8rem;
+	}
+	
+	.log-name{
+		font-size: 1.8rem;
+	}
+	
+	.post-ad-btn{
+		font-size: 1.2rem;
+	}
+	
+	.logo > .fa-bars{
+		padding-right: 8px;
+	}
+}

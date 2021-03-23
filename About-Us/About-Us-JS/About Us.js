@@ -18,9 +18,8 @@ window.onscroll = function() {
 
     if (bodyScrol > 0 || htmlScrol > 0) {
         topNav.style.transition = "0.5s";
-		topNav.classList.add("menu2");
-        topNav.style.opacity = "0.8";
-        topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
+        topNav.style.opacity = "0.6";
+        topNav.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
         topNav.onmouseover = function() {
             topNav.style.opacity = "1";
         }
@@ -28,9 +27,8 @@ window.onscroll = function() {
             topNav.style.opacity = "0.6";
         }
     } else {
-		topNav.classList.remove("menu2");
         topNav.style.opacity = "1";
-		topNav.style.boxShadow = "0 0 0 rgba(0,0,0,0.3)";
+		topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
         topNav.onmouseover = function() {
             topNav.style.opacity = "1";
         }
@@ -81,26 +79,66 @@ btn.onclick = function(){
 }
 
 //Menu dropdown
-let listDropper = document.getElementById('menu-DropDown');
+let listDropper =  document.getElementById('menu-DropDown');
+let naver =  document.getElementsByClassName('nav')[0];
+
+let roundIcon = document.getElementById('login-menu');
+let arrower = document.getElementById('menu-arrow');
+let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
 	let divisionList = list.parentElement.nextElementSibling;
-	let divisionList2 = list.parentElement.nextElementSibling.nextElementSibling;
-
+	console.log(divisionList);
+	let divisionList2 = divisionList.nextElementSibling;
+	let divisionList3 = divisionList2.children[1].children[1];
+	console.log(divisionList3);
+	
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
 		divisionList2.style.maxHeight = null;
+		divisionList3.style.maxHeight = null;
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
+        divisionList3.style.transition = '.3s'
 
 	}else{
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
 		divisionList2.style.maxHeight = divisionList2.scrollHeight  + 'px';
+		divisionList3.style.transition = '.3s';
+    	divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
 	}
 }
 
 listDropper.onclick = function(){
 	menuDropDown(this);
+}
+
+let menuCollapser = () => {
+    arrower.classList.toggle('rotater');
+    
+	if(dashboardMenu.style.maxHeight){
+    	dashboardMenu.style.maxHeight = null;
+        dashboardMenu.style.transition = '.3s';
+    }else{
+    	dashboardMenu.style.transition = '.3s';
+    	dashboardMenu.style.maxHeight = dashboardMenu.scrollHeight + 'px';
+    }
+}
+
+roundIcon.onclick = () => {
+    menuCollapser();
+}
+
+window.onclick = (event) => {
+	let loginMenu = document.getElementsByClassName('login-menu')[0];
+	let displayValue = window.getComputedStyle(loginMenu, null).display;
+	if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
+		arrower.classList.remove('rotater');
+		dashboardMenu.style.maxHeight = null;
+		dashboardMenu.style.transition = '.3s';
+		naver.style.maxHeight = null;
+		naver.style.transition = '.3s';
+	}
 }

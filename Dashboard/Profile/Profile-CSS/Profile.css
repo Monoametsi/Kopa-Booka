@@ -12,112 +12,40 @@ a{
 	text-decoration: none;
 }
 
-.active{
-	color:#0acdff;
-}
-
-#active{
-	color: #0acdff;
-}
-
-.menu{
-	display: flex;
-	justify-content: space-between;
-	background-color: #fff;
-	box-shadow: 0 0 25px rgba(0,0,0,0.3);
-	font-family: 'Roboto', sans-serif;
+.success-box{
 	position: fixed;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	z-index: 50;
-	white-space: nowrap;
+	left: 50%;
+    transform: translate(-50%, 0);
+	display: inline-flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color: #32CD32;
+    padding: 0 20px;
+	width: 20rem;
+	max-width: 20rem;
 }
 
-.logo{
-	padding: 1rem;
-}
-
-.logo > .fa-bars{
-	display: none;
-	color: #000;
-	padding-right: 2rem;
-}
-
-.logo i, .nav i, .mobileLogo i{
-	font-size: 1.8rem;
-	color: orange;
-	transition: 0.2s;
-	cursor: pointer;
-}
-
-.nav i{
-	padding-right: 0.5rem;
-}
-
-.log-name{
-	font-family: montserrat, sans-serif;
-	transition: 0.2s;
-	font-size: 2rem;
-	font-weight: 600;
-	padding: 9px 5px;
-}
-
-.log-name, .link, .share a{
-	text-decoration: none;
-	color: #000;
-}
-
-.nav{
-	list-style-type: none;
+.box-closer{
 	align-self: center;
+    padding-left: 5px;
+    font-weight: 600;
+    font-size: 1.5rem;
 }
 
-.nav li{
-	display: inline-block;
-	cursor: pointer;
-	transition: 0.2s;
-	font-size: 1.4em;
-	padding: 11.5px 15px;
+.success-message{
+	color: #fff;
 }
 
-.link{
-	transition: 0.2s;
-}
-
-.link:hover i{
-	color:#0acdff;
-}
-
-.log-name:hover .fa-book{
-	color: #0acdff;
-}
-
-.register-logIn{
-	align-self: center;
-	padding-right: 1rem;
-}
-
-.regLogin-link > i, .register-logIn > .regLogin-link:first-child{
-	padding-right: 10px;
-}
-
-.regLogin-link > i{
-	color: orange;
-	font-size: 1.5rem;
-	transition: 0.2s;
-	text-align: center;
-}
-
-.regLogin-link{
-	font-size: 1.4em;
-	transition: 0.2s;
+.box-closer{
+	transition: .3s;
+	opacity: .3;
 	color: #000;
+    cursor: pointer;
 }
 
-.link:hover, .log-name:hover, .fa-bars:hover, .regLogin-link:hover, .regLogin-link:hover i{
-	color: #0acdff;
+.box-closer:hover{
+	opacity: .6;
+	color: #000;
 }
 
 #profile{
@@ -280,6 +208,19 @@ select:focus{
 
 .validifier{
 	display: none;
+	background-color: red;
+	font-weight: 600;
+	font-family: montserrat, sans-serif;
+	padding: 0 8px;
+	border-radius: 3px;
+	animation-name: smooth-appearance;
+	animation-duration: 0.3s;
+	color: #fff;
+	white-space: nowrap;
+}
+
+.ejs-validifier{
+	display: flex;
 	background-color: red;
 	font-weight: 600;
 	font-family: montserrat, sans-serif;

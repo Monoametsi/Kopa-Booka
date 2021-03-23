@@ -5,7 +5,7 @@ let add = [];
 
 function uploadValidator(){
 	if(add.length === 0){
-		
+
 	setTimeout(
 		() => {
 			alert('Please upload atleast 1 image');
@@ -14,17 +14,18 @@ function uploadValidator(){
 	}
 }
 
-upload.onchange = function(){
+upload.onchange = () => {
 		uploader();
 }
 
 function uploader(){
     let fileList = upload.files;
     let file;
-	
-	 if(fileList.length + fileDiv.children.length > 11){
-       return alert('Only a maximun of 10 files allowed');
-     } 
+
+	if(fileList.length + fileDiv.children.length > 11){
+	   alert('Only a maximun of 10 files allowed');
+	   return false;
+	} 
 	
     for (let i = 0; i < fileList.length; i++) {
         file = fileList[i];
@@ -36,12 +37,6 @@ function uploader(){
 		let editType = fileType.indexOf("/");
 		let editedType = fileType.slice(editType);
 		let replaceType = editedType.replace("/", "");
-		let fileObject = {
-				imageName: `${edited}`,
-				imageSize: byteConverter(fileSize),
-				imageType: `${replaceType}`
-			};
-		console.log(fileObject);
 		let img_div = document.createElement("div");
         img_div.id = "load-img";
         let img = document.createElement("img");
@@ -51,6 +46,13 @@ function uploader(){
 		img.setAttribute("height", "130");
         img.className = "visual";
         img_div.innerHTML =  `${fileName}&nbsp <br>`;
+		let fileObject = {
+			imageName: `${edited}`,
+			imageSize: byteConverter(fileSize),
+			imageType: `${replaceType}`,
+			imageSrc: `${img.src}`
+		};
+		//console.log(fileObject);
         let span = document.createElement("i");
         span.className = "shut fa";
 		span.className += " fa-trash";
@@ -75,84 +77,38 @@ function uploader(){
 	} else if(fileSize > 5000000){
 		alert("Files should not exceed the Maximum file size of 5MB");
 		return false;
-		
+
 	}else{
-		 divTitle.style.display = "none";
-         fileDiv.appendChild(img_div);
-		 file_List = add.push(fileObject);
-		 console.log(add);
+		divTitle.style.display = "none";
+        fileDiv.appendChild(img_div);
+		file_List = add.push(fileObject);
+		console.log(add);
 	  }
     }
     return imgRemover();
 }
 
-let imgRemover = function() {
+let imgRemover = () => {
     let visual = document.getElementsByClassName("visual");
     let shut = document.getElementsByClassName("shut");
     let mainImgSelector = document.getElementsByClassName("checkBox-cont");
-	
-    for (let i = 0; i < visual.length; i++) {
-        visual[i].onmouseover = function() {
-            let childTwo = this.parentNode.children[2];
-			let childThree = this.parentNode.children[3];
-			childTwo.style.opacity = "1";
-			childThree.style.opacity = "1";
-            this.style.cssText = "opacity: 1; box-shadow:0px 0px 7px rgba(0,0,0,0.5)";
-        }
-
-        visual[i].onmouseout = function() {
-            let childTwo = this.parentNode.children[2];
-			let childThree = this.parentNode.children[3];
-			childTwo.style.opacity = "0";
-			childThree.style.opacity = "0";
-            this.style.cssText = "opacity: 0.6; box-shadow:0px 0px 0px rgba(0,0,0,0.5)";
-        }
-    }
 
     for (let i = 0; i < shut.length; i++) {
-        shut[i].onmouseover = function() {
-            let childOne = this.parentNode.children[1];
-			let childThree = this.parentNode.children[3];
-			this.style.opacity = "1";
-			childThree.style.opacity = "1";
-            childOne.style.cssText = "opacity: 1; box-shadow: 0px 0px 7px rgba(0,0,0,0.5)";
-        }
-
-        shut[i].onmouseout = function() {
-            let childOne = this.parentNode.children[1];
-			let childThree = this.parentNode.children[3];
-            this.style.opacity = "0";
-            childThree.style.opacity = "0";
-			childOne.style.cssText = "opacity: 0.6; box-shadow: 0px 0px 0px rgba(0,0,0,0.5)";
-        }
 
         shut[i].onclick = function() {
             let closeDiv = this.parentElement;
-				closeDiv.remove();
-				add.pop();
-				console.log(add);
-				
+
+			for(let j = 0, len = add.length; j < len; j++){
+				if(add[j].imageSrc === closeDiv.children[1].src){
+					add.splice(j, 1);
+					closeDiv.remove();
+				}
+			}
+
+			console.log(add);
 			if(add.length == 0){
 				divTitle.style.display = 'flex';
 			}
-        }
-    }
-
-	for (let i = 0; i < mainImgSelector.length; i++) {
-        mainImgSelector[i].onmouseover = function() {
-            let childOne = this.parentNode.children[1];
-			let childTwo = this.parentNode.children[2];
-			this.style.opacity = "1";
-			childOne.style.cssText = "opacity: 1; box-shadow: 0px 0px 7px rgba(0,0,0,0.5)";
-            childTwo.style.opacity = "1";
-        }
-
-        mainImgSelector[i].onmouseout = function() {
-            let childOne = this.parentNode.children[1];
-			let childTwo = this.parentNode.children[2];
-            this.style.opacity = "0";
-			childOne.style.cssText = "opacity: 0.6; box-shadow: 0px 0px 0px rgba(0,0,0,0.5)";
-            childTwo.style.opacity = "0";
         }
     }
 	
@@ -163,12 +119,12 @@ let imgRemover = function() {
 		  for(j = 0; j < checkBox.length; j++){
 			  
 		  if(this.checked){
-		  checkBox[j].checked = false;
-		  this.checked = true; 
+			checkBox[j].checked = false;
+			this.checked = true; 
 			
-		  }else if(this.checked === false){
-		  this.checked = false;	
-		  }
+		  }//else if(this.checked === false){
+			//this.checked = false;	
+		  //}
 		}
 	  }
 	}
@@ -186,7 +142,7 @@ function byteConverter(number){
 	}
 }
 
-fileDiv.ondragover = function(){
+fileDiv.ondragover = () => {
 	imgDragger(event);
 }
 
@@ -194,17 +150,20 @@ function imgDragger(action){
 	action.preventDefault();
 }
 
-fileDiv.ondrop = function(){
+fileDiv.ondrop = () => {
 	imgDropper(event);
 }
 
 function imgDropper(action){
 	action.preventDefault();
 	let data = event.dataTransfer.items;
+
 	if(data.length + fileDiv.children.length > 11){
        upload.value = "";
-       return alert('Only a maximun of 10 files allowed');
-     } 
+       alert('Only a maximun of 10 files allowed');
+	   return false;
+    } 
+
 	for(let i = 0; i < data.length; i++){
 		let showFiles = data[i].getAsFile();
 		let fileSize = showFiles.size;
@@ -215,7 +174,6 @@ function imgDropper(action){
 		let editType = fileType.indexOf("/");
 		let editedType = fileType.slice(editType);
 		let replaceType = editedType.replace("/", "");
-		let fileObject = {imageName: `${edited}`, imageSize: byteConverter(fileSize), imageType: `${replaceType}`};
 		let img_div = document.createElement("div");
         img_div.id = "load-img";
         let img = document.createElement("img");
@@ -225,6 +183,12 @@ function imgDropper(action){
 		img.setAttribute("height", "130");
         img.className = "visual";
 		img_div.innerHTML = `${fileName}&nbsp <br>`;
+		let fileObject = {
+			imageName: `${edited}`,
+			imageSize: byteConverter(fileSize),
+			imageType: `${replaceType}`,
+			imageSrc: `${img.src}`
+		};
         let span = document.createElement("i");
         span.className = "shut fa";
 		span.classList.add("fa-trash");
@@ -251,10 +215,10 @@ function imgDropper(action){
 		return false;
 		
 	}else{
-		 divTitle.style.display = "none";
-         fileDiv.appendChild(img_div);
-		 file_List = add.push(fileObject);
-		 console.log(add);
+		divTitle.style.display = "none";
+        fileDiv.appendChild(img_div);
+		file_List = add.push(fileObject);
+		console.log(add);
 	  }
 	}
 	return imgRemover();

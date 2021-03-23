@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../Post-Ad-Page-Images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../Header-CSS/header.css">
+<link rel="stylesheet" href="../../Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="../Post-Ad-Page-CSS/Post Ad.css">
+<link rel="stylesheet" href="../Post-Ad-Page-CSS/Post Ad Mobile.css">
+<title>Kopa Booka | Place your Ad</title>
+</head>
+<body>
+
+	<%- include("partials/header"); -%>
+
+	<section id="postAd">
+		<div class="postAd-cont">
+			<h1 class="postAd-title">Place Your Ad</h1>
+		</div>
+	</section>
+	
+	<section id="postAd-form">
+
+		<div class="postAdForm-cont">
+			<div class="postAdForm-card">
+
+				<div class="postAdForm-header">
+					<h1 class="postAdForm-title">Advertiser's details</h1>
+				</div>
+
+				<form action="/place-advert" enctype="multipart/form-data" method="post" class="form">
+					<div class="adverterName input">
+
+						<div class="inputlabel-cont">
+							<div class="label-cont">
+								<label for="AdvertCreator" class="label">
+									Advertiser's Name <span class="required">*</span>
+								</label>
+								<label for="AdvertCreator" class="validifier" id="AdvertCreator-Err"></label>
+							</div>
+							<input type="text" class="inputField-styling bottomMobile-spacing" placeholder="Advertisers name..." name="name" id="AdvertCreator">
+						</div>
+
+						<div class="inputlabel-cont">
+							<div class="label-cont">
+								<label for="emaill" class="label">
+									Email <span class="required">*</span>
+								</label>
+								<label for="emaill" class="validifier" id="mailErr">
+								</label>
+						    </div>
+							<input type="email" class="inputField-styling bottomMobile-spacing" placeholder="Enter email..." name="mail" id="emaill">
+						</div>
+
+						<div class="inputlabel-cont">
+							<div class="label-cont">
+								<label for="contactNum" class="label">
+									Contact Number <span class="required">*</span>
+								</label>
+								<label for="contactNum" class="validifier" id="contactNum-Err"></label>
+							</div>
+							<input type="tel" class="inputField-styling bottomMobile-spacing" name="tel" placeholder="Enter contact number..." id="contactNum">
+						</div>
+					</div>
+
+					<div class="input whatsapp-cont">
+						<div class="inputlabel-cont">
+							<div class="label-cont">
+								<label for="watsappNum" class="label">WhatsApp Number</label>
+								<label for="watsappNum" class="validifier" id="watsappNum-Err"></label>
+							</div>
+							<input type="tel" class="inputField-styling" placeholder="Enter whatsapp number..." name="Whatsapptel" id="watsappNum">
+						</div>
+						
+						<div class="check">
+							<input type="checkbox" class="remember" name="RememberMe" id="whatsapp-enabler">
+							<label for="RememberMe" class="memberMe">Enable Whatsapp chat</label>
+							<img src="../Post-Ad-Page-Images/whatsapp_PNG11.png" alt="whatsapp Icon" class="whatsapp-logo">
+						</div>
+					</div>
+
+					<div class="advertDetails">
+
+						<div class="advertDetail-header">
+							<h1 class="advertDetail-title">Advertisement details</h1>
+						</div>
+
+						<div class="category input">
+							<div class="main-cat">
+								<div class="inputlabel-cont">
+									<div class="label-cont">
+										<label for="catChoices" class="label">
+											Choose Category <span class="required">*</span>
+										</label>
+										<label for="catChoices" class="validifier" id="catChoices-Err" ></label>
+									</div>
+									<select name="chooseCats" id="catChoices" class="conAndNeg bottomMobile-spacing">
+										<option value="please select">Please Select</option>
+										<option value="Art Design and Architecture">Art Design and Architecture</option>
+										<option value="College of Business and Economics">College of Business and Economics</option>
+										<option value="Education">Education</option>
+										<option value="Engineering and Built Environment">Engineering and Built Environment</option>
+										<option value="Health Sciences">Health Sciences</option>
+										<option value="Humanities">Humanities</option>
+										<option value="Law">Law</option>
+										<option value="Science">Science</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="sub-cat">
+								<div class="inputlabel-cont">
+									<div class="label-cont">
+										<label for="subCatChoices" class="label" >Choose Sub Category <span class="required">*</span></label>
+										<label for="subCatChoices" class="validifier" id="subCatChoices-Err" ></label>
+									</div>
+									<select name="chooseSubCat" id="subCatChoices" class="conAndNeg bottomMobile-spacing">
+										<option value="please select">Please Select</option>
+									</select>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="textbook-details input">
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="book-title" class="label">Textbook Title <span class="required">*</span></label>
+									<label for="book-title" class="validifier" id="book-title-Err"></label>
+								</div>
+								<input type="text" class="inputField-styling bottomMobile-spacing" placeholder="Enter text book title..." name="TexBookTitle" id="book-title">
+							</div>
+
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="Edition-Num" class="label">Edition Number <span class="required">*</span></label>
+									<label for="Edition-Num" class="validifier" id="Edition-Num-Err"></label>
+								</div>
+								<input type="tel" class="inputField-styling bottomMobile-spacing" placeholder="Enter edition number..." name="EditionNum" id="Edition-Num">
+							</div>
+
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="Author-Name" class="label">Name of Author <span class="required">*</span></label>
+									<label for="Author-Name" class="validifier" id="Author-Name-Err"></label>
+								</div>
+								<input type="text" class="inputField-styling bottomMobile-spacing" placeholder="Enter name of author..." name="AuthorName" id="Author-Name">
+							</div>
+						</div>
+						
+						<div class="textbook-price input">
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="book-condition" class="label">Textbook Condition <span class="required">*</span></label>
+									<label for="book-condition" class="validifier" id="book-condition-Err" ></label>
+								</div>
+
+								<select name="condition" id="book-condition" class="selectWidth bottomMobile-spacing">
+									<option value="select condition">Select Condition</option>
+									<option value="excellent">Excellent</option>
+									<option value="average">Average</option>
+									<option value="acceptable">Acceptable</option>
+								</select>
+							</div>
+
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="book-price" class="label">Textbook Price <span class="required">*</span></label>
+									<label for="book-price" class="validifier" id="book-price-Err"></label>
+								</div>
+								<input type="tel" class="inputField-styling bottomMobile-spacing" placeholder="Price(R)" name="TextbookPrice" id="book-price" >
+							</div>
+
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="negotiable" class="label">Is price negotiable? <span class="required">*</span></label>
+									<label for="negotiable" class="validifier" id="negotiable-Err" ></label>
+								</div>
+
+								<select name="negotiation" id="negotiable" class="selectWidth bottomMobile-spacing">
+									<option value="please select">Please Select</option>
+									<option value="no">No</option>
+									<option value="yes">Yes</option>
+								</select>
+							</div>
+
+						</div> 
+
+						<div class="descrption input">
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="book-descrip" class="label">Description <span class="required">*</span></label>
+									<label for="book-descrip" class="validifier" id="book-descrip-Err" style="margin-right: 14px;"></label>
+								</div>
+								<textarea id="book-descrip" name="Description"  placeholder="Write a description of your ad..."></textarea>
+							</div>
+						</div>
+
+						<div class="campus input">
+							<div class="inputlabel-cont">
+								<label for="select-campus" class="label">Which campus do you sell at? <span class="required">*</span></label>
+								<select name="campus" id="select-campus" class="selectWidth">
+									<option value="select campus">Select campus</option>
+									<option value="anyy campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+								<label for="select-campus" class="validifier" id="select-campus-Err" style="border-radius:3px ;align-self: center;padding:2px 8px; margin-right: 0;"></label>
+							</div>
+						</div>
+
+						<div id="upload-cont">
+							<label id="btnDiv">
+								<span class="btn">Choose images to upload</span>
+								<input type="file" name="uploaded" accept="image/*" id="upl" multiple />
+							</label>
+
+							<div class="uploadrules-cont">
+								<span class="upload-rules">Add up to 10 images</span>
+							</div>
+
+							<div class="file-names" id="pic">
+								<div class="box-title" id="box-title">
+									<i class="fa fa-upload"></i>
+									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
+								</div>
+							</div>
+						</div>
+						<div class="sub-cont">
+							<input type="submit" id="submit" class="sub" value="Submit Advert">
+					   </div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>	
+	
+	<footer id="foot">
+		<div class="foot-info">
+			<div class="logo"style="margin-left: 0.5rem;" >
+				<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+			</div>
+
+			<div class="foot-content">
+				<div class="foot-web">
+					<h1><a href="../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="foot-link" >Privacy Policy</a></h1>
+					<h1><a href="../../Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="foot-link">Terms of Use</a></h1>
+					<h1><a href="#" class="foot-link">Browser Support</a></h1>
+				</div>
+				
+				<div class="mobileLogo">
+					<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+				</div>
+			
+				<div class="footMobile-web">
+					<div class="footMobileWeb-title" id="btn">
+						<span class="footMobile-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Our policies</span>
+						<i class=" fa fa-caret-down" id="arrow"></i>
+					</div>
+					<ul class="footMobile-list">
+						<li><a href="../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="footMobileWeb-link" >Privacy Policy</a></li>
+						<li><a href="../../Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="footMobileWeb-link">Terms of Use</a></li>
+						<li><a href="#" class="footMobileWeb-link">Browser Support</a></li>
+					</ul>
+				</div>
+				
+				<div class="foot-title">
+					<h1>&copy;2020 DESIGNED BY: <a href="http://juniormosemeng.000webhostapp.com/" target="_blank">MONOAMETSI</a></h1>
+				</div>
+			</div>
+
+			<div class="shooter" >
+				<i class="fa fa-chevron-up shoot" id="scrollTopper"></i>
+			</div>
+		</div>
+	</footer>
+	
+  <script src="../Post-Ad-Page-JS/Post Ad.js"></script>
+  <script src="../Post-Ad-Page-JS/upload.js"></script>
+  <script src="../Post-Ad-Page-JS/form.js" ></script>
+</body>
+</html>

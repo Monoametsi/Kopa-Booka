@@ -19,7 +19,27 @@ const userSchema = new Schema({
 	isVerified: {
 		type: Boolean,
 		required: true
-	}
+	},
+	Name: {
+		type: String,
+		required: false
+	},
+	Surname: {
+		type: String,
+		required: false
+	},
+	Tel: {
+		type: String,
+		required: false
+	},
+	Campus: {
+		type: String,
+		required: false
+	}//,
+	//My_Ads: {
+	//	type: Array,
+	///	required: false
+	//}
 
 });
 

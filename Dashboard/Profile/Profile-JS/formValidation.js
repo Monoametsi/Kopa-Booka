@@ -4,19 +4,19 @@ let userSurname = document.getElementById('last-name');
 let	userSurnameErr = document.getElementById('last-name-Err');
 
 userName.oninput = function (){
-		userNameValidator();
+	userNameValidator();
 }
 
 function userNameValidator(){
-	titleValidator(userName, userNameErr);
+	return titleValidator(userName, userNameErr);
 }
 
 userSurname.oninput = function (){
-		userSurnameValidator();
+	userSurnameValidator();
 }
 
 function userSurnameValidator(){
-	titleValidator(userSurname, userSurnameErr);
+	return titleValidator(userSurname, userSurnameErr);
 }
 
 function titleValidator(name,errorMessage){	
@@ -29,43 +29,8 @@ function titleValidator(name,errorMessage){
 		
 	}else{
 		errorMessage.style.display = 'none';
-		name.classList.remove('redBox');;	
-	}
-}
-
-//Email address validation
-let email = document.getElementById('mail');
-
-email.oninput =	function (){
-	emailValidator();
-}
-
-function emailValidator(){
-	let emailVal = email.value;
-	let threeDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
-	let oneDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,15}$/;
-	let twoDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
-	let threeDotFormat = threeDot.test(emailVal);
-	let oneDotFormat = oneDot.test(emailVal);
-	let twoDotFormat = twoDot.test(emailVal);
-	let emailFormats = threeDotFormat || twoDotFormat || oneDotFormat;
-	let mailErr = document.getElementById('mail-Err');
-	
-	if(emailVal === ''){
-		mailErr.style.display = 'flex';
-		mailErr.innerText = 'Required';
-		email.classList.add('redBox');
-		return false;
-	
-	}else if(emailFormats){
-		mailErr.style.display = 'none';
-		email.classList.remove('redBox');
-	
-	}else{
-		mailErr.style.display = 'flex';
-		mailErr.innerText = 'Invalid email';
-		email.classList.add('redBox');
-		return false;
+		name.classList.remove('redBox');
+		return true;		
 	}
 }
 
@@ -73,7 +38,7 @@ function emailValidator(){
 let contactNum = document.getElementById('telNum');
 
 contactNum.oninput = function (){
-		contactNumValidator();
+	contactNumValidator();
 }
 
 function contactNumValidator(){
@@ -120,11 +85,13 @@ function contactNumValidator(){
   if(zeroSixFormatTest || sevenFormatTest || eightFormatTest || telFormats){  
 	contactNumErr.style.display = 'none';
 	contactNum.classList.remove('redBox');
+	return true;
 	
   }else if(contactNumVal == ''){
 	contactNumErr.style.display = 'flex';
 	contactNum.classList.add('redBox');
 	contactNumErr.innerText = 'Required';
+	return false;
 	
   }else{
 	contactNumErr.style.display = 'flex';
@@ -138,49 +105,46 @@ function contactNumValidator(){
 let selectCampus = document.getElementById('select-campus');
 let selectCampusErr = document.getElementById('select-campus-Err');
 		
-function selectListValidator(name,errorMessage){
-	let nameVal = name.value;
-	let nameErr = errorMessage;
-	
+function selectListValidator(){
+	let nameVal = selectCampus.value;
+	let nameErr = selectCampusErr;
+
 	if(nameVal == 'select campus'){
-		errorMessage.style.display = 'flex';
-		name.classList.add('redBox');
-		errorMessage.innerText = 'Required';
+		selectCampusErr.style.display = 'flex';
+		selectCampus.classList.add('redBox');
+		selectCampusErr.innerText = 'Required';
 		return false;
-		
-	}else {
-		errorMessage.style.display = 'none';
-		name.classList.remove('redBox');
+
+	} else {
+		selectCampusErr.style.display = 'none';
+		selectCampus.classList.remove('redBox');
+		return true;
 	}
 }
 
-function selectCampusValidator(){
-	selectListValidator(selectCampus,selectCampusErr);
-		selectCampus.onchange = function(){
-		selectListValidator(selectCampus,selectCampusErr);
-	}
+selectCampus.onchange = () => {
+	selectListValidator();
 }
-
 
 let submitUpdateBtn = document.getElementById('submit-update');
-	
-submitUpdateBtn.onclick = function submitValidator(event){
-	event.preventDefault();
-	
-	if(userNameValidator()){
+
+submitUpdateBtn.onclick = () => {
+	userNameValidator();
+	userSurnameValidator();
+	contactNumValidator();
+	selectListValidator();
+
+	if(userNameValidator() === false){
 		return userNameValidator();
 		
-	}else if(userSurnameValidator()){
+	}else if(userSurnameValidator() === false){
 		return userSurnameValidator();
 		
-	}else if(emailValidator()){
-		return emailValidator();
-
-	}else if(contactNumValidator()){
+	}else if(contactNumValidator() === false){
 		return contactNumValidator();
 
-	}else if(selectCampusValidator()){
-		return selectCampusValidator();
+	}else if(selectListValidator() === false){
+		return selectListValidator();
 	}
 }
 
@@ -204,7 +168,7 @@ function newPasswordValidation(){
 	let findSpecialChar = newPwdVal.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/);
 	let findDigit = newPwdVal.search(/[0-9]/);
 	
-	if(newPwdVal === ''){
+	if(newPwdVal === '' || newPwdVal === undefined || newPwdVal === null){
 		newPwdErr.style.display = 'flex';
 		newPwd.classList.add('redBox');
 		newPwdErr.innerText = 'Required';
@@ -243,6 +207,7 @@ function newPasswordValidation(){
 	}else{
 		newPwdErr.style.display = 'none';
 		newPwd.classList.remove('redBox');
+		return true;
 	}
 }
 
@@ -251,7 +216,7 @@ function oldPasswordValidation(){
 	let oldPwdVal = oldPwd.value;
 	let oldPwdErr = document.getElementById('oldPass-Err');
 	
-	if(oldPwdVal === ''){
+	if(oldPwdVal === '' || oldPwdVal === undefined || oldPwdVal === null){
 		oldPwdErr.style.display = 'flex';
 		oldPwdErr.innerText = 'Required';
 		oldPwd.classList.add('redBox');
@@ -260,23 +225,21 @@ function oldPasswordValidation(){
 	}else {
 		oldPwdErr.style.display = 'none';
 		oldPwd.classList.remove('redBox');
-		
+		return true;
 	}
 }
 
 //Submit validation 
 let subPwdBtn = document.getElementById('submitPassWord');
+
 subPwdBtn.onclick = function(){
-	submitPwd(event);
-}
+	newPasswordValidation();
+	oldPasswordValidation()
 
-function submitPwd(action){
-	action.preventDefault();
-
-	if(newPasswordValidation()){
+	if(newPasswordValidation() === false){
 		return newPasswordValidation();
 
-	}else if(oldPasswordValidation()){
+	}else if(oldPasswordValidation() === false){
 		return oldPasswordValidation();
 	}
 }

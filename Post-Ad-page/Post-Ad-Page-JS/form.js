@@ -1,11 +1,11 @@
 	let main_cat = document.getElementById("catChoices");
     let sub_cat = document.getElementById("subCatChoices");
     
-	main_cat.onchange = function(){
+	main_cat.onchange = () => {
 		dynamicLister(main_cat,catChoicesErr);
 	}
-	
-    function dynamicLister(name,nameErr){
+
+    function dynamicLister(name, nameErr){
 		sub_cat.innerHTML = '<option value="please select">Please Select</option>';
     	switch(main_cat.value){
             case 'Art Design and Architecture':
@@ -546,6 +546,7 @@
 				function dynamicLister(name,nameErr){
 					sub_cat.innerHTML = '<option value="please select">Please Select</option>';
 					selectListValidator(sub_cat,subCatChoicesErr);
+					selectListValidator(main_cat,catChoicesErr);
 					switch(main_cat.value){
 						case 'Art Design and Architecture':
 						selectListValidator(sub_cat,subCatChoicesErr);

@@ -9,7 +9,7 @@ let transporter = nodeMailer.createTransport({
 	service: 'gmail',
 	auth: {
 		user: 'pt.projects.submission@gmail.com',
-		pass: 'MostAmaz1ng'
+		pass: process.env.EmailPassword.toString()
 	}
 });
 

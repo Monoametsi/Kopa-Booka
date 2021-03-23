@@ -21,7 +21,7 @@ function passwordValidation(){
 	let findSpecialChar = pwdVal.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/);
 	let findDigit = pwdVal.search(/[0-9]/);
 	
-	if(pwdVal === '' || pwdVal === undefined){
+	if(pwdVal === '' || pwdVal === undefined || pwdVal === null){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
 		pwdErr.innerText = 'Required';

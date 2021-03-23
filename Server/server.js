@@ -1,14 +1,19 @@
 const express = require('express');
-const http = require('http');
 const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const login = require('./login');
+const placeAd = require('./place-advert');
+const profileUpdate = require('./profile-update');
+const passwordUpdate = require('./password-update');
+const authMiddleWare = require('./authMiddleWare');
+const tokenVerifier = require('./token-verification');
+const registration = require('./registration');
 const validator = require('./validator');
 const emailVerification = require('./emailVerification');
 const path = require('path');
-const url = require('url');
 const app = express();
-const crypto = require('crypto');
 const uuid = require('uuid');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
@@ -20,6 +25,13 @@ const { passwordEmailValidation } = validator;
 const { mailDeliverer } = emailVerification;
 const user = require('./mongo_db');
 const { Users } = user;
+const { profileUpdater, getProfileUpdate } = profileUpdate;
+const { placeAdvert } = placeAd;
+const { Login, requireLoginAuth, logout, checkCurrentUser } = login;
+const { passwordUpdater } = passwordUpdate;
+const { requireAuth } = authMiddleWare;
+const { token_verifier } = tokenVerifier;
+const { Register } = registration;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -28,130 +40,79 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(dirname, 'Registration')));
 app.use(express.static(path.join(dirname, 'Account-verification')));
 app.use(express.static(path.join(dirname, 'register-outcome')));
+app.use(express.static(path.join(dirname, 'Dashboard')));
+app.use(express.static(path.join(dirname, 'Dashboard', 'Profile')));
+app.use(express.static(path.join(dirname, 'Post-Ad-page')));
+app.use(express.static(path.join(dirname, 'About-Us')));
+app.use(express.static(path.join(dirname, 'Advertisment-Board')));
+app.use(express.static(path.join(dirname, 'register-outcome')));
+app.use(express.static(path.join(dirname, 'Contact')));
+app.use(express.static(path.join(dirname, 'Login')));
+app.use(express.static(path.join(dirname, 'imageUploads')));
+app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
 app.use(express.static(dirname));
 app.set('view engine', 'ejs');
 
-const homePath = path.join(dirname, 'Home', 'Home-HTML', 'index.html');
-const homePath2 = path.join(dirname, 'Registration', 'Registration-HTML', 'register.html');
-const homePath3 = path.join(dirname, 'register-outcome', 'HTML', 'register-success.html');
-const homePath4 = path.join(dirname, 'Account-verification', 'HTML', 'verfication-success.html');
-
-app.get('/', (req, res) => {
+app.get('/', checkCurrentUser, (req, res) => {
 	res.status(200).render('index');
 });
 
-app.post('/register', async (req, res) => {
-	let json = req.body;
-	let { email, password, passConfirmation } = json;
-
-	let validationPasswordChecks = {
-		findEmpty: password === '' || password === undefined,
-		findLength: (!(password.length >= 7) || !(password.length <= 16)),
-		findUpperCase: password.search(/[A-Z]/) === -1,
-		findLowerCase: password.search(/[a-z]/) === -1,
-		findSpecialChar: password.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/) === -1,
-		findDigit: password.search(/[0-9]/) === -1,
-		findMatch: password !== passConfirmation
-	}
-
-	let validationEmailChecks = {
-		emailOneDot: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/,
-		emailTwoDots: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/,
-		emailThreeDots: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/
-	}
-
-	let emailRegexChecks = {
-		emailRegEx: validationEmailChecks.emailOneDot.test(email) || validationEmailChecks.emailTwoDots.test(email) || validationEmailChecks.emailThreeDots.test(email)
-	}
-	
-	let pass = await bcrypt.hash(password, 10);
-
-	let newEntry = {
-			UserId: uuid.v4().slice(0, uuid.v4().search("-")),
-			Email: email,
-			Password: pass,
-			isVerified: false
-	}
-
-	let { UserId, Email, Password, isVerified } = newEntry;
-
-	let emailMatcher = (not) => {
-		return not.Email === email;
-	}
-
-	if(passwordEmailValidation(password, passConfirmation, email) === false){
-		return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json});
-
-	}else{
-
-		Users.find().then((result) => {
-			if(Boolean(result.find(emailMatcher)) !== true){
-
-				const user = new Users({
-					_id: UserId, 
-					Email, 
-					Password, 
-					isVerified
-				});
-
-				user.save().then( async () => {
-					await mailDeliverer(email, res);
-				});
-
-			}else{
-				res.render('register', {result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json});
-			}
-
-		}).catch((err) => {
-			console.log(err);
-		});
-	}
+app.get('/Ad-board', checkCurrentUser, (req, res) => {
+	res.status(200).render('BookAd');
 });
 
-app.get('/register', (req, res) => {
-	res.sendFile(homePath2);
+app.get('/About-Us', checkCurrentUser, (req, res) => {
+	res.status(200).render('About-Us');
 });
 
-app.get('/register-success', (req, res) => {	
-	res.sendFile(homePath3);
+app.get('/contact-us', checkCurrentUser, (req, res) => {
+	res.status(200).render('contact-us');
 });
 
-app.get('/email-verification/:token', async (req, res) => {
-
-	let { token } = req.params;
-
-	if(token){
-		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
-			if(err){
-				return res.status(400).json({err});
-			}else{
-
-				let { email } = decodedToken;
-
-				let moveObject = (email, res) => {
-					let myquery = { Email: email };
-					let newvalues = { $set: { isVerified: true } };
-
-					Users.updateOne(myquery, newvalues, (err, res) => {
-						if(err) throw err;
-					});
-				}
-
-				await moveObject(email);
-				res.redirect('/verify-account-success');
-		
-			}
-		});
-	}else{
-		return res.status(401).json({error: 'There\'s a problem'})
-	}
-
+app.get('/register', checkCurrentUser, (req, res) => {
+	res.status(200).render('registerGet');
 });
 
-app.get('/verify-account-success', (req, res) => {
-	res.sendFile(homePath4);
+app.post('/register', checkCurrentUser, Register);
+
+app.get('/register-success', checkCurrentUser, (req, res) => {	
+	res.status(200).render('register-success');
 });
+
+app.get('/email-verification/:token', token_verifier);
+
+app.get('/verify-account-success', checkCurrentUser, (req, res) => {
+	res.status(200).render('verfication-success');
+});
+
+app.get('/login', requireLoginAuth, checkCurrentUser, (req, res) => {
+	let emailMatcher, auth, verifiedCheck;
+	emailMatcher = true;
+	auth = true;
+	verifiedCheck = true;
+	res.status(200).render('login', { emailMatcher, auth, verifiedCheck } );
+});
+
+app.post('/login', requireLoginAuth, checkCurrentUser, Login);
+
+app.get('/logout', requireAuth, checkCurrentUser, logout);
+
+app.get('/Dashboard', requireAuth, checkCurrentUser, (req, res) => {
+	res.status(200).render('dashboard');
+});
+
+app.get('/Profile', requireAuth, checkCurrentUser, getProfileUpdate);
+
+app.post('/Profile', requireAuth, checkCurrentUser, profileUpdater);
+
+app.post('/password', requireAuth, checkCurrentUser, passwordUpdater);
+
+app.get('/place-advert', checkCurrentUser, (req, res) => {
+	res.status(200).render('place-advert');
+});
+
+app.post('/place-advert', requireAuth, checkCurrentUser, placeAdvert);
 
 const PORT = process.env.PORT || 8500;
 

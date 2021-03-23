@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../Profile-Images/favicon.ico">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="../../../fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="../../../font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../Header-CSS/header.css">
+<link rel="stylesheet" href="../../Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="../Profile-CSS/Profile.css">
+<link rel="stylesheet" href="../Profile-CSS/ProfileMobile.css">
+<title>Kopa Booka | My Profile</title>
+</head>
+<body>
+
+	<%- include("partials/header"); -%>
+	
+	<section id="profile">
+		<div class="profile-header">
+			<h1 class="profile-title">My Profile</h1>
+		</div>
+	</section>
+
+	<section id="profile-form">
+		<div class="profileform-card">
+			<div class="profile-contact">
+				<form method="POST" action="/Profile" class="form">
+					<div class="contact-details">
+						<div class="profilecont-header">
+							<h1 class="profileheader-title">Contact Details</h1>
+						</div>
+						<div class="nameAddress-details input">
+							<div class="inputlabel-cont">
+							<% if(Name === "") { %>
+								<div class="label-cont">
+									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
+									<span class="validifier" id="first-name-Err"></span>
+								</div>
+								<input type="text" class="inputField-styling" placeholder="Enter your name..." name="name" id="first-name">
+							<% } else {%>
+								<div class="label-cont">
+									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
+									<span class="validifier" id="first-name-Err"></span>
+								</div>
+								<input type="text" class="inputField-styling" placeholder="Enter your name..." value="<%= Name %>" name="name" id="first-name">
+							<% } %>
+							</div>
+							<div class="inputlabel-cont">
+							<% if(Surname === "") {%>
+								<div class="label-cont">
+									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
+									<span class="validifier" id="last-name-Err"></span>
+								</div>
+								<input type="text" class="inputField-styling" placeholder="Enter your surname..."  name="surname" id="last-name">
+							<% } else { %>
+								<div class="label-cont">
+									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
+									<span class="validifier" id="last-name-Err"></span>
+								</div>
+								<input type="text" class="inputField-styling" placeholder="Enter your surname..." value="<%= Surname %>" name="surname" id="last-name">
+							<% } %>
+							</div>
+						</div>
+						<div class="number-details input">
+							<div class="inputlabel-cont">
+							<% if(Tel === "") {%>
+								<div class="label-cont">
+									<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
+									<span class="validifier" id="telNum-Err"></span>
+								</div>
+								<input type="tel" class="inputField-styling" placeholder="Mobile or telephone number..." name="tel" id="telNum">
+							<% } else { %>
+								<div class="label-cont">
+									<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
+									<span class="validifier" id="telNum-Err"></span>
+								</div>
+								<input type="tel" class="inputField-styling" placeholder="Mobile or telephone number..." value="<%= Tel %>" name="tel" id="telNum">
+							<% } %>
+							</div>
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
+									<span class="validifier" id="select-campus-Err"></span>
+								</div>
+							<% if(Campus === "select campus") {%>
+								<select name="campus" id="select-campus" >
+									<option value="select campus" selected>Select campus</option>
+									<option value="any campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							<% } else if(Campus === "any campus") {%>
+								<select name="campus" id="select-campus" >
+									<option value="select campus">Select campus</option>
+									<option value="any campus" selected>Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							<% } else if(Campus === "soweto campus") {%>
+								<select name="campus" id="select-campus" >
+									<option value="select campus">Select campus</option>
+									<option value="any campus">Any campus</option>
+									<option value="soweto campus" selected>Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							<% }  else if(Campus === "bunting campus") {%>
+								<select name="campus" id="select-campus" >
+									<option value="select campus">Select campus</option>
+									<option value="any campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus" selected>Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							<% } else if(Campus === "auckland park campus") {%>
+								<select name="campus" id="select-campus" >
+									<option value="select campus">Select campus</option>
+									<option value="any campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus" selected>Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							<% }  else if(Campus === "doornfontein campus") {%>
+								<select name="campus" id="select-campus" >
+									<option value="select campus">Select campus</option>
+									<option value="any campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus" selected>Doornfontein campus</option>
+								</select>
+							<% } else { %>
+								<select name="campus" id="select-campus" >
+									<option value="select campus" selected>Select campus</option>
+									<option value="any campus">Any campus</option>
+									<option value="soweto campus">Soweto campus</option>
+									<option value="bunting campus">Bunting campus</option>
+									<option value="auckland park campus">Auckland park campus</option>
+									<option value="doornfontein campus">Doornfontein campus</option>
+								</select>
+							<% } %>
+							</div>
+						</div>
+						<div class="sub-cont">
+							<input type="submit" id="submit-update" class="sub" value="Update Profile">
+						</div>
+					</div>
+				</form>
+
+				<form  method="POST" action="/password" class="formPassword">
+					<div class="change-password">
+						<div class="changepass-header">
+							<h1 class="changepass-title">Change Password</h1>
+						</div>
+						<div class="changepass-cont">
+							<div class="inputlabel-cont input">
+								<div class="label-cont">
+									<label for="password" class="label">Current Password <span class="required">*</span></label>
+									<span class="validifier" id="oldPass-Err"></span>
+								</div>
+								<input type="password" class="inputField-styling"  placeholder="Enter your current password..." name="password" id="Oldpass">
+							</div>
+							<div class="inputlabel-cont input">
+								<div class="label-cont">
+									<label for="passConf" class="label">New password <span class="required">*</span></label>
+									<span class="validifier" id="newPass-Err"></span>
+								</div>
+								<input type="password" class="inputField-styling" name="passwordConfirmation" placeholder="Enter between 7 and 16 characters..." id="newPass">
+							</div>
+						</div>
+						<div class="sub-cont">
+							<input type="submit" id="submitPassWord" class="sub" value="Update Password">
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</section>
+	
+	<footer id="foot">
+		<div class="foot-info">
+			<div class="logo"style="margin-left: 0.5rem;" >
+				<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+			</div>
+
+			<div class="foot-content">
+				<div class="foot-web">
+					<h1><a href="../../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="foot-link" >Privacy Policy</a></h1>
+					<h1><a href="../../../Terms-of-Use/Terms-of-Use HTML/Terms of Use.html" class="foot-link">Terms of Use</a></h1>
+					<h1><a href="#" class="foot-link">Browser Support</a></h1>
+				</div>
+				
+				<div class="mobileLogo">
+					<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+				</div>
+			
+				<div class="footMobile-web">
+					<div class="footMobileWeb-title" id="btn">
+						<span class="footMobile-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Our policies</span>
+						<i class="fa fa-caret-up arrowDown flip-up" id="arrow"></i>
+					</div>
+					<ul class="footMobile-list">
+						<li><a href="../../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="footMobileWeb-link" >Privacy Policy</a></li>
+						<li><a href="../../../Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="footMobileWeb-link">Terms of Use</a></li>
+						<li><a href="#" class="footMobileWeb-link">Browser Support</a></li>
+					</ul>
+				</div>
+				
+				<div class="foot-title">
+					<h1>&copy;2020 DESIGNED BY: <a href="http://juniormosemeng.000webhostapp.com/" target="_blank">MONOAMETSI</a></h1>
+				</div>
+			</div>
+
+			<div class="shooter" >
+				<i class="fa fa-chevron-up shoot" id="scrollTopper"></i>
+			</div>
+		</div>
+	</footer>
+
+	<script src="../Profile-JS/Profile.js"></script>
+	<script src="../Profile-JS/formValidation.js"></script>
+</body>

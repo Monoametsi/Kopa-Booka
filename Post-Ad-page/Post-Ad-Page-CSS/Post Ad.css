@@ -12,119 +12,6 @@ a{
 	text-decoration: none;
 }
 
-.active{
-	color:#0acdff;
-}
-
-#active{
-	color: #0acdff;
-}
-
-.menu{
-	display: flex;
-	justify-content: space-between;
-	background-color: #fff;
-	box-shadow: 0 0 25px rgba(0,0,0,0.3);
-	font-family: 'Roboto', sans-serif;
-	position: fixed;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	z-index: 50;
-	white-space: nowrap;
-}
-
-.logo{
-	padding: 1rem;
-}
-
-.logo > .fa-bars{
-	display: none;
-	color: #000;
-	padding-right: 2rem;
-}
-
-.logo i, .nav i, .mobileLogo i{
-	font-size: 1.8rem;
-	color: orange;
-	transition: 0.2s;
-	cursor: pointer;
-}
-
-.nav i{
-	padding-right: 0.5rem;
-}
-
-.log-name{
-	font-family: montserrat, sans-serif;
-	transition: 0.2s;
-	font-size: 2rem;
-	font-weight: 600;
-	padding: 9px 5px;
-}
-
-.log-name, .link, .share a{
-	text-decoration: none;
-	color: #000;
-}
-
-.nav{
-	list-style-type: none;
-	align-self: center;
-}
-
-.nav li{
-	display: inline-block;
-	cursor: pointer;
-	transition: 0.2s;
-	font-size: 1.4em;
-	padding: 11.5px 15px;
-}
-
-.link{
-	transition: 0.2s;
-}
-
-.link:hover i{
-	color:#0acdff;
-}
-
-.log-name:hover .fa-book{
-	color: #0acdff;
-}
-
-.register-logIn{
-	align-self: center;
-	padding-right: 1rem;
-}
-
-.register-logIn{
-	align-self: center;
-	padding-right: 1rem;
-}
-
-.regLogin-link > i, .register-logIn > .regLogin-link:first-child{
-	padding-right: 10px;
-}
-
-.regLogin-link > i{
-	color: orange;
-	font-size: 1.5rem;
-	transition: 0.2s;
-	text-align: center;
-}
-
-.regLogin-link{
-	font-size: 1.4em;
-	transition: 0.2s;
-	color: #000;
-}
-
-.link:hover, .log-name:hover, .fa-bars:hover, .regLogin-link:hover, .regLogin-link:hover i{
-	color: #0acdff;
-}
-
 #postAd{
 	margin-top: 5.5rem;
 }
@@ -214,7 +101,6 @@ a{
 	animation-duration: 0.3s;
 	color: #fff;
 	white-space: nowrap;
-	z-index: 50;
 }
 
 @keyframes smooth-appearance{
@@ -458,13 +344,16 @@ textarea{
 
 .file-names{
 	display: flex;
+	align-items: center;
+    justify-content: space-between;
+	white-space: nowrap;
 	flex-wrap: wrap;
 	height: 100%;
 	width: 100%;
+	padding: 12px;
 	margin-top: 1rem;
 	border: 2px solid #0eee; 
-	border-style: dashed; 
-	background-color: #fff;
+	border-style: dashed;
 }
 
 .box-title{
@@ -491,10 +380,9 @@ textarea{
 
 #load-img{
 	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
-	position: relative;
 	margin-top: 1rem;
+	flex-direction: column;
+	position: relative;
 }
 
 .shut{
@@ -503,30 +391,32 @@ textarea{
 	top: 2rem;
 	right: 10px;
 	font-size: 2rem;
-	opacity: 0;
 	color: rgba(300,0,0,1);
 	transition: 0.3s;
 	cursor: pointer;
 	z-index: 1;
-	
 }
 
 .checkBox-cont{
-	opacity: 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	background-color: #e0e0e0;
+	width: 9.4rem;
+	border-radius: 0 0 5px 5px;
 	position: absolute;
-	align-self: flex-end;
-	right: 5px;
+	right: 4px;
 	bottom: 8px;
 	transition: 0.3s;
 }
 
 .mainImg-text{
 	font-family: montserrat, sans-serif; 
-	text-shadow: 0 0 6px rgba(0,0,0,1); 
-	color: #fff; 
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 1), 1px -1px 0 rgba(0, 0, 0, 1), -1px 1px 0 rgba(0, 0, 0, 1), 1px 1px 0 rgba(0, 0, 0, 1);
+	color: #fff;
+	align-self: center;
 	font-weight: bold; 
 	position: absolute; 
-	bottom: 0.8rem; 
 	right: 2.6rem; 
 	white-space: nowrap;
 }
@@ -561,7 +451,6 @@ textarea{
 
 .visual{
 	margin: 12px 4px;
-	opacity: 0.6;
 	max-width: 150px;
 	max-height: 150px;
 	border-radius: 5px;
