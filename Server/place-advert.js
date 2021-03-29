@@ -1,4 +1,5 @@
 const ejs = require('ejs');
+const cookieParser = require('cookie-parser');
 const formidable = require('formidable');
 const path = require('path');
 const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
@@ -13,15 +14,16 @@ let placeAdvert = async (req, res) => {
 	let form = new formidable.IncomingForm({ multiples: true });
 
 	await form.parse(req, async (err, fields, files) => {
-		let UploadedImages = [];
+		var UploadedImages = [];
+		//console.log(fields);
 		let formData = fields;
-		let { 
+		let {
 			name, 
 			mail, 
 			tel, 
 			Whatsapptel,
 			chooseCats, 
-			chooseSubCat, 
+			chooseSubCat,
 			TexBookTitle, 
 			EditionNum, 
 			AuthorName, 
@@ -33,15 +35,30 @@ let placeAdvert = async (req, res) => {
 		} = formData;
 
 		let UserId = uuid.v4().slice(0, uuid.v4().search("-"));
-
-		for(var i = 0; i < files.uploaded.length; i++){
-			let oldPath = files.uploaded[i].path;
-			let newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
+		console.log(files.uploaded.length === undefined);
+		if(files.uploaded.length === undefined){
+			let oldPath = files.uploaded.path;
+			let newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
 			fs.rename(oldPath, newPath, (err) => {
 				if (err) throw err;
 			});
+
 			UploadedImages.push(newPath);
+	
+		}else if(files.uploaded.length > 1){
+			for(var i = 0; i < files.uploaded.length; i++){
+				let oldPath = files.uploaded[i].path;
+				let newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
+				fs.rename(oldPath, newPath, (err) => {
+					if (err) throw err;
+				});
+
+				UploadedImages.push(newPath);
+
+			}
 		}
+		
+		console.log(UploadedImages);
 
 		const adverts = await new Advertisements({
 			_id: UserId,
@@ -57,18 +74,18 @@ let placeAdvert = async (req, res) => {
 			Condition: condition,
 			Text_Book_Price: TextbookPrice,
 			Negotiation: negotiation,
-			Description: Description,
+			Description,
 			Campus: campus,
 			UploadedImages 
 		});
 
-		adverts.save().catch((err) => {
-			console.log(err);
-		});
+		await adverts.save().catch((err) => {
+				//console.log(err);
+			});
 
 	});
 
-	return res.status(200).render('place-advert');
+	return res.redirect('/place-advert-success');
 }
 
 /*form.on('fileBegin', (name, file) => {

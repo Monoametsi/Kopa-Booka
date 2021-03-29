@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const login = require('./login');
 const placeAd = require('./place-advert');
+const adDisplay = require('./book-ad');
 const profileUpdate = require('./profile-update');
 const passwordUpdate = require('./password-update');
 const authMiddleWare = require('./authMiddleWare');
@@ -26,12 +27,13 @@ const { mailDeliverer } = emailVerification;
 const user = require('./mongo_db');
 const { Users } = user;
 const { profileUpdater, getProfileUpdate } = profileUpdate;
-const { placeAdvert } = placeAd;
+const { placeAdvert, jsEnabledCheck } = placeAd;
 const { Login, requireLoginAuth, logout, checkCurrentUser } = login;
 const { passwordUpdater } = passwordUpdate;
 const { requireAuth } = authMiddleWare;
 const { token_verifier } = tokenVerifier;
 const { Register } = registration;
+const { displayAds } = adDisplay;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -58,9 +60,7 @@ app.get('/', checkCurrentUser, (req, res) => {
 	res.status(200).render('index');
 });
 
-app.get('/Ad-board', checkCurrentUser, (req, res) => {
-	res.status(200).render('BookAd');
-});
+app.get('/Ad-board', checkCurrentUser, displayAds);
 
 app.get('/About-Us', checkCurrentUser, (req, res) => {
 	res.status(200).render('About-Us');
@@ -109,10 +109,18 @@ app.post('/Profile', requireAuth, checkCurrentUser, profileUpdater);
 app.post('/password', requireAuth, checkCurrentUser, passwordUpdater);
 
 app.get('/place-advert', checkCurrentUser, (req, res) => {
-	res.status(200).render('place-advert');
+	res.status(200).render('place-advert', { res, req });
 });
 
 app.post('/place-advert', requireAuth, checkCurrentUser, placeAdvert);
+
+app.get('/place-advert-success', checkCurrentUser, (req, res) => {
+	res.status(200).render('place-advert-success');
+});
+
+app.get('/enable-js', checkCurrentUser, (req, res) => {
+	res.status(200).render('enable-js');
+});
 
 const PORT = process.env.PORT || 8500;
 

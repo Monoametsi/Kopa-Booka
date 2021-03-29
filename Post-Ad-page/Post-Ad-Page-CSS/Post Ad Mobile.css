@@ -140,11 +140,10 @@
 		overflow-x: auto;
 	}
 	
-	.UploadDrop-title{
-		text-align: center;
-		line-height: 2rem;
+	#load-img{
+		margin: 1rem 8px;
 	}
-	
+
 	.btn{
 		margin-bottom: 1rem;
 	}
@@ -224,5 +223,12 @@
 	
 	.foot-title{
 		white-space: nowrap;
+	}
+}
+
+@media screen and (max-width: 600px){
+	#down{
+		display: flex;
+		margin-bottom: 1.2rem;
 	}
 }

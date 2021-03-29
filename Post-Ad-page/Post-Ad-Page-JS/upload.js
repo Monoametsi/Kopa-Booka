@@ -1,24 +1,31 @@
 let upload = document.getElementById("upl");
 let fileDiv = document.getElementById("pic");
 let divTitle = document.getElementById("box-title");
-let add = [];
+const dt = new ClipboardEvent('').clipboardData || new DataTransfer();
 
 function uploadValidator(){
-	if(add.length === 0){
+	if(upload.value === ""){
 
-	setTimeout(
-		() => {
-			alert('Please upload atleast 1 image');
-			return false;
-		},380);
+		setTimeout(
+			() => {
+				alert('Please upload atleast 1 image');
+			},
+		350);
+
+		return false;
 	}
 }
 
 upload.onchange = () => {
-		uploader();
+
+	if(uploader() === false){
+		return false;
+	}
+
 }
 
 function uploader(){
+	
     let fileList = upload.files;
     let file;
 
@@ -26,17 +33,12 @@ function uploader(){
 	   alert('Only a maximun of 10 files allowed');
 	   return false;
 	} 
-	
+
     for (let i = 0; i < fileList.length; i++) {
         file = fileList[i];
         let fileName = file.name;
 		let fileSize = file.size;
 		let fileType = file.type;
-		let editName = fileName.indexOf(".");
-		let edited = fileName.slice(0,editName);
-		let editType = fileType.indexOf("/");
-		let editedType = fileType.slice(editType);
-		let replaceType = editedType.replace("/", "");
 		let img_div = document.createElement("div");
         img_div.id = "load-img";
         let img = document.createElement("img");
@@ -45,14 +47,7 @@ function uploader(){
         img.setAttribute("width", "200");
 		img.setAttribute("height", "130");
         img.className = "visual";
-        img_div.innerHTML =  `${fileName}&nbsp <br>`;
-		let fileObject = {
-			imageName: `${edited}`,
-			imageSize: byteConverter(fileSize),
-			imageType: `${replaceType}`,
-			imageSrc: `${img.src}`
-		};
-		//console.log(fileObject);
+		img.id = `${fileName}`;
         let span = document.createElement("i");
         span.className = "shut fa";
 		span.className += " fa-trash";
@@ -81,34 +76,46 @@ function uploader(){
 	}else{
 		divTitle.style.display = "none";
         fileDiv.appendChild(img_div);
-		file_List = add.push(fileObject);
-		console.log(add);
+		dt.items.add(file);
+		upload.files = dt.files;
+		console.log(upload.files);
 	  }
     }
     return imgRemover();
 }
 
+function removeFileFromFileList(closeDiv) {
+  const dt = new DataTransfer();
+  const input = upload;
+  const { files } = input;
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    if (file.name !== closeDiv.children[0].id) 
+	dt.items.add(file);
+    input.files = dt.files;
+  }
+}
+
 let imgRemover = () => {
     let visual = document.getElementsByClassName("visual");
     let shut = document.getElementsByClassName("shut");
-    let mainImgSelector = document.getElementsByClassName("checkBox-cont");
 
     for (let i = 0; i < shut.length; i++) {
 
         shut[i].onclick = function() {
             let closeDiv = this.parentElement;
 
-			for(let j = 0, len = add.length; j < len; j++){
-				if(add[j].imageSrc === closeDiv.children[1].src){
-					add.splice(j, 1);
-					closeDiv.remove();
-				}
-			}
+			closeDiv.remove();
 
-			console.log(add);
-			if(add.length == 0){
+			removeFileFromFileList(closeDiv);
+
+			if(upload.value === ""){
+				upload.value === "";
+				dt.clearData();
 				divTitle.style.display = 'flex';
 			}
+
+			console.log(upload.files);
         }
     }
 	
@@ -122,9 +129,7 @@ let imgRemover = () => {
 			checkBox[j].checked = false;
 			this.checked = true; 
 			
-		  }//else if(this.checked === false){
-			//this.checked = false;	
-		  //}
+		  }
 		}
 	  }
 	}
@@ -151,29 +156,27 @@ function imgDragger(action){
 }
 
 fileDiv.ondrop = () => {
-	imgDropper(event);
+	if(imgDropper(event) === false){
+		return false;
+	}
+	
+	console.log(upload.files);
 }
 
 function imgDropper(action){
 	action.preventDefault();
-	let data = event.dataTransfer.items;
+	let data = event.dataTransfer.files;
 
 	if(data.length + fileDiv.children.length > 11){
-       upload.value = "";
        alert('Only a maximun of 10 files allowed');
 	   return false;
     } 
 
 	for(let i = 0; i < data.length; i++){
-		let showFiles = data[i].getAsFile();
+		let showFiles = data[i];
 		let fileSize = showFiles.size;
 		let fileType = showFiles.type;
 		let fileName = showFiles.name;
-		let editName = fileName.indexOf(".");
-		let edited = fileName.slice(0,editName);
-		let editType = fileType.indexOf("/");
-		let editedType = fileType.slice(editType);
-		let replaceType = editedType.replace("/", "");
 		let img_div = document.createElement("div");
         img_div.id = "load-img";
         let img = document.createElement("img");
@@ -182,13 +185,7 @@ function imgDropper(action){
         img.setAttribute("width", "200");
 		img.setAttribute("height", "130");
         img.className = "visual";
-		img_div.innerHTML = `${fileName}&nbsp <br>`;
-		let fileObject = {
-			imageName: `${edited}`,
-			imageSize: byteConverter(fileSize),
-			imageType: `${replaceType}`,
-			imageSrc: `${img.src}`
-		};
+		img.id = `${fileName}`;
         let span = document.createElement("i");
         span.className = "shut fa";
 		span.classList.add("fa-trash");
@@ -217,8 +214,8 @@ function imgDropper(action){
 	}else{
 		divTitle.style.display = "none";
         fileDiv.appendChild(img_div);
-		file_List = add.push(fileObject);
-		console.log(add);
+		dt.items.add(showFiles);
+		upload.files = dt.files;
 	  }
 	}
 	return imgRemover();

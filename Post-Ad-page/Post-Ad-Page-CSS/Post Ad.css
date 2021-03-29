@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%20|%20Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%20|%20Hind:300,400,500,600,700');
+
 *{
 	box-sizing: border-box;
 }
@@ -388,7 +391,7 @@ textarea{
 .shut{
 	position: absolute;
 	align-self: flex-start;
-	top: 2rem;
+	top: 1rem;
 	right: 10px;
 	font-size: 2rem;
 	color: rgba(300,0,0,1);
@@ -418,7 +421,6 @@ textarea{
 	font-weight: bold; 
 	position: absolute; 
 	right: 2.6rem; 
-	white-space: nowrap;
 }
 
 .main-img{
@@ -488,6 +490,111 @@ input[type=submit]:hover{
 	color: #000;
 	box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
 }
+
+/*Message-Box*/
+
+.messageBox-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem;
+	margin-top: 7.7rem;
+	margin-bottom: 5.8rem;
+}
+
+.message-box{
+	text-align: center;
+	width: 650px;
+	flex-direction: column;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+	padding: 2rem;
+}
+
+.fa-times{
+	font-size: 4.5rem;
+	color: 	#FF0000;
+}
+
+.fa-times:before{
+	animation-name: glow;
+	animation-duration: 1.8s;
+	animation-iteration-count: infinite;
+}
+
+.fa-check{
+	font-size: 4.5rem;
+	color: 	#FF0000;
+}
+
+.fa-check:before{
+	animation-name: glow-green;
+	animation-duration: 1.8s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes glow-green{
+	0%, 100%{text-shadow: 0 0 0 rgb(127, 255, 0);}
+	50%{text-shadow: 0 0 4px rgb(127, 255, 0);}
+	75%{text-shadow: 0 0 6px rgb(127, 255, 0);}
+	95%{text-shadow: 0 0 2px rgb(127, 255, 0);}
+}
+
+@keyframes glow{
+	0%, 100%{text-shadow: 0 0 0 rgb(255,0,0);}
+	50%{text-shadow: 0 0 4px rgb(255,0,0);}
+	75%{text-shadow: 0 0 5px rgb(255,0,0);}
+	85%{text-shadow: 0 0 3px rgb(255,0,0);}
+	95%{text-shadow: 0 0 1px rgb(255,0,0);}
+}
+
+.messageTitle{
+	margin-top: 0;
+	font-size: 2rem;
+	color: 	#FF0000;
+	font-family: montserrat, sans-serif;
+}
+
+#down{
+	display: none;
+}
+
+.message{
+	font-size: 1.2rem;
+	line-height: 1.9rem;
+	font-family: "Poppins", sans-serif;
+}
+
+.messageBoxRedirect-cont{
+	margin-top: 2rem;
+}
+
+.messageBoxRedirect-cont a{
+	text-decoration: none;
+}
+
+.messageRedirect{
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	white-space: nowrap;
+	padding: 8px 12px;
+	background-color: rgb(91, 172, 222);
+	cursor: pointer;
+	transition: 0.3s;
+	color: #fff;
+	font-size: 1rem;
+	font-family: "Poppins",sans-serif;
+}
+
+.messageRedirect:hover{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	background-color: rgb(80, 160, 280);
+	color: #000;
+}
+
+/*Message-Box*/
 
 .flip-up{
 	transform: rotate(-180deg);

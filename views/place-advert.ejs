@@ -17,12 +17,13 @@
 
 	<%- include("partials/header"); -%>
 
+	<% if(user) { %>
 	<section id="postAd">
 		<div class="postAd-cont">
 			<h1 class="postAd-title">Place Your Ad</h1>
 		</div>
 	</section>
-	
+
 	<section id="postAd-form">
 
 		<div class="postAdForm-cont">
@@ -32,7 +33,7 @@
 					<h1 class="postAdForm-title">Advertiser's details</h1>
 				</div>
 
-				<form action="/place-advert" enctype="multipart/form-data" method="post" class="form">
+				<form action="/place-advert" enctype="multipart/form-data" method="post" class="form" id="form">
 					<div class="adverterName input">
 
 						<div class="inputlabel-cont">
@@ -53,7 +54,7 @@
 								<label for="emaill" class="validifier" id="mailErr">
 								</label>
 						    </div>
-							<input type="email" class="inputField-styling bottomMobile-spacing" placeholder="Enter email..." name="mail" id="emaill">
+							<input type="email" value="<%= user %>" class="inputField-styling bottomMobile-spacing" placeholder="Enter email..." name="mail" id="emaill">
 						</div>
 
 						<div class="inputlabel-cont">
@@ -216,6 +217,7 @@
 						</div>
 
 						<div id="upload-cont">
+
 							<label id="btnDiv">
 								<span class="btn">Choose images to upload</span>
 								<input type="file" name="uploaded" accept="image/*" id="upl" multiple />
@@ -231,6 +233,7 @@
 									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
 								</div>
 							</div>
+
 						</div>
 						<div class="sub-cont">
 							<input type="submit" id="submit" class="sub" value="Submit Advert">
@@ -240,7 +243,28 @@
 			</div>
 		</div>
 	</section>	
-	
+	<% } else if(!user){ %>
+
+	<section class="messageBox-cont">
+		<div class="message-box">
+			<div class="messageTitle-cont">
+				<i class="fa fa-times"></i>
+				<h1 class="messageTitle">Not Logged In</h1>
+			</div>
+
+			<div class="message-cont">
+				<p class="message">You need to be logged in to place an Ad. If you dont have an account, please register.</p>
+			</div>
+
+			<div class="messageBoxRedirect-cont">
+				<a href="/login" class="messageRedirect">Login.</a>
+				<a href="/register" class="messageRedirect">Register.</a>
+			</div>
+		</div>
+	</section>
+
+	<% } %>
+
 	<footer id="foot">
 		<div class="foot-info">
 			<div class="logo"style="margin-left: 0.5rem;" >
@@ -284,5 +308,9 @@
   <script src="../Post-Ad-Page-JS/Post Ad.js"></script>
   <script src="../Post-Ad-Page-JS/upload.js"></script>
   <script src="../Post-Ad-Page-JS/form.js" ></script>
+  
+  <noscript>
+	<meta http-equiv='refresh' content='0; url=/enable-js' />
+   </noscript>
 </body>
 </html>

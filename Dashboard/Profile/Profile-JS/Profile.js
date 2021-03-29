@@ -146,7 +146,6 @@ window.onclick = (event) => {
 }
 
 //Success-Box closer
-
 let boxCloser = document.getElementById('box-closer');
 let successBox = document.getElementById('success-box');
 

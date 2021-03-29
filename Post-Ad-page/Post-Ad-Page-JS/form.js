@@ -1,14 +1,20 @@
 	let main_cat = document.getElementById("catChoices");
     let sub_cat = document.getElementById("subCatChoices");
     
-	main_cat.onchange = () => {
+	main_cat.onchange = function(){
+		selectListValidator(main_cat, catChoicesErr);
 		dynamicLister(main_cat,catChoicesErr);
 	}
 
     function dynamicLister(name, nameErr){
 		sub_cat.innerHTML = '<option value="please select">Please Select</option>';
     	switch(main_cat.value){
-            case 'Art Design and Architecture':
+            case 'please select':
+			selectListValidator(sub_cat,subCatChoicesErr);
+			name.style.border = '1px solid red';
+            break;
+			
+			case 'Art Design and Architecture':
 			nameErr.style.display = 'none';
 			name.style.border = '1px solid #9acdff';
             return categorizer('Art Design and Architecture',arts);
@@ -175,10 +181,9 @@
 	    }
 	  }
 	}
-	
-	
+
 	//Select list validation
-	function selectListValidator(name,errorMessage){
+	function selectListValidator(name, errorMessage){
 		let nameVal = name.value;
 		let nameErr = errorMessage;
 		
@@ -199,11 +204,11 @@
 	let	advertCreatorErr = document.getElementById('AdvertCreator-Err');
 	
 	advertCreator.oninput = function (){
-			advertCreatorValidator();
+		advertCreatorValidator();
 	}
 	
 	function advertCreatorValidator(){
-		titleValidator(advertCreator,advertCreatorErr);
+		return titleValidator(advertCreator,advertCreatorErr);
 	}
 	
 	function titleValidator(name,errorMessage){	
@@ -348,7 +353,7 @@
 		let whatsappEnabled = whatsappEnabler.checked;
 		
 		if(whatsappEnabled === true){
-			whatSappNumValidator();
+			return whatSappNumValidator();
 			
 		}else{
 			whatsappNumErr.style.display = 'none';
@@ -427,7 +432,7 @@
 	}
 	
 	function bookTitleValidator(){
-		titleValidator(bookTitle, booktitleErr);
+		return titleValidator(bookTitle, booktitleErr);
 	}
 	
 	//Edition Number validation
@@ -437,11 +442,11 @@
 	editionNum.oninput = function(){
 		editionNumValidator();
 	}
-	
+
 	function editionNumValidator(){
-		editionAndPriceValidator(editionNum,editionNumErr);
+		return editionAndPriceValidator(editionNum,editionNumErr);
 	}
-	
+
 	//Authors Name validation
 	let AuthorName = document.getElementById('Author-Name');
 	let	AuthorNameErr = document.getElementById('Author-Name-Err');
@@ -451,7 +456,7 @@
 	}
 	
 	function AuthorNameValidator(){
-		titleValidator(AuthorName, AuthorNameErr);
+		return titleValidator(AuthorName, AuthorNameErr);
 	}
 	
 	//Book Price validation
@@ -461,9 +466,9 @@
 	bookPrice.oninput = function(){
 		bookPriceValidator();
 	}
-	
+
 	function bookPriceValidator(){
-		editionAndPriceValidator(bookPrice,bookPriceErr);
+		return editionAndPriceValidator(bookPrice,bookPriceErr);
 	}
 	
 	function editionAndPriceValidator(name,errorMessage){
@@ -517,155 +522,111 @@
 			bookDescription.classList.remove('redBox');
 		}
 	}
-	
 
 	//Submit validation
 	let catChoicesErr = document.getElementById('catChoices-Err');
+	let subCatChoicesErr = document.getElementById('subCatChoices-Err');
 	
+	let negotiableErr = document.getElementById('negotiable-Err');
+	let negotiable = document.getElementById('negotiable');
+
+	let bookconditionErr = document.getElementById('book-condition-Err');
+	let bookcondition = document.getElementById('book-condition');
+
+	let selectCampus = document.getElementById('select-campus');
+	let selectCampusErr = document.getElementById('select-campus-Err');
+
 	function listValidator(){
-		let subCatChoicesErr = document.getElementById('subCatChoices-Err');
-		
-		let negotiableErr = document.getElementById('negotiable-Err');
-		let negotiable = document.getElementById('negotiable');
-		
-		let bookconditionErr = document.getElementById('book-condition-Err');
-		let bookcondition = document.getElementById('book-condition');
-		
-		let selectCampus = document.getElementById('select-campus');
-		let selectCampusErr = document.getElementById('select-campus-Err');
-		
-		selectListValidator(main_cat,catChoicesErr);
-		main_cat.onchange = function(){	
-			if(selectListValidator(main_cat,catChoicesErr)){
-				return selectListValidator(main_cat,catChoicesErr);
-				
-			}else{
-				selectListValidator(sub_cat,subCatChoicesErr);
-				dynamicLister(main_cat,catChoicesErr);
-				
-				function dynamicLister(name,nameErr){
-					sub_cat.innerHTML = '<option value="please select">Please Select</option>';
-					selectListValidator(sub_cat,subCatChoicesErr);
-					selectListValidator(main_cat,catChoicesErr);
-					switch(main_cat.value){
-						case 'Art Design and Architecture':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Art Design and Architecture',arts);
-						break;
-						
-						case 'College of Business and Economics':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('College of Business and Economics',business);
-						break;
-						
-						case 'Education':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Education',education);
-						break;
-						
-						case 'Engineering and Built Environment':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Engineering and Built Environment',engineering);
-						break;
-						
-						case 'Health Sciences':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Health Sciences',healthScience);
-						break;
-						
-						case 'Humanities':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Humanities',humanities);
-						break;
-						
-						case 'Law':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Law',law);
-						break;
-						
-						case 'Science':
-						selectListValidator(sub_cat,subCatChoicesErr);
-						nameErr.style.display = 'none';
-						name.classList.remove('redBox');
-						return categorizer('Science',science);
-					}
-				}
-			  }
-			}
-		
-		selectListValidator(sub_cat,subCatChoicesErr);		
-		sub_cat.onchange = function(){
-			selectListValidator(sub_cat,subCatChoicesErr);
-			}
-		
+		selectListValidator(main_cat, catChoicesErr);
+		selectListValidator(sub_cat,subCatChoicesErr);
 		selectListValidator(selectCampus,selectCampusErr);
-		selectCampus.onchange = function(){
-			selectListValidator(selectCampus,selectCampusErr);
-			}
-		
-		selectListValidator(bookcondition,bookconditionErr);		
-		bookcondition.onchange = function(){
-			selectListValidator(bookcondition,bookconditionErr);
-			}
-		
+		selectListValidator(bookcondition,bookconditionErr);
 		selectListValidator(negotiable,negotiableErr);
-		negotiable.onchange = function(){
-			selectListValidator(negotiable,negotiableErr);
-			}
+
+		if(selectListValidator(main_cat, catChoicesErr) === false){
+			return selectListValidator(main_cat, catChoicesErr);
+		}
+		
+		if(selectListValidator(sub_cat,subCatChoicesErr) === false){
+			return selectListValidator(sub_cat,subCatChoicesErr);
+		}	
+		
+		if(selectListValidator(selectCampus,selectCampusErr) === false){
+			return selectListValidator(selectCampus,selectCampusErr);
+		}
+		
+		if(selectListValidator(bookcondition,bookconditionErr) === false){
+			return selectListValidator(bookcondition,bookconditionErr);
+		}		
+		
+		if(selectListValidator(negotiable,negotiableErr) === false){
+			return selectListValidator(negotiable,negotiableErr);
+		}
+	}
+	
+	selectCampus.onchange = function(){
+		selectListValidator(selectCampus,selectCampusErr);
+	}
+	
+	bookcondition.onchange = function(){
+		selectListValidator(bookcondition,bookconditionErr);
+	}
+	
+	negotiable.onchange = function(){
+		selectListValidator(negotiable,negotiableErr);
+	}
+	
+	sub_cat.onchange = function(){
+		selectListValidator(sub_cat,subCatChoicesErr);
 	}
 	
 	//Submit validation
-	
 	let submitBtn = document.getElementById('submit');
 	
-	submitBtn.onclick = function submitValidator(event){
-		event.preventDefault();
-		
-		if(advertCreatorValidator()){
+	submitBtn.onclick = function submitValidator(){
+		advertCreatorValidator();
+		emailValidator();
+		contactNumValidator();
+		whatSappCheckBoxValidator();
+		bookTitleValidator();
+		editionNumValidator();
+		AuthorNameValidator();
+		bookPriceValidator();
+		bookDescriptionValidator();
+		listValidator();
+		uploadValidator();
+
+		if(advertCreatorValidator() === false){
 			return advertCreatorValidator();
-			
-		}else if(emailValidator()){
+
+		}else if(emailValidator() === false){
 			return emailValidator();
-			
-		}else if(contactNumValidator()){
+
+		}else if(contactNumValidator() === false){
 			return contactNumValidator();
-			
-		}else if(whatSappCheckBoxValidator()){
+
+		}else if(whatSappCheckBoxValidator() === false){
 			return whatSappCheckBoxValidator();
-			
-		}else if(bookTitleValidator()){
+
+		}else if(bookTitleValidator() === false){
 			return bookTitleValidator();
-			
-		}else if(editionNumValidator()){
+
+		}else if(editionNumValidator() === false){
 			return editionNumValidator();
-			
-		}else if(AuthorNameValidator()){
+
+		}else if(AuthorNameValidator() === false){
 			return AuthorNameValidator();
-			
-		}else if(bookPriceValidator()){
+
+		}else if(bookPriceValidator() === false){
 			return bookPriceValidator();
-			
-		}else if(bookDescriptionValidator()){
+
+		}else if(bookDescriptionValidator() === false){
 			return bookDescriptionValidator();
-			
-		}else if(listValidator()){
+
+		}else if(listValidator() === false){
 			return listValidator();
-			
-		}else if(uploadValidator()){
-			return uploadValidator();
+
+		}else if(uploadValidator() === false){
+			return false;
 		}
 	}

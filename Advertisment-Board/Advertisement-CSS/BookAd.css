@@ -527,7 +527,7 @@ button.but:hover + .search{
 	border-radius: 5px;
 	transition: 0.6s;
 	cursor: pointer;
-	width: 680px; 
+	width: 300px; 
 	height: 100%; 
 	max-width: 100%;
 }
@@ -539,7 +539,7 @@ button.but:hover + .search{
 #img:hover,
 #img:focus{
 	filter: brightness(100%);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
 }
 
 .Camera-cont{
@@ -565,13 +565,14 @@ button.but:hover + .search{
 	flex-direction: column;
 	margin-right: -1rem;
 	overflow: hidden;
+	width: 100%;
 }
 
 .AdDescription-title{
-	margin-top: 0;
+	margin-top: 8px;
 	color: rgb(0,200,255);
 	font-family: montserrat, sans-serif;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: 600;
 	white-space: nowrap;
 	overflow: hidden;
@@ -586,8 +587,9 @@ button.but:hover + .search{
 	margin-top: -15px;
 	font-size: 1rem;
 	font-weight: 300;
-	line-height: 1.4rem;
+	line-height: 1.9rem;
 	overflow: hidden;
+	max-width: 55rem;
 	text-overflow: ellipsis;
 }
 

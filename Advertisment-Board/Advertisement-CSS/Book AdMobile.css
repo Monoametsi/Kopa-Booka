@@ -1,6 +1,19 @@
+@media screen and (max-width: 1250px){	
+
+	.AdDescription-title{
+		font-size: 1.5rem;
+		max-width: 25rem;
+	}
+
+}
+
 @media screen and (max-width: 1195px){	
 	.advertisements{
 		margin-left: -3.8rem;
+	}
+	
+	.AdDescription-body{
+		-webkit-line-clamp: 2;
 	}
 
 	.Sellers-item{
@@ -14,10 +27,6 @@
 
 	.AdDescription-body{
 		margin-top: -15px;
-	}
-
-	#img{
-		width: 700px;	
 	}
 
 	.foot-content{
@@ -44,12 +53,17 @@
 		margin-top: -15px;
 	}
 	
-	#img{
-		width: 700px;	
-	}
-	
 	.foot-content{
 		margin-right: 0;
+	}
+
+}
+
+@media screen and (max-width: 1050px){
+
+	.AdDescription-title{
+		font-size: 1.5rem;
+		max-width: 20rem;
 	}
 
 }
@@ -72,12 +86,8 @@
 		height: 9rem;
 	}
 	
-	.AdDescription-title{
-		max-width: 35rem;
-	}
-	
 	#img{
-		width: 780px;	
+		width: 380px;	
 	}
 	
 	.priceAndContact-cont{
@@ -86,7 +96,7 @@
 
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1060px){
 	
 	.Sellers-item{
 		display: none;
