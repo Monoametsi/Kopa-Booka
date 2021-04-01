@@ -79,7 +79,6 @@ btn.onclick = function(){
 }
 
 //Menu dropdown
-//Menu dropdown
 let listDropper =  document.getElementById('menu-DropDown');
 let naver =  document.getElementsByClassName('nav')[0];
 
@@ -160,7 +159,7 @@ function modalOpener(headerTitle){
 	let messageToSeller = document.getElementById('subject');
 	let messageToSellerErr = document.getElementById('subject-Err');
 	document.body.style.overflow = 'hidden';
-	
+
 	modalContent.classList.remove('slideUp');
 	modal.classList.remove('fadeOut');
 	modal.style.display = "block";
@@ -294,10 +293,12 @@ ResizeClassAdder();
 cateHiderScreenSize.addListener(ResizeClassAdder);
 
 //Refine search list displayer
-refineSearchBtn.onclick = function(){
-	if(categoriesCont.className.search('closeList') != -1){
-		categoriesCont.classList.remove('closeList');
-	}else{
-		categoriesCont.classList.add('closeList');
+if(refineSearchBtn !== null){
+	refineSearchBtn.onclick = function(){
+		if(categoriesCont.className.search('closeList') != -1){
+			categoriesCont.classList.remove('closeList');
+		}else{
+			categoriesCont.classList.add('closeList');
+		}
 	}
 }

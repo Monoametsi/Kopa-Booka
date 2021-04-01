@@ -230,3 +230,29 @@ submitBtn.onclick = function(event){
 		icons[i].classList.remove('Icon-boxShadower','Shadow');
 	}
 }
+
+let searchBtn = document.getElementById('search-btn');
+let searchInput = document.getElementById('searcher');
+
+let searchInputFunc = () => {
+	let searchInputVal = searchInput.value;
+
+	if(searchInputVal.length === 0){
+		window.location.assign('http://localhost:8500/Ad-board');
+	}else{
+		window.location.assign(`http://localhost:8500/Ad-board/${searchInputVal}`);
+	}
+}
+
+searchBtn.onclick = function(){
+	searchInputFunc();
+}
+
+searchInput.onkeypress = (event) => {
+	let searchInputVal = searchInput.value;
+
+	if(event.keyCode === 13){
+		event.preventDefault();
+		searchInputFunc();
+	}
+}

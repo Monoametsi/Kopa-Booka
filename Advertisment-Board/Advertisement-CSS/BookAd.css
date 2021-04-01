@@ -183,9 +183,13 @@ section{
 	text-align: center;
 	align-items: center;
 	font-family: montserrat, sans-serif;
-	font-size: 2.5rem;
+	font-size: 1.6rem;
 	text-shadow: 0 0 2px rgba(0,0,0,0.6);
 	margin-top: 4rem;
+}
+
+.Ad-title h1{
+	font-weight: 300;
 }
 /*Ad Page title -- end*/
 
@@ -1026,6 +1030,60 @@ li.pageNumber-link:hover a{
 	border-right: 1px solid #0eee;
 }
 /*Pagination -- end*/
+
+/*Message-Box*/
+
+.messageBox-cont{
+	display: flex;
+	margin: 1rem 2rem;
+}
+
+.message-box{
+	width: 100%;
+	text-align: center;
+	flex-direction: column;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+	padding: 2rem;
+}
+
+.messageTitle-cont > .fa-search{
+	margin-top: 0;
+	font-size: 3.5rem;
+	color: 	#FF0000;
+	padding-bottom: 10px;
+	cursor: default;
+}
+
+.messageTitle-cont > .fa-search:before{
+	animation-name: glow;
+	animation-duration: 1.8s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes glow{
+	0%, 100%{text-shadow: 0 0 0 rgb(255,0,0);}
+	50%{text-shadow: 0 0 4px rgb(255,0,0);}
+	75%{text-shadow: 0 0 5px rgb(255,0,0);}
+	85%{text-shadow: 0 0 3px rgb(255,0,0);}
+	95%{text-shadow: 0 0 1px rgb(255,0,0);}
+}
+
+.messageTitle{
+	margin-top: 0;
+	font-size: 2rem;
+	color: 	#FF0000;
+	font-family: montserrat, sans-serif;
+}
+
+.message{
+	font-size: 1.2rem;
+	line-height: 1.9rem;
+	font-family: "Poppins", sans-serif;
+}
+
+/*Message-Box*/
 
 /*Footer -- start */
 
