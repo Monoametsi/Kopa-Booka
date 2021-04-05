@@ -45,7 +45,7 @@ let placeAdvert = async (req, res) => {
 
 			UploadedImages.push(newPath);
 	
-		}else if(files.uploaded.length > 1){
+		}else if(files.uploaded.length >= 1){
 			for(var i = 0; i < files.uploaded.length; i++){
 				let oldPath = files.uploaded[i].path;
 				let newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
@@ -57,8 +57,6 @@ let placeAdvert = async (req, res) => {
 
 			}
 		}
-		
-		console.log(UploadedImages);
 
 		const adverts = await new Advertisements({
 			_id: UserId,

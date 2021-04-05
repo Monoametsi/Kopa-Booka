@@ -190,10 +190,11 @@
 			</div>
 		</div>
 
+	<% let sortListUrl = req.url.search("/latest-Ads") !== -1 || req.url.search("/price-low-to-high") !== -1 || req.url.search("/price-high-to-low") !== -1 %>
+
 	  <div class="advertisements">
-		<%	let { searchQuery } = req.params; %>
 			<div class="Ad-title">
-		  <% if(Object.keys(req.params).length === 0) { %>
+		  <% if(Object.keys(req.params).length === 0 || searchQuery.toLowerCase().search(/page-\d/) !== -1 || sortListUrl) { %>
 				<h1><b>All Ads</b> on Kopa-Booka</h1>
 		  <% } else { %>
 				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
@@ -205,20 +206,20 @@
 					<input type="text" class="search" id="searcher" name="search-engine" placeholder="Search for textbook title...">
 				</div>
 			</div>
-			
+
 		<%	if(notFound === false){ %>
 				<div class="AdTracker-SortByDiv">
 					<div class="AdTracker-TotalNum">
-						<p class="AdTrackerNum"> <b>1</b> to <b><%= numOfCurrentAds %></b> of <b><%= totalAmountOfAds %></b> Ads</p>
+						<p class="AdTrackerNum"> <b><%= startingNum %></b> to <b><%= numOfCurrentAds %></b> of <b><%= totalAmountOfAds %></b> Ads</p>
 					</div>
 					<div class="SortBy-List">
 						<button class="SortBy-Btn icon" id="SortBy-Btn">
 							<span class="icon">Sort by</span><i class="fa fa-caret-up icon" id="collapser"></i>
 						</button>
 						<ul class="Sort-List" id="Sort-List">
-							<li class="SortList-link icon"><i class="fa fa-star-o fa-fw icon"></i>Latest Ads</li>
-							<li class="SortList-link icon"><i class="fa fa-arrow-circle-o-up fa-fw icon"></i>Price Low to High</li>
-							<li class="SortList-link icon"><i class="fa fa-arrow-circle-o-down fa-fw icon"></i>Price High to Low</li>
+							<li class="SortList-link icon"><a href= <%= `${req.url.replace(/\/page-\d/,"")}/latest-Ads` %> ><i class="fa fa-star-o fa-fw icon"></i>Latest Ads</a></li>
+							<li class="SortList-link icon"><a href= <%=`${req.url.replace(/\/page-\d/,"")}/price-low-to-high`%> ><i class="fa fa-arrow-circle-o-up fa-fw icon"></i>Price Low to High</a></li>
+							<li class="SortList-link icon"><a href= <%=`${req.url.replace(/\/page-\d/,"")}/price-high-to-low`%> ><i class="fa fa-arrow-circle-o-down fa-fw icon"></i>Price High to Low</a></li>
 						</ul>
 					</div>
 				</div>
@@ -290,10 +291,9 @@
 					</div>
 				</div>
 			</div>
-
-			<% if(Object.keys(req.params).length === 0) { %>
 			
 			<% let num = 0; %>
+			<% var isTrue; %>
 			<% let displayAds = (adData) => { %>
 
 			<%	let {
@@ -313,12 +313,13 @@
 				Campus,
 				UploadedImages
 				} = adData; 
-				   let img = UploadedImages[0];
-				   let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
 
-			 num++ %>
+			    let img = UploadedImages[0];
+			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
 
-			<% if( num <= 20){ %>
+				num++;
+			%>
+
 			<div class="Sellers-item">
 				<div class="textBook-img">
 					<img src= "<%= imgStr %>" id="img" alt="Textbook">
@@ -381,14 +382,28 @@
 					</div>
 				</div>
 			</div>
-		<%	}else{ %>
-		<%		return false; %>
-		<%	} %>
 		<%	} %>
 
-		<% result.map(displayAds); %>
+		<% let showFirstSearchAds = []; %>
 
-		<% }else { %>
+		<% if(req.url === `/Ad-board` || req.url === `/Ad-board/latest-Ads`) { %>
+
+		<% result.slice(0, 20).map(displayAds); %>
+
+		<% }else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 || searchQuery.toLowerCase().search("/latest-Ads") !== -1 || pageQuery.toLowerCase().search(/page-\d/) !== -1) { %>
+
+		<%
+			for(let i = 0; i < result.length; i+= 20){
+				num++
+				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+					result.slice(i, i + 20).map(displayAds);
+				}
+			}
+		%>
+
+		<%} else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined){ %>
+		<% let numb = 0; %>
+
 		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
 
 		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
@@ -402,84 +417,16 @@
 				not.Text_Book_Title;
 				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
 			} %>
-			
+
 			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
 			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
-			<%	
-				 let img = UploadedImages[0]; 
-				 let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+			<%	numb++;
+				showFirstSearchAds.push(result[i]);
+				let img = UploadedImages[0]; 
+				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 	
+				isTrue = true;
+			%>
 
-				 let arrStr = Campus.split(" "); 
-				 let campusArr = []; 
-
-				 arrStr.map((tring) => {
-					tring = tring.replace("anyy", "any");
-					tring = tring.replace(tring[0], tring[0].toUpperCase());
-					campusArr.push(tring);
-				}); %>
-
-				<div class="Sellers-item">
-					<div class="textBook-img">
-						<img src= "<%= imgStr %>" id="img" alt="Textbook">
-						<h1 class="Camera-cont">
-							<i class="fa fa-camera"></i>
-						<%= `+${UploadedImages.length}` %>
-						</h1>
-					</div>
-					
-					<div class="Ad-description">
-						<h1 class="AdDescription-title"><%= Text_Book_Title %></h1>
-						<p class="AdDescription-body"><%= Description %></p>
-						<div class="timeAndLocation-tracker">	
-							 <h3 class="location">
-							   <i class="fa fa-map-marker"></i>
-							<%= stringCapitalizer(UploadedImages, Campus) %>
-							</h3> 
-							<h3 class="time">
-							   <i class="fa fa-clock"></i>
-							 2 hours
-							</h3> 					
-						</div>
-					</div>
-					
-					 <div class="priceAndContact-cont">
-						<div class="price-cont">
-							<h3 class="price-num"><%= Text_Book_Price %></h3>
-						</div>
-						<div class="contact-cont">
-							<button class="contact-btn">
-								Contact Advertiser
-							</button>
-						</div>
-					 </div>
-				</div>
-
-				<div class="MobileSellers-Cont">
-					<div class="MobileSellers-Card">
-						<div class="MobileCard-Header">
-							<h1 class="MobileCard-Title"><%= Text_Book_Title %></h1>
-							<h3 class="MobileCard-Price"><%= Text_Book_Price %></h3>
-						</div>
-						<div class="MobileTextbook-Img">
-							<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
-							<h1 class="MobileCamera-Cont">
-								<i class="fa fa-camera"></i>
-								<%= "+" + UploadedImages.length %>
-							</h1>
-						</div>
-						<div class="MobileLocation-Cont">
-							<h3 class="Mobile-location">
-							   <i class="fa fa-map-marker"></i>
-								<%= stringCapitalizer(UploadedImages, Campus) %>
-							</h3> 
-						</div>
-						<div class="MobileContact-Cont">
-							<button class="MobileContact-Btn">
-								Contact Advertiser
-							</button>
-						</div>
-					</div>
-				</div>
 				<%	} %>
 			<%	} else { %>
 				<% notFound = true %>
@@ -491,56 +438,173 @@
 						</div>
 
 						<div class="message-cont">
-							<p class="message">Sorry we couldnt find any results for "<%= `${searchQuery}` %>". Please check spelling, or try a different search.</p>
+							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
 						</div>
 					</div>
 				</div>
 				<% break; %>
 			<% } %>
 		<%	} %>
+		
+		<% 	if(isTrue === true){
+				
+				showFirstSearchAds.slice(0, 20).map(displayAds);
+			}else{
+			
+			}
+		%>
+
+		<% }else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1){ %>
+		
+
+		<% let numb = 0; %>
+		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
+
+		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
+				Negotiation,
+				Description,
+				Campus,
+				UploadedImages
+			} = result[i]
+
+			let textBookTileMatcher = (not) => {
+				not.Text_Book_Title;
+				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+			} %>
+
+			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
+			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
+			<%	numb++;
+				isTrue = true;
+				let img = UploadedImages[0]; 
+				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+				showFirstSearchAds.push(result[i]);
+				
+			%>
+			
+				<%	} %>
+			<%	} else { %>
+				<% notFound = true %>
+				<div class="messageBox-cont">
+					<div class="message-box">
+						<div class="messageTitle-cont">
+							<i class="fa fa-search"></i>
+							<h1 class="messageTitle">Couldnt find anything</h1>
+						</div>
+
+						<div class="message-cont">
+							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
+						</div>
+					</div>
+				</div>
+				<% break; %>
+			<% } %>
+		<%	} %>
+		
+		<% 	if(isTrue){
+				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
+					num++
+					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+						showFirstSearchAds.slice(i, i + 20).map(displayAds);
+					}
+				}
+			}else{
+			
+			}
+		%>
+		
 		<% } %>
 
-			<% let totalAds = totalAmountOfAds;
-			   let secNum = 1;
-			   let remainderAdsTotal = totalAds % 20;
-			   let pagininationTotal = totalAds / 20; %>
+
+
+
+		<%
+		   let totalAds = totalAmountOfAds;
+		   let plusUrlNum = parseInt(req.url.slice(req.url.search(/\d/))) + 1;
+		   let minusUrlNum = parseInt(req.url.slice(req.url.search(/\d/))) - 1;
+		   let secNum = 2;
+		   let remainderAdsTotal = totalAds % 20;
+		   let pagininationTotal = totalAds / 20;
+		%>
 
 			<% if(totalAds < 20 || notFound === true){ %>
-			<div class="pageNumberTracker" style="display: none;">
-			</div>
+
 			<% }else if(totalAds > 20){ %>
 			<%	if(remainderAdsTotal === 0){ %>
 				<div class="pageNumberTracker">
 					<div class="pageNumber-cont">
 						<ul class="pageNumber-list">
-			<li class="pageNumber-link active"><a href="<%= req.url %>">1</a></li>
-			<%		for(let i = 0; i < pagininationTotal; i++){ %>
 
-							<li class="pageNumber-link active"><a href="<%= `${req.url}/page-${(i + 1)}` %>"><%= i + 1 %></a></li>
+			<% if(req.url.replace(/\/page-\d/,"") === req.url){ %>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"") %>" class="pageNumber-link active">1</a></li>
+						<% } else { %>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"")  %>" class="pageNumber-link"><i class="fa fa-chevron-left"></i></a></li>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"") %>"  class="pageNumber-link">1</a></li>
+						<% } %>
+			<%		for(let i = 1; i < pagininationTotal; i++){ %>
+
+						<% if(secNum === i){ %>
+						<%	secNum += 1; %>
+						<% } %>
+
+							<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` === req.url){ %>
+								<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` %>"  class="pageNumber-link active"><%= i + 1 %></a></li>
+							<% } else { %>
+								<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` %>"  class="pageNumber-link"><%= i + 1 %></a></li>
+							<% } %>
 			<%		} %>
-							<li class="pageNumber-link"><a href="<%= `${req.url}/page-${ secNum += 1 }` %>"><i class="fa fa-chevron-right"></i></a></li>
+							<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${ secNum }` === req.url){ %>
+									
+								<%	} else { %>
+									<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${ secNum }` %>"  class="pageNumber-link"><i class="fa fa-chevron-right"></i></a></li>
+								<% } %>
 						</ul>
 					</div>
 				</div>
 			<%	 }else if(remainderAdsTotal > 0){ %>
 			<%		let addOneToTotal = parseInt(pagininationTotal) + 1; %>
+
 					<div class="pageNumberTracker">
 						<div class="pageNumber-cont">
 							<ul class="pageNumber-list">
-							<li class="pageNumber-link active"><a href="<%= req.url %>">1</a></li>
+						<% if(req.url.replace(/\/page-\d/,"") === req.url){ %>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"") %>" class="pageNumber-link active">1</a></li>
+						<% } else if(req.url.search("page-2") === -1){ %>
+							<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${ minusUrlNum }`  %>" class="pageNumber-link"><i class="fa fa-chevron-left"></i></a></li>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"") %>"  class="pageNumber-link">1</a></li>
+						<%} else{ %>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"")  %>" class="pageNumber-link"><i class="fa fa-chevron-left"></i></a></li>
+							<li><a href="<%= req.url.replace(/\/page-\d/,"") %>"  class="pageNumber-link">1</a></li>
+						<% } %>
 			<%		for(let i = 1; i < addOneToTotal; i++){ %>
-								<li class="pageNumber-link"><a href="<%= `${req.url}/page-${(i + 1)}` %>"><%= i + 1 %></a></li>
+
+						<% if(secNum === i){ %>
+						<%	secNum += 1; %>
+						<% } %>
+
+							<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` === req.url){ %>
+								<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` %>"  class="pageNumber-link active"><%= i + 1 %></a></li>
+							<% } else { %>
+								<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` %>"  class="pageNumber-link"><%= i + 1 %></a></li>
+							<% } %>
 			<%		} %>
-								<li class="pageNumber-link"><a href="<%= `${req.url}/page-${ secNum += 1 }` %>"><i class="fa fa-chevron-right"></i></a></li>
+								<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${ secNum }` === req.url){ %>
+
+								<%	} else if(isNaN( plusUrlNum )){ %>
+
+									<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-2` %>"  class="pageNumber-link"><i class="fa fa-chevron-right"></i></a></li>
+								<% }else { %>
+									<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${ plusUrlNum }` %>"  class="pageNumber-link"><i class="fa fa-chevron-right"></i></a></li>
+								<% } %>
 							</ul>
 						</div>
 					</div>
 			<%	 } %>
 			<% } %>
-			
-		</div>
-  </section>
 
+		</div>
+  </section>  
+					
   <footer id="foot">
 		<div class="foot-info">
 			<div class="logo"style="margin-left: 0.5rem;" >

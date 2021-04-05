@@ -288,6 +288,8 @@ button.but:hover + .search{
 
 .Sort-List{
 	display: none;
+	left: auto;
+	padding: 0;
 	position: absolute;
 	right: 0;
 	top: 1.5rem;
@@ -296,16 +298,15 @@ button.but:hover + .search{
 	z-index: 1000;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	width: 12rem;
 	animation-name: zoom-in;
 	animation-duration: 0.3s;
-	max-height: 6.5rem;
+	max-height: 8.5rem;
 	overflow: hidden;
 }
 
 @keyframes zoom-in{
-	 0% {max-height: 0;}
-  100% {max-height: 6.5rem;}
+	0% {max-height: 0;}
+  100% {max-height: 8.5rem;}
 }
 
 .zoom-out{
@@ -314,19 +315,27 @@ button.but:hover + .search{
 }
 
 @keyframes zoom-out{
-	 0% {max-height: 6.5rem;}
+	0% {max-height: 8.5rem;}
   100% {max-height: 0;}
 }
 
-.SortList-link{
+.Sort-List > li{
+	display: flex;
+	flex-direction: column;
+}
+
+.Sort-List > li > a{
 	transition: 0.3s;
 	white-space: nowrap;
-	padding: 8px;
-	margin-left: -2.5rem;
+	padding: 12px;
 	cursor: pointer;
 }
 
-.SortList-link:hover{
+.Sort-List > li > a{
+	color: #000;
+}
+
+.Sort-List > li > a:hover{
 	background-color: #eee;
 }
 
@@ -396,6 +405,7 @@ button.but:hover + .search{
 }
 
 .MobileCard-Title{
+	cursor: pointer;
 	font-family: montserrat, sans-serif;
 	font-size: 1.8rem;
 	color: rgb(0,200,255);
@@ -573,6 +583,7 @@ button.but:hover + .search{
 }
 
 .AdDescription-title{
+	cursor: pointer;
 	margin-top: 8px;
 	color: rgb(0,200,255);
 	font-family: montserrat, sans-serif;
@@ -976,23 +987,25 @@ input[type=submit]:hover{
 /*Pagination -- start*/
 .pageNumberTracker{
 	display: flex;
-	margin-left: -7px;
 }
 
 .pageNumber-list{
 	list-style: none;
 	display: flex; 
+	margin-left: -7px;
+	border-radius: 5px;
 }
 
-li.active{
+.pageNumber-list > li{
+	display: inline-flex; 
+}
+
+.pageNumber-list > li a.active{
 	background-color: #0eee;
-}
-
-li.active a{
 	color: #fff;
 }
 
-.pageNumber-link{
+.pageNumber-list > li > a{
 	padding: 8px;
 	font-size: 1.1rem;
 	border: 1px solid #0eee;
@@ -1003,29 +1016,26 @@ li.active a{
 	background-color: #fff;
 }
 
-li.pageNumber-link:hover a{
+.pageNumber-list > li > a:hover{
 	color: #fff;
-}
-
-.pageNumber-link:hover{
 	background-color: #0eee;
 }
 
-.pageNumber-link a{
+.pageNumber-list > li > a{
 	text-decoration: none;
 	color: #000;
 	transition: 0.3s;
 }
 
-.pageNumber-link:first-child{
+.pageNumber-list > li:first-child > a{
 	border-radius: 3.5px 0 0 3.5px;
 }
 
-.pageNumber-link{
+.pageNumber-list > li > a{
 	border-right: 0px solid #0eee;
 }
 
-.pageNumber-link:last-child{
+.pageNumber-list > li:last-child > a{
 	border-radius: 0 3.5px 3.5px 0;
 	border-right: 1px solid #0eee;
 }

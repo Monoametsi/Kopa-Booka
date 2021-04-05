@@ -9,34 +9,50 @@ const { Advertisements } = ads;
 const { Users } = user;
 
 let displayAds = (req, res) => {
-
+	var showSearchedAds = [];
+	var isTrue;
 	var num = 0;
+	var startingNum = 1;
 	var number;
 	var notFound = false;
 	var amountOfAds = [];
-	var nexBunch = [];
+	var searchNum = [];
 	var numOfCurrentAds;
 	var totalAmountOfAds;
-	let { searchQuery } = req.params;
+	let { searchQuery, pageQuery } = req.params;
 
 	Advertisements.find().then((result) => {
-		//console.log(req.url.search('/Ad-board/page-') !== -1)
+
 		let numOfAdsDisplay = (data) => {
-			num++;
-			if(num <= 20){
-				number = num;
-			}else{
-				false;
-			}
-			return number;
+			return data;
 		}
 
-		if(Object.keys(req.params).length === 0){
+		if(req.url === `/Ad-board` || req.url === `/Ad-board/latest-Ads`){
+			startingNum
 			totalAmountOfAds = result.length;
-			numOfCurrentAds = result.map(numOfAdsDisplay)[result.map(numOfAdsDisplay).length - 1];
-		}
+			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
+		}else
 
-		if(Object.keys(req.params).length > 0){
+		if(searchQuery.toLowerCase().search(/page-\d/) !== -1  || searchQuery.toLowerCase().search("/latest-Ads") !== -1 || pageQuery.toLowerCase().search(/page-\d/) !== -1){
+			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
+
+			for(let i = 0; i < result.length; i+= 20){
+				num++
+				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+					startingNum += i;
+					numOfCurrentAds += i;
+				}
+			}
+
+			if(numOfCurrentAds >= result.length){
+				numOfCurrentAds = result.length;
+			}
+
+			totalAmountOfAds = result.length;
+			notFound = false;
+		}else
+
+		if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined){
 			for(let i = 0, len = result.length; i < len; i++){	 
 
 				let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, 
@@ -55,20 +71,68 @@ let displayAds = (req, res) => {
 				 if(Boolean(result.find(textBookTileMatcher)) === true){ 
 					if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ 
 						num++;
-						if(num <= 20){
-							numOfCurrentAds = num;
-						}else{
-							false;
-						}
-
-						amountOfAds.push(result[i]);
-						totalAmountOfAds = amountOfAds.length;
+						showSearchedAds.push(result[i]);
+						isTrue = true;
+						
+						totalAmountOfAds = showSearchedAds.length;
 						notFound = false;
 					} 
 					} else { 
 						notFound = true 
 						break; 
 				 } 
+			}
+
+			if(isTrue){
+				numOfCurrentAds = showSearchedAds.slice(0, 20).map(numOfAdsDisplay).length;
+			}
+		} else
+		
+		if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1){
+			for(let i = 0, len = result.length; i < len; i++){	 
+
+				let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, 
+						Text_Book_Price, 
+						Negotiation, 
+						Description, 
+						Campus, 
+						UploadedImages 
+					} = result[i];
+
+				let textBookTileMatcher = (not) => {
+					not.Text_Book_Title;
+					return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+				}
+
+				 if(Boolean(result.find(textBookTileMatcher)) === true){ 
+					if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ 
+						showSearchedAds.push(result[i]);
+						isTrue = true;
+						
+						notFound = false;
+					} 
+					} else { 
+						notFound = true 
+						break; 
+				 } 
+			}
+
+			if(isTrue){
+				numOfCurrentAds = showSearchedAds.slice(0, 20).map(numOfAdsDisplay).length;
+
+				for(let i = 0; i < showSearchedAds.length; i+= 20){
+					num++
+					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+						startingNum += i;
+						numOfCurrentAds += i;
+					}
+				}
+				
+				totalAmountOfAds = showSearchedAds.length;
+						
+				if(numOfCurrentAds > totalAmountOfAds){
+					numOfCurrentAds = totalAmountOfAds;
+				}
 			}
 		}
 
@@ -89,7 +153,7 @@ let displayAds = (req, res) => {
 		}
 
 		result.reverse();
-		res.status(200).render('BookAd', { result, numOfCurrentAds, req, notFound, totalAmountOfAds, stringCapitalizer});
+		res.status(200).render('BookAd', { result, numOfCurrentAds, req, notFound, totalAmountOfAds, stringCapitalizer, startingNum, pageQuery, searchQuery});
 	}).catch((err) => {
 		console.log(err);
 	});

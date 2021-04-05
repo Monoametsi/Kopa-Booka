@@ -30,6 +30,7 @@ function uploader(uploadFiles, action){
 
 	if(fileList.length + fileDiv.children.length > 11){
 	   alert('Only a maximun of 10 files allowed');
+	   inputDtFileEqualizer();
 	   return false;
 	} 
 
@@ -94,6 +95,15 @@ function removeFileFromFileList(closeDiv) {
 		dt.items.remove(i);
 		input.files = dt.files;
 	}
+  }
+}
+
+function inputDtFileEqualizer() {
+  const input = upload;
+  const { files } = input;
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+	input.files = dt.files;
   }
 }
 

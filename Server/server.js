@@ -64,6 +64,8 @@ app.get('/Ad-board', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery', checkCurrentUser, displayAds);
 
+app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
+
 app.get('/About-Us', checkCurrentUser, (req, res) => {
 	res.status(200).render('About-Us');
 });
