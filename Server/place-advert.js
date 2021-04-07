@@ -15,7 +15,6 @@ let placeAdvert = async (req, res) => {
 
 	await form.parse(req, async (err, fields, files) => {
 		var UploadedImages = [];
-		//console.log(fields);
 		let formData = fields;
 		let {
 			name, 
@@ -57,6 +56,19 @@ let placeAdvert = async (req, res) => {
 
 			}
 		}
+
+		/*
+		
+		let firstImgPath = dirname + '\\imageUploads\\' + imgInput;
+		
+		if(imgInput){
+			for(i = 0; i < UploadedImages.length; i++){
+				if(UploadedImages[i] === firstImgPath){
+					UploadedImages.splice(i, 1);
+					UploadedImages.unshift(firstImgPath);
+				}
+			}
+		}*/
 
 		const adverts = await new Advertisements({
 			_id: UserId,

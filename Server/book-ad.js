@@ -5,7 +5,9 @@ const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
 const fs = require('fs');
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
+const catAndCamp = require('./category-db');
 const { Advertisements } = ads;
+const { Category_and_campus_col } = catAndCamp;
 const { Users } = user;
 
 let displayAds = (req, res) => {
@@ -13,10 +15,7 @@ let displayAds = (req, res) => {
 	var isTrue;
 	var num = 0;
 	var startingNum = 1;
-	var number;
 	var notFound = false;
-	var amountOfAds = [];
-	var searchNum = [];
 	var numOfCurrentAds;
 	var totalAmountOfAds;
 	let { searchQuery, pageQuery } = req.params;
@@ -27,13 +26,43 @@ let displayAds = (req, res) => {
 			return data;
 		}
 
-		if(req.url === `/Ad-board` || req.url === `/Ad-board/latest-Ads`){
+		let lowToHighPrices = (lowPrice, highPrice) => {
+			return lowPrice.Text_Book_Price - highPrice.Text_Book_Price;
+		}
+
+		let highToLowPrices = (lowPrice, highPrice) => {
+			return highPrice.Text_Book_Price - lowPrice.Text_Book_Price;
+		}
+		
+		let sortPrices = (arr, sortMethod) => {
+			arr.sort(sortMethod);
+		}
+		
+		let sortListUrl = req.url === `/Ad-board` || req.url === `/Ad-board/latest-Ads` || req.url === `/Ad-board/price-low-to-high` || req.url === `/Ad-board/price-high-to-low`;
+
+		if(sortListUrl){
 			startingNum
 			totalAmountOfAds = result.length;
 			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
-		}else
 
-		if(searchQuery.toLowerCase().search(/page-\d/) !== -1  || searchQuery.toLowerCase().search("/latest-Ads") !== -1 || pageQuery.toLowerCase().search(/page-\d/) !== -1){
+		}else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 && req.url.search("/Ad-board/price-high-to-low") !== -1){
+			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
+
+			for(let i = 0; i < result.length; i+= 20){
+				num++
+				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+					startingNum += i;
+					numOfCurrentAds += i;
+				}
+			}
+
+			if(numOfCurrentAds >= result.length){
+				numOfCurrentAds = result.length;
+			}
+
+			totalAmountOfAds = result.length;
+			notFound = false;
+		}else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 && req.url.search("/Ad-board/price-low-to-high") !== -1){
 			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
 
 			for(let i = 0; i < result.length; i+= 20){
@@ -52,7 +81,26 @@ let displayAds = (req, res) => {
 			notFound = false;
 		}else
 
-		if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined){
+		if(searchQuery.toLowerCase().search(/page-\d/) !== -1  || req.url.search("/Ad-board/latest-Ads") !== -1){
+			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
+
+			for(let i = 0; i < result.length; i+= 20){
+				num++
+				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+					startingNum += i;
+					numOfCurrentAds += i;
+				}
+			}
+
+			if(numOfCurrentAds >= result.length){
+				numOfCurrentAds = result.length;
+			}
+
+			totalAmountOfAds = result.length;
+			notFound = false;
+		}else
+
+		if((searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined)){
 			for(let i = 0, len = result.length; i < len; i++){	 
 
 				let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, 
@@ -88,7 +136,7 @@ let displayAds = (req, res) => {
 			}
 		} else
 		
-		if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1){
+		if((searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1)){
 			for(let i = 0, len = result.length; i < len; i++){	 
 
 				let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, 
@@ -153,7 +201,21 @@ let displayAds = (req, res) => {
 		}
 
 		result.reverse();
-		res.status(200).render('BookAd', { result, numOfCurrentAds, req, notFound, totalAmountOfAds, stringCapitalizer, startingNum, pageQuery, searchQuery});
+		res.status(200).render('BookAd', { 
+			result, 
+			numOfCurrentAds, 
+			req, 
+			notFound, 
+			totalAmountOfAds, 
+			stringCapitalizer, 
+			startingNum, 
+			pageQuery, 
+			searchQuery, 
+			sortPrices, 
+			lowToHighPrices, 
+			highToLowPrices,
+			Category_and_campus_col
+		});
 	}).catch((err) => {
 		console.log(err);
 	});

@@ -64,6 +64,24 @@ app.get('/Ad-board', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery', checkCurrentUser, displayAds);
 
+app.get('/Ad-board/latest-Ads/:searchQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/price-low-to-high/:searchQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/price-high-to-low/:searchQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/:searchQuery/latest-Ads', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/:searchQuery/price-low-to-high', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/:searchQuery/price-high-to-low', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/:searchQuery/latest-Ads/:pageQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/:searchQuery/price-low-to-high/:pageQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/:searchQuery/price-high-to-low/:pageQuery', checkCurrentUser, displayAds);
+
 app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/About-Us', checkCurrentUser, (req, res) => {
