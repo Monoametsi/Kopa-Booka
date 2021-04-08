@@ -33,7 +33,7 @@ let displayAds = (req, res) => {
 		let highToLowPrices = (lowPrice, highPrice) => {
 			return highPrice.Text_Book_Price - lowPrice.Text_Book_Price;
 		}
-		
+
 		let sortPrices = (arr, sortMethod) => {
 			arr.sort(sortMethod);
 		}
@@ -201,7 +201,9 @@ let displayAds = (req, res) => {
 		}
 
 		result.reverse();
-		res.status(200).render('BookAd', { 
+		Category_and_campus_col.find().then((resulter) =>{
+			res.status(200).render('BookAd', { 
+			resulter,
 			result, 
 			numOfCurrentAds, 
 			req, 
@@ -216,6 +218,9 @@ let displayAds = (req, res) => {
 			highToLowPrices,
 			Category_and_campus_col
 		});
+		}).catch((err) => {
+			console.log(err);
+		})
 	}).catch((err) => {
 		console.log(err);
 	});

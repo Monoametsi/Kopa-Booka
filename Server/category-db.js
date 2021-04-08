@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const categoryAndCampusSchema = new Schema({
+const CategoryAndCampusSchema = new Schema({
 
 	Art_Design_and_Architecture: {
 		type: Array,
@@ -42,27 +42,19 @@ const categoryAndCampusSchema = new Schema({
 
 });
 
-const Category_and_campus_col = mongoose.model('Category and Campus Lists', categoryAndCampusSchema);
+const Category_and_campus_col = mongoose.model('Category and Campus Lists', CategoryAndCampusSchema);
 
-let setUpModel = async() => {
-	const categoryCampusCol = await new Category_and_campus_col({
-		Art_Design_and_Architecture: [ "Architecture", "Fashion", "Graphic Design", "Industrial Design", "Interior Design", "Jewel Design & Manufacture", "Multimedia", "Visual Art" ],
-		College_of_Business_and_Economics: ["Applied Information Systems", "Accountancy", "Business Management", "Finance & Investment Management", "Industrial Psychology & People Management", "Information & Knowledge Management", "Marketing Management", "Transport & Supply Chain Management", "Economics", "Public Management", "Governance & Public Policy", "Tourism & Hospitality" ],
-		Education: ["Childhood Education", "Education & Curriculum Studies", "Education Leadership & Management", "Educational Psychology", "Science & Technology Education"],
-		Engineering_and_Built_Environment: ["Chemical Engineering Technology", "Civil Engineering", "Construction Management & Quantity Survey", "Electric Engineering", "Mechanical Engineering", "Metallurgy", "Mine Surveying", "Mining", "Quality & Operation Management", "Town & Regional Planning"],
-		Health_Sciences: ["Biomedical Technology", "Chiropractic", "Emergency Medical Care", "Environmental Health", "Homoeopathy", "Human Anatomy & Physiology", "Nursing", "Optometry", "Podiatry", "Radiography", "Somatology", "Sport & Movement Studies"],
-		Humanities: ["African Languages", "Afrikaans", "Anthropology & Development Studies", "Communication Studies", "English", "French", "Greek & Latin Studies", "Historical Studie", "Journalism, Film & Television", "Linguistics", "Philosophy", "Politics & International Relation", "Religion Studies", "Social Work", "Sociology", "Strategic Communication"],
-		Law: ["Mercantile Law", "Private Law", "Public Law"],
-		Science: ["Computer Science", "Applied Physics & Engineering Mathematics", "Biochemistry", "Biotechnology & Food Technology", "Botany & Plant Biotechnology", "Chemistry", "Geography,Environmental Management", "Physics", "Applied Mathematics", "Statistics", "Zoology"],
-		Campus: ["Any Campus", "Auckland Park Campus", "Bunting Campus", "Soweto Campus", "Doornfontein Campus"]
-	});
-
-	await categoryCampusCol.save().catch((err) => {
-		console.log(err);
-	});
-}
-
-setUpModel();
+const categoryCampusCol = new Category_and_campus_col({
+	Art_Design_and_Architecture: [ "Architecture", "Fashion", "Graphic Design", "Industrial Design", "Interior Design", "Jewel Design & Manufacture", "Multimedia", "Visual Art" ],
+	College_of_Business_and_Economics: ["Applied Information Systems", "Accountancy", "Business Management", "Finance & Investment Management", "Industrial Psychology & People Management", "Information & Knowledge Management", "Marketing Management", "Transport & Supply Chain Management", "Economics", "Public Management", "Governance & Public Policy", "Tourism & Hospitality" ],
+	Education: ["Childhood Education", "Education & Curriculum Studies", "Education Leadership & Management", "Educational Psychology", "Science & Technology Education"],
+	Engineering_and_Built_Environment: ["Chemical Engineering Technology", "Civil Engineering", "Construction Management & Quantity Survey", "Electric Engineering", "Mechanical Engineering", "Metallurgy", "Mine Surveying", "Mining", "Quality & Operation Management", "Town & Regional Planning"],
+	Health_Sciences: ["Biomedical Technology", "Chiropractic", "Emergency Medical Care", "Environmental Health", "Homoeopathy", "Human Anatomy & Physiology", "Nursing", "Optometry", "Podiatry", "Radiography", "Somatology", "Sport & Movement Studies"],
+	Humanities: ["African Languages", "Afrikaans", "Anthropology & Development Studies", "Communication Studies", "English", "French", "Greek & Latin Studies", "Historical Studie", "Journalism, Film & Television", "Linguistics", "Philosophy", "Politics & International Relation", "Religion Studies", "Social Work", "Sociology", "Strategic Communication"],
+	Law: ["Mercantile Law", "Private Law", "Public Law"],
+	Science: ["Computer Science", "Applied Physics & Engineering Mathematics", "Biochemistry", "Biotechnology & Food Technology", "Botany & Plant Biotechnology", "Chemistry", "Geography,Environmental Management", "Physics", "Applied Mathematics", "Statistics", "Zoology"],
+	Campus: ["Any Campus", "Auckland Park Campus", "Bunting Campus", "Soweto Campus", "Doornfontein Campus"]
+});
 
 module.exports = {
 	Category_and_campus_col

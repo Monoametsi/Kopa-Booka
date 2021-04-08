@@ -31,14 +31,14 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Architecture</li>
-							<li class="department-link">Fashion</li>
-							<li class="department-link">Graphic Design</li>
-							<li class="department-link">Industrial Design</li>
-							<li class="department-link">Interior Design</li>
-							<li class="department-link">Jewel Design & Manufacture</li>
-							<li class="department-link">Multimedia</li>
-							<li class="department-link">Visual Art</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Art_Design_and_Architecture } = data; %>
+							<%	Art_Design_and_Architecture.map((art) => { %>
+									<li><a href=<%= `/Ad-board/${art}` %> class="department-link"><%= art %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
+							
 						</ul>
 					</li>
 
@@ -48,18 +48,14 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Applied Information Systems</li>
-							<li class="department-link">Accountancy</li>
-							<li class="department-link">Business Management</li>
-							<li class="department-link">Finance & Investment Management</li>
-							<li class="department-link">Industrial Psychology & People Management</li>
-							<li class="department-link">Information & Knowledge Management</li>
-							<li class="department-link">Marketing Management</li>
-							<li class="department-link">Transport & Supply Chain Management</li>
-							<li class="department-link">Economics</li>
-							<li class="department-link">Public Management</li>
-							<li class="department-link">Governance & Public Policy</li>
-							<li class="department-link">Tourism & Hospitality</li>
+						
+							<% resulter.map((data)=>{ %>
+							<%	let { College_of_Business_and_Economics } = data; %>
+							<%	College_of_Business_and_Economics.map((biz) => { %>
+									<li><a href=<%= `/Ad-board/${biz}` %> class="department-link"><%= biz %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 
@@ -69,11 +65,13 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Childhood Education</li>
-							<li class="department-link">Education & Curriculum Studies</li>
-							<li class="department-link">Education Leadership & Management</li>
-							<li class="department-link">Educational Psychology</li>
-							<li class="department-link">Science & Technology Education</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Education } = data; %>
+							<%	Education.map((education) => { %>
+									<li><a href=<%= `/Ad-board/${education}` %> class="department-link"><%= education %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 
@@ -83,16 +81,13 @@
 							<i class="faculty-arrow fa fa-caret-down " ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Chemical Engineering Technology</li>
-							<li class="department-link">Civil Engineering</li>
-							<li class="department-link">Construction Management & Quantity Survey</li>
-							<li class="department-link">Electric Engineering</li>
-							<li class="department-link">Mechanical Engineering</li>
-							<li class="department-link">Metallurgy</li>
-							<li class="department-link">Mine Surveying</li>
-							<li class="department-link">Mining</li>
-							<li class="department-link">Quality & Operation Management</li>
-							<li class="department-link">Town & Regional Planning</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Engineering_and_Built_Environment } = data; %>
+							<%	Engineering_and_Built_Environment.map((eng) => { %>
+									<li><a href=<%= `/Ad-board/${eng}` %> class="department-link"><%= eng %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 
@@ -102,18 +97,13 @@
 							<i class="faculty-arrow fa fa-caret-down " ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Biomedical Technology</li>
-							<li class="department-link">Chiropractic</li>
-							<li class="department-link">Emergency Medical Care</li>
-							<li class="department-link">Environmental Health</li>
-							<li class="department-link">Homoeopathy</li>
-							<li class="department-link">Human Anatomy & Physiology</li>
-							<li class="department-link">Nursing</li>
-							<li class="department-link">Optometry</li>
-							<li class="department-link">Podiatry</li>
-							<li class="department-link">Radiography</li>
-							<li class="department-link">Somatology</li>
-							<li class="department-link">Sport & Movement Studies</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Health_Sciences } = data; %>
+							<%	Health_Sciences.map((health) => { %>
+									<li><a href=<%= `/Ad-board/${health}` %> class="department-link"><%= health %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 
@@ -123,22 +113,13 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">African Languages</li>
-							<li class="department-link">Afrikaans</li>
-							<li class="department-link">Anthropology & Development Studies</li>
-							<li class="department-link">Communication Studies</li>
-							<li class="department-link">English</li>
-							<li class="department-link">French</li>
-							<li class="department-link">Greek & Latin Studies</li>
-							<li class="department-link">Historical Studie</li>
-							<li class="department-link">Journalism, Film & Television</li>
-							<li class="department-link">Linguistics</li>
-							<li class="department-link">Philosophy</li>
-							<li class="department-link">Politics & International Relation</li>
-							<li class="department-link">Religion Studies</li>
-							<li class="department-link">Social Work</li>
-							<li class="department-link">Sociology</li>
-							<li class="department-link">Strategic Communication</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Humanities } = data; %>
+							<%	Humanities.map((humanities) => { %>
+									<li><a href=<%= `/Ad-board/${humanities}` %> class="department-link"><%= humanities %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 
@@ -148,9 +129,13 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Mercantile Law</li>
-							<li class="department-link">Private Law</li>
-							<li class="department-link">Public Law</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Law } = data; %>
+							<%	Law.map((Law) => { %>
+									<li><a href=<%= `/Ad-board/${Law}` %> class="department-link"><%= Law %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 
@@ -160,17 +145,13 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<li class="department-link">Computer Science</li>
-							<li class="department-link">Applied Physics & Engineering Mathematics</li>
-							<li class="department-link">Biochemistry</li>
-							<li class="department-link">Biotechnology & Food Technology</li>
-							<li class="department-link">Botany & Plant Biotechnology</li>
-							<li class="department-link">Chemistry</li>
-							<li class="department-link">Geography,Environmental Management</li>
-							<li class="department-link">Physics</li>
-							<li class="department-link">Applied Mathematics</li>
-							<li class="department-link">Statistics</li>
-							<li class="department-link">Zoology</li>
+							<% resulter.map((data)=>{ %>
+							<%	let { Science } = data; %>
+							<%	Science.map((Science) => { %>
+									<li><a href=<%= `/Ad-board/${Science}` %> class="department-link"><%= Science %><span>1</span></a></li>
+							<%	}); %>
+								
+							<%}) %>
 						</ul>
 					</li>
 				</ul>
@@ -181,11 +162,13 @@
 				</div>
 
 				<ul class="campus-options" id="CampusList">
-					<li class="campusOptions-link">Any Campus</li>
-					<li class="campusOptions-link">Auckland Park Campus</li>
-					<li class="campusOptions-link">Bunting Campus</li>
-					<li class="campusOptions-link">Soweto Campus</li>
-					<li class="campusOptions-link">Doornfontein Campus</li>
+					<% resulter.map((data)=>{ %>
+					<%	let { Campus } = data; %>
+					<%	Campus.map((Campus) => { %>
+							<li><a href=<%= `/Ad-board/${Campus}` %> class="department-link"><%= Campus %><span>1</span></a></li>
+					<%	}); %>
+
+					<%}) %>
 				</ul>
 			</div>
 		</div>
