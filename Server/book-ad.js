@@ -201,9 +201,9 @@ let displayAds = (req, res) => {
 		}
 
 		result.reverse();
-		Category_and_campus_col.find().then((resulter) =>{
+		Category_and_campus_col.find().then((cat_camp_list) =>{
 			res.status(200).render('BookAd', { 
-			resulter,
+			cat_camp_list,
 			result, 
 			numOfCurrentAds, 
 			req, 
