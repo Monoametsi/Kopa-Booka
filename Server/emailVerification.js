@@ -13,6 +13,8 @@ let transporter = nodeMailer.createTransport({
 	}
 });
 
+console.log(process.env.EmailPassword.toString());
+
 let success = true;
 
 const mailDeliverer = (email, ress) => {
