@@ -38,8 +38,6 @@ const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
 app.use(express.static(path.join(dirname, 'Home')));
-app.use(express.static(path.join(dirname, 'Home', 'Home-CSS')));
-app.use(express.static(path.join(dirname, 'Home', 'Home-JS')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(dirname, 'Registration')));
 app.use(express.static(path.join(dirname, 'Account-verification')));
