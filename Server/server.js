@@ -56,8 +56,6 @@ dotenv.config({path: path.join(__dirname, '.env')});
 app.use(express.static(dirname));
 app.set('view engine', 'ejs');
 
-console.log(path.join(dirname, 'Home'));
-
 app.get('/', checkCurrentUser, (req, res) => {
 	res.status(200).render('index');
 });
