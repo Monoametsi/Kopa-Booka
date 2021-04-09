@@ -238,9 +238,9 @@ let searchInputFunc = () => {
 	let searchInputVal = searchInput.value;
 
 	if(searchInputVal.length === 0){
-		window.location.assign('http://localhost:8500/Ad-board');
+		window.location.assign('/Ad-board');
 	}else{
-		window.location.assign(`http://localhost:8500/Ad-board/${searchInputVal}`);
+		window.location.assign(`/Ad-board/${searchInputVal}`);
 	}
 }
 
