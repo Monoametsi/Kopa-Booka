@@ -35,7 +35,7 @@ section{
 	padding: 8px;
 	border-radius: 0 0 5px 0;
 	flex-direction: column;
-	width: 85.5%;
+	width: 87.5%;
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
@@ -134,7 +134,7 @@ section{
 
 .department-list > li > a, .campus-options > li > a{
 	display: block;
-	padding: 0 85px 0 0;
+	padding: 0 75px 0 0;
 	border-radius: 3px;
 	line-height: 1.8rem;
 	transition: 0.2s;
