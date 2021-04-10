@@ -29,14 +29,17 @@
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Art Design and Architecture</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
-						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Art_Design_and_Architecture } = data; %>
-							<%	Art_Design_and_Architecture.map((art) => { %>
-									<li><a href="<%= `/Ad-board/${ art }` %>" class="department-link"><%= art %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+						<ul class="department-list">		
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Art_Design_and_Architecture } = cat_camp_list[i];
+								categoryLister(Art_Design_and_Architecture);
+
+							 for(catName in categoryLister(Art_Design_and_Architecture)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Art_Design_and_Architecture)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	}%>
 							
 						</ul>
 					</li>
@@ -48,33 +51,17 @@
 						</div>
 						<ul class="department-list">
 
-					<% let nummer = 0; 
+					<% 
 					  for(i = 0; i < cat_camp_list.length; i++){
-						let { College_of_Business_and_Economics } = cat_camp_list[i];%>
-
-					<%	for(j = 0; j < College_of_Business_and_Economics.length; j++){ %>
-
-					<%		for(x = 0; x < result.length; x++){ 
-								let { Sub_Category } = result[x];
-
-								if(College_of_Business_and_Economics[j].toLowerCase() === Sub_Category.toLowerCase()){
-									nummer++;
-									console.log(`${ Sub_Category }/${ nummer } `);
-								}
-							} %>
-
-						<li>
-							<a href="<%= `/Ad-board/${ College_of_Business_and_Economics[j] }` %>" class="department-link">
-							<%= College_of_Business_and_Economics[j] %>
-							<span>
-								<%= `${ nummer } ` %>
-							</span>
-							</a>
-						</li>
-					<%	}  %>
-
-			<%}%>
-								
+						let { College_of_Business_and_Economics } = cat_camp_list[i];
+						categoryLister(College_of_Business_and_Economics);
+					
+					 for(catName in categoryLister(College_of_Business_and_Economics)){ %>
+						<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(College_of_Business_and_Economics)[catName] %></span></a></li>
+					<%}%>
+					
+				<%	}%>
+									
 							
 						</ul>
 					</li>
@@ -85,13 +72,16 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Education } = data; %>
-							<%	Education.map((education) => { %>
-									<li><a href="<%= `/Ad-board/${education}` %>" class="department-link"><%= education %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Education } = cat_camp_list[i];
+								categoryLister(Education);
+
+							 for(catName in categoryLister(Education)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Education)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	}%>
 						</ul>
 					</li>
 
@@ -101,13 +91,16 @@
 							<i class="faculty-arrow fa fa-caret-down " ></i>
 						</div>
 						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Engineering_and_Built_Environment } = data; %>
-							<%	Engineering_and_Built_Environment.map((eng) => { %>
-									<li><a href="<%= `/Ad-board/${eng}` %>" class="department-link"><%= eng %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Engineering_and_Built_Environment } = cat_camp_list[i];
+								categoryLister(Engineering_and_Built_Environment);
+
+							 for(catName in categoryLister(Engineering_and_Built_Environment)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Engineering_and_Built_Environment)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	}%>
 						</ul>
 					</li>
 
@@ -117,13 +110,16 @@
 							<i class="faculty-arrow fa fa-caret-down " ></i>
 						</div>
 						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Health_Sciences } = data; %>
-							<%	Health_Sciences.map((health) => { %>
-									<li><a href="<%= `/Ad-board/${health}` %>" class="department-link"><%= health %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Health_Sciences } = cat_camp_list[i];
+								categoryLister(Health_Sciences);
+
+							 for(catName in categoryLister(Health_Sciences)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Health_Sciences)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	}%>
 						</ul>
 					</li>
 
@@ -133,13 +129,16 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Humanities } = data; %>
-							<%	Humanities.map((humanities) => { %>
-									<li><a href="<%= `/Ad-board/${humanities}` %>" class="department-link"><%= humanities %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Humanities } = cat_camp_list[i];
+								categoryLister(Humanities);
+
+							 for(catName in categoryLister(Humanities)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Humanities)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	}%>
 						</ul>
 					</li>
 
@@ -149,13 +148,16 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Law } = data; %>
-							<%	Law.map((Law) => { %>
-									<li><a href="<%= `/Ad-board/${Law}` %>" class="department-link"><%= Law %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Law } = cat_camp_list[i];
+								categoryLister(Law);
+
+							 for(catName in categoryLister(Law)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Law)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	}%>
 						</ul>
 					</li>
 
@@ -165,13 +167,16 @@
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
-							<% cat_camp_list.map((data)=>{ %>
-							<%	let { Science } = data; %>
-							<%	Science.map((Science) => { %>
-									<li><a href="<%= `/Ad-board/${Science}` %>" class="department-link"><%= Science %><span>1</span></a></li>
-							<%	}); %>
-								
-							<%}) %>
+						<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { Science } = cat_camp_list[i];
+								categoryLister(Science);
+
+							 for(catName in categoryLister(Science)){ %>
+								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Science)[catName] %></span></a></li>
+							<%}%>
+							
+						<%	} %>
 						</ul>
 					</li>
 				</ul>
@@ -182,13 +187,16 @@
 				</div>
 
 				<ul class="campus-options" id="CampusList">
-					<% cat_camp_list.map((data)=>{ %>
-					<%	let { Campus } = data; %>
-					<%	Campus.map((Campus) => { %>
-							<li><a href="<%= `/Ad-board/${Campus}` %>" class="department-link"><%= Campus %><span>1</span></a></li>
-					<%	}); %>
+					<% 
+					  for(i = 0; i < cat_camp_list.length; i++){
+						let { Campus } = cat_camp_list[i];
+						categoryLister(Campus);
 
-					<%}) %>
+					 for(catName in categoryLister(Campus)){ %>
+						<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Campus)[catName] %></span></a></li>
+					<%}%>
+					
+				<%	} %>
 				</ul>
 			</div>
 		</div>
@@ -908,7 +916,7 @@
 				</div>
 				
 				<div class="foot-title">
-					<h1>&copy;2020 DESIGNED BY: <a href="http://juniormosemeng.000webhostapp.com/" target="_blank">MONOAMETSI</a></h1>
+					<h1>&copy;2020 DESIGNED BY: <a href="#" target="_blank">MONOAMETSI</a></h1>
 				</div>
 			</div>
 

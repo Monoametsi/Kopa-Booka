@@ -22,6 +22,24 @@ let displayAds = (req, res) => {
 
 	Advertisements.find().then((result) => {
 
+		let categoryLister = (College_of_Business_and_Economics) => {
+			let count = {};
+
+			for(j = 0; j < College_of_Business_and_Economics.length; j++){ 
+
+				for(x = 0; x < result.length; x++){ 
+					let { Sub_Category, Campus } = result[x];
+
+					if(College_of_Business_and_Economics[j].toLowerCase() === Sub_Category.toLowerCase() || College_of_Business_and_Economics[j].toLowerCase() === Campus.toLowerCase()){
+
+					 count[College_of_Business_and_Economics[j]] = (count[College_of_Business_and_Economics[j]] || 0) + 1;				
+					}
+				} 				
+			}
+
+			return count;
+		}
+
 		let numOfAdsDisplay = (data) => {
 			return data;
 		}
@@ -202,7 +220,8 @@ let displayAds = (req, res) => {
 
 		result.reverse();
 		Category_and_campus_col.find().then((cat_camp_list) =>{
-			res.status(200).render('BookAd', { 
+			res.status(200).render('BookAd', {
+			categoryLister,
 			cat_camp_list,
 			result, 
 			numOfCurrentAds, 
