@@ -558,6 +558,7 @@
 			<% let displayAds = (adData) => { %>
 
 			<%	let {
+				_id,
 				Name,
 				Mail,
 				Tel,
@@ -583,15 +584,17 @@
 
 			<div class="Sellers-item">
 				<div class="textBook-img">
-					<img src= "<%= imgStr %>" id="img" alt="Textbook">
-					<h1 class="Camera-cont">
-						<i class="fa fa-camera"></i>
-					<%= `+${UploadedImages.length}` %>
-					</h1>
+					<a href="#">
+						<img src= "<%= imgStr %>" id="img" alt="Textbook">
+						<h1 class="Camera-cont">
+							<i class="fa fa-camera"></i>
+						<%= `+${UploadedImages.length}` %>
+						</h1>
+					</a>
 				</div>
 
 				<div class="Ad-description">
-					<h1 class="AdDescription-title"><%= Text_Book_Title %></h1>
+					<a href="#"><h1 class="AdDescription-title"><%= Text_Book_Title %></h1></a>
 					<p class="AdDescription-body"><%= Description %></p>
 					<div class="timeAndLocation-tracker">	
 						 <h3 class="location">
@@ -730,13 +733,17 @@
 		%>
 
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/price-low-to-high") === -1 && req.url.search("/price-high-to-low") === -1  && req.url.search("/category/") !== -1){ %>
+
 		<%	
 			displayCategoryNexSecAds(sortLIstMethod, "sortLIstMethod", "sortLIstMethod");
 		%>
+
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/price-low-to-high") !== -1 && req.url.search("/category/") !== -1){%>
+
 		<%	
 			displayCategoryNexSecAds(sortPrices, showFirstSearchAds, lowToHighPrices);
 		%>
+
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/price-high-to-low") !== -1 && req.url.search("/category/") !== -1){%>
 
 		<%	
