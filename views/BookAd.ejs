@@ -29,16 +29,16 @@
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Art Design and Architecture</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
-						<ul class="department-list">		
+						<ul class="department-list">
 							<% 
 							  for(i = 0; i < cat_camp_list.length; i++){
 								let { Art_Design_and_Architecture } = cat_camp_list[i];
 								categoryLister(Art_Design_and_Architecture);
 
 							 for(catName in categoryLister(Art_Design_and_Architecture)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Art_Design_and_Architecture)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Art_Design_and_Architecture)[catName] %></span></a></li>
 							<%}%>
-							
+
 						<%	}%>
 							
 						</ul>
@@ -57,7 +57,7 @@
 						categoryLister(College_of_Business_and_Economics);
 					
 					 for(catName in categoryLister(College_of_Business_and_Economics)){ %>
-						<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(College_of_Business_and_Economics)[catName] %></span></a></li>
+						<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(College_of_Business_and_Economics)[catName] %></span></a></li>
 					<%}%>
 					
 				<%	}%>
@@ -78,7 +78,7 @@
 								categoryLister(Education);
 
 							 for(catName in categoryLister(Education)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Education)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Education)[catName] %></span></a></li>
 							<%}%>
 							
 						<%	}%>
@@ -97,7 +97,7 @@
 								categoryLister(Engineering_and_Built_Environment);
 
 							 for(catName in categoryLister(Engineering_and_Built_Environment)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Engineering_and_Built_Environment)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Engineering_and_Built_Environment)[catName] %></span></a></li>
 							<%}%>
 							
 						<%	}%>
@@ -116,7 +116,7 @@
 								categoryLister(Health_Sciences);
 
 							 for(catName in categoryLister(Health_Sciences)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Health_Sciences)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Health_Sciences)[catName] %></span></a></li>
 							<%}%>
 							
 						<%	}%>
@@ -135,7 +135,7 @@
 								categoryLister(Humanities);
 
 							 for(catName in categoryLister(Humanities)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Humanities)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Humanities)[catName] %></span></a></li>
 							<%}%>
 							
 						<%	}%>
@@ -154,7 +154,7 @@
 								categoryLister(Law);
 
 							 for(catName in categoryLister(Law)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Law)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Law)[catName] %></span></a></li>
 							<%}%>
 							
 						<%	}%>
@@ -173,7 +173,7 @@
 								categoryLister(Science);
 
 							 for(catName in categoryLister(Science)){ %>
-								<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Science)[catName] %></span></a></li>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Science)[catName] %></span></a></li>
 							<%}%>
 							
 						<%	} %>
@@ -193,7 +193,7 @@
 						categoryLister(Campus);
 
 					 for(catName in categoryLister(Campus)){ %>
-						<li><a href="<%= `/Ad-board/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Campus)[catName] %></span></a></li>
+						<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Campus)[catName] %></span></a></li>
 					<%}%>
 					
 				<%	} %>
@@ -204,15 +204,17 @@
 		
 
 
-	<% let sortListUrl = req.url === `/Ad-board/latest-Ads` || req.url === `/Ad-board/price-low-to-high` || req.url === `/Ad-board/price-high-to-low` %>
+	<% let sortListUrl = req.url === `/Ad-board/latest-Ads` || req.url === `/Ad-board/price-low-to-high` || req.url === `/Ad-board/price-high-to-low`%>
 
 	  <div class="advertisements">
 			<div class="Ad-title">
-		  <% if(Object.keys(req.params).length === 0 || searchQuery.toLowerCase().search(/page-\d/) !== -1 || sortListUrl) { %>
+		  <% if(Object.keys(req.params).length === 0 || searchQuery.toLowerCase().search(/page-\d/) !== -1 || sortListUrl ) { %>
 				<h1><b>All Ads</b> on Kopa-Booka</h1>
+		  <% } else if(req.url.search("/category/") !== -1){ %>
+				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
 		  <% } else { %>
 				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
-		  <% } %>
+		 <% } %>
 			</div>
 			<div class="search-engine">
 				<div class="searcher">
@@ -313,6 +315,130 @@
 					</div>
 				</div>
 			</div>
+			
+			
+		<% let displayNextSecAds = (sortLIstMethod) => { %>
+			
+		<%
+			for(let i = 0; i < result.length; i+= 20){
+				num++
+				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+					sortPrices(result, sortLIstMethod);
+					result.slice(i, i + 20).map(displayAds);
+				}
+			}
+		%>
+
+		<% } %>
+
+		<% let displaySearchedSecAds = (sortLIstMethod, arr, sortMethod) => { %>
+				
+		<% let numb = 0; %>
+
+		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
+
+		<%	let { Text_Book_Title } = result[i]
+
+			let textBookTileMatcher = (not) => {
+				not.Text_Book_Title;
+				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+			} %>
+
+			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
+			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
+			<%	numb++;
+				showFirstSearchAds.push(result[i]);	
+				isTrue = true;
+			%>
+
+				<%	} %>
+			<%	} else { %>
+				<% notFound = true %>
+				<div class="messageBox-cont">
+					<div class="message-box">
+						<div class="messageTitle-cont">
+							<i class="fa fa-search"></i>
+							<h1 class="messageTitle">Couldnt find anything</h1>
+						</div>
+
+						<div class="message-cont">
+							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
+						</div>
+					</div>
+				</div>
+				<% break; %>
+			<% } %>
+		<%	} %>
+		
+		<% 	if(isTrue === true){
+				sortLIstMethod(arr, sortMethod);
+				showFirstSearchAds.slice(0, 20).map(displayAds);
+			}
+		%>
+			
+		<% } %>
+		
+		
+		
+		
+		<% let displaySearchedNexSecAds = (sortLIstMethod, arr, sortMethod) => { %>
+			
+			
+		<% let numb = 0; %>
+		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
+
+		<%	let { Text_Book_Title } = result[i]
+
+			let textBookTileMatcher = (not) => {
+				not.Text_Book_Title;
+				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+			} %>
+
+			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
+			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
+			<%	numb++;
+				isTrue = true;
+				showFirstSearchAds.push(result[i]);
+				
+			%>
+			
+				<%	} %>
+			<%	} else { %>
+				<% notFound = true %>
+				<div class="messageBox-cont">
+					<div class="message-box">
+						<div class="messageTitle-cont">
+							<i class="fa fa-search"></i>
+							<h1 class="messageTitle">Couldnt find anything</h1>
+						</div>
+
+						<div class="message-cont">
+							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
+						</div>
+					</div>
+				</div>
+				<% break; %>
+			<% } %>
+		<%	} %>
+		
+		<% 	if(isTrue){
+				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
+					num++
+					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+						sortLIstMethod(arr, sortMethod);
+						showFirstSearchAds.slice(i, i + 20).map(displayAds);
+					}
+				}
+			}
+		%>
+			
+			
+		<% } %>
+		
+		
+		
+		
+		<% let sortLIstMethod = () => {} %>
 			
 			<% let num = 0; %>
 			<% var isTrue; %>
@@ -423,31 +549,23 @@
 		
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 && req.url.search("/Ad-board/price-high-to-low") !== -1){ %>
 		
-		<%
-			for(let i = 0; i < result.length; i+= 20){
-				num++
-				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
-					sortPrices(result, highToLowPrices);
-					result.slice(i, i + 20).map(displayAds);
-				}
-			}
+		<% 
+		
+			displayNextSecAds(highToLowPrices);
+			
 		%>
 
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 && req.url.search("/Ad-board/price-low-to-high") !== -1){ %>
 
-		<%
-			for(let i = 0; i < result.length; i+= 20){
-				num++
-				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
-					sortPrices(result, lowToHighPrices);
-					result.slice(i, i + 20).map(displayAds);
-				}
-			}
+		<% 
+		
+			displayNextSecAds(lowToHighPrices);
+			
 		%>
 
 		<%} else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 || req.url.search("/Ad-board/latest-Ads") !== -1) { %>
 
-		<%
+		<%	
 			for(let i = 0; i < result.length; i+= 20){
 				num++
 				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
@@ -456,29 +574,23 @@
 			}
 		%>
 
-		<%} else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined && req.url.search("/price-low-to-high") === -1 && req.url.search("/price-high-to-low") === -1){ %>
+		<% } else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined && req.url.search("/category/") !== -1) { %>
+		
 		<% let numb = 0; %>
 
 		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
 
-		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
-				Negotiation,
-				Description,
-				Campus,
-				UploadedImages
-			} = result[i]
+		<%	let {  Sub_Category, Campus } = result[i];
 
 			let textBookTileMatcher = (not) => {
-				not.Text_Book_Title;
-				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+				not.Sub_Category;
+				return not.Sub_Category.toLowerCase().search(searchQuery.toLowerCase()) !== -1 || not.Campus.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
 			} %>
 
 			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
-			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
+			<%	if(result[i].Sub_Category.toLowerCase().search(searchQuery.toLowerCase()) !== -1 || result[i].Campus.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
 			<%	numb++;
 				showFirstSearchAds.push(result[i]);
-				let img = UploadedImages[0]; 
-				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 	
 				isTrue = true;
 			%>
 
@@ -502,294 +614,47 @@
 		<%	} %>
 		
 		<% 	if(isTrue === true){
+				
 				showFirstSearchAds.slice(0, 20).map(displayAds);
 			}
+		%>
+		
+		<%} else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined && req.url.search("/price-low-to-high") === -1 && req.url.search("/price-high-to-low") === -1 && req.url.search("/category/") === -1){ %>
+
+		<% 
+			displaySearchedSecAds(sortLIstMethod, "sortLIstMethod", "sortLIstMethod"); 
 		%>
 
 		<% }else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined && req.url.search("/price-low-to-high") !== -1){ %>
-		
-		<% let numb = 0; %>
 
-		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
-
-		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
-				Negotiation,
-				Description,
-				Campus,
-				UploadedImages
-			} = result[i]
-
-			let textBookTileMatcher = (not) => {
-				not.Text_Book_Title;
-				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
-			} %>
-
-			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
-			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
-			<%	numb++;
-				showFirstSearchAds.push(result[i]);
-				let img = UploadedImages[0]; 
-				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 	
-				isTrue = true;
-			%>
-
-				<%	} %>
-			<%	} else { %>
-				<% notFound = true %>
-				<div class="messageBox-cont">
-					<div class="message-box">
-						<div class="messageTitle-cont">
-							<i class="fa fa-search"></i>
-							<h1 class="messageTitle">Couldnt find anything</h1>
-						</div>
-
-						<div class="message-cont">
-							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
-						</div>
-					</div>
-				</div>
-				<% break; %>
-			<% } %>
-		<%	} %>
-		
-		<% 	if(isTrue === true){
-				sortPrices(showFirstSearchAds, lowToHighPrices);
-				showFirstSearchAds.slice(0, 20).map(displayAds);
-			}
+		<% 
+			displaySearchedSecAds(sortPrices, showFirstSearchAds, lowToHighPrices); 
 		%>
-		
-		
+
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined && req.url.search("/price-high-to-low") !== -1){ %>
-		
-		
-		<% let numb = 0; %>
 
-		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
-
-		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
-				Negotiation,
-				Description,
-				Campus,
-				UploadedImages
-			} = result[i]
-
-			let textBookTileMatcher = (not) => {
-				not.Text_Book_Title;
-				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
-			} %>
-
-			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
-			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
-			<%	numb++;
-				showFirstSearchAds.push(result[i]);
-				let img = UploadedImages[0]; 
-				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 	
-				isTrue = true;
-			%>
-
-				<%	} %>
-			<%	} else { %>
-				<% notFound = true %>
-				<div class="messageBox-cont">
-					<div class="message-box">
-						<div class="messageTitle-cont">
-							<i class="fa fa-search"></i>
-							<h1 class="messageTitle">Couldnt find anything</h1>
-						</div>
-
-						<div class="message-cont">
-							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
-						</div>
-					</div>
-				</div>
-				<% break; %>
-			<% } %>
-		<%	} %>
-		
-		<% 	if(isTrue === true){
-				sortPrices(showFirstSearchAds, highToLowPrices);
-				showFirstSearchAds.slice(0, 20).map(displayAds);
-			}
+		<% 
+			displaySearchedSecAds(sortPrices, showFirstSearchAds, highToLowPrices); 
 		%>
-		
-		
+
 		<%}else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/price-low-to-high") === -1 && req.url.search("/price-high-to-low") === -1){ %>
 
-		<% let numb = 0; %>
-		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
-
-		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
-				Negotiation,
-				Description,
-				Campus,
-				UploadedImages
-			} = result[i]
-
-			let textBookTileMatcher = (not) => {
-				not.Text_Book_Title;
-				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
-			} %>
-
-			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
-			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
-			<%	numb++;
-				isTrue = true;
-				let img = UploadedImages[0]; 
-				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
-				showFirstSearchAds.push(result[i]);
-				
-			%>
-			
-				<%	} %>
-			<%	} else { %>
-				<% notFound = true %>
-				<div class="messageBox-cont">
-					<div class="message-box">
-						<div class="messageTitle-cont">
-							<i class="fa fa-search"></i>
-							<h1 class="messageTitle">Couldnt find anything</h1>
-						</div>
-
-						<div class="message-cont">
-							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
-						</div>
-					</div>
-				</div>
-				<% break; %>
-			<% } %>
-		<%	} %>
-		
-		<% 	if(isTrue){
-				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
-					num++
-					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
-						showFirstSearchAds.slice(i, i + 20).map(displayAds);
-					}
-				}
-			}else{
-			
-			}
+		<% 
+			displaySearchedNexSecAds(sortLIstMethod, "sortLIstMethod", "sortLIstMethod") 
 		%>
 		
 		<% } else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/price-low-to-high") !== -1){ %>
-		
-		<% let numb = 0; %>
-		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
-
-		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
-				Negotiation,
-				Description,
-				Campus,
-				UploadedImages
-			} = result[i]
-
-			let textBookTileMatcher = (not) => {
-				not.Text_Book_Title;
-				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
-			} %>
-
-			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
-			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
-			<%	numb++;
-				isTrue = true;
-				let img = UploadedImages[0]; 
-				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
-				showFirstSearchAds.push(result[i]);
-				
-			%>
-			
-				<%	} %>
-			<%	} else { %>
-				<% notFound = true %>
-				<div class="messageBox-cont">
-					<div class="message-box">
-						<div class="messageTitle-cont">
-							<i class="fa fa-search"></i>
-							<h1 class="messageTitle">Couldnt find anything</h1>
-						</div>
-
-						<div class="message-cont">
-							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
-						</div>
-					</div>
-				</div>
-				<% break; %>
-			<% } %>
-		<%	} %>
-		
-		<% 	if(isTrue){
-				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
-					num++
-					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
-						sortPrices(showFirstSearchAds,lowToHighPrices);
-						showFirstSearchAds.slice(i, i + 20).map(displayAds);
-					}
-				}
-			}else{
-			
-			}
+	
+		<% 
+			displaySearchedNexSecAds(sortPrices, showFirstSearchAds, lowToHighPrices) 
 		%>
 		
 		
 		<% } else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1 && req.url.search("/price-high-to-low") !== -1){ %>
-		
-		<% let numb = 0; %>
-		<%	for(let i = 0, len = result.length; i < len; i++){	 %>
 
-		<%	let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, Text_Book_Price,
-				Negotiation,
-				Description,
-				Campus,
-				UploadedImages
-			} = result[i]
-
-			let textBookTileMatcher = (not) => {
-				not.Text_Book_Title;
-				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
-			} %>
-
-			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
-			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
-			<%	numb++;
-				isTrue = true;
-				let img = UploadedImages[0]; 
-				let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
-				showFirstSearchAds.push(result[i]);
-				
-			%>
-			
-				<%	} %>
-			<%	} else { %>
-				<% notFound = true %>
-				<div class="messageBox-cont">
-					<div class="message-box">
-						<div class="messageTitle-cont">
-							<i class="fa fa-search"></i>
-							<h1 class="messageTitle">Couldnt find anything</h1>
-						</div>
-
-						<div class="message-cont">
-							<p class="message">Sorry we couldnt find any results for "<%= `${ searchQuery }` %>". Please check spelling, or try a different search.</p>
-						</div>
-					</div>
-				</div>
-				<% break; %>
-			<% } %>
-		<%	} %>
-		
-		<% 	if(isTrue){
-				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
-					num++
-					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
-						sortPrices(showFirstSearchAds, highToLowPrices);
-						showFirstSearchAds.slice(i, i + 20).map(displayAds);
-					}
-				}
-			}else{
-			
-			}
+		<% 
+			displaySearchedNexSecAds(sortPrices, showFirstSearchAds, highToLowPrices) 
 		%>
-		
 		
 		<% } %>
 

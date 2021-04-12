@@ -116,18 +116,40 @@ let displayAds = (req, res) => {
 
 			totalAmountOfAds = result.length;
 			notFound = false;
+		}else if (searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined && req.url.search("/category/") !== -1) {
+			for(let i = 0, len = result.length; i < len; i++){	 
+
+				let { Sub_Category, Campus } = result[i];
+
+				let textBookTileMatcher = (not) => {
+					not.Sub_Category;
+					return not.Sub_Category.toLowerCase().search(searchQuery.toLowerCase()) !== -1 || not.Campus.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+				}
+
+				 if(Boolean(result.find(textBookTileMatcher)) === true){ 
+					if(result[i].Sub_Category.toLowerCase().search(searchQuery.toLowerCase()) !== -1 || result[i].Campus.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ 
+						num++;
+						showSearchedAds.push(result[i]);
+						isTrue = true;
+						
+						totalAmountOfAds = showSearchedAds.length;
+						notFound = false;
+					} 
+					} else { 
+						notFound = true 
+						break; 
+				 } 
+			}
+
+			if(isTrue){
+				numOfCurrentAds = showSearchedAds.slice(0, 20).map(numOfAdsDisplay).length;
+			}
 		}else
 
 		if((searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery === undefined)){
 			for(let i = 0, len = result.length; i < len; i++){	 
 
-				let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, 
-						Text_Book_Price, 
-						Negotiation, 
-						Description, 
-						Campus, 
-						UploadedImages 
-					} = result[i];
+				let { Text_Book_Title } = result[i];
 
 				let textBookTileMatcher = (not) => {
 					not.Text_Book_Title;
@@ -157,13 +179,7 @@ let displayAds = (req, res) => {
 		if((searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1)){
 			for(let i = 0, len = result.length; i < len; i++){	 
 
-				let { Name, Mail, Tel, Whatsapp_tel, Main_Category, Sub_Category, Text_Book_Title, Edition_Number, Author_Name, Condition, 
-						Text_Book_Price, 
-						Negotiation, 
-						Description, 
-						Campus, 
-						UploadedImages 
-					} = result[i];
+				let { Text_Book_Title } = result[i];
 
 				let textBookTileMatcher = (not) => {
 					not.Text_Book_Title;
