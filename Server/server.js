@@ -84,11 +84,19 @@ app.get('/Ad-board/:searchQuery/price-low-to-high', checkCurrentUser, displayAds
 
 app.get('/Ad-board/:searchQuery/price-high-to-low', checkCurrentUser, displayAds);
 
+app.get('/Ad-board/category/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
+
 app.get('/Ad-board/:searchQuery/latest-Ads/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery/price-low-to-high/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery/price-high-to-low/:pageQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/category/:searchQuery/latest-Ads/:pageQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/category/:searchQuery/price-low-to-high/:pageQuery', checkCurrentUser, displayAds);
+
+app.get('/Ad-board/category/:searchQuery/price-high-to-low/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
 

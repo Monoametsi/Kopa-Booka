@@ -18,6 +18,7 @@ let displayAds = (req, res) => {
 	var notFound = false;
 	var numOfCurrentAds;
 	var totalAmountOfAds;
+	let removeSpace = req.url.replace(/%20/g, "-");
 	let { searchQuery, pageQuery } = req.params;
 
 	Advertisements.find().then((result) => {
@@ -68,7 +69,7 @@ let displayAds = (req, res) => {
 
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
 					startingNum += i;
 					numOfCurrentAds += i;
 				}
@@ -85,7 +86,7 @@ let displayAds = (req, res) => {
 
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
 					startingNum += i;
 					numOfCurrentAds += i;
 				}
@@ -104,7 +105,7 @@ let displayAds = (req, res) => {
 
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
 					startingNum += i;
 					numOfCurrentAds += i;
 				}
@@ -174,7 +175,49 @@ let displayAds = (req, res) => {
 			if(isTrue){
 				numOfCurrentAds = showSearchedAds.slice(0, 20).map(numOfAdsDisplay).length;
 			}
-		} else
+		} else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/category/") !== -1){
+			for(let i = 0, len = result.length; i < len; i++){	 
+
+				let { Sub_Category, Campus } = result[i];
+
+				let textBookTileMatcher = (not) => {
+					not.Sub_Category;
+					return not.Sub_Category.toLowerCase().search(searchQuery.toLowerCase()) !== -1 || not.Campus.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
+				}
+
+				 if(Boolean(result.find(textBookTileMatcher)) === true){ 
+					if(result[i].Sub_Category.toLowerCase().search(searchQuery.toLowerCase()) !== -1 || result[i].Campus.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ 
+						showSearchedAds.push(result[i]);
+						isTrue = true;
+						
+						notFound = false;
+					} 
+					} else { 
+						notFound = true 
+						break; 
+				 } 
+			}
+
+			if(isTrue){
+				
+				numOfCurrentAds = showSearchedAds.slice(0, 20).map(numOfAdsDisplay).length;
+
+				for(let i = 0; i < showSearchedAds.length; i+= 20){
+					num++
+					if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+						startingNum += i;
+						numOfCurrentAds += i;
+					}
+				}
+				
+				totalAmountOfAds = showSearchedAds.length;
+						
+				if(numOfCurrentAds > totalAmountOfAds){
+					numOfCurrentAds = totalAmountOfAds;
+				}
+			}
+			
+		}else
 		
 		if((searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1)){
 			for(let i = 0, len = result.length; i < len; i++){	 
@@ -204,7 +247,7 @@ let displayAds = (req, res) => {
 
 				for(let i = 0; i < showSearchedAds.length; i+= 20){
 					num++
-					if(parseInt(req.url.slice(req.url.search(/\d/))) === num){
+					if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
 						startingNum += i;
 						numOfCurrentAds += i;
 					}
