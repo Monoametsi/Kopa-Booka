@@ -55,6 +55,8 @@ app.use(express.static(path.join(dirname, 'Advertisment-Board')));
 app.use(express.static(path.join(dirname, 'register-outcome')));
 app.use(express.static(path.join(dirname, 'Contact')));
 app.use(express.static(path.join(dirname, 'Login')));
+app.use(express.static(path.join(dirname, 'Privacy-Policy')));
+app.use(express.static(path.join(dirname, 'Terms-of-Use')));
 app.use(express.static(path.join(dirname, 'imageUploads')));
 app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
@@ -163,6 +165,14 @@ app.get('/place-advert-success', checkCurrentUser, (req, res) => {
 
 app.get('/enable-js', checkCurrentUser, (req, res) => {
 	res.status(200).render('enable-js');
+});
+
+app.get('/privacy-policy', checkCurrentUser, (req, res) => {
+	res.status(200).render('privacy-policy');
+});
+
+app.get('/terms-of-use', checkCurrentUser, (req, res) => {
+	res.status(200).render('terms-of-use');
 });
 
 const PORT = process.env.PORT || 8500;
