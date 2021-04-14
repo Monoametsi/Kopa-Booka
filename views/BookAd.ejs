@@ -16,8 +16,7 @@
 <body>
 
 	<%- include("partials/header"); -%>
-	
-	<% let removeSpace = req.url.replace("%20", "-"); %>
+
   <section id="Search-results-cont">
 	  <div class="categories-cont closeList" id="categories-cont">
 			<div class="all-categories" id="all-categories">
@@ -324,7 +323,7 @@
 		<%
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+				if(parseInt(urlPageNum) === num){
 					sortPrices(result, sortLIstMethod);
 					result.slice(i, i + 20).map(displayAds);
 				}
@@ -477,7 +476,7 @@
 
 				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
 					num++
-					if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+					if(parseInt(urlPageNum) === num){
 						sortLIstMethod(arr, sortMethod);
 						showFirstSearchAds.slice(i, i + 20).map(displayAds);
 					}
@@ -537,7 +536,7 @@
 		<% 	if(isTrue){
 				for(let i = 0; i < showFirstSearchAds.length; i+= 20){
 					num++
-					if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+					if(parseInt(urlPageNum) === num){
 						sortLIstMethod(arr, sortMethod);
 						showFirstSearchAds.slice(i, i + 20).map(displayAds);
 					}
@@ -685,7 +684,7 @@
 		<%	
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+				if(parseInt(urlPageNum) === num){
 					result.slice(i, i + 20).map(displayAds);
 				}
 			}
@@ -777,11 +776,11 @@
 
 		<%
 		   let totalAds = totalAmountOfAds;
-		   let plusUrlNum = parseInt(removeSpace.slice(removeSpace.search(/\d/))) + 1;
-		   let minusUrlNum = parseInt(removeSpace.slice(removeSpace.search(/\d/))) - 1;
 		   let secNum = 2;
 		   let remainderAdsTotal = totalAds % 20;
 		   let pagininationTotal = totalAds / 20;
+		   let plusUrlNum = parseInt(urlPageNum) + 1;
+		   let minusUrlNum = parseInt(urlPageNum) - 1;
 		%>
 
 			<% if(totalAds < 20 || notFound === true){ %>
@@ -852,7 +851,7 @@
 							<% } %>
 			<%		} %>
 								<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${ secNum }` === req.url){ %>
-
+ 
 								<%	} else if(isNaN( plusUrlNum )){ %>
 
 									<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-2` %>"  class="pageNumber-link"><i class="fa fa-chevron-right"></i></a></li>

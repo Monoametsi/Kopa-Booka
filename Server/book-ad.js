@@ -18,10 +18,24 @@ let displayAds = (req, res) => {
 	var notFound = false;
 	var numOfCurrentAds;
 	var totalAmountOfAds;
-	let removeSpace = req.url.replace(/%20/g, "-");
 	let { searchQuery, pageQuery } = req.params;
 
 	Advertisements.find().then((result) => {
+		
+		let urlPageNum;
+	    let pageNumSearch = req.url.search(/\/page-\d/);
+
+		if(pageNumSearch === -1){
+			urlPageNum = NaN;
+		}else{
+
+			urlPageNum = req.url.slice(pageNumSearch);
+			
+			urlPageNum = urlPageNum.slice(urlPageNum.search(/\d/));
+		}
+		
+		
+		
 
 		let categoryLister = (College_of_Business_and_Economics) => {
 			let count = {};
@@ -69,7 +83,7 @@ let displayAds = (req, res) => {
 
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+				if(parseInt(urlPageNum) === num){
 					startingNum += i;
 					numOfCurrentAds += i;
 				}
@@ -86,7 +100,7 @@ let displayAds = (req, res) => {
 
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+				if(parseInt(urlPageNum) === num){
 					startingNum += i;
 					numOfCurrentAds += i;
 				}
@@ -105,7 +119,7 @@ let displayAds = (req, res) => {
 
 			for(let i = 0; i < result.length; i+= 20){
 				num++
-				if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+				if(parseInt(urlPageNum) === num){
 					startingNum += i;
 					numOfCurrentAds += i;
 				}
@@ -204,7 +218,7 @@ let displayAds = (req, res) => {
 
 				for(let i = 0; i < showSearchedAds.length; i+= 20){
 					num++
-					if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+					if(parseInt(urlPageNum) === num){
 						startingNum += i;
 						numOfCurrentAds += i;
 					}
@@ -247,7 +261,7 @@ let displayAds = (req, res) => {
 
 				for(let i = 0; i < showSearchedAds.length; i+= 20){
 					num++
-					if(parseInt(removeSpace.slice(removeSpace.search(/\d/))) === num){
+					if(parseInt(urlPageNum) === num){
 						startingNum += i;
 						numOfCurrentAds += i;
 					}
@@ -278,6 +292,7 @@ let displayAds = (req, res) => {
 		result.reverse();
 		Category_and_campus_col.find().then((cat_camp_list) =>{
 			res.status(200).render('BookAd', {
+			urlPageNum,
 			categoryLister,
 			cat_camp_list,
 			result, 
