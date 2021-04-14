@@ -3,11 +3,13 @@ let shut = document.getElementsByClassName("close");
 
 function showModal(){
 	modal.style.display = "flex";
+	document.body.style.overflow = 'hidden';
 }
 
 for(i = 0; i < shut.length; i++){
 	shut[i].onclick = function (){
-	modal.style.display = "none";
+		modal.style.display = "none";
+		document.body.style.overflow = 'auto';
 	}
 }
 

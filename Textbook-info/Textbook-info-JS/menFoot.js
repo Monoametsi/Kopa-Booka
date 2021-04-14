@@ -133,6 +133,7 @@ if(roundIcon !== null){
 window.onclick = (event) => {
 	if(event.target == modal){
 		modal.style.display = "none";
+		document.body.style.overflow = 'auto';
 	}
 	
 	

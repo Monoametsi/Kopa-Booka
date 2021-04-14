@@ -76,7 +76,7 @@
 				<a href="/register" class="regLogin-link"><i class="fa fa-pencil" id="active"></i><span class="active">Register</span></a>
 				<a href="/login" class="regLogin-link"><i class="fa fa-power-off"></i>Login</a>
 			</div>
-		<% } else if(req.url === "/login/") { %>
+		<% } else if(req.url.search("/login") !== -1) { %>
 			<div class="register-logIn">
 				<a href="/register" class="regLogin-link"><i class="fa fa-pencil"></i>Register</a>
 				<a href="/login" class="regLogin-link"><i class="fa fa-power-off" id="active"></i><span class="active">Login</span></a>

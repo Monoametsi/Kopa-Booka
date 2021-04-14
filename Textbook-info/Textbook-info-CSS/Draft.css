@@ -105,8 +105,10 @@ img{
 }
 
 .mySlides > img{
-	width: 100%;
-	border-radius: 8px
+	width: 480px;
+	max-width: 100%;
+	height: 480px;
+	border-radius: 5px;
 }
 
 .pic{
@@ -190,11 +192,7 @@ img{
 }
 
 .modal-content{
-	width: 80%;
-	max-width: 400px;
-	height: 100%;
 	padding: 0;
-	border-radius: 5px;
 	user-select: none;
 }
 
@@ -234,7 +232,7 @@ img{
 	text-decoration: none;
 }
 
-.x{
+.mobileSell-info-cont{
 	display: none;
 }
 

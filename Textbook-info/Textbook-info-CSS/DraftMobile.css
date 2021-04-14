@@ -32,7 +32,7 @@
 		width: 60%;
 	}
 	
-	.x{
+	.mobileSell-info-cont{
 		display: flex;
 		justify-content: center;
 	}
@@ -87,7 +87,7 @@
 		margin-right: 0;
 	}
 
-	.x, .mobileSell-info{
+	.mobileSell-info-cont, .mobileSell-info{
 		display: none;
 	}
 	
@@ -132,6 +132,8 @@
 }
 
 @media screen and (max-width: 790px){
+	
+	
 
 	.foot-title{
 		white-space: nowrap;
@@ -170,7 +172,9 @@
 }
 
 @media screen and (max-width: 650px){
-	
+	.mySlides > img{
+		width: 390px;
+	}
 
 }
 
