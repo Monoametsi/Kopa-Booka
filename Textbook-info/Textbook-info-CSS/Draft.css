@@ -116,18 +116,19 @@ img{
 
 .pic{
 	margin: 5px;
-	box-shadow: 0 0 5px #000;
-	border-radius: 5px;
 }
 
 .pic > img{
 	height: 5rem;
 	width: 100%;
+	border-radius: 5px;
+	box-shadow: 0 0 5px #000;
 }
 
 .demo{
 	transition: 0.5s;
 	opacity: 0.6;
+	
 }
 
 .ad-details{
