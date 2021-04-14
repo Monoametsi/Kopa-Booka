@@ -130,8 +130,6 @@ if(roundIcon !== null){
 	}
 }
 
-
-
 window.onclick = (event) => {
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
 	let displayValue = window.getComputedStyle(loginMenu, null).display;
