@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const viewAdDetails = require('./view-ad');
 const login = require('./login');
 const placeAd = require('./place-advert');
 const adDisplay = require('./book-ad');
@@ -34,6 +35,7 @@ const { requireAuth } = authMiddleWare;
 const { token_verifier } = tokenVerifier;
 const { Register } = registration;
 const { displayAds } = adDisplay;
+const { viewAd } = viewAdDetails;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -45,6 +47,7 @@ app.use(express.static(path.join(dirname, 'register-outcome')));
 app.use(express.static(path.join(dirname, 'Dashboard')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'Profile')));
 app.use(express.static(path.join(dirname, 'Post-Ad-page')));
+app.use(express.static(path.join(dirname, 'Textbook-info')));
 app.use(express.static(path.join(dirname, 'About-Us')));
 app.use(express.static(path.join(dirname, 'Advertisment-Board')));
 app.use(express.static(path.join(dirname, 'register-outcome')));
@@ -99,6 +102,8 @@ app.get('/Ad-board/category/:searchQuery/price-low-to-high/:pageQuery', checkCur
 app.get('/Ad-board/category/:searchQuery/price-high-to-low/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
+
+app.get('/view-ad/:id', checkCurrentUser, viewAd);
 
 app.get('/About-Us', checkCurrentUser, (req, res) => {
 	res.status(200).render('About-Us');

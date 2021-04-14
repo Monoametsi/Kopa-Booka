@@ -176,7 +176,7 @@ let displayAds = (req, res) => {
 				numOfCurrentAds = showSearchedAds.slice(0, 20).map(numOfAdsDisplay).length;
 			}
 		} else if(searchQuery.toLowerCase().search(/page-\d/) === -1 && pageQuery.toLowerCase().search(/page-\d/) !== -1  && req.url.search("/category/") !== -1){
-			for(let i = 0, len = result.length; i < len; i++){	 
+			for(let i = 0, len = result.length; i < len; i++){
 
 				let { Sub_Category, Campus } = result[i];
 
@@ -261,9 +261,7 @@ let displayAds = (req, res) => {
 			}
 		}
 
-		let stringCapitalizer = (UploadedImages, Campus) => {
-			let img = UploadedImages[0]; 
-			let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+		let stringCapitalizer = (Campus) => {
 
 			let arrStr = Campus.split(" "); 
 			let campusArr = []; 

@@ -12,154 +12,46 @@ a{
 	text-decoration: none;
 }
 
-.active{
-	color:#0acdff;
-}
-
-#active{
-	color: #0acdff;
-}
-
-.menu{
-	display: flex;
-	justify-content: space-between;
-	background-color: #fff;
-	box-shadow: 0 0 25px rgba(0,0,0,0.3);
-	font-family: 'Roboto', sans-serif;
-	position: fixed;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	z-index: 50;
-	white-space: nowrap;
-}
-
-.logo{
-	padding: 1rem;
-}
-
-.logo > .fa-bars{
-	display: none;
-	color: #000;
-	padding-right: 2rem;
-}
-
-.logo i, .nav i, .mobileLogo i{
-	font-size: 1.8rem;
-	color: orange;
-	transition: 0.2s;
-	cursor: pointer;
-}
-
-.nav i{
-	padding-right: 0.5rem;
-}
-
-.log-name{
-	font-family: montserrat, sans-serif;
-	transition: 0.2s;
-	font-size: 2rem;
-	font-weight: 600;
-	padding: 9px 5px;
-}
-
-.log-name, .link, .share a{
-	text-decoration: none;
-	color: #000;
-}
-
-.nav{
-	list-style-type: none;
-	align-self: center;
-}
-
-.nav li{
-	display: inline-block;
-	cursor: pointer;
-	transition: 0.2s;
-	font-size: 1.4em;
-	padding: 11.5px 15px;
-}
-
-.link{
-	transition: 0.2s;
-}
-
-.link:hover i{
-	color:#0acdff;
-}
-
-.log-name:hover .fa-book{
-	color: #0acdff;
-}
-
-.register-logIn{
-	align-self: center;
-	padding-right: 1rem;
-}
-
-.register-logIn{
-	align-self: center;
-	padding-right: 1rem;
-}
-
-.regLogin-link > i, .register-logIn > .regLogin-link:first-child{
-	padding-right: 10px;
-}
-
-.regLogin-link > i{
-	color: orange;
-	font-size: 1.5rem;
-	transition: 0.2s;
-	text-align: center;
-}
-
-.regLogin-link{
-	font-size: 1.4em;
-	transition: 0.2s;
-	color: #000;
-}
-
-.link:hover, .log-name:hover, .fa-bars:hover, .regLogin-link:hover, .regLogin-link:hover i{
-	color: #0acdff;
-}
-
 #adv{
 	margin-bottom: 7rem;
 }
 
 .sec{
 	display: flex;
+	justify-content: space-between;
 	margin-top: 5rem;
 }
 
 .slideCont{
-	display: flex;
-	justify-content: space-around;
+	margin: 0 2rem;
+	margin-top: 2rem;
+	width: 40%;
 }
 
 .slide-container{
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	width: 40%;
-	margin-top: 2rem;
+	background-color: #eee;
+	border-radius: 5px;
 }
 
 .slides{
 	display: none;
+	align-self: center;
 }
 
 img{
 	vertical-align: middle;
 	cursor: pointer;
 	border-radius: 5px 5px 0 0;
-	width: 100%;
+	width: 300px;
 }
 
 .slides > img{
+	padding: 10px 0;
 	height: 25rem;
+	border-radius: 35px;
 }
 
 .cursor{
@@ -169,7 +61,7 @@ img{
 .prev, .next, .pre, .nex{
 	position: absolute;
 	font-size: 3rem;
-	color: #eee;
+	color: #fff;
 	font-weight: bold;
 	padding: 2px 16px ;
 	border-radius: 100%;
@@ -178,7 +70,8 @@ img{
 }
 
 .prev, .next{
-	top: 20%;
+	top: 23%;
+	color: rgba(0,0,0,0.6);
 }
 
 .pre, .nex{
@@ -200,24 +93,9 @@ img{
 	color: #000
 }
 
-.caption-container{
-	background-color: #222;
-	color: #fff;
-	padding: 12px 16px ;
-	font-size: 1.2rem;
-	text-align: center;
-}
-
-.cap-cont{
-	color: #fff;
-	padding: 8px 16px ;
-	font-size: 1.2rem;
-	text-align: center;
-}
-
 .row{
 	overflow: hidden;
-	background-color: #eee;
+	background-color: #ddd;
 	padding: 8px;
 }
 
@@ -238,42 +116,18 @@ img{
 }
 
 .pic > img{
+	height: 5rem;
 	width: 100%;
-}
-
-.price:before, .price1:before{
-	content: "R";
-	padding-right: 2px;
-}
-
-.price1:before{
-	padding-right: 2.8px;
-}
-
-.price{
-	position: absolute;
-	top: 0;
-	padding: 8px 12px;
-	font-size: 1.2rem;
-	color: #fff;
-	background-color: #000;
-	font-weight: 650;
-	border-radius: 5px 0 5px 0;
-}
-
-.price1{
-	position: absolute;
-	top: 12px;
-	left: 48%;
-	text-align: center;
-	font-size: 1.5rem;
-	color: #fff;
-	font-weight: 650;
 }
 
 .demo{
 	transition: 0.5s;
 	opacity: 0.6;
+}
+
+.ad-details{
+	padding: 9px;
+	margin-top: 2rem;
 }
 
 .ad-title, .ad-amount h3{
@@ -311,11 +165,8 @@ img{
 	color: #1E90FF;
 }
 
-.ad-details{
-	margin-top: 2rem;
-}
 
-.ad-descript{
+.ad-descript p{
 	line-height: 1.9rem;
 }
 
@@ -327,7 +178,6 @@ img{
 	display: none;
 	justify-content: center;
 	align-items: center;
-	cursor: pointer;
 	position: fixed;
 	z-index: 50;
 	padding-top: 4rem;
@@ -348,19 +198,7 @@ img{
 	user-select: none;
 }
 
-#cap{
-	margin: auto;
-	display: block;
-	width: 80%;
-	max-width: 400px;
-	color: #fff;
-	font-size: 1.2rem; 
-	text-align: center;
-	padding: 8px 0;
-	user-select: none;
-}
-
-.modal-content, #cap{
+.modal-content{
 	-webkit-animation-name: zoom;
   -webkit-animation-duration: 0.6s;
 	animation-name: zoom;
@@ -396,13 +234,30 @@ img{
 	text-decoration: none;
 }
 
+.x{
+	display: none;
+}
+
 .sell-info{
 	display: flex;
 	flex-direction: column;
-	width: 55%;
+	width: 45%;
+	margin-right: 2rem;
 	align-self: flex-start;
 	margin-top: 2rem;
-	border: 1.45px solid #eee;
+	border: 1.5px solid #ddd;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.mobileSell-info{
+	display: none;
+	flex-direction: column;
+	width: 45%;
+	margin-right: 2rem;
+	align-self: flex-start;
+	margin-top: 2rem;
+	border: 1.5px solid #ddd;
 	border-radius: 5px;
 	background-color: #fff;
 }
@@ -415,11 +270,15 @@ img{
 }
 
 .ad-info:not(:last-child){
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #ddd;
 }
 
 .left, .right{
 	padding: 1rem 0.8rem 1rem 0.8rem;
+}
+
+.right{
+	line-height: 1.5rem;
 }
 
 .form-content{
@@ -427,7 +286,7 @@ img{
 	display: flex;
 	border-radius: 0 0 0 5px;
 	flex-direction: column;
-	width: 90%;
+	width: 35%;
 	height: 80%;
 	background-color: #fff;
 	margin-right: 0;
@@ -574,7 +433,7 @@ label{
 textarea{
 	font-size: 1.1rem;
 	font-family: Arial, Helvetica, sans-serif;
-	line-height: 1.5rem;
+	line-height: 1.9rem;
 	padding: 1rem;
 	height: 10rem;
 	resize: vertical;
@@ -630,6 +489,7 @@ input[type=submit]:hover{
 	text-decoration: none;
 	color: #0acdff;
 	transition: 0.3s;
+	line-height: 1.9rem;
 }
 
 .termPol a:hover{

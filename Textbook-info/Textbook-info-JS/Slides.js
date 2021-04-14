@@ -3,7 +3,6 @@ showSlides(slideIndex);
 
 function plusSlides(n){
 	showSlides(slideIndex += n);
-	console.log(n);
 }
 
 function currentSlide(n){
@@ -14,7 +13,6 @@ function showSlides(n){
 	var i;
 	var x = document.getElementsByClassName("slides");
 	var dots = document.getElementsByClassName("demo"); 
-	var caption = document.getElementById("caption");
 	
 	if(n > x.length){
 		slideIndex = 1;
@@ -34,5 +32,4 @@ function showSlides(n){
 	
 	x[slideIndex - 1].style.display = "block";
 	dots[slideIndex - 1].className += " active";
-	caption.innerHTML = dots[slideIndex - 1].alt;	
 }

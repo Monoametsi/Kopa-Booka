@@ -11,12 +11,6 @@ for(i = 0; i < shut.length; i++){
 	}
 }
 
-window.onclick = function (event){
-	if(event.target == modal){
-		modal.style.display = "none";
-	}
-}
-
 let slidePos = 1;
 showSlider(slidePos);
 
@@ -30,8 +24,6 @@ function presentSlide(n){
 
 function showSlider(n){
 	let i;
-	let cap = document.getElementById("cap");
-	let bookName = document.getElementsByClassName("name");
 	let slide = document.getElementsByClassName("mySlides");
 	
 	if(n > slide.length){
@@ -47,5 +39,4 @@ function showSlider(n){
 	}
 	
 	slide[slidePos - 1].style.display = "block";
-	cap.innerHTML = bookName[slidePos - 1].alt;
 }

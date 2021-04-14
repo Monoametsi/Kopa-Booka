@@ -1,219 +1,112 @@
-@media screen and (max-width: 1280px){
-	.nav li{
-		display: inline-block;
-		cursor: pointer;
-		transition: 0.2s;
-		font-size: 1.4rem;
-		padding: 8px 10px;
-	}
-
-	.logo, .register-logIn{
-		padding: 0.5rem;
-	}
-}
-
-@media screen and (max-width: 1220px){
-	.nav li{
-		display: inline-block;
-		cursor: pointer;
-		transition: 0.2s;
-		font-size: 1.4em;
-		padding: 3px 5px;
-		
-	}
-}
-
 @media screen and (max-width: 1180px){
-	.menu{
-		justify-content: stretch;
-		flex-direction: column;
-	}
-
-	.logo{
-		white-space: nowrap;
-	}
-
-	.logo > .fa-bars{
-		display: inline-block;
-		padding-left: 1rem;
-	}
-
-	.nav{
-		list-style-type: none;
-		background-color: #fff;
-		max-height: 0;
-		overflow: hidden;
-		align-self: stretch;
-	}
 	
-	.register-logIn{
-		max-height: 0;
-		overflow: hidden;
-		align-self: stretch;
-		padding: 0;
+	.pic > img{
+		height: 4rem;
 	}
 
-	.nav li,.regLogin-link{
-		display: block;
+}
+
+@media screen and (max-width: 1150px){
+	.form-content{
+		width: 45%;
+		height: 80%;
 	}
 
-	.nav li, .regLogin-link{
-		cursor: pointer;
-		transition: 0.2s;
-		font-size: 1.4em;
-		padding: 8px 1rem;
-		border-bottom: 1px solid #000;
-	}
-
-	.nav li:hover .link, .regLogin-link:hover{
-		color: #fff;
-	}
-	
-	.nav li:hover .active{
-		color: #fff;
-	}
-	
-	.regLogin-link:last-child{
-		border-bottom: 0 solid #000;
-	}
-	
-	.nav li:hover #active{
-		color: #fff;
-	}
-
-	.nav li:hover i, .regLogin-link:hover i{
-		color: #fff;
-	}
-
-	.nav li:hover, .regLogin-link:hover{
-		background-color: #0acdff;
-	}
-
-	.link{
-		transition: 0.2s;
-		display: block;
-	}
 }
 
 @media screen and (max-width: 1125px){
-	.slide-container{
-		width: 42%;
-		margin-left: 0;
-	}
-	
-	.slideCont{
-		
-	}
-	
-	.sell-info{
-		
-	}
-	
-	.form-content{
-		flex-basis: 120%;	
-	}
-	
-	.ad-head{
-		white-space: normal;
-		line-height: 2.1rem;
-	}
-	
-	.ad-amount{
-		white-space: normal;
-		line-height: 1.8rem;
-	}
-	
+
 	.foot-content{
 		margin-right: 0;
 	}
+
 }
 
-@media screen and (max-width: 1100px){	
-	.prev, .next{
-		top: 18%;
-	}
-	
+@media screen and (max-width: 1115px){	
 	.sell-info{
-		
+		display: none;
 	}
 	
-	.form-content{
-		margin-top: -1rem;
-		flex-basis: 130%;
+	.mobileSell-info{
+		display: flex;
+		width: 60%;
+	}
+	
+	.x{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.slideCont{
+		width: 60%;
+		margin: 0 1rem;
+		margin-top: 2rem;
+	}
+	
+	.pic > img{
+		height: 8rem;
 	}
 }
 
 @media screen and (max-width: 1070px){
-	.prev, .next{
-		top: 15%;
-	}
 	
-	.slides > img{
-		height: 20rem;
-	}
-	
-	.form-content{
-		margin-top: -1rem;
-		flex-basis: 160%;
-	}
+
 }
 
 @media screen and (max-width: 980px){
-	.slideCont{
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		margin-right: 8px;
-	}
-
-	.slide-container{
-		width: 95%;
-		margin-top: 0;
-		margin-left: 0;
-	}
 	
-	.slides > img{
-		height: 35rem;
-	}
-	
-	.form-content{
-		margin-top: -1rem;
-		flex-basis: 80%;
-	}
-	
-	.fa-envelope{
-		width: 11.2%;
-	}
-	
-	.sell-info{
-		width: 95%;
-		align-self: center;
-	}
-	
-	.prev, .next{
-		top: 25%;
-	}
 }
 
 @media screen and (max-width: 890px){
-
-	.slideCont{
+	
+	.sec{
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width: 100%;
-		margin-right: 8px;
+	}
+	
+	.ad-head, .ad-amount, .ad-descript p{
+		text-align: center;
+	}
+	
+	.ad-amount{
+		font-size: 1.4rem;
+	}
+	
+	.slideCont{
+		width: 90%;
+		margin: 0 1rem;
+		margin-top: 2rem;
+	}
+	
+	.sell-info{
+		display: flex;
+		width: 90%;
+		box-shadow: 0 0 5px rgba(0,0,0, 0.4);
+		align-self: center;
+		margin-right: 0;
 	}
 
-	.slide-container{
-		width: 95%;
+	.x, .mobileSell-info{
+		display: none;
 	}
 	
-	.fa-envelope{
-		width: 12%;
+	.form-content{
+		border-radius: 5px;
+		box-shadow: 0 0 5px rgba(0,0,0, 0.4);
+		width: 90%;
+		margin: 2rem;
 	}
 	
+	.ikon{
+		width: 8%;
+		padding: 8px;
+	}
+
+	.inputField-styling{
+		padding: 8px;
+	}
+
 	.foot-web{
 		display: none;
 		flex-direction: row;
@@ -235,48 +128,11 @@
 	.foot-title{
 		margin-left: 0;
 	}
+
 }
 
 @media screen and (max-width: 790px){
-	
-	.sec{
-		flex-direction: column;
-	}
-	
-	.slideCont{
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		margin-right: 0;
-	}
-	
-	.slide-container{
-		width: 80%;
-		margin-top: 1rem;
-	}
-	
-	.form-content{
-		margin-top: 2.5rem;
-		border-radius: 5px;
-		align-self: center;
-		flex-basis: 100%;
-		box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	}
-	
-	.sell-info{
-		width: 90%;
-		box-shadow: 0 0 10px rgba(0,0,0,0.3);
-	}
-	
-	form{
-		padding: 1.5rem;
-	}
-	
-	.ikon{
-		width: 6%;
-	}
-	
+
 	.foot-title{
 		white-space: nowrap;
 	}
@@ -315,33 +171,12 @@
 
 @media screen and (max-width: 650px){
 	
-	.slide-container{
-		width: 80%;
-		margin-top: 1rem;
-	}
-	
-	.slides > img{
-		height: 30rem;
-	}
-	
-	.modal-content{
-		width: 70%;
-	}
-	
-	.ikon{
-		width: 8%;
-	}
+
 }
 
 @media screen and (max-width: 580px){
-	
-	.sec{
-		margin-left: 0;
-		margin-right: 0;
-	}
-	
-	.slide-container{
-		width: 90%;
+	.pic > img{
+		height: 6rem;
 	}
 	
 	.ikon{
@@ -351,15 +186,5 @@
 
 @media screen and (max-width: 480px){
 	
-	.prev, .next{
-		top: 20%;
-	}
 	
-	.slide-container{
-		width: 90%;
-	}
-	
-	.ikon{
-		width: 10%;
-	}
 }

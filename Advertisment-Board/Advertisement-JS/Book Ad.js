@@ -49,7 +49,6 @@ scrollTop.onclick = function(){
 	function scrollTopper(){
 		if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
 				window.scrollBy(0, pageLengthCounter--);
-					console.log(pageLengthCounter);
 		}else{
 			clearInterval(scrollTopperInterval);
 		}
@@ -88,10 +87,8 @@ let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
 	let divisionList = list.parentElement.nextElementSibling;
-	console.log(divisionList);
 	let divisionList2 = divisionList.nextElementSibling;
 	let divisionList3 = divisionList2.children[1].children[1];
-	console.log(divisionList3);
 	
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
@@ -142,14 +139,14 @@ let mobileCardbtn = document.getElementsByClassName('MobileContact-Btn');
 
 for (i = 0; i < modBtn.length; i++) {
     modBtn[i].onclick = function() {
-		let normalSizeAdHeader = this.parentElement.parentElement.parentElement.children[1].children[0].innerHTML;
+		let normalSizeAdHeader = this.parentElement.parentElement.parentElement.children[1].children[0].children[0].innerHTML;
 		modalOpener(normalSizeAdHeader);
     }
 }
 
 for (i = 0; i < mobileCardbtn.length; i++) {
 	mobileCardbtn[i].onclick = function(){
-		let modalCardHeader = this.parentElement.parentElement.children[0].children[0].innerHTML;
+		let modalCardHeader = this.parentElement.parentElement.children[0].children[0].children[0].innerHTML;
 		modalOpener(modalCardHeader);
 	}
 }

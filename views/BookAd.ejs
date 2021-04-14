@@ -550,27 +550,22 @@
 		
 		
 		
-		
+
 		<% let sortLIstMethod = () => {} %>
-			
+
 			<% let num = 0; %>
 			<% var isTrue; %>
 			<% let displayAds = (adData) => { %>
 
 			<%	let {
 				_id,
-				Name,
 				Mail,
 				Tel,
 				Whatsapp_tel,
 				Main_Category,
 				Sub_Category,
 				Text_Book_Title,
-				Edition_Number,
-				Author_Name,
-				Condition,
 				Text_Book_Price,
-				Negotiation,
 				Description,
 				Campus,
 				UploadedImages
@@ -584,7 +579,7 @@
 
 			<div class="Sellers-item">
 				<div class="textBook-img">
-					<a href="#">
+					<a href="<%= `/view-ad/${ _id }` %>">
 						<img src= "<%= imgStr %>" id="img" alt="Textbook">
 						<h1 class="Camera-cont">
 							<i class="fa fa-camera"></i>
@@ -594,12 +589,14 @@
 				</div>
 
 				<div class="Ad-description">
-					<a href="#"><h1 class="AdDescription-title"><%= Text_Book_Title %></h1></a>
+					<a href="<%= `/view-ad/${ _id }` %>">
+						<h1 class="AdDescription-title"><%= Text_Book_Title %></h1>
+					</a>
 					<p class="AdDescription-body"><%= Description %></p>
 					<div class="timeAndLocation-tracker">	
 						 <h3 class="location">
 						   <i class="fa fa-map-marker"></i>
-						<%= stringCapitalizer(UploadedImages, Campus) %>
+						<%= stringCapitalizer(Campus) %>
 						</h3> 
 						<h3 class="time">
 						   <i class="fa fa-clock"></i>
@@ -623,20 +620,24 @@
 			<div class="MobileSellers-Cont">
 				<div class="MobileSellers-Card">
 					<div class="MobileCard-Header">
-						<h1 class="MobileCard-Title"><%= Text_Book_Title %></h1>
-						<h3 class="MobileCard-Price"><%= Text_Book_Price %></h3>
+						<a href="<%= `/view-ad/${ _id }` %>">
+							<h1 class="MobileCard-Title"><%= Text_Book_Title %></h1>
+						</a>
+							<h3 class="MobileCard-Price"><%= Text_Book_Price %></h3>
 					</div>
 					<div class="MobileTextbook-Img">
+					<a href="<%= `/view-ad/${ _id }` %>">
 						<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
 						<h1 class="MobileCamera-Cont">
 							<i class="fa fa-camera"></i>
 							<%= "+" + UploadedImages.length %>
 						</h1>
+					</a>
 					</div>
 					<div class="MobileLocation-Cont">
 						<h3 class="Mobile-location">
 						   <i class="fa fa-map-marker"></i>
-							<%= stringCapitalizer(UploadedImages, Campus) %>
+							<%= stringCapitalizer(Campus) %>
 						</h3> 
 					</div>
 					<div class="MobileContact-Cont">
