@@ -63,7 +63,7 @@ a{
 	box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.2), 1px 1px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
-.notifications-title,.message-title,.ads-title, .profile-title{
+.notifications-title, .message-title, .collection-title, .profile-title{
 	font-size: 1.2rem;
 	font-family: montserrat, sans-serif;
 	padding: 2rem;

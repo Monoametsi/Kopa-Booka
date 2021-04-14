@@ -196,11 +196,13 @@ section{
 	font-family: montserrat, sans-serif;
 	font-size: 1.6rem;
 	text-shadow: 0 0 2px rgba(0,0,0,0.6);
+	margin: 0 1rem;
 	margin-top: 4rem;
 }
 
 .Ad-title h1{
 	font-weight: 300;
+	line-height: 2.9rem;
 }
 /*Ad Page title -- end*/
 

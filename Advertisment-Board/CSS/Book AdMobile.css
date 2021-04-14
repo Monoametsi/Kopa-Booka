@@ -7,7 +7,8 @@
 
 }
 
-@media screen and (max-width: 1195px){	
+@media screen and (max-width: 1195px){
+
 	.advertisements{
 		margin-left: -3.8rem;
 	}
@@ -32,6 +33,7 @@
 	.foot-content{
 		margin-right: 0;
 	}
+
 }
 
 @media screen and (max-width: 1125px){
@@ -146,10 +148,6 @@
 	.searcher{
 		width: 75%;
 	}
-
-	.Ad-title{
-		padding: 0 1rem;
-	}
 }
 
 @media screen and (max-width: 890px){
@@ -157,9 +155,9 @@
 	.searcher{
 		width: 80%;
 	}
-
+	
 	.Ad-title{
-		font-size: 2rem;
+		padding-top: 3rem;
 	}
 
 	.advertisements{
@@ -225,6 +223,10 @@
 }
 
 @media screen and (max-width: 750px){
+	.Ad-title{
+		font-size: 1.3rem;
+	}
+	
 	#Search-results-cont{
 		display: flex;
 		flex-direction: column;
