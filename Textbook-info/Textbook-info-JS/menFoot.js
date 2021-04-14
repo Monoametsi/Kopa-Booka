@@ -131,6 +131,11 @@ if(roundIcon !== null){
 }
 
 window.onclick = (event) => {
+	if(event.target == modal){
+		modal.style.display = "none";
+	}
+	
+	
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
 	let displayValue = window.getComputedStyle(loginMenu, null).display;
 	if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
@@ -139,9 +144,5 @@ window.onclick = (event) => {
 		dashboardMenu.style.transition = '.3s';
 		naver.style.maxHeight = null;
 		naver.style.transition = '.3s';
-	}
-	
-	if(event.target == modal){
-		modal.style.display = "none";
 	}
 }
