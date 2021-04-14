@@ -108,6 +108,7 @@ a{
 
 .categorieyBox-cont{
 	display: flex;
+	height: auto;
 	margin-bottom: 1.8rem;
 }
 
@@ -154,7 +155,7 @@ a{
 	margin: 0;
 }
 
-.categorieyBox-list > .categorieyBox-link:last-child{
+.categorieyBox-list > a:last-child > li{
 	border-bottom: 0 solid #ddd;
 }
 
@@ -195,6 +196,7 @@ a{
 
 .categorieyBox-price{
 	font-weight: 300;
+	color: #000;
 }
 
 .categorieyBox-price:before{
@@ -202,6 +204,10 @@ a{
 }
 
 .categorieyBox-title{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	max-width: 14rem;
+	overflow: hidden;
 	color: #0acdff;
 	cursor: pointer;
 	transition: 0.3s;

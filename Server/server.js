@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
+const homePage = require('./home-page');
 const viewAdDetails = require('./view-ad');
 const login = require('./login');
 const placeAd = require('./place-advert');
@@ -36,6 +37,7 @@ const { token_verifier } = tokenVerifier;
 const { Register } = registration;
 const { displayAds } = adDisplay;
 const { viewAd } = viewAdDetails;
+const { homePageAds } = homePage;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -59,9 +61,7 @@ dotenv.config({path: path.join(__dirname, '.env')});
 app.use(express.static(dirname));
 app.set('view engine', 'ejs');
 
-app.get('/', checkCurrentUser, (req, res) => {
-	res.status(200).render('index');
-});
+app.get('/', checkCurrentUser, homePageAds);
 
 app.get('/Ad-board', checkCurrentUser, displayAds);
 

@@ -34,6 +34,35 @@
 			<p>The best way to find any textbook you need for your studies and the <br>best way to advertise textbooks that you would like to sell.</p>
 		</div>
 	</div>
+	
+	
+	<% let findMainCat = (data) => { %>
+		<%	let {
+				_id,
+				Text_Book_Title,
+				Text_Book_Price,
+				UploadedImages
+				} = data; 
+
+			    let img = UploadedImages[0];
+			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+
+		%>
+			<a href="<%= `/view-ad/${ _id } ` %>">
+				<li class="categorieyBox-link">
+					<div class="categorieyBox-image">
+						<img src="<%= imgStr %>">
+					</div>
+
+					<div class="categorieyBox-info">
+						<h5 class="categorieyBox-title"><%= Text_Book_Title %></h5>
+						<h5 class="categorieyBox-price"><%= Text_Book_Price %></h5>
+						<h5 class="categorieyBox-time"> 2 hours ago</h5>
+					</div>
+				</li>
+			</a>
+	<% } %>
+	
 
 	<section id="browserCategory-cont">
 		<div class="browserCategory-cont">
@@ -49,53 +78,8 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
 							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+						<% mainCatAdsDisplay("Art Design and Architecture").slice(0, 4).map(findMainCat) %>	
 							
 						</ul>
 
@@ -112,53 +96,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("College of Business and Economics").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
@@ -175,53 +113,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("Education").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
@@ -238,53 +130,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("Engineering and Built Environment").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
@@ -303,53 +149,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("Health Sciences").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
@@ -368,53 +168,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("Humanities").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
@@ -431,53 +185,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("Law").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
@@ -494,53 +202,7 @@
 						</div>
 
 						<ul class="categorieyBox-list">
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/ACC.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 2 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book1.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Acounting Textbook for sale </h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 6 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book2.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Law Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 7 hours ago</h5>
-								</div>
-							</li>
-							
-							<li class="categorieyBox-link">
-								<div class="categorieyBox-image">
-									<img src="/Home-Images/book3.jpg">
-								</div>
-
-								<div class="categorieyBox-info">
-									<h5 class="categorieyBox-title">Banking Textbook for sale</h5>
-									<h5 class="categorieyBox-price">420</h5>
-									<h5 class="categorieyBox-time"> 8 hours ago</h5>
-								</div>
-							</li>
+							<% mainCatAdsDisplay("Science").slice(0, 4).map(findMainCat) %>
 							
 						</ul>
 
