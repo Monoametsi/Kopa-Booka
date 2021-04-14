@@ -15,17 +15,17 @@ a{
 	text-decoration: none;
 }
 
-#postAd{
+#postForm{
 	margin-top: 5.5rem;
 }
 
-.postAd-cont{
+.postForm-cont{
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.postAd-title{
+.postForm-title{
 	font-size: 3.8rem;
 	font-family: montserrat, sans-serif;
 	text-shadow: 0 0 3px rgba(0,0,0,0.6);

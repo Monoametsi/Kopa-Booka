@@ -4,9 +4,9 @@
 			<i class="fa fa-bars" id="menu-DropDown"></i>
 			<a href="/" class="log-name"><i class="fa fa-book" style="padding: 8px;"></i><span>Kopa Booka</span></a>
 			<% if (user && req.url !== "/place-advert") { %>
-				<a href="/place-advert" class="mobile-btn"><button class="post-ad-btn">Place an Ad</button></a>
+				<a href="/place-advert" class="mobile-btn"><button class="place-post-btn">Place an Ad</button></a>
 			<% } else { %>
-				<a href="/place-advert" class="mobile-btn" style="display: none"><button class="post-ad-btn">Place an Ad</button></a>
+				<a href="/place-advert" class="mobile-btn" style="display: none"><button class="place-post-btn">Place an Ad</button></a>
 			<% } %>
 		</div>
 
@@ -50,9 +50,9 @@
 	<% if (user) { %>
 		<div class="register-logIn">
 		<% if(req.url === "/place-advert") {%>
-			<a href="/place-advert" class="mobile-btn" style="display: none"><button class="post-ad-btn">Place an Ad</button></a>
+			<a href="/place-advert" class="mobile-btn" style="display: none"><button class="place-post-btn">Place an Ad</button></a>
 		<% } else {%>
-			<a href="/place-advert" class="regLogin-link ad-btn"><button class="post-ad-btn">Place an Ad</button></a>
+			<a href="/place-advert" class="regLogin-link post-btn"><button class="place-post-btn">Place an Ad</button></a>
 		<% } %>
 			<div class="login-menuCont">
 				  <div class="login-menu" id="login-menu">
