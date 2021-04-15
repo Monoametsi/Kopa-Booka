@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="./../Registration-Images/favicon.png">
+<link rel="icon" type="image/png" href="/Registration-Images/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
-<link rel="stylesheet" href="../../fontawesome-free-5.13.0-web/css/fontawesome.min.css">
-<link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../../Header-CSS/header.css">
-<link rel="stylesheet" href="../../Header-CSS/headerMobile.css">
-<link rel="stylesheet" href="../Registration-CSS/register.css">
-<link rel="stylesheet" href="../Registration-CSS/registerMobile.css">
+<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Header-CSS/header.css">
+<link rel="stylesheet" href="/Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="/Footer-CSS/footer.css">
+<link rel="stylesheet" href="/Footer-CSS/footer-mobile.css">
+<link rel="stylesheet" href="/Registration-CSS/register.css">
+<link rel="stylesheet" href="/Registration-CSS/registerMobile.css">
 <title>Kopa Booka | Registration</title>
 </head>
 <body>
@@ -65,7 +67,7 @@
 					</div>
 
 					<div class="reg-agreement">
-						<p>By Registering an account you agree to our <a href="../../Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="reg-link">Terms of Use</a> and <a href="../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="reg-link">Privacy Notice</a>.</p>
+						<p>By Registering an account you agree to our <a href="/Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="reg-link">Terms of Use</a> and <a href="/Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="reg-link">Privacy Notice</a>.</p>
 					</div>
 
 					<input type="Submit" value="Register" id="sub">
@@ -98,47 +100,9 @@
 
 	</section>
 
-	<footer id="foot">
-		<div class="foot-info">
-			<div class="logo"style="margin-left: 0.5rem;" >
-				<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
-			</div>
-
-			<div class="foot-content">
-				<div class="foot-web">
-					<h1><a href="../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="foot-link">Privacy Policy</a></h1>
-					<h1><a href="../../Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="foot-link">Terms of Use</a></h1>
-					<h1><a href="#" class="foot-link">Browser Support</a></h1>
-				</div>
-				
-				<div class="mobileLogo">
-					<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
-				</div>
-			
-				<div class="footMobile-web">
-					<div class="footMobileWeb-title" id="btn">
-						<span class="footMobile-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Our policies</span>
-						<i class=" fa fa-caret-down" id="arrow"></i>
-					</div>
-					<ul class="footMobile-list">
-						<li><a href="../../Privacy-Policy/Privacy-HTML/Privacy Policy.html" class="footMobileWeb-link">Privacy Policy</a></li>
-						<li><a href="../../Terms-of-Use/Terms-of-Use-HTML/Terms of Use.html" class="footMobileWeb-link">Terms of Use</a></li>
-						<li><a href="#" class="footMobileWeb-link">Browser Support</a></li>
-					</ul>
-				</div>
-				
-				<div class="foot-title" >
-					<h1>&copy;2020 DESIGNED BY: <a href="#" target="_blank">MONOAMETSI</a></h1>
-				</div>
-			</div>
-
-			<div class="shooter" >
-				<i class="fa fa-chevron-up shoot" id="scrollTopper"></i>
-			</div>
-		</div>
-	</footer>
+	<%- include("partials/footer"); -%>
 	
-  <script src="./../Registration-JS/register.js"></script>
-  <script src="./../Registration-JS/validation.js"></script>
+  <script src="/Registration-JS/register.js"></script>
+  <script src="/Registration-JS/validation.js"></script>
 </body>
 </html>
