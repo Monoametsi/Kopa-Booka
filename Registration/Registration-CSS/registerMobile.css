@@ -3,10 +3,6 @@
 		white-space: normal;
 		line-height: 1.8rem;
 	}
-	
-	.foot-content{
-		margin-right: 0;
-	}
 }
 
 @media screen and (max-width: 1100px){
@@ -82,28 +78,7 @@
 	.regbenMobile-title{
 		display: none;
 	}
-	
-	.foot-web{
-		display: none;
-		flex-direction: row;
-	}
-	
-	.foot-content{
-		margin-right: 2.5rem;
-	}
-	
-	.footMobile-web{
-		display: flex;
-		justify-content: center;
-	}
-	
-	.footMobileWeb-link{
-		white-space: nowrap;
-	}
-	
-	.foot-title{
-		margin-left: 0;
-	}
+
 }
 
 @media screen and (max-width: 790px){
@@ -126,11 +101,7 @@
 	.form{
 		width: 100%;
 	}
-	
-	.foot-title{
-		white-space: nowrap;
-	
-	}
+
 }
 
 @media screen and (max-width: 668px){
@@ -154,22 +125,5 @@
 	
 	.validifier{
 		text-align: center;
-	}
-	
-	.footMobile-web{
-		display: flex;
-		margin-right: 2.5rem;
-	}
-	
-	.foot-info > .logo{
-		display: none;
-	}
-	
-	.foot-info{
-		justify-content: space-around;
-	}
-	
-	.foot-title{
-		white-space: nowrap;
 	}
 }
