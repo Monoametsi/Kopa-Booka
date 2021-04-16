@@ -51,6 +51,8 @@ let Register = async (req, res) => {
 	}
 
 	let { UserId, Email, Password, isVerified, My_Ads, Ad_Messages, Name, Surname, Tel, Campus } = newEntry;
+	
+	let alreadyExists;
 
 	let emailMatcher = (not) => {
 		return not.Email === email;
@@ -59,7 +61,7 @@ let Register = async (req, res) => {
 	Users.find().then((result) => {
 
 		if(passwordEmailValidation(password, passConfirmation, email) === false){
-			return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json });
+			return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json, alreadyExists });
 
 		}else{
 			if(Boolean(result.find(emailMatcher)) !== true){
@@ -82,7 +84,8 @@ let Register = async (req, res) => {
 				});
 
 			}else{
-				res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json });
+				alreadyExists = true;
+				res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json, alreadyExists });
 			}
 		}
 

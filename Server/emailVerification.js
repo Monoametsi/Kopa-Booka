@@ -7,9 +7,13 @@ dotenv.config({path:path.join(__dirname, '.env')});
 
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
+	secureConnection: true,
 	auth: {
 		user: 'pt.projects.submission@gmail.com',
 		pass: process.env.EmailPassword.toString()
+	},
+	tls: {
+		secureProtocol: "TLSv1_method"
 	}
 });
 
@@ -50,12 +54,12 @@ const mailDeliverer = (email, ress) => {
 	sendMailPromise.then(() => {
 		if(success === true){
 			console.log('Sent');
-			ress.redirect('/register-success');
+			return ress.redirect('/register-success');
 		}
 	}).catch(() => {
 		if(success === false){
 			console.log('Not sent');
-			ress.redirect('/register-failure');
+			return ress.redirect('/registeration-failure');
 		}
 	});
 }

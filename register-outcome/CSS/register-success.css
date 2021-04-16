@@ -16,13 +16,15 @@ a{
 	text-decoration: none;
 }
 
+#successBox-cont{
+	margin: 11.5rem 0;
+}
+
 .successBox-cont{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	min-height: 76.5vh;
-	margin: 2rem;
-	margin-bottom: 0;
+	margin: 0 2rem;
 }
 
 .success-box{

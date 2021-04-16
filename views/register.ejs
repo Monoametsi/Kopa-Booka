@@ -29,7 +29,7 @@
 	</section>
 	<% let { email, password, passConfirmation } = json; %>
 
-	<% if(Boolean(result.find(emailMatcher)) === true) {%>
+	<% if(alreadyExists) {%>
 		<div class="registered-cont">
 			<div class="registered">
 			   <span> An account with this email address has already been registered. 
@@ -52,7 +52,7 @@
 
 				<form action="/register" method="POST" class="form">
 					<div class="inputField-cont">
-					<% if(email === "" || email === undefined || email === null) { %>
+					<% if(email === "" || email === undefined || email === null || email.length === 0) { %>
 						<div class="label-cont">
 							<label for="email" class="label">Email <span class="required">*</span></label>
 							<label for="email" class="validifier" style="display: flex;"> <%=  "Required" %> </label>
