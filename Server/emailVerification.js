@@ -16,7 +16,7 @@ let transporter = nodeMailer.createTransport({
         ciphers: 'SSLv3'
     }
 });
-
+//gfgfgfgs
 let success = true;
 
 const mailDeliverer = (email, ress) => {
