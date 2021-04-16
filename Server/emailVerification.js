@@ -13,8 +13,8 @@ let transporter = nodeMailer.createTransport({
 		pass: process.env.EmailPassword.toString()
 	},
 	tls: {
-		secureProtocol: "TLSv1_method"
-	}
+        ciphers: 'SSLv3'
+    }
 });
 
 let success = true;
