@@ -8,7 +8,6 @@ dotenv.config({path:path.join(__dirname, '.env')});
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
 	secureConnection: true,
-	port: 465,
 	auth: {
 		user: 'pt.projects.submission@gmail.com',
 		pass: process.env.EmailPassword.toString()
