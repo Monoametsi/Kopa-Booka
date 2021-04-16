@@ -57,6 +57,7 @@ a{
 }
 
 .registered span{
+	font-family: montserrat, sans-serif;
 	line-height: 1.9rem;
 	text-align: center;
 	padding: 8px;
