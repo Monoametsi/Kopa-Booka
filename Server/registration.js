@@ -42,24 +42,26 @@ let Register = async (req, res) => {
 		Email: email,
 		Password: pass,
 		isVerified: false,
+		My_Ads: [],
+		Ad_Messages: [],
 		Name: '',
 		Surname: '',
 		Tel: '',
 		Campus: ''
 	}
 
-	let { UserId, Email, Password, isVerified, Name, Surname, Tel, Campus } = newEntry;
+	let { UserId, Email, Password, isVerified, My_Ads, Ad_Messages, Name, Surname, Tel, Campus } = newEntry;
 
 	let emailMatcher = (not) => {
 		return not.Email === email;
 	}
 
-	if(passwordEmailValidation(password, passConfirmation, email) === false){
-		return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json });
+	Users.find().then((result) => {
 
-	}else{
+		if(passwordEmailValidation(password, passConfirmation, email) === false){
+			return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json });
 
-		Users.find().then((result) => {
+		}else{
 			if(Boolean(result.find(emailMatcher)) !== true){
 
 				const user = new Users({
@@ -67,6 +69,8 @@ let Register = async (req, res) => {
 					Email, 
 					Password, 
 					isVerified,
+					My_Ads,
+					Ad_Messages,
 					Name,
 					Surname, 
 					Tel,
@@ -80,11 +84,11 @@ let Register = async (req, res) => {
 			}else{
 				res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json });
 			}
+		}
 
-		}).catch((err) => {
-			console.log(err);
-		});
-	}
+	}).catch((err) => {
+		console.log(err);
+	});
 }
 
 module.exports = { Register }

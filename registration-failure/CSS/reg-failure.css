@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i%20|%20Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i%20|%20Hind:300,400,500,600,700');
+
+*{
+	box-sizing: border-box;
+}
+
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins",sans-serif;
+	background-color: #eee7;`
+}
+
+a{
+	text-decoration: none;
+}
+
+#formBox-cont{
+	margin: 9rem 0;
+}
+
+.formBox-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 2rem;
+}
+
+.form-Box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 12px 9px;
+	background-color: #fff;
+	width: 50%;
+	box-shadow: 0 0 5px rgba(0,0,0, 0.4);
+	border-radius: 5px;
+}
+
+.formBox-message-header{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.fa-frown-o{
+	font-size: 4.5rem;
+	color: grey;
+}
+
+.formBox-message-header h1{
+	font-size: 1.5rem;
+	text-align: center;
+	padding-top: 0;
+	color: red;
+}
+
+.formBox-message-header h4{
+	font-size: 1rem;
+	font-weight: 400;
+	text-align: center;
+	line-height: 1.8rem;
+	margin-top: 0;
+}
+
+.error-message{
+	color: red;
+	font-size: 1.2rem;
+}
+
+.error-message > a{
+	color: #0acdff;
+	transition: 0.3s;
+	text-decoration: underline;
+}
+
+.error-message > a:hover{
+	color: red;
+	text-decoration: none;
+}
+
+.formBox-form{
+	width: 100%;
+}
+
+.inputField-cont{
+	display: flex;
+	flex-direction: column;
+}
+
+.label-cont{
+	display: flex;
+	justify-content: space-between; 
+}
+
+.required{
+	color: red;
+	padding-left: 3px;
+}
+
+label{
+	padding-left: 2.5px;
+}
+
+.inputField-styling{
+	transition: 0.3s;
+	margin-top: 5px;
+	padding: 8px 12px;
+	font-size: 1rem;
+	border-radius: 3px;
+	outline: none;
+	border: 1px solid #0acdff;
+}
+
+.inputField-styling::placeholder{
+	font-weight: 600;
+}
+
+.inputField-styling:focus{
+	box-shadow: 0 0 3px 1.5px #6acdff;
+}
+
+.validifier{
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: red;
+	font-weight: 600;
+	font-family: montserrat, sans-serif;
+	padding: 0 3px;
+	border-radius: 3px;
+	animation-name: smooth-appearance;
+	animation-duration: 0.3s;
+	color: #fff;
+}
+
+.redBox{
+	border: 1px solid red;
+}
+
+.redBox:focus{
+	border: 1px solid red;
+	box-shadow: 0 0 5px 3px rgba(255, 0, 0, 0.3);
+}
+
+@keyframes smooth-appearance{
+	0%{ background-color: white; opacity:0; }
+    100%{ background-color: red; opacity:1; }
+}
+
+input[type=submit]{
+	margin-top: 8px;
+	cursor: pointer;
+	color: #fff;
+	font-weight: 600;
+	transition: 0.3s;
+	font-family: montserrat, sans-serif;
+	border-radius: 5px;
+	border: none;
+	padding: 6px 12px;
+	outline: none;
+	background-color: #0acdff;
+	font-size: 1.2rem;
+}
+
+input[type=submit]:hover{
+	background-color: #0eee;
+	color: #000;
+	box-shadow: 0px 0px 7px rgba(0,0,0,0.5);
+}

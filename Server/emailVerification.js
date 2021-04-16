@@ -55,6 +55,7 @@ const mailDeliverer = (email, ress) => {
 	}).catch(() => {
 		if(success === false){
 			console.log('Not sent');
+			ress.redirect('/register-failure');
 		}
 	});
 }

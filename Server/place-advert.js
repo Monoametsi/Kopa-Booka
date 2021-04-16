@@ -34,7 +34,7 @@ let placeAdvert = async (req, res) => {
 		} = formData;
 
 		let UserId = uuid.v4().slice(0, uuid.v4().search("-"));
-		console.log(files.uploaded.length === undefined);
+
 		if(files.uploaded.length === undefined){
 			let oldPath = files.uploaded.path;
 			let newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
@@ -58,9 +58,9 @@ let placeAdvert = async (req, res) => {
 		}
 
 		/*
-		
+
 		let firstImgPath = dirname + '\\imageUploads\\' + imgInput;
-		
+
 		if(imgInput){
 			for(i = 0; i < UploadedImages.length; i++){
 				if(UploadedImages[i] === firstImgPath){
@@ -68,7 +68,9 @@ let placeAdvert = async (req, res) => {
 					UploadedImages.unshift(firstImgPath);
 				}
 			}
-		}*/
+		}
+
+		*/
 
 		const adverts = await new Advertisements({
 			_id: UserId,

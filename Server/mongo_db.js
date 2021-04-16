@@ -35,11 +35,15 @@ const userSchema = new Schema({
 	Campus: {
 		type: String,
 		required: false
-	}//,
-	//My_Ads: {
-	//	type: Array,
-	///	required: false
-	//}
+	},
+	My_Ads: {
+		type: Array,
+		required: false
+	},
+	Ad_Messages: {
+		type: Array,
+		required: false
+	}
 
 });
 

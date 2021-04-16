@@ -42,26 +42,41 @@ a{
 	align-items: center;
 }
 
-.registered{
+.registered-cont{
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 0 8px;
+    justify-content: center;
+	margin: 0 1rem;
 }
 
-.registered a{
-	padding: 0 3.5px;
+.registered{
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+	background-color: red;
+}
+
+.registered span{
+	line-height: 1.9rem;
+	text-align: center;
+	padding: 8px;
+	color: #fff;
+}
+
+.registered > span a{
 	font-weight: 600;
 	color: #fff;
-	text-decoration: none;
-	transition: 0.3s;
+    transition: 0.3s;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
 }
 
-.registered a:hover{
-	text-decoration: underline;
+.registered > span a:hover{
+	color: #fff;
+	border-bottom: 1px solid transparent;
 }
 
-.registered .ejs-validifier{
+.ejs-validifier{
 	padding: 3px;
 	font-weight: 300;
 }

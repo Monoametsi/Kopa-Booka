@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const homePage = require('./home-page');
+const regFailure = require('./registration_failure');
 const viewAdDetails = require('./view-ad');
 const login = require('./login');
 const placeAd = require('./place-advert');
@@ -38,6 +39,7 @@ const { Register } = registration;
 const { displayAds } = adDisplay;
 const { viewAd } = viewAdDetails;
 const { homePageAds } = homePage;
+const { registeration_failure } = regFailure;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -57,6 +59,7 @@ app.use(express.static(path.join(dirname, 'Contact')));
 app.use(express.static(path.join(dirname, 'Login')));
 app.use(express.static(path.join(dirname, 'Privacy-Policy')));
 app.use(express.static(path.join(dirname, 'Terms-of-Use')));
+app.use(express.static(path.join(dirname, 'registration-failure')));
 app.use(express.static(path.join(dirname, 'imageUploads')));
 app.use(cookieParser());
 dotenv.config({path: path.join(__dirname, '.env')});
@@ -124,6 +127,12 @@ app.post('/register', checkCurrentUser, Register);
 app.get('/register-success', checkCurrentUser, (req, res) => {	
 	res.status(200).render('register-success');
 });
+
+app.get('/registeration-failure', checkCurrentUser, (req, res) => {
+	res.status(200).render('registration_failure')
+});
+
+app.post('/registeration-failure', checkCurrentUser, registeration_failure);
 
 app.get('/email-verification/:token', token_verifier);
 

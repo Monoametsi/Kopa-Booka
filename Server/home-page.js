@@ -20,6 +20,8 @@ let homePageAds = (req, res) => {
 					mainCategoryAds.push(result[i]);
 				}
 			}
+
+			mainCategoryAds.reverse();
 			return mainCategoryAds;
 		}
 		
