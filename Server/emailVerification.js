@@ -7,6 +7,7 @@ dotenv.config({path:path.join(__dirname, '.env')});
 
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
+	host: 'smtp.gmail.com',
 	secureConnection: true,
 	auth: {
 		user: 'pt.projects.submission@gmail.com',
@@ -16,7 +17,7 @@ let transporter = nodeMailer.createTransport({
         ciphers: 'SSLv3'
     }
 });
-//gfgfgfgs
+
 let success = true;
 
 const mailDeliverer = (email, ress) => {
