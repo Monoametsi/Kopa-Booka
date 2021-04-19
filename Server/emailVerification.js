@@ -21,7 +21,9 @@ let transporter = nodeMailer.createTransport({
 let success = true;
 
 const mailDeliverer = (email, ress) => {
-	let token = jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET);
+	let token = jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET, {
+		expiresIn: '3d'
+	});
 
 	let mailUrl = `${process.env.CLIENT_URL}/email-verification/${token}`;
 

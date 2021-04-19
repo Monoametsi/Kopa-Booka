@@ -11,27 +11,40 @@ let token_verifier = async (req, res) => {
 	if(token){
 		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
 			if(err){
-				return res.status(400).json({ err });
+				return res.redirect('/token-error');
 			}else{
 
 				let { email } = decodedToken;
 
-				let moveObject = (email, res) => {
-					let myquery = { Email: email };
-					let newvalues = { $set: { isVerified: true } };
-
-					Users.updateOne(myquery, newvalues, (err, res) => {
-						if(err) throw err;
-					});
+				let emailMatcher = (not) => {
+					return not.Email === email;
 				}
 
-				await moveObject(email);
-				res.redirect('/verify-account-success');
+		await	Users.find().then( async (result) => {
+					if(Boolean(result.find(emailMatcher)) === true){
+						let moveObject = (email, res) => {
+						let myquery = { Email: email };
+						let newvalues = { $set: { isVerified: true } };
+
+						Users.updateOne(myquery, newvalues, (err, res) => {
+								if(err) throw err;
+							});
+						}
+
+						await moveObject(email);
+						return res.redirect('/verify-account-success');
+					}else{
+						return res.redirect('/token-not-found');
+					}
+
+				}).catch((err) => {
+					console.log(err);
+				});
 
 			}
 		});
 	}else{
-		return res.status(401).json({error: 'There\'s a problem'})
+		return res.redirect('/token-error');
 	}
 
 }

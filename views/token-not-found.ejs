@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/Images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Header-CSS/header.css">
+<link rel="stylesheet" href="/Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="/Footer-CSS/footer.css">
+<link rel="stylesheet" href="/Footer-CSS/footer-mobile.css">
+<link rel="stylesheet" href="/CSS/Post Ad.css">
+<link rel="stylesheet" href="/CSS/Post Ad Mobile.css">
+<title>Kopa Booka | Token user not found</title>
+</head>
+<body>
+
+	<%- include("partials/header"); -%>
+
+	<section class="messageBox-cont">
+		<div class="message-box" style="width: 800px;">
+			<div class="messageTitle-cont">
+				<i class="fa fa-times"></i>
+				<h1 class="messageTitle">User not found</h1>
+			</div>
+
+			<div class="message-cont">
+				<p class="message">The token you supplied is of a user who we could not find in our database, 
+				please create a new account by clicking the button below.</p>
+			</div>
+
+			<div class="messageBoxRedirect-cont">
+				<a href="/register" class="messageRedirect">Register.</a>
+			</div>
+		</div>
+	</section>
+	
+	<%- include("partials/footer"); -%>
+	
+  <script src="/JS/reg-failure.js"></script>
+</body>
+</html>

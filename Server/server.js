@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const homePage = require('./home-page');
+const token_Error = require('./token-error');
 const regFailure = require('./registration_failure');
 const viewAdDetails = require('./view-ad');
 const login = require('./login');
@@ -40,6 +41,7 @@ const { displayAds } = adDisplay;
 const { viewAd } = viewAdDetails;
 const { homePageAds } = homePage;
 const { registeration_failure } = regFailure;
+const { tokenErr } = token_Error;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -139,6 +141,19 @@ app.get('/email-verification/:token', token_verifier);
 app.get('/verify-account-success', checkCurrentUser, (req, res) => {
 	res.status(200).render('verfication-success');
 });
+
+//token-err handler
+app.get('/token-error', checkCurrentUser, (req, res) => {
+	res.status(200).render('token-error');
+});
+
+app.post('/token-error', checkCurrentUser, tokenErr);
+
+app.get('/token-not-found', checkCurrentUser, (req, res) => {
+	res.status(200).render('token-not-found');
+});
+//token-err handler
+
 
 app.get('/login', requireLoginAuth, checkCurrentUser, (req, res) => {
 	let emailMatcher, auth, verifiedCheck;
