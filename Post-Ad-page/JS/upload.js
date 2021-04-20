@@ -56,7 +56,7 @@ function uploader(uploadFiles, action){
 		let imgCheckBox = document.createElement("input");
 		imgCheckBox.setAttribute("type", "checkbox");
 		imgCheckBox.setAttribute("class", "main-img");
-		imgCheckBox.setAttribute("name", `${fileName}`);
+		imgCheckBox.setAttribute("name", `First_image-${fileName}`);
 		imgCheckBox.setAttribute("id", "whatsapp-enabler");
 		checkBoxDiv.innerHTML = '<span class="mainImg-text">Main image</span>';
 		checkBoxDiv.appendChild(imgCheckBox);

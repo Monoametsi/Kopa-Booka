@@ -88,26 +88,31 @@ let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
 	let divisionList = list.parentElement.nextElementSibling;
-	console.log(divisionList);
+
 	let divisionList2 = divisionList.nextElementSibling;
 	let divisionList3 = divisionList2.children[1].children[1];
-	console.log(divisionList3);
 	
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
 		divisionList2.style.maxHeight = null;
-		divisionList3.style.maxHeight = null;
+		if(divisionList3 !== undefined){
+			divisionList3.style.maxHeight = null;
+			divisionList3.style.transition = '.3s'
+		}
+		
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
-        divisionList3.style.transition = '.3s'
+        
 
 	}else{
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
 		divisionList2.style.maxHeight = divisionList2.scrollHeight  + 'px';
-		divisionList3.style.transition = '.3s';
-    	divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		if(divisionList3 !== undefined){
+			divisionList3.style.transition = '.3s';
+			divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		}
 	}
 }
 

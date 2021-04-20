@@ -60,7 +60,8 @@ let passwordUpdater = async (req, res) => {
 										if(err) throw err;
 									});
 								}
-								
+
+						  await updateUserProfile(email);
 								res.status(200).render('password-update', { Name, success, Surname, Tel, Campus, validationPasswordChecks, comparingPasswords, formData });
 							}
 						}

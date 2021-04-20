@@ -1,4 +1,5 @@
 const ejs = require('ejs');
+const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const formidable = require('formidable');
 const path = require('path');
@@ -11,6 +12,8 @@ const { Advertisements } = ads;
 const { Users } = user;
 
 let placeAdvert = async (req, res) => {
+	let token = req.cookies.token;
+
 	let form = new formidable.IncomingForm({ multiples: true });
 
 	await form.parse(req, async (err, fields, files) => {
@@ -57,20 +60,19 @@ let placeAdvert = async (req, res) => {
 			}
 		}
 
-		/*
+		for(imgName in fields){
+			if(imgName.search('First_') !== -1){
+				let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
+				let firstImgPath = `C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\imageUploads\\${ firstImg }`;
 
-		let firstImgPath = dirname + '\\imageUploads\\' + imgInput;
-
-		if(imgInput){
-			for(i = 0; i < UploadedImages.length; i++){
-				if(UploadedImages[i] === firstImgPath){
-					UploadedImages.splice(i, 1);
-					UploadedImages.unshift(firstImgPath);
+				for(i = 0; i < UploadedImages.length; i++){
+					if(UploadedImages[i] === firstImgPath){
+						UploadedImages.splice(i, 1);
+						UploadedImages.unshift(firstImgPath);
+					}
 				}
 			}
 		}
-
-		*/
 
 		const adverts = await new Advertisements({
 			_id: UserId,
@@ -92,20 +94,53 @@ let placeAdvert = async (req, res) => {
 		});
 
 		await adverts.save().catch((err) => {
-				//console.log(err);
+				console.log(err);
 			});
+
+		if(token){
+			jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
+				if(err){
+					return res.status(400).json({ err })
+				}else{
+					
+					let { email } = decodedToken;
+					
+					let users_ad = {
+						_id: UserId,
+						Name: name,
+						Mail: mail,
+						Tel: tel,
+						Whatsapp_tel: Whatsapptel,
+						Main_Category: chooseCats,
+						Sub_Category: chooseSubCat,
+						Text_Book_Title: TexBookTitle,
+						Edition_Number: EditionNum,
+						Author_Name: AuthorName,
+						Condition: condition,
+						Text_Book_Price: TextbookPrice,
+						Negotiation: negotiation,
+						Description,
+						Campus: campus,
+						UploadedImages
+					}
+
+					let updateUserAds = (email, res) => {
+						let myquery = { Email: email };
+						let newvalues = { $push: { My_Ads: users_ad } };
+
+						Users.updateOne(myquery, newvalues, (err, res) => {
+							if(err) throw err;
+						});
+					}
+
+					await updateUserAds(email);
+				}
+			})
+		}
 
 	});
 
 	return res.redirect('/place-advert-success');
 }
-
-/*form.on('fileBegin', (name, file) => {
-	file.path = dirname + '/imageUploads/' + file.name;
-});
-
-form.on('file', (name, file) => {
-	console.log('Uploaded ' + file.name);
-});*/
 
 module.exports = { placeAdvert }
