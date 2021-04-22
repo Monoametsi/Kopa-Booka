@@ -30,7 +30,7 @@
 			<div class="post-section-director-cont">
 				<div class="post-section-director-title-cont">
 					<h4>All ADS</h4>
-					<span class="post-total" style="font-weight: bold; "> 2 </span>
+					<span class="post-total" style="font-weight: bold;"> 2 </span>
 				</div>
 
 				<div class="searchInput-cont">
@@ -39,12 +39,12 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="list-handler-cont">
 			<div class="delete-all-cont">
 				<ul class="delete-all-list">
 					<li class="delete-all-contents"><input type="checkbox" class="checkbox"> Select All </li>
-					<li class="delete-all-contents"><i class="fa fa-trash"></i></li>
+					<li class="delete-all-contents content-title-cont"><i class="fa fa-trash"></i><div class="content-title">Delete Selected</div></li>
 				</ul>
 			</div>
 
@@ -55,7 +55,76 @@
 				</button>
 			</div>
 		</div>
+		
+		<div class="all-postBox-cont">
+
+			<div class="postBox-cont">
+
+				<div class="postBox">
+
+					<div class="img-checkbox-cont">
+						<div class="img-cont">
+							<img src="/Images/book1.jpg">
+						</div>
+						<div class="post-checkbox-cont">
+							<input type="checkbox" class="post-checkbox">
+							<span>Select Ad</span>
+						</div>
+					</div>
+
+					<div class="post-info-cont">
+
+						<div class="post-title-cont">
+							<h1 class="post-title"> Accounting textbook </h1>
+						</div>
+						
+						<div class="post-details-cont">
+
+							<div class="post-details">
+								Category
+							</div>
+							
+							<div class="post-details">
+								Date of creation
+							</div>
+							
+							<div class="post-details">
+								id
+							</div>
+
+						</div>
+						
+						<div class="post-stats">
+							<i class="fa fa-envelope"></i>
+							<div class="views-cont">
+								<i class="fa fa-eye"></i>
+								<span> 12 </span>
+							</div>
+						</div>
+
+					</div>
+					
+					<div class="post-price-edit-cont">
+
+						<div class="post-price">
+							<span class="price">420</span>
+						</div>
+						
+						<div class="post-edit-delete-cont">
+							<i class="fa fa-pencil"></i>
+							<i class="fa fa-trash"></i>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		<div>
 	</section>
+	
+	<%- include("partials/footer"); -%>
 
 <script src="/JS/my-posts.js"></script>	
 <script src="/JS/search-posts.js"></script>	
