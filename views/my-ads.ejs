@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/Images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Header-CSS/header.css">
+<link rel="stylesheet" href="/Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="/Footer-CSS/footer.css">
+<link rel="stylesheet" href="/Footer-CSS/footer-mobile.css">
+<link rel="stylesheet" href="/CSS/my-posts.css">
+<link rel="stylesheet" href="/CSS/my-posts-mobile.css">
+<title>Kopa Booka | My Ads</title>
+</head>
+<body>
+
+	<%- include("partials/header"); -%> 
+
+	<section id="My-Posts">
+		<div class="My-Posts-header">
+			<h1 class="My-Posts-title">My Ads</h1>
+		</div>
+	</section>
+
+	<section id="all-posts-cont">
+		<div class="posts-searchInput-cont">
+			<div class="post-section-director-cont">
+				<div class="post-section-director-title-cont">
+					<h4>All ADS</h4>
+					<span class="post-total" style="font-weight: bold; "> 2 </span>
+				</div>
+
+				<div class="searchInput-cont">
+					<input type="search" placeholder="Search your ads" name="search-post" id="search-post" class="searchInput-Field-styling">
+					<button class="search-btn" id="search-btn"><i class="fa fa-search"></i> Search </button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="list-handler-cont">
+			<div class="delete-all-cont">
+				<ul class="delete-all-list">
+					<li class="delete-all-contents"><input type="checkbox" class="checkbox"> Select All </li>
+					<li class="delete-all-contents"><i class="fa fa-trash"></i></li>
+				</ul>
+			</div>
+
+			<div class="sort-list-cont">
+				<button class="sort-list-btn">
+					<span class="post-num">2 Ads</span>
+					<i class="fa fa-caret-up"></i>
+				</button>
+			</div>
+		</div>
+	</section>
+
+<script src="/JS/my-posts.js"></script>	
+<script src="/JS/search-posts.js"></script>	
+</body>

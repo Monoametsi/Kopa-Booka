@@ -52,6 +52,7 @@ app.use(express.static(path.join(dirname, 'Account-verification')));
 app.use(express.static(path.join(dirname, 'register-outcome')));
 app.use(express.static(path.join(dirname, 'Dashboard')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'Profile')));
+app.use(express.static(path.join(dirname, 'Dashboard', 'My-Ads')));
 app.use(express.static(path.join(dirname, 'Post-Ad-page')));
 app.use(express.static(path.join(dirname, 'Textbook-info')));
 app.use(express.static(path.join(dirname, 'About-Us')));
@@ -70,6 +71,8 @@ app.set('view engine', 'ejs');
 
 app.get('/', checkCurrentUser, homePageAds);
 
+
+//Search Results
 app.get('/Ad-board', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery', checkCurrentUser, displayAds);
@@ -109,6 +112,8 @@ app.get('/Ad-board/category/:searchQuery/price-low-to-high/:pageQuery', checkCur
 app.get('/Ad-board/category/:searchQuery/price-high-to-low/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
+//Search Results
+
 
 app.get('/view-ad/:id', checkCurrentUser, viewAd);
 
@@ -120,6 +125,8 @@ app.get('/contact-us', checkCurrentUser, (req, res) => {
 	res.status(200).render('contact-us');
 });
 
+
+//Registration
 app.get('/register', checkCurrentUser, (req, res) => {
 	res.status(200).render('registerGet');
 });
@@ -135,6 +142,8 @@ app.get('/registeration-failure', checkCurrentUser, (req, res) => {
 });
 
 app.post('/registeration-failure', checkCurrentUser, registeration_failure);
+//Registration
+
 
 app.get('/email-verification/:token', token_verifier);
 
@@ -154,7 +163,7 @@ app.get('/token-not-found', checkCurrentUser, (req, res) => {
 });
 //token-err handler
 
-
+//Login
 app.get('/login', requireLoginAuth, checkCurrentUser, (req, res) => {
 	let emailMatcher, auth, verifiedCheck;
 	emailMatcher = true;
@@ -166,7 +175,10 @@ app.get('/login', requireLoginAuth, checkCurrentUser, (req, res) => {
 app.post('/login', requireLoginAuth, checkCurrentUser, Login);
 
 app.get('/logout', requireAuth, checkCurrentUser, logout);
+//Login
 
+
+//Dashboard
 app.get('/Dashboard', requireAuth, checkCurrentUser, (req, res) => {
 	res.status(200).render('dashboard');
 });
@@ -177,6 +189,13 @@ app.post('/Profile', requireAuth, checkCurrentUser, profileUpdater);
 
 app.post('/password', requireAuth, checkCurrentUser, passwordUpdater);
 
+app.get('/my-ads', requireAuth, checkCurrentUser, (req, res) => {
+	res.status(200).render('my-ads');
+});
+//Dashboard
+
+
+//Place-Advert
 app.get('/place-advert', checkCurrentUser, (req, res) => {
 	res.status(200).render('place-advert', { res, req });
 });
@@ -186,6 +205,7 @@ app.post('/place-advert', requireAuth, checkCurrentUser, placeAdvert);
 app.get('/place-advert-success', checkCurrentUser, (req, res) => {
 	res.status(200).render('place-advert-success');
 });
+//Place-Advert
 
 app.get('/enable-js', checkCurrentUser, (req, res) => {
 	res.status(200).render('enable-js');
