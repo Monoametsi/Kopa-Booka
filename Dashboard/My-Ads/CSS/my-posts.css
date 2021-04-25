@@ -32,12 +32,12 @@ a{
 }
 
 #all-posts-cont{
-	margin: 1rem 1.8rem;
+	margin: 1rem 0;
 }
 
 .posts-searchInput-cont{
 	display: flex;
-	width: 100%;
+	margin: 0 1.8rem;
 }
 
 .post-section-director-cont{
@@ -138,6 +138,7 @@ button.search-btn:hover{
 .list-handler-cont{
 	display: flex;
 	justify-content: space-between;
+	margin: 0 1.8rem;
 	margin-top: 1rem;
 }
 
@@ -227,6 +228,67 @@ button.search-btn:hover{
 	flex-wrap: wrap;
 }
 
+/* No Posts Found*/
+
+.no-posts-found{
+	display: none;
+	margin: auto;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 2.8rem ;
+}
+
+.no-posts-found-title{
+	margin-bottom: -10px;
+}
+
+.no-posts-found-title h1{
+	font-family: montserrat, sans-serif;
+	color: #0eee;
+	transition: 0.3s;
+}
+
+.no-posts-found-title h1:hover{
+	color: #0acdff;
+}
+
+.no-posts-img{
+	margin-bottom: 8px;
+	width: 75%;
+}
+
+.no-posts-img > img{
+	width: 100%;
+	height: auto;
+	max-width: 260px;
+}
+
+.no-posts-btn{
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	white-space: nowrap;
+	padding: 12px 8px;
+	background-color: rgb(91, 172, 222);
+	cursor: pointer;
+	transition: 0.3s;
+	color: #fff;
+	font-size: 1rem;
+	font-family: montserrat, sans-serif;
+}
+
+.no-posts-btn:hover{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	background-color: rgb(80, 160, 280);
+	color: #000;
+}
+
+.no-posts-btn-cont{
+	margin-top: 14px;
+}
+
+/* No Posts Found*/
+
 .content-title-cont{
 	position: relative;
 }
@@ -264,21 +326,19 @@ button.search-btn:hover{
 }
 
 .all-postBox-cont{
-	margin: 2rem 0;
+	margin: 2rem 1rem;
 }
 
 .postBox-cont{
 	display: flex;
 	flex-grow: 1;
+	margin: 0 15px;
 	margin-bottom: 30px;
-}
-
-.postBox-cont:nth-child(even){
-	margin-left: 30px;
 }
 
 .postBox{
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	padding: 8px;
 	border-radius: 5px;
@@ -287,15 +347,20 @@ button.search-btn:hover{
 	width: 100%;
 }
 
-.post-info-cont, .img-checkbox-cont, .post-price-edit-cont{
+.top-sect, .bottom-sect{
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
 }
 
-.post-info-cont{
+.bottom-sect{
+	align-items: center;
+}
+
+.mid-sec{
+	display: flex;
 	width: 100%;
 	margin-left: 1.2rem;
+	flex-direction: column;
 }
 
 .post-title-cont{
@@ -303,12 +368,9 @@ button.search-btn:hover{
 	margin-top: -1rem;
 }
 
-.img-checkbox-cont{
+.img-cont{
 	width: 50%;
 	max-width: 250px;
-}
-
-.img-cont{
 	display: flex;
 	justify-content: center;
 	border: 1px solid #ccc;
@@ -317,7 +379,7 @@ button.search-btn:hover{
 	padding: 4px 6px;
 	cursor: pointer;
 	transition: 0.3s;
-	margin-bottom: 1.5rem;
+	margin-bottom: 1.5rem;	
 }
 
 .img-cont:hover{
@@ -334,6 +396,7 @@ img{
 
 .post-checkbox-cont{
 	display: flex;
+	width: 25%;
 }
 
 .post-checkbox-cont > span{
@@ -366,7 +429,6 @@ img{
 
 .post-details-cont{
 	display: flex;
-	margin-top: -5rem;
 	width: 80%;
 	flex-wrap: wrap;
 }
@@ -375,10 +437,6 @@ img{
 	font-family: montserrat, sans-serif;
 	color: #0eee;
 	cursor: pointer;
-	/*width: 100%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;*/
 	transition: 0.3s;
 }
 
@@ -417,6 +475,8 @@ b{
 
 .post-stats{
 	display: flex;
+	width: 48.3333%;
+	max-width: 20rem;
 }
 
 .fa-envelope, .fa-eye{
@@ -450,12 +510,12 @@ b{
 .post-edit-delete-cont{
 	display: flex;
 	position: relative;
-	justify-content: flex-end;
+	
 }
 
 .post-edit-delete-cont > .content-title{
 	top: -2rem;
-	right: -11px;
+	right: -13px;
 	font-size: 15px;
 	padding: 3px 6px;
 }

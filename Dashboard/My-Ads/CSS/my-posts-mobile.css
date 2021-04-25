@@ -1,0 +1,58 @@
+@media screen and (max-width: 1335px){
+
+	.postBox-cont{
+		margin: 0 10px;
+		margin-bottom: 30px;
+	}
+
+}
+
+@media screen and (max-width: 1315px){
+
+	.postBox-cont{
+		margin: 0 1rem;
+		margin-bottom: 30px;
+	}
+
+}
+
+@media screen and (max-width: 670px){
+
+	.top-sect{
+		flex-direction: column;
+	}
+	
+	.img-cont{
+		width: 100%;
+		max-width: 100%;
+	}
+	
+	.mid-sec{
+		margin-left: 0;
+		margin-top: -1rem;
+	}
+	
+	.post-price{
+		margin-top: 18px;
+		margin-bottom: 18px;
+	}
+	
+	.post-checkbox-cont{
+		width: auto;
+	}
+	
+	.post-stats{
+		width: auto;
+		max-width: auto;
+	}
+	
+	.postBox{
+		transition: 0.3s;
+		box-shadow: 0 0 12px rgba(0,0,0, 0.2);
+	}
+	
+	.postBox:hover{
+		box-shadow: 0 0 2px rgba(0,0,0, 0.2);
+	}
+
+}
