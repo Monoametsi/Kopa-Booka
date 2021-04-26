@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const homePage = require('./home-page');
+const usersAds = require('./my-ads');
 const token_Error = require('./token-error');
 const regFailure = require('./registration_failure');
 const viewAdDetails = require('./view-ad');
@@ -42,6 +43,7 @@ const { viewAd } = viewAdDetails;
 const { homePageAds } = homePage;
 const { registeration_failure } = regFailure;
 const { tokenErr } = token_Error;
+const { my_Ads } = usersAds;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -189,9 +191,7 @@ app.post('/Profile', requireAuth, checkCurrentUser, profileUpdater);
 
 app.post('/password', requireAuth, checkCurrentUser, passwordUpdater);
 
-app.get('/my-ads', requireAuth, checkCurrentUser, (req, res) => {
-	res.status(200).render('my-ads');
-});
+app.get('/my-ads', requireAuth, checkCurrentUser, my_Ads);
 //Dashboard
 
 

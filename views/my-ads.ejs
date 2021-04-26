@@ -18,7 +18,7 @@
 <body>
 
 	<%- include("partials/header"); -%> 
-
+	
 	<section id="My-Posts">
 		<div class="My-Posts-header">
 			<h1 class="My-Posts-title">My Ads</h1>
@@ -44,7 +44,7 @@
 			<div class="delete-all-cont">
 				<ul class="delete-all-list">
 					<li class="delete-all-contents"><input type="checkbox" class="checkbox" id="checkbox"> Select All </li>
-					<li class="delete-all-contents content-title-cont"><i class="fa fa-trash"></i><div class="content-title">Delete Selected</div></li>
+					<li class="delete-all-contents content-title-cont"><i class="fa fa-trash" id="delete-All"></i><div class="content-title">Delete Selected</div></li>
 				</ul>
 			</div>
 
@@ -55,26 +55,52 @@
 				</button>
 			</div>
 		</div>
+		
+		<% let usersAd = (data) => { %>
+		<% let {
 
-		<div class="all-postBox-cont">	
+			_id,
+			Name,
+			Mail,
+			Tel,
+			Whatsapp_tel,
+			Main_Category,
+			Sub_Category,
+			Text_Book_Title,
+			Edition_Number,
+			Author_Name,
+			Condition,
+			Text_Book_Price,
+			Negotiation,
+			Description,
+			Campus,
+			UploadedImages	
 			
+			} = data; 
+			
+			let img = UploadedImages[0];
+			let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+			
+			%>	
+			
+		
 			<div class="postBox-cont">
 
 				<div class="postBox">
 
 					<div class="top-sect">
 						<div class="img-cont">
-							<img src="/Images/book1.jpg">
+							<img src="<%= imgStr %>">
 						</div>
 						
 						<div class="mid-sec">
 							<div class="post-title-cont">
-								<h1 class="post-title"> Accounting textbook </h1>
+								<h1 class="post-title"> <%= Text_Book_Title %> </h1>
 							</div>
 
 							<div class="post-details-cont">
 								<div class="post-details">
-									Category
+									<%= Main_Category %>
 								</div>
 
 								<div class="post-details">
@@ -82,13 +108,13 @@
 								</div>
 
 								<div class="post-details">
-									id: <b>gdftyq9pa</b>
+									id: <b><%= _id %></b>
 								</div>
 							</div>
 						</div>
 
 						<div class="post-price">
-							<span class="price">420</span>
+							<span class="price"> <%= Text_Book_Price %> </span>
 						</div>
 					</div>
 
@@ -112,7 +138,7 @@
 						<div class="post-edit-delete-cont">
 							<i class="fa fa-pencil"></i>
 							<div class="content-title edit">Edit Ad</div>
-							<i class="fa fa-trash"></i>
+							<i class="fa fa-trash individual-post"></i>
 							<div class="content-title">Delete</div>
 						</div>
 					</div>
@@ -120,73 +146,21 @@
 				</div>
 
 			</div> 
-			
-			<div class="postBox-cont">
+		<% } %>
+		
+		
+		
+		
+		
+		
 
-				<div class="postBox">
+		<div class="all-postBox-cont">	
 
-					<div class="top-sect">
-						<div class="img-cont">
-							<img src="/Images/book1.jpg">
-						</div>
+			<% userData.My_Ads.map(usersAd) %>
 
-						<div class="mid-sec">
-							<div class="post-title-cont">
-								<h1 class="post-title"> Marketing textbook </h1>
-							</div>
-
-							<div class="post-details-cont">
-								<div class="post-details">
-									Category
-								</div>
-
-								<div class="post-details">
-									<i class="fa fa-clock"></i>Created: <b>17 Mar 17:04</b>
-								</div>
-
-								<div class="post-details">
-									id: <b>gdftyq9pa</b>
-								</div>
-							</div>
-						</div>
-
-						<div class="post-price">
-							<span class="price">420</span>
-						</div>
-					</div>
-
-					<div class="bottom-sect">
-						<div class="post-checkbox-cont">
-							<input type="checkbox" class="post-checkbox">
-							<span>Select Ad</span>
-						</div>
-
-						<div class="post-stats">
-							<div class="stat-cont">
-								<i class="fa fa-envelope"></i>
-								<span> 0 </span>
-							</div>
-							<div class="stat-cont">
-								<i class="fa fa-eye"></i>
-								<span> 0 </span>
-							</div>
-						</div>
-
-						<div class="post-edit-delete-cont">
-							<i class="fa fa-pencil"></i>
-							<div class="content-title edit">Edit Ad</div>
-							<i class="fa fa-trash"></i>
-							<div class="content-title">Delete</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div> 
-			
 			<div class="no-posts-found" id="no-posts-found">
 				<div class="no-posts-found-title">
-					<h1> No Ads found </h1>
+					<h1 id="no-post-found-title"> No Ads found </h1>
 				</div>
 
 				<div class="no-posts-img">

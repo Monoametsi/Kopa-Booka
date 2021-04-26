@@ -8,6 +8,8 @@ let numOfAds = document.getElementById('post-num');
 
 let noAdsFound = document.getElementById('no-posts-found');
 
+let noPostFoundTitle = document.getElementById('no-post-found-title');
+
 function defaultAdNum(){
 	if(adTitle.length <= 1){
 		numOfAds.innerHTML = `${ adTitle.length } Ad`;
@@ -21,12 +23,19 @@ defaultAdNum();
 function searchAdSystem(){
 	let num = 0;
 	let x = [];
+	
+	if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null){
+		noPostFoundTitle.innerHTML = `You do not have any ads.`;
+	}else{
+		noPostFoundTitle.innerHTML = `No Ads found`; 
+	}
 	for(let i = 0; i < adTitle.length; i++){
 		
 		let adBox = adTitle[i].parentElement.parentElement.parentElement.parentElement.parentElement;
-		
+
 		if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null){
-			num++
+			num++ 
+			
 			adBox.style.display = 'flex';
 			if(num <= 1){
 				numOfAds.innerHTML = `${num} Ad`;
@@ -70,3 +79,86 @@ searchAd.onkeydown = (event) => {
 		searchAdSystem();
 	}
 }
+
+let deleteAllCheckBox = document.getElementById('checkbox');
+
+let adCheckBoxes = document.getElementsByClassName('post-checkbox');
+
+deleteAllCheckBox.onclick = () => {
+	
+	for(let i = 0; i < adCheckBoxes.length; i++){
+			if(deleteAllCheckBox.checked){
+				adCheckBoxes[i].checked = true;
+		
+			}else{
+				adCheckBoxes[i].checked = false;
+			}
+	}
+}
+
+let deleteSelectedAds = document.getElementById('delete-All');
+
+deleteSelectedAds.onclick = () => {
+
+	let x = Array.from(adCheckBoxes);
+	let num = 0;
+
+	x.map((ad) => {
+
+		let adBox = ad.parentElement.parentElement.parentElement.parentElement;
+
+		if(ad.checked && window.getComputedStyle(adBox, null).display !== 'none'){
+			num++
+			adBox.remove();
+
+			if(num <= 1){
+				numOfAds.innerHTML = `${ num } Ad`;
+			}else if(num === x.length){
+				numOfAds.innerHTML = `0 Ad`;
+			}else{
+				numOfAds.innerHTML = `${ num } Ads`;
+			}
+
+			if(num === x.length || (num === adTitle.length  && searchAd.value.length > 0)){
+				numOfAds.innerHTML = `0 Ad`;
+				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
+				noAdsFound.style.display = 'flex';
+			}else{
+				noAdsFound.style.display = 'none';
+			}
+
+		}
+	});
+}
+
+let singleAdDelete = document.getElementsByClassName('individual-post');
+
+let singleAdDeleter = () => {
+		let num = 0;
+		let total = singleAdDelete.length;
+		let outcome;
+		for(let i = 0; i < singleAdDelete.length; i++){
+		outcome = singleAdDelete[i].parentElement.parentElement.parentElement.parentElement;
+		singleAdDelete[i].onclick = function(){
+			num++;
+			let adBox = this.parentElement.parentElement.parentElement.parentElement;
+
+			if(num <= 1){
+				numOfAds.innerHTML = `${ num } Ad`;
+			}else{
+				numOfAds.innerHTML = `${ num } Ads`;
+			}
+
+			adBox.remove();
+			if(num === total || (num === adTitle.length && searchAd.value.length > 0)){
+				numOfAds.innerHTML = `0 Ad`;
+				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
+				noAdsFound.style.display = 'flex';
+			}else{
+				noAdsFound.style.display = 'none';
+			}
+		}
+	}
+}
+
+singleAdDeleter();
