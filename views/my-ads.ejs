@@ -30,7 +30,7 @@
 			<div class="post-section-director-cont">
 				<div class="post-section-director-title-cont">
 					<h4>All ADS</h4>
-					<span class="post-total" style="font-weight: bold;"> <%= userData.My_Ads.length %> </span>
+					<span class="post-total" style="font-weight: bold;"> <%= amountOfAds %> </span>
 				</div>
 
 				<div class="searchInput-cont">
@@ -50,7 +50,7 @@
 
 			<div class="sort-list-cont">
 				<button class="sort-list-btn">
-					<span class="post-num" id="post-num"> <%= userData.My_Ads.length %> </span>
+					<span class="post-num" id="post-num"> <%= amountOfAds %> </span>
 					<i class="fa fa-caret-up"></i>
 				</button>
 			</div>
@@ -160,22 +160,39 @@
 
 			<% userData.My_Ads.map(usersAd) %>
 
-			<div class="no-posts-found" id="no-posts-found">
-				<div class="no-posts-found-title">
-					<h1 id="no-post-found-title"> No Ads found </h1>
-				</div>
+			<% if(amountOfAds === 0) { %>
+				<div class="no-posts-found" id="no-posts-found" style="display: flex;">
+					<div class="no-posts-found-title">
+						<h1 id="no-post-found-title"> You do not have any ads. </h1>
+					</div>
 
-				<div class="no-posts-img">
-					<img src="/Images/open-cardboard-box.png">
-				</div>
+					<div class="no-posts-img">
+						<img src="/Images/open-cardboard-box.png">
+					</div>
 
-				<div class="no-posts-btn-cont">
-					<a href="/place-advert" class="no-posts-btn">
-						Place Advert
-					</a>
+					<div class="no-posts-btn-cont">
+						<a href="/place-advert" class="no-posts-btn">
+							Place Advert
+						</a>
+					</div>
 				</div>
-			</div>
-			
+			<% }else { %>
+				<div class="no-posts-found" id="no-posts-found">
+					<div class="no-posts-found-title">
+						<h1 id="no-post-found-title"> You do not have any ads. </h1>
+					</div>
+
+					<div class="no-posts-img">
+						<img src="/Images/open-cardboard-box.png">
+					</div>
+
+					<div class="no-posts-btn-cont">
+						<a href="/place-advert" class="no-posts-btn">
+							Place Advert
+						</a>
+					</div>
+				</div>
+			<% } %>
 			
 		</div>
 
@@ -183,6 +200,13 @@
 	
 	<%- include("partials/footer"); -%>
 
+<!-- <script>
+let widthNum = document.getElementById('width-num');
+
+window.onresize = () => {
+	widthNum.innerHTML = window.innerWidth;
+}-->
+</script>
 <script src="/JS/my-posts.js"></script>	
 <script src="/JS/search-posts.js"></script>	
 </body>

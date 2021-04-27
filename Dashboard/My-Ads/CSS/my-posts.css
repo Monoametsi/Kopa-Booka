@@ -369,6 +369,17 @@ button.search-btn:hover{
 	margin-top: -1rem;
 }
 
+.post-title{
+	font-family: montserrat, sans-serif;
+	color: #0eee;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.post-title:hover{
+	color: #0acdff;
+}
+
 .img-cont{
 	width: 50%;
 	max-width: 250px;
@@ -433,17 +444,6 @@ img{
 	width: 100%;
 	max-width: 350px;
 	flex-wrap: wrap;
-}
-
-.post-title{
-	font-family: montserrat, sans-serif;
-	color: #0eee;
-	cursor: pointer;
-	transition: 0.3s;
-}
-
-.post-title:hover{
-	color: #0acdff;
 }
 
 .post-details{

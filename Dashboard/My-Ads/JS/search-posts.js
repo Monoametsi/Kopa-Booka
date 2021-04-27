@@ -110,8 +110,8 @@ deleteSelectedAds.onclick = () => {
 
 		if(ad.checked && window.getComputedStyle(adBox, null).display !== 'none'){
 			num++
-			deletedeElements.push(adBox.id)
-			console.log(deletededElements);
+			deletededElements.push(adBox.id)
+
 			adBox.remove();
 
 			if(num <= 1){
@@ -129,6 +129,18 @@ deleteSelectedAds.onclick = () => {
 			}else{
 				noAdsFound.style.display = 'none';
 			}
+
+			fetch(`/delete/${ deletededElements.join('+') }`, {
+				method: 'POST'
+			}).then((response) => {
+				if(response.ok){
+					console.log(response);
+					return;
+				}
+				throw new Error('Item failed to send');
+			}).catch((err) => {
+				console.log(err);
+			});
 
 		}
 	});
