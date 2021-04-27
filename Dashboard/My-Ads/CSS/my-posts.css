@@ -322,7 +322,7 @@ button.search-btn:hover{
 	border-color: rgba(0,0,0,0.5) transparent transparent transparent;
 }
 
-.fa-trash:hover + .content-title, .fa-pencil:hover + .content-title{
+.fa-trash:hover + .content-title, .editPost-link:hover + .content-title{
 	opacity: 1;
 }
 
@@ -430,7 +430,8 @@ img{
 
 .post-details-cont{
 	display: flex;
-	width: 80%;
+	width: 100%;
+	max-width: 350px;
 	flex-wrap: wrap;
 }
 
@@ -447,9 +448,9 @@ img{
 
 .post-details{
 	display: inline-flex;
-	flex-wrap: wrap;
 	min-width: 10px;
-	margin: 3px;
+	margin-right: 4px;
+	margin-bottom: 5px;
 	padding: 3px 5px;
 	border-radius: 10px;
 	background-color: #e0e0e0;
@@ -457,10 +458,6 @@ img{
 	vertical-align: middle;
 	font-size: 14px;
 	white-space: nowrap;
-}
-
-.post-details:first-child{
-	margin-left: 0;
 }
 
 .fa-clock{
@@ -499,6 +496,7 @@ b{
 }
 
 .post-price{
+	margin-top: 8px;
 	font-weight: bold;
 	font-family: montserrat, sans-serif;
 }
@@ -517,14 +515,14 @@ b{
 
 .post-edit-delete-cont > .content-title{
 	top: -2rem;
-	right: -13px;
+	right: -9px;
 	font-size: 15px;
 	padding: 3px 6px;
 }
 
 .post-edit-delete-cont > .edit{
 	top: -2rem;
-	right: 8px;
+	right: 13.8px;
 }
 
 .fa-pencil{

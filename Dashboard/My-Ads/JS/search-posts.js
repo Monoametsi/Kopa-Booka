@@ -97,9 +97,10 @@ deleteAllCheckBox.onclick = () => {
 }
 
 let deleteSelectedAds = document.getElementById('delete-All');
+let deletededElements = [];
 
 deleteSelectedAds.onclick = () => {
-
+	
 	let x = Array.from(adCheckBoxes);
 	let num = 0;
 
@@ -109,6 +110,8 @@ deleteSelectedAds.onclick = () => {
 
 		if(ad.checked && window.getComputedStyle(adBox, null).display !== 'none'){
 			num++
+			deletedeElements.push(adBox.id)
+			console.log(deletededElements);
 			adBox.remove();
 
 			if(num <= 1){
@@ -157,6 +160,18 @@ let singleAdDeleter = () => {
 			}else{
 				noAdsFound.style.display = 'none';
 			}
+
+			fetch(`/delete/${ adBox.id }`, {
+				method: 'POST'
+			}).then((response) => {
+				if(response.ok){
+					console.log(response);
+					return;
+				}
+				throw new Error('Item failed to send');
+			}).catch((err) => {
+				console.log(err);
+			});
 		}
 	}
 }

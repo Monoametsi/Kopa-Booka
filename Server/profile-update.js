@@ -72,6 +72,7 @@ let profileUpdater = (req, res) => {
 							if(err) throw err;
 						});
 					}
+
 					let success = true;
 					await updateUserProfile(email);
 					res.status(200).render('profile-post', { success, formData,  contactValCheck });

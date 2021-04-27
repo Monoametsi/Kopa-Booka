@@ -54,5 +54,10 @@
 	.postBox:hover{
 		box-shadow: 0 0 2px rgba(0,0,0, 0.2);
 	}
+	
+	.post-details-cont{
+		width: 100%;
+		max-width: 100%;
+	}
 
 }

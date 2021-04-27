@@ -19,6 +19,7 @@ let accessToken = async () => {
 	return accessToken;
 }
 
+/*
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
 	auth: {
@@ -30,6 +31,7 @@ let transporter = nodeMailer.createTransport({
 		accessToken: accessToken()
 	}
 });
+*/
 
 let success = true;
 

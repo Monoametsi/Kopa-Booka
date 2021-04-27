@@ -44,7 +44,7 @@ let token_verifier = async (req, res) => {
 			}
 		});
 	}else{
-		return res.redirect('/token-error');
+		return res.redirect('/');
 	}
 
 }

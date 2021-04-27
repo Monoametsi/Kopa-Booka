@@ -30,7 +30,7 @@
 			<div class="post-section-director-cont">
 				<div class="post-section-director-title-cont">
 					<h4>All ADS</h4>
-					<span class="post-total" style="font-weight: bold;"> 2 </span>
+					<span class="post-total" style="font-weight: bold;"> <%= userData.My_Ads.length %> </span>
 				</div>
 
 				<div class="searchInput-cont">
@@ -50,14 +50,16 @@
 
 			<div class="sort-list-cont">
 				<button class="sort-list-btn">
-					<span class="post-num" id="post-num"></span>
+					<span class="post-num" id="post-num"> <%= userData.My_Ads.length %> </span>
 					<i class="fa fa-caret-up"></i>
 				</button>
 			</div>
 		</div>
-		
+
 		<% let usersAd = (data) => { %>
-		<% let {
+		<% 
+
+		let {
 
 			_id,
 			Name,
@@ -75,16 +77,16 @@
 			Description,
 			Campus,
 			UploadedImages	
-			
+
 			} = data; 
-			
+
 			let img = UploadedImages[0];
 			let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
-			
+
 			%>	
 			
 		
-			<div class="postBox-cont">
+			<div class="postBox-cont" id="<%= _id %>">
 
 				<div class="postBox">
 
@@ -127,7 +129,7 @@
 						<div class="post-stats">
 							<div class="stat-cont">
 								<i class="fa fa-envelope"></i>
-								<span> 0 </span>
+								<span> <%= userData.Ad_Messages.length %> </span>
 							</div>
 							<div class="stat-cont">
 								<i class="fa fa-eye"></i>
@@ -136,7 +138,7 @@
 						</div>
 
 						<div class="post-edit-delete-cont">
-							<i class="fa fa-pencil"></i>
+							<a href="<%= `${ process.env.CLIENT_URL }/edit-ad/${ _id }` %>" class="editPost-link"><i class="fa fa-pencil"></i></a>
 							<div class="content-title edit">Edit Ad</div>
 							<i class="fa fa-trash individual-post"></i>
 							<div class="content-title">Delete</div>

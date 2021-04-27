@@ -6,7 +6,7 @@ const { Users } = user;
 
 let my_Ads = (req, res) => {
 	let token = req.cookies.token;
-	
+
 	if(token){
 		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
 			if(err){
@@ -19,7 +19,7 @@ let my_Ads = (req, res) => {
 					result.map((userData) => {
 						if(userData.Email === email){
 
-							res.status(200).render('my-ads', { userData });
+							res.status(200).render('my-ads', { userData, process });
 						}else{
 							res.redirect('/');
 						}
