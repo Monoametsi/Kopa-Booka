@@ -48,10 +48,14 @@
 				</ul>
 			</div>
 
-			<div class="sort-list-cont">
-				<button class="sort-list-btn">
-					<span class="post-num" id="post-num"> <%= amountOfAds %> </span>
-					<i class="fa fa-caret-up"></i>
+			<div class="sort-list-cont Dont-close">
+				<button class="sort-list-btn Dont-close" id="sort-list-btn">
+					<span class="post-num Dont-close" id="post-num"> <%= amountOfAds %> </span>
+					<i class="fa fa-caret-up Dont-close"></i>
+				</button>
+
+				<button class="hidden-sort-list-btn" id="hidden-sort-list-btn">
+					<span class="post-num"> <%= `View ${ amountOfAds } Ad` %> </span>
 				</button>
 			</div>
 		</div>
@@ -83,7 +87,7 @@
 			let img = UploadedImages[0];
 			let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
 
-			%>	
+		%>	
 			
 		
 			<div class="postBox-cont" id="<%= _id %>">
@@ -205,9 +209,9 @@ let widthNum = document.getElementById('width-num');
 
 window.onresize = () => {
 	widthNum.innerHTML = window.innerWidth;
-}-->
-</script>
+}
+</script>-->
+<script src="/JS/search-posts.js"></script>
 <script src="/JS/my-posts.js"></script>	
-<script src="/JS/search-posts.js"></script>	
 </body>
 </html>

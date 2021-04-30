@@ -160,3 +160,29 @@ fileDiv.ondrop = () => {
 	
 	console.log(upload.files);
 }
+
+(function(){
+
+	let UsersImgs = document.getElementsByClassName('visual');
+	
+	for(let i = 0; i < UsersImgs.length; i++){
+
+		let imgUrl = UsersImgs[i].src;
+
+		let imgName = UsersImgs[i].id;
+
+		if(imgUrl.search('/imageUploads/') !== -1){
+			fetch(imgUrl).then(async (response) => {
+				const contentType = response.headers.get('content-type');
+				const blobCoversion = await response.blob();
+				const fileObjectCoversion = new File([blobCoversion], imgName, { type: contentType });
+				dt.items.add(fileObjectCoversion);
+				upload.files = dt.files;
+				console.log(blobCoversion);
+				console.log(upload.files);
+			});
+		}
+	}
+
+	imgRemover();
+})();

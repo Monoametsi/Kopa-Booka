@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const homePage = require('./home-page');
+const adUpdater = require('./edit-ad-post.js');
+const adEditer = require('./edit-ad.js');
 const removeAd = require('./ad-remover');
 const usersAds = require('./my-ads');
 const token_Error = require('./token-error');
@@ -46,6 +48,8 @@ const { registeration_failure } = regFailure;
 const { tokenErr } = token_Error;
 const { my_Ads } = usersAds;
 const { adRemover } = removeAd;
+const { edit_ad } = adEditer;
+const { updateUsersAds } = adUpdater;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -195,7 +199,9 @@ app.post('/password', requireAuth, checkCurrentUser, passwordUpdater);
 
 app.get('/my-ads', requireAuth, checkCurrentUser, my_Ads);
 
-app.get('/edit-ad/:id', requireAuth, checkCurrentUser, my_Ads);
+app.get('/edit-ad/:id', requireAuth, checkCurrentUser, edit_ad);
+
+app.post('/edit-ad/:id', requireAuth, checkCurrentUser, updateUsersAds);
 
 app.post('/delete/:id', adRemover);
 //Dashboard

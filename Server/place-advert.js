@@ -18,7 +18,9 @@ let placeAdvert = async (req, res) => {
 
 	await form.parse(req, async (err, fields, files) => {
 		var UploadedImages = [];
+
 		let formData = fields;
+
 		let {
 			name, 
 			mail, 
@@ -74,6 +76,8 @@ let placeAdvert = async (req, res) => {
 			}
 		}
 
+		console.log(files);
+
 		const adverts = await new Advertisements({
 			_id: UserId,
 			Name: name,
@@ -102,9 +106,9 @@ let placeAdvert = async (req, res) => {
 				if(err){
 					return res.status(400).json({ err })
 				}else{
-					
+
 					let { email } = decodedToken;
-					
+
 					let users_ad = {
 						_id: UserId,
 						Name: name,
@@ -136,6 +140,8 @@ let placeAdvert = async (req, res) => {
 					await updateUserAds(email);
 				}
 			})
+		}else{
+			res.redirect('/');
 		}
 
 	});

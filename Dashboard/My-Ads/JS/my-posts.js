@@ -150,4 +150,12 @@ window.onclick = (event) => {
 			naver.style.transition = '.3s';
 		}
 	}
+	
+	
+	let displayBtnValue = window.getComputedStyle(hiddenBtn, null).display;
+	if(event.target.className.search('Dont-close') === -1 && displayBtnValue !== 'none'){
+		adCounterBtn.classList.remove('add-focus');
+		hiddenBtn.style.display = 'none';
+	}
+	
 }

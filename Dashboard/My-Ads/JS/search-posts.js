@@ -10,6 +10,23 @@ let noAdsFound = document.getElementById('no-posts-found');
 
 let noPostFoundTitle = document.getElementById('no-post-found-title');
 
+let adCounterBtn = document.getElementById('sort-list-btn');
+
+let hiddenBtn = document.getElementById('hidden-sort-list-btn');
+
+adCounterBtn.onclick = () => {
+	let displayValue = window.getComputedStyle(hiddenBtn, null).display;
+	
+	if(displayValue !== 'none'){
+		adCounterBtn.classList.remove('add-focus');
+		hiddenBtn.style.display = 'none';
+	}else{
+		adCounterBtn.classList.add('add-focus');
+		hiddenBtn.style.display = 'flex';
+	}
+	
+}
+
 function defaultAdNum(){
 	if(adTitle.length <= 1){
 		numOfAds.innerHTML = `${ adTitle.length } Ad`;

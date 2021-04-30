@@ -21,6 +21,7 @@ let adRemover = (req, res) => {
 				let { email } = decodedToken;
 
 				let AdDeleter = (res) => {
+
 					DeletedBulk.map((deletedAd) => {
 						let removeSelectedAds = { _id: deletedAd };
 							Advertisements.deleteOne(removeSelectedAds, (err, res) => {
@@ -28,6 +29,7 @@ let adRemover = (req, res) => {
 							console.log('item from Advertisers DB has been deleted');
 						});
 					});
+
 				}
 
 				let deleteUsersAd = (res) => {

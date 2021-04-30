@@ -159,7 +159,7 @@
         'Zoology'
         ]
     }
-    
+
     let arts = faculty['Art Design and Architecture'];
     let business = faculty['College of Business and Economics'];
     let education = faculty.Education;
@@ -168,7 +168,7 @@
     let humanities = faculty.Humanities;
     let law = faculty.Law;
     let science = faculty.Science;
-	
+
 	function categorizer(mainCat,subCat){
 		if(main_cat.value == mainCat){
 			for(let i = 0; i <	subCat.length; i++)
