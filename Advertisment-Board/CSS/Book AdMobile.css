@@ -69,21 +69,21 @@
 	.advertisements{
 		margin-left: -4.8rem;
 	}
-	
+
 	.all-categories{
 		width: 80%;
 	}
-	
+
 	.AdDescription-body{
 		-webkit-line-clamp: 2;
 	}
 	
 	.Sellers-item{
-		height: 9rem;
+		height: 10rem;
 	}
 	
 	#img{
-		width: 380px;	
+		width: 350px;	
 	}
 	
 	.priceAndContact-cont{

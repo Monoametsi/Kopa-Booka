@@ -2,6 +2,14 @@
 let topNav = document.getElementById("Topnav");
 let scrollUp = window.pageYOffset;
 
+/*
+let num = document.getElementById('width-num');
+
+window.onresize = () => {
+	num.innerHTML = window.innerWidth;
+}
+*/
+
 let hideBar = function() {
     let scrollDown = window.pageYOffset;
     if (scrollUp > scrollDown) {
@@ -139,28 +147,32 @@ let mobileCardbtn = document.getElementsByClassName('MobileContact-Btn');
 
 for (i = 0; i < modBtn.length; i++) {
     modBtn[i].onclick = function() {
-		let normalSizeAdHeader = this.parentElement.parentElement.parentElement.children[1].children[0].children[0].innerHTML;
-		modalOpener(normalSizeAdHeader);
+		let normalSizeAdHeader = this.parentElement.parentElement.parentElement.children[1].children[0].children[0].innerText.trim();
+		let modalContactNum = this.parentElement.parentElement.parentElement.children[1].children[2].children[1].innerText.trim();
+		modalOpener(normalSizeAdHeader, modalContactNum);
     }
 }
 
 for (i = 0; i < mobileCardbtn.length; i++) {
 	mobileCardbtn[i].onclick = function(){
-		let modalCardHeader = this.parentElement.parentElement.children[0].children[0].children[0].innerHTML;
-		modalOpener(modalCardHeader);
+		let modalCardHeader = this.parentElement.parentElement.children[0].children[0].children[0].innerText.trim();
+		let modalContactNum = this.parentElement.parentElement.children[2].children[1].innerText.trim();
+		modalOpener(modalCardHeader, modalContactNum);
 	}
 }
 
-function modalOpener(headerTitle){
+function modalOpener(headerTitle, modalContactNum){
 	let adTitle = headerTitle;
 	let messageToSeller = document.getElementById('subject');
 	let messageToSellerErr = document.getElementById('subject-Err');
+	let sellersContactNum = document.getElementById('contact_num');
 	document.body.style.overflow = 'hidden';
 
+	sellersContactNum.value = `${ modalContactNum }`;
 	modalContent.classList.remove('slideUp');
 	modal.classList.remove('fadeOut');
 	modal.style.display = "block";
-	messageToSeller.value = `Hi, I am interested in ${adTitle}`;
+	messageToSeller.value = `Hi, I am interested in ${ adTitle }`;
 
 	if(messageToSeller.value.length > 0){
 		messageToSellerErr.style.display = 'none';

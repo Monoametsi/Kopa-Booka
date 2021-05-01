@@ -12,7 +12,7 @@ let my_Ads = (req, res) => {
 			if(err){
 				return res.status(400).json({ err })
 			}else{
-				
+
 				let { email } = decodedToken;
 
 				Users.find().then((result) => {

@@ -138,7 +138,6 @@ let updateUsersAds = async (req, res) => {
 						
 						Users.updateOne(userInfo, updatedAd, (err, res) => {
 							if(err) throw err;
-							
 						});
 					}
 

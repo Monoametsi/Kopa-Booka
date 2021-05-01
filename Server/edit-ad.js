@@ -34,11 +34,10 @@ let edit_ad = (req, res) => {
 		
 		if(token){
 			jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
-				
+
 				if(err){
 					return res.status(400).json({ err });
 				}else{
-					
 					let { email } = decodedToken;
 
 					result.map((userData) => {

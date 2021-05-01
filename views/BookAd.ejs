@@ -269,7 +269,7 @@
 						</div>
 					</div>
 					<div class="form">
-						 <form method="" action="" style="width:95%;">
+						 <form method="post" action="" style="width:95%;">
 						 
 							<div class="validifier-cont">
 								<label for="Username" class="validifier" id="Username-Err">
@@ -299,6 +299,7 @@
 							<div class="inputField-cont">
 								<i class="fa fa-envelope ikon"></i>
 								<input type="email" class="inputField-styling" id="Users-email" name="email" placeholder="Email (Required)">
+								<input type="hidden" name="contact_num" id="contact_num">
 							</div>
 							
 							<div class="letter">
@@ -345,7 +346,8 @@
 			let textBookTileMatcher = (not) => {
 				not.Text_Book_Title;
 				return not.Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1;
-			} %>
+			} 
+		%>
 
 			<% if(Boolean(result.find(textBookTileMatcher)) === true){ %>
 			<%	if(result[i].Text_Book_Title.toLowerCase().search(searchQuery.toLowerCase()) !== -1){ %>
@@ -558,7 +560,9 @@
 			<% var isTrue; %>
 			<% let displayAds = (adData) => { %>
 
-			<%	let {
+			<%	
+			
+			let {
 				_id,
 				Mail,
 				Tel,
@@ -576,6 +580,7 @@
 			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
 
 				num++;
+
 			%>
 
 			<div class="Sellers-item">
@@ -593,11 +598,18 @@
 					<a href="<%= `/view-ad/${ _id }` %>">
 						<h1 class="AdDescription-title"><%= Text_Book_Title %></h1>
 					</a>
-					<p class="AdDescription-body"><%= Description %></p>
+					<p class="AdDescription-body">
+						<%= Description %>
+					</p>
 					<div class="timeAndLocation-tracker">	
-						 <h3 class="location">
+						<h3 class="location">
 						   <i class="fa fa-map-marker"></i>
 						<%= stringCapitalizer(Campus) %>
+						</h3> 
+						
+						<h3 class="location">
+						   <i class="fa fa-phone"></i>
+						<%= Tel %>
 						</h3> 
 						<h3 class="time">
 						   <i class="fa fa-clock"></i>
@@ -605,7 +617,7 @@
 						</h3> 					
 					</div>
 				</div>
-				
+
 				 <div class="priceAndContact-cont">
 					<div class="price-cont">
 						<h3 class="price-num"><%= Text_Book_Price %></h3>
@@ -631,16 +643,23 @@
 						<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
 						<h1 class="MobileCamera-Cont">
 							<i class="fa fa-camera"></i>
-							<%= "+" + UploadedImages.length %>
+							<%= `+${UploadedImages.length}` %>
 						</h1>
 					</a>
 					</div>
+
 					<div class="MobileLocation-Cont">
 						<h3 class="Mobile-location">
 						   <i class="fa fa-map-marker"></i>
 							<%= stringCapitalizer(Campus) %>
+						</h3>
+
+						<h3 class="Mobile-location">
+						   <i class="fa fa-phone"></i>
+							<%= Tel %>
 						</h3> 
 					</div>
+
 					<div class="MobileContact-Cont">
 						<button class="MobileContact-Btn">
 							Contact Advertiser

@@ -466,6 +466,7 @@ button.but:hover + .search{
 }
 
 .MobileLocation-Cont{
+	/*display: flex;*/
 	font-family: Calibri Light;
 	color: rgb(64,64,64);
 	font-size: 1.2rem;
@@ -532,7 +533,7 @@ button.but:hover + .search{
 	justify-content: space-between;
 	background-color: #fff;
 	margin: 1rem 2rem;
-	height: 12rem;
+	height: 11rem;
 	max-width: 100%;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -554,7 +555,7 @@ button.but:hover + .search{
 	border-radius: 5px;
 	transition: 0.6s;
 	cursor: pointer;
-	width: 300px; 
+	width: 280px; 
 	height: 100%; 
 	max-width: 100%;
 }
@@ -623,6 +624,7 @@ button.but:hover + .search{
 
 .timeAndLocation-tracker{
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .time, .location{    
@@ -644,13 +646,13 @@ button.but:hover + .search{
 	color: #000;
 }
 
-.fa-clock, .fa-map-marker-alt{
+.fa-clock, .fa-map-marker-alt, .location > .fa-phone{
 	font-size: 1rem;    
 	color: rgb(64,64,64);   
 	margin-right: 2.8px;
-}
+} 
 
-.fa-map-marker-alt{
+.fa-map-marker-alt, .location > .fa-phone{
 	color: #000;
 	font-weight: 900;
 }
@@ -685,7 +687,7 @@ button.but:hover + .search{
 	background-color: #0acdff;
     white-space: nowrap;
 	font-size: 1rem;
-	padding: 9px 18px;
+	padding: 9px 10px;
 	border-radius: 5px;
 	cursor: pointer;
 	border: none;
@@ -777,7 +779,7 @@ button.but:hover + .search{
 .ikon{
 	display: -ms-flexbox;
 	display: flex;
-	width: 6%;
+	width: 7%;
 	justify-content: center;
 	align-items: center;
 	font-size: 1.4rem;
