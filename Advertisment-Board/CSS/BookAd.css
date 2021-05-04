@@ -4,7 +4,7 @@
 
 body{
 	margin: 0;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
 	background-color: #eee7;
 }
 
@@ -788,6 +788,7 @@ button.but:hover + .search{
 	padding: 12px;
 	border-radius: 5px 0 0 5px;
 	transition: 0.3s;
+	margin-right: -2px;
 }
 
 .inputField-cont{
@@ -819,10 +820,10 @@ button.but:hover + .search{
 }
 
 .redBox{
-	border-right: 1px solid red;
 	border-top: 1px solid red;
+	border-right: 1px solid red;
+	border-left: 0.4px solid red;
 	border-bottom: 1px solid red;
-	clip-path: inset(-8px -8px -8px 0px);
 }
 
 .Message-redBox{
@@ -830,13 +831,16 @@ button.but:hover + .search{
 }
 
 .Message-redBox:focus{
-	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.6);
+	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.4);
 }
 
 .redBorder{
-	border-left: 1px solid red;
-	border-top: 1px solid red;
-	border-bottom: 1px solid red;
+	border: 1px solid red;
+	background-color: red;
+}
+
+.red-background{
+	background-color: red;
 }
 
 .Shadow{
@@ -844,8 +848,7 @@ button.but:hover + .search{
 }
 
 .redBox:focus{
-	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.6);
-	clip-path: inset(-8px -8px -8px 0px);
+	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.4);
 }
 
 .Icon-boxShadower{
@@ -860,7 +863,7 @@ button.but:hover + .search{
 }
 
 label{
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.3rem;
 }
 
 textarea{
@@ -902,7 +905,7 @@ textarea::placeholder{
 	overflow: auto; 
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background-color: rgba(0,0,0,0.9);
+	background-color: rgba(0,0,0,0.8);
 	transition: 0.3s;
 	animation-name: fadeIn;
 	animation-duration: 1s;
@@ -995,6 +998,80 @@ input[type=submit]:hover{
 .termPol a:hover{
 	color: rgba(0,0,250,1);
 	text-decoration: underline;
+}
+
+.box-cont{
+	display: none;
+    justify-content: center;
+}
+
+.box{
+	display: inline-flex;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    flex-direction: column;
+	background-color: #fff;
+	box-shadow: 0 0 20px rgba(0,0,0,1);
+    border-radius: 5px;
+}
+
+.box-title{
+	font-family: montserrat, sans-serif;
+	font-size: 2.5rem;
+}
+
+.title-close-cont{
+	display: flex;
+	align-self: center;
+}
+
+.box-closer{
+	position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+}
+
+.box-closer:hover{
+	color: rgba(0, 0, 0, 1);
+}
+
+.box-message-cont{
+	text-align: center;
+	align-self: center;
+} 
+
+.box-message-cont i{
+	color: #00FF00;
+	font-weight: bold;
+	font-size: 4rem;
+} 
+
+.box-message-cont > *:not(:last-child){
+	margin-bottom: 0;
+}
+
+.box-message-cont h1{
+	margin-top: 0;
+	font-size: 2.5rem;
+	color: #00FF00;
+	font-family: montserrat, sans-serif;
+}
+
+.box-message-cont p:first-of-type{
+	font-size: 1.2rem;
+	margin-top: 12px;
+	color: rgba(0,0,0,0.9);
+}
+
+.box-message-cont p:last-child{
+	font-size: 0.9rem;
+	margin-bottom: 20px;
 }
 
 /*Modal -- end*/

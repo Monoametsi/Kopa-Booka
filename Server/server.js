@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const fs = require('fs');
 const homePage = require('./home-page');
+const buyersMessage = require('./return-url');
 const adUpdater = require('./edit-ad-post.js');
 const adEditer = require('./edit-ad.js');
 const removeAd = require('./ad-remover');
@@ -50,6 +51,7 @@ const { my_Ads } = usersAds;
 const { adRemover } = removeAd;
 const { edit_ad } = adEditer;
 const { updateUsersAds } = adUpdater;
+const { messageOfInterest } = buyersMessage;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -120,8 +122,9 @@ app.get('/Ad-board/category/:searchQuery/price-low-to-high/:pageQuery', checkCur
 app.get('/Ad-board/category/:searchQuery/price-high-to-low/:pageQuery', checkCurrentUser, displayAds);
 
 app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
-//Search Results
 
+app.post('/return-url?', messageOfInterest);
+//Search Results
 
 app.get('/view-ad/:id', checkCurrentUser, viewAd);
 

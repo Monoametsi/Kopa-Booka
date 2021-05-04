@@ -140,6 +140,7 @@ if(roundIcon !== null){
 
 //modal displayer and closer
 let modBtn = document.getElementsByClassName("contact-btn");
+let successBoxCont = document.getElementById('box-cont');
 let mobileModBtn = document.getElementsByClassName("MobileContact-Btn");
 let modal = document.getElementById("formMod");
 let modalContent = document.getElementById("modal-content");
@@ -148,30 +149,37 @@ let mobileCardbtn = document.getElementsByClassName('MobileContact-Btn');
 for (i = 0; i < modBtn.length; i++) {
     modBtn[i].onclick = function() {
 		let normalSizeAdHeader = this.parentElement.parentElement.parentElement.children[1].children[0].children[0].innerText.trim();
-		let modalContactNum = this.parentElement.parentElement.parentElement.children[1].children[2].children[1].innerText.trim();
-		modalOpener(normalSizeAdHeader, modalContactNum);
+		let modalContactNum = this.parentElement.parentElement.parentElement.children[1].children[0].href.trim();
+		let advertUrl = new URL(modalContactNum);
+		let advertId = advertUrl.pathname.replace('/view-ad/', '');
+		modalOpener(normalSizeAdHeader, advertId);
     }
 }
 
 for (i = 0; i < mobileCardbtn.length; i++) {
 	mobileCardbtn[i].onclick = function(){
 		let modalCardHeader = this.parentElement.parentElement.children[0].children[0].children[0].innerText.trim();
-		let modalContactNum = this.parentElement.parentElement.children[2].children[1].innerText.trim();
-		modalOpener(modalCardHeader, modalContactNum);
+		let modalContactNum = this.parentElement.parentElement.children[1].children[0].href.trim();
+		let advertUrl = new URL(modalContactNum);
+		let advertId = advertUrl.pathname.replace('/view-ad/', '');
+		modalOpener(modalCardHeader, advertId);
 	}
 }
 
-function modalOpener(headerTitle, modalContactNum){
+let sellersContactNum = document.getElementById('Post-Id');
+
+function modalOpener(headerTitle, advertId){
 	let adTitle = headerTitle;
 	let messageToSeller = document.getElementById('subject');
 	let messageToSellerErr = document.getElementById('subject-Err');
-	let sellersContactNum = document.getElementById('contact_num');
 	document.body.style.overflow = 'hidden';
 
-	sellersContactNum.value = `${ modalContactNum }`;
+	sellersContactNum.value = `${ advertId }`;
 	modalContent.classList.remove('slideUp');
+	successBoxCont.classList.remove('slideUp');
 	modal.classList.remove('fadeOut');
 	modal.style.display = "block";
+	modalContent.style.display = "flex";
 	messageToSeller.value = `Hi, I am interested in ${ adTitle }`;
 
 	if(messageToSeller.value.length > 0){
@@ -185,11 +193,13 @@ let modalCloser = document.getElementsByClassName("modal-closer");
 for (i = 0; i < modalCloser.length; i++) {
     modalCloser[i].onclick = function() {
 		modalContent.classList.add('slideUp');
+		successBoxCont.classList.add('slideUp');
 		modal.classList.add('fadeOut');
 		
 		setTimeout(function(){
 			document.body.style.overflow = 'auto';
-			 modal.style.display = "none";
+			modal.style.display = "none";
+			successBoxCont.style.display = "none";
 		},900);
     }
 }
@@ -229,13 +239,15 @@ window.onclick = function(event) {
 		},300)
 	}
 	
-	 if (event.target == modal) {
+	 if (event.target == modal || event.target == successBoxCont) {
         modalContent.classList.add('slideUp');
+		successBoxCont.classList.add('slideUp');
 		modal.classList.add('fadeOut');
 		
 		setTimeout(function(){
 			document.body.style.overflow = 'auto';
 			 modal.style.display = "none";
+			 successBoxCont.style.display = "none";
 		},900);
     }
 	

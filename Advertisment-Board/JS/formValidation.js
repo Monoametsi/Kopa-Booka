@@ -3,21 +3,25 @@ let userName = document.getElementById('Username');
 let	userNameErr = document.getElementById('Username-Err');
 
 userName.oninput = function (){
-	userNameValidator();
-}
-
-function userNameValidator(){
+	let icon = document.getElementsByClassName("ikon")[0];
+	
 	titleValidator();
+
+	if(titleValidator() === false){
+		icon.classList.add('redBorder', 'Shadow');
+	}else{
+		icon.classList.add('Icon-boxShadower');
+	}
 }
 
 function titleValidator(){
 	let icon = document.getElementsByClassName("ikon")[0];
-	
+
 	if(userName.value === ''){
 		userNameErr.style.display = 'flex';
 		userName.classList.add('redBox');
 		userNameErr.innerText = 'Required';
-		icon.classList.add('redBorder', 'Shadow');
+		icon.classList.add('redBorder');
 		icon.classList.remove('Icon-boxShadower');
 		return false;
 		
@@ -25,7 +29,7 @@ function titleValidator(){
 		userNameErr.style.display = 'none';
 		userName.classList.remove('redBox');
 		icon.classList.remove('redBorder', 'Shadow');
-		icon.classList.add('Icon-boxShadower');
+		return userName.value;
 	}
 }
 
@@ -33,7 +37,15 @@ function titleValidator(){
 let contactNum = document.getElementById('Users-contact');
 
 contactNum.oninput = function (){
-		contactNumValidator();
+	let icon = document.getElementsByClassName("ikon")[1];
+	
+	contactNumValidator();
+	
+	if(contactNumValidator() === false){
+		icon.classList.add('redBorder', 'Shadow');
+	}else{
+		icon.classList.add('Icon-boxShadower');
+	}
 }
 
 function contactNumValidator(){
@@ -83,12 +95,13 @@ function contactNumValidator(){
 	contactNum.classList.remove('redBox');
 	icon.classList.remove('redBorder', 'Shadow');
 	icon.classList.add('Icon-boxShadower');
+	return contactNumVal;
 	
   }else if(contactNumVal == ''){
 	contactNumErr.style.display = 'none';
 	contactNum.classList.remove('redBox');
 	icon.classList.remove('redBorder', 'Shadow');
-	icon.classList.add('Icon-boxShadower');
+	return contactNumVal;
 	
   }else{
 	contactNumErr.style.display = 'flex';
@@ -104,7 +117,15 @@ function contactNumValidator(){
 let email = document.getElementById('Users-email');
 
 email.oninput =	function (){
+	let icon = document.getElementsByClassName("ikon")[2];
+	
 	emailValidator();
+
+	if(emailValidator() === false){
+		icon.classList.add('redBorder', 'Shadow');
+	}else{
+		icon.classList.add('Icon-boxShadower');
+	}
 }
 
 function emailValidator(){
@@ -123,7 +144,7 @@ function emailValidator(){
 		mailErr.style.display = 'flex';
 		mailErr.innerText = 'Required';
 		email.classList.add('redBox');
-		icon.classList.add('redBorder', 'Shadow');
+		icon.classList.add('redBorder');
 		icon.classList.remove('Icon-boxShadower');
 		return false;
 	
@@ -131,13 +152,13 @@ function emailValidator(){
 		mailErr.style.display = 'none';
 		email.classList.remove('redBox');
 		icon.classList.remove('redBorder', 'Shadow');
-		icon.classList.add('Icon-boxShadower');
+		return emailVal;
 	
 	}else{
 		mailErr.style.display = 'flex';
 		mailErr.innerText = 'Invalid email';
 		email.classList.add('redBox');
-		icon.classList.add('redBorder', 'Shadow');
+		icon.classList.add('redBorder');
 		icon.classList.remove('Icon-boxShadower');
 		return false;
 	}
@@ -164,6 +185,7 @@ function messageToSellerValidator(){
 	}else{
 		messageToSellerErr.style.display = 'none';
 		messageToSeller.classList.remove('Message-redBox');
+		return messageToSellerVal;
 	}
 }
 
@@ -209,21 +231,59 @@ searchInputField.onblur = function(){
 //Submit validation
 let submitBtn = document.getElementById('submitFormInfo');
 
-submitBtn.onclick = function(event){
-	event.preventDefault();
+submitBtn.onclick = function(){
 	let icons = document.getElementsByClassName("ikon");
+	let formActionAttr = document.getElementById("form").action;
 
-	if(userNameValidator()){
-		return userNameValidator();
+	titleValidator();
+	contactNumValidator();
+	emailValidator();
+	messageToSellerValidator();
 
-	}else if(contactNumValidator()){
+	if(titleValidator() === false){
+		return titleValidator();
+
+	}else if(contactNumValidator() === false){
 		return contactNumValidator();
 
-	}else if(emailValidator()){
+	}else if(emailValidator() === false){
 		return emailValidator();
 
-	}else if(messageToSellerValidator()){
+	}else if(messageToSellerValidator() === false){
 		return messageToSellerValidator();
+	}else{
+
+		let formData = new URLSearchParams();
+
+		let title = document.getElementById('h1');
+
+		let userInput = {
+		  firstname: titleValidator(),
+		  tel: contactNumValidator(),
+		  email: emailValidator(),
+		  Post_Id: sellersContactNum.value,
+		  subject: messageToSellerValidator() 
+		}
+
+		for(formValue in userInput){
+			formData.append(formValue, userInput[formValue].trim());
+		}
+
+		fetch(formActionAttr, {
+			body: formData,
+			method: 'POST'
+		}).then( async (response) => {
+			let formdata = await response;
+
+			return formdata;
+		}).then((result) => {
+			modalContent.style.display = "none";
+			successBoxCont.style.display = "flex";
+		}).catch((err) => {
+			console.log(err);
+		});
+
+		return false;
 	}
 
 	for(i = 0; i < icons.length; i++){

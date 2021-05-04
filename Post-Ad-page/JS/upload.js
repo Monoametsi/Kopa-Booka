@@ -175,6 +175,7 @@ fileDiv.ondrop = () => {
 			fetch(imgUrl).then(async (response) => {
 				const contentType = response.headers.get('content-type');
 				const blobCoversion = await response.blob();
+				UsersImgs[i].src = URL.createObjectURL(blobCoversion);
 				const fileObjectCoversion = new File([blobCoversion], imgName, { type: contentType });
 				dt.items.add(fileObjectCoversion);
 				upload.files = dt.files;

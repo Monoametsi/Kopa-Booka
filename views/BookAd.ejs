@@ -269,13 +269,15 @@
 						</div>
 					</div>
 					<div class="form">
-						 <form method="post" action="" style="width:95%;">
+						<% let returnUrl = `/return-url?${ req.url }`%>
+						
+						 <form method="POST" action="<%= returnUrl.replace("?/", "?")%>" style="width:95%;" id="form">
 						 
 							<div class="validifier-cont">
 								<label for="Username" class="validifier" id="Username-Err">
 								</label>
 							</div>
-							
+
 							<div class="inputField-cont">
 								<i class="fa fa-user ikon"></i>
 								<input type="text" class="inputField-styling" id="Username" name="firstname" placeholder="Enter Your Name (Required)">
@@ -299,7 +301,6 @@
 							<div class="inputField-cont">
 								<i class="fa fa-envelope ikon"></i>
 								<input type="email" class="inputField-styling" id="Users-email" name="email" placeholder="Email (Required)">
-								<input type="hidden" name="contact_num" id="contact_num">
 							</div>
 							
 							<div class="letter">
@@ -309,6 +310,8 @@
 								</div>
 								<textarea id="subject" name="subject" placeholder="Send seller a message..."></textarea>
 							</div>
+
+							<input type="hidden" name="Post_Id" id="Post-Id">
 							
 							<input type="submit" id="submitFormInfo" value="Send Message">
 						 </form>
@@ -318,6 +321,30 @@
 						</div>
 					</div>
 				</div>
+				
+				
+			<!-- Success -->	
+				<div class="box-cont" id="box-cont">
+				  <div class="box">
+
+					  <div class="title-close-cont">
+						  <h1 class="box-title">Contact Advertiser</h1>
+						  <i class="modal-closer fa fa-times box-closer" ></i>
+					  </div>
+
+					  <div class="box-message-cont"> 
+
+						  <i class="fa fa-check"></i>
+						  <h1>Success!</h1>
+						  <p>Thanks for your interest!</p>
+						  <p>Your message has been submitted successfully</p>
+
+					  </div>
+
+				  </div>
+				</div>
+			<!-- Success -->	
+				
 			</div>
 			
 			
@@ -639,13 +666,13 @@
 							<h3 class="MobileCard-Price"><%= Text_Book_Price %></h3>
 					</div>
 					<div class="MobileTextbook-Img">
-					<a href="<%= `/view-ad/${ _id }` %>">
-						<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
-						<h1 class="MobileCamera-Cont">
-							<i class="fa fa-camera"></i>
-							<%= `+${UploadedImages.length}` %>
-						</h1>
-					</a>
+						<a href="<%= `/view-ad/${ _id }` %>">
+							<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
+							<h1 class="MobileCamera-Cont">
+								<i class="fa fa-camera"></i>
+								<%= `+${UploadedImages.length}` %>
+							</h1>
+						</a>
 					</div>
 
 					<div class="MobileLocation-Cont">
