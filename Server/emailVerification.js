@@ -18,7 +18,7 @@ let accessToken = async () => {
 	const accessToken = await oAuth2Client.getAccessToken();
 	return accessToken;
 }
-
+//
 let transporter = nodeMailer.createTransport({
 	service: 'gmail',
 	auth: {
