@@ -167,7 +167,7 @@ button.search-btn:hover{
 	border-right: 1px solid #ccc;
 }
 
-.checkbox{
+.checkbox, input[type=checkbox]{
 	-webkit-appearance: none;
 	border: 2px solid #ccc;
 	outline: none;
@@ -178,12 +178,12 @@ button.search-btn:hover{
 	transition: 0.3s;
 }
 
-.checkbox:checked{
+.checkbox:checked, input[type=checkbox]:checked{
 	border: 2px solid #0CFC00;
 	background-color: #0CFC00;
 }
 
-.checkbox:after{
+.checkbox:after, input[type=checkbox]:after{
 	content: '\2714';
 	color: #fff;
 	font-size: 1.5rem;
