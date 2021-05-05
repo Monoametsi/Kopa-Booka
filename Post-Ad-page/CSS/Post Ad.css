@@ -219,7 +219,7 @@ input::-webkit-inner-spin-button {
 }
 
 .remember:checked:after {
-	content: '\2714';
+	content: "\2714";
 	font-size: 1.2rem;
 	position: absolute;
 	color: #fff;
