@@ -167,7 +167,7 @@ button.search-btn:hover{
 	border-right: 1px solid #ccc;
 }
 
-.checkbox{
+.checkbox, .post-checkbox{
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -182,12 +182,12 @@ button.search-btn:hover{
 	transition: 0.3s;
 }
 
-.checkbox:checked{
+.checkbox:checked, .post-checkbox:checked{
 	border: 2px solid #0CFC00;
 	background-color: #0CFC00;
 }
 
-.checkbox:checked:after{
+.checkbox:checked:after, .post-checkbox:checked:after{
 	content: "\2714";
 	color: #fff;
 	font-size: 1.5rem;
@@ -447,30 +447,6 @@ img{
 
 .post-checkbox-cont > span{
 	align-self: center;
-}
-
-.post-checkbox{
-	-webkit-appearance: none;
-	border: 2px solid #ccc;
-	outline: none;
-	border-radius: 3px;
-	margin-right: 8px;
-	padding: 0 6px;
-	cursor: pointer;
-	transition: 0.3s;
-}
-
-.post-checkbox:after{
-	content: '\2714';
-	color: #fff;
-	font-size: 1.5rem;
-	font-weight: bold;
-	text-align: center;
-}
-
-.post-checkbox:checked{
-	border: 2px solid #0CFC00;
-	background-color: #0CFC00;
 }
 
 .post-details-cont{
