@@ -188,7 +188,13 @@ button.search-btn:hover{
 }
 
 .checkbox:checked:after, .post-checkbox:checked:after{
-	content: "\2714";
+	content: "";
+	border-color: #fff;
+	border-style: solid;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+	width: 5.5px;
+	height: 14px;
 	color: #fff;
 	font-size: 1.3rem;
 	font-weight: bold;
