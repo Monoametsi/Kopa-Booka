@@ -219,7 +219,15 @@ input::-webkit-inner-spin-button {
 }
 
 .remember:checked:after {
-	content: "\2714";
+	content: "";
+	top: 3px;
+	left: 9.9px;
+	border-color: #fff;
+	border-style: solid;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+	width: 5.5px;
+	height: 14px;
 	font-size: 1.2rem;
 	position: absolute;
 	color: #fff;
