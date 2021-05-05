@@ -167,9 +167,8 @@ button.search-btn:hover{
 	border-right: 1px solid #ccc;
 }
 
-.checkbox, input[type=checkbox]{
+.checkbox{
 	-webkit-appearance: none;
-	-moz-appearance: none;
 	border: 2px solid #ccc;
 	outline: none;
 	border-radius: 3px;
@@ -179,18 +178,17 @@ button.search-btn:hover{
 	transition: 0.3s;
 }
 
-.checkbox:checked{
-	border: 2px solid #0CFC00;
-	background-color: #0CFC00;
-}
-
-.checkbox:after{
+.checkbox:before{
 	content: '\2714';
 	color: #fff;
-	background-color: transparent;
 	font-size: 1.5rem;
 	font-weight: bold;
 	text-align: center;
+}
+
+.checkbox:checked{
+	border: 2px solid #0CFC00;
+	background-color: #0CFC00;
 }
 
 .fa-trash{
