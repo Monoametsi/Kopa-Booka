@@ -39,27 +39,37 @@ let edit_ad = (req, res) => {
 					return res.status(400).json({ err });
 				}else{
 					let { email } = decodedToken;
+					
+					let findEmail = (usersAdId) => {
+						return usersAdId.Email === email;
+					}
 
-					result.map((userData) => {
-						if(userData.Email === email){
-							if(userData.My_Ads.filter(findAd).length > 0){
-								userData.My_Ads.filter(findAd).map((ad_Data) => {
-									Category_and_campus_col.find().then((result) => {
-										return res.status(200).render('edit-ad.ejs', { ad_Data, stringCapitalizer, result });
-									}).catch((err) => {
-										console.log(err);
+					if(result.filter(findEmail).length > 0){
+						result.filter(findEmail).map((userData) => {
+							if(userData.Email === email){
+								if(userData.My_Ads.filter(findAd).length > 0){
+									userData.My_Ads.filter(findAd).map((ad_Data) => {
+										Category_and_campus_col.find().then((result) => {
+											return res.status(200).render('edit-ad.ejs', { ad_Data, stringCapitalizer, result });
+										}).catch((err) => {
+											console.log(err);
+										});
+
 									});
 
-								});
-
+								}else{
+									return res.redirect('/');
+								}
+								
 							}else{
 								return res.redirect('/');
 							}
-							
-						}else{
-							return res.redirect('/');
-						}
-					})
+						});
+					}else{
+						res.redirect('/');
+					}
+					
+					
 				}
 			});
 		}else{
