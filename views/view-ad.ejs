@@ -150,7 +150,9 @@
 			</div>
 
 			<div class="form">
-				 <form method="POST" action="/Ad-board">
+				<% let returnUrl = `/return-url?${ req.url }`%>
+
+				 <form method="POST" action="" id="form">
 				 
 					<div class="validifier-cont">
 						<label for="Username" class="validifier" id="Username-Err">

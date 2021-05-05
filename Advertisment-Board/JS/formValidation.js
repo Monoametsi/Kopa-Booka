@@ -255,8 +255,6 @@ submitBtn.onclick = function(){
 
 		let formData = new URLSearchParams();
 
-		let title = document.getElementById('h1');
-
 		let userInput = {
 		  firstname: titleValidator(),
 		  tel: contactNumValidator(),

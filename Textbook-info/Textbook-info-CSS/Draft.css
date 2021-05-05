@@ -387,25 +387,27 @@ form{
 }
 
 .redBox{
-	border-right: 1px solid red;
 	border-top: 1px solid red;
+	border-right: 1px solid red;
+	border-left: 0.4px solid red;
 	border-bottom: 1px solid red;
-	clip-path: inset(-8px -8px -8px 0px);
 }
 
 .Message-redBox{
 	border: 1px solid red;
-	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.6);
 }
 
 .Message-redBox:focus{
-	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.6);
+	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.4);
 }
 
 .redBorder{
-	border-left: 1px solid red;
-	border-top: 1px solid red;
-	border-bottom: 1px solid red;
+	border: 1px solid red;
+	background-color: red;
+}
+
+.red-background{
+	background-color: red;
 }
 
 .Shadow{
@@ -413,8 +415,7 @@ form{
 }
 
 .redBox:focus{
-	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.6);
-	clip-path: inset(-8px -8px -8px 0px);
+	box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.4);
 }
 
 .Icon-boxShadower{
