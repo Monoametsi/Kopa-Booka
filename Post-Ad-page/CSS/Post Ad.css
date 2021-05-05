@@ -449,14 +449,19 @@ textarea{
 }
 
 .main-img:checked:after {
-	content: '\2714';
+	content: "";
+	border-color: #fff;
+	border-style: solid;
+	border-width: 0 3px 3px 0;
+	transform: rotate(45deg);
+	width: 5.5px;
+	height: 14px;
 	font-size: 1.8rem;
 	position: absolute;
 	color: #fff;
 	font-weight: bold;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 3px;
+	left: 9.9px;
 }
 
 .visual{
