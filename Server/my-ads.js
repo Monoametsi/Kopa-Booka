@@ -23,7 +23,6 @@ let my_Ads = (req, res) => {
 					if(result.filter(findAd).length > 0){
 						result.filter(findAd).map((userData) => {
 							if(userData.Email === email){
-								console.log(userData);
 								let amountOfAds = userData.My_Ads.length;
 								res.status(200).render('my-ads', { userData, process, amountOfAds });
 							}
