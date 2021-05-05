@@ -178,17 +178,17 @@ button.search-btn:hover{
 	transition: 0.3s;
 }
 
-.checkbox:before{
+.checkbox:checked{
+	border: 2px solid #0CFC00;
+	background-color: #0CFC00;
+}
+
+.checkbox:after{
 	content: '\2714';
 	color: #fff;
 	font-size: 1.5rem;
 	font-weight: bold;
 	text-align: center;
-}
-
-.checkbox:checked{
-	border: 2px solid #0CFC00;
-	background-color: #0CFC00;
 }
 
 .fa-trash{
