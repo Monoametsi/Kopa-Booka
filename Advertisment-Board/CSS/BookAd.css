@@ -534,7 +534,7 @@ button.but:hover + .search{
 	background-color: #fff;
 	margin: 1rem 2rem;
 	height: 11rem;
-	width: 100%;
+	max-width: 100%;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
 	overflow: hidden;
