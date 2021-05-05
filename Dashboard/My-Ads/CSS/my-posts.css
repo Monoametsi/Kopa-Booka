@@ -169,6 +169,7 @@ button.search-btn:hover{
 
 .checkbox{
 	-webkit-appearance: none;
+	-moz-appearance: none;
 	border: 2px solid #ccc;
 	outline: none;
 	border-radius: 3px;
