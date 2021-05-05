@@ -129,11 +129,25 @@
 							<input type="checkbox" class="post-checkbox">
 							<span>Select Ad</span>
 						</div>
+						
+						<%
+						let num = 0;
 
+						userData.Ad_Messages.map((messageDetails) => {
+						
+							if(messageDetails.Post_Id === _id){ 
+								num++
+							%>
+								
+						<%	}
+						});
+						
+						%>
+						
 						<div class="post-stats">
 							<div class="stat-cont">
 								<i class="fa fa-envelope"></i>
-								<span> <%= userData.Ad_Messages.length %> </span>
+								<span> <%= num %> </span>
 							</div>
 							<div class="stat-cont">
 								<i class="fa fa-eye"></i>
