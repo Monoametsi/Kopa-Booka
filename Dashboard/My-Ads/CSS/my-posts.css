@@ -167,7 +167,7 @@ button.search-btn:hover{
 	border-right: 1px solid #ccc;
 }
 
-.checkbox{
+.checkbox, input[type=checkbox]{
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border: 2px solid #ccc;
@@ -187,6 +187,7 @@ button.search-btn:hover{
 .checkbox:after{
 	content: '\2714';
 	color: #fff;
+	background-color: transparent;
 	font-size: 1.5rem;
 	font-weight: bold;
 	text-align: center;
