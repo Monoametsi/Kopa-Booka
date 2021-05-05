@@ -168,11 +168,15 @@ button.search-btn:hover{
 }
 
 .checkbox{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 	-webkit-appearance: none;
 	border: 2px solid #ccc;
 	outline: none;
 	border-radius: 3px;
-	padding: 0 6px;
+	padding: 13px 14px;
 	margin-right: 8px;
 	cursor: pointer;
 	transition: 0.3s;
@@ -183,12 +187,12 @@ button.search-btn:hover{
 	background-color: #0CFC00;
 }
 
-.checkbox:after{
+.checkbox:checked:after{
 	content: "\2714";
 	color: #fff;
 	font-size: 1.5rem;
 	font-weight: bold;
-	text-align: center;
+	position: absolute;
 }
 
 .fa-trash{
