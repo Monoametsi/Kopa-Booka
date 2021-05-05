@@ -220,6 +220,7 @@ for(i = 0; i < formFields.length; i++){
 
 //Submit validation
 let submitBtn = document.getElementById('submitFormInfo');
+let sellersContactNum = document.getElementById('Post-Id'); 
 
 submitBtn.onclick = function(){
 	let icons = document.getElementsByClassName("ikon");
@@ -249,7 +250,7 @@ submitBtn.onclick = function(){
 		  firstname: titleValidator(),
 		  tel: contactNumValidator(),
 		  email: emailValidator(),
-		 // Post_Id: sellersContactNum.value,
+		  Post_Id: sellersContactNum.value,
 		  subject: messageToSellerValidator() 
 		}
 

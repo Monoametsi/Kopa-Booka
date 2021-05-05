@@ -189,9 +189,11 @@
 							<label for="subject" id="messageLabel">Message</label>
 							<label for="SubjectErrorMessage" class="validifier" id="subject-Err"></label>
 						</div>
-						<textarea id="subject" name="subject" placeholder="Send seller a message..."></textarea>
+						<textarea id="subject" name="subject" placeholder="Send seller a message..."><%= `Hi, I am interested in the ${ Text_Book_Title  }` %></textarea>
 					</div>
-					
+
+					<input type="hidden" name="Post_Id" id="Post-Id">
+
 					<input type="submit" id="submitFormInfo" value="Send">
 					
 					<div class="termPol">
