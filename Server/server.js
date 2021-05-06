@@ -207,6 +207,8 @@ app.get('/edit-ad/:id', requireAuth, checkCurrentUser, edit_ad);
 app.post('/edit-ad/:id', requireAuth, checkCurrentUser, updateUsersAds);
 
 app.post('/delete/:id', adRemover);
+
+//app.get('/my-messages', requireAuth, checkCurrentUser, my_Messages);
 //Dashboard
 
 //Place-Advert

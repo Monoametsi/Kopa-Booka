@@ -30,7 +30,7 @@ let messageOfInterest = async (req, res) => {
 	await Users.find().then((result) => {
 
 		result.map((userData) => {
-					
+
 			let adPosition = userData.My_Ads.filter(findIndex);
 
 				adPosition.map( async (map) => { 
@@ -38,7 +38,7 @@ let messageOfInterest = async (req, res) => {
 
 					if(userData.My_Ads[num]._id === Post_Id){
 						console.log(userData.Email);
-						
+
 						let updateUsersMessages = (res) => {
 							let usersInfo = { Email: userData.Email };
 							let buyersMessage = { $push: { Ad_Messages: userInput } }

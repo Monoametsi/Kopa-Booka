@@ -502,6 +502,53 @@ input[type=submit]:hover{
 	text-decoration: underline;
 }
 
+/*Success box message*/
+.box-cont{
+	display: none;
+    justify-content: center;
+}
+
+.box{
+	display: inline-flex;
+    flex-direction: column;
+	background-color: transparent;
+}
+
+.box-message-cont{
+	text-align: center;
+	align-self: center;
+} 
+
+.box-message-cont i{
+	color: #00FF00;
+	font-weight: bold;
+	font-size: 4rem;
+} 
+
+.box-message-cont > *:not(:last-child){
+	margin-bottom: 0;
+}
+
+.box-message-cont h1{
+	margin-top: 0;
+	font-size: 2.5rem;
+	color: #00FF00;
+	font-family: montserrat, sans-serif;
+}
+
+.box-message-cont p:first-of-type{
+	font-size: 1.2rem;
+	margin-top: 12px;
+	color: rgba(0,0,0,0.9);
+}
+
+.box-message-cont p:last-child{
+	font-size: 0.9rem;
+	margin-bottom: 20px;
+}
+/*Success box message*/
+
+
 .flip-up{
 	transform: rotate(-180deg);
 }

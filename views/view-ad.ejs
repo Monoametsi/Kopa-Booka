@@ -152,8 +152,8 @@
 			<div class="form">
 				<% let returnUrl = `/return-url?${ req.url }`%>
 
-				 <form method="POST" action="" id="form">
-				 
+				 <form method="POST" action="<%= returnUrl.replace("?/", "?")%>" id="form">
+
 					<div class="validifier-cont">
 						<label for="Username" class="validifier" id="Username-Err">
 						</label>
@@ -192,7 +192,7 @@
 						<textarea id="subject" name="subject" placeholder="Send seller a message..."><%= `Hi, I am interested in the ${ Text_Book_Title  }` %></textarea>
 					</div>
 
-					<input type="hidden" name="Post_Id" id="Post-Id">
+					<input type="hidden" name="Post_Id" id="Post-Id" value="<%= _id %>">
 
 					<input type="submit" id="submitFormInfo" value="Send">
 					
@@ -200,7 +200,28 @@
 						<p>By sending a reply to the seller, you hereby accept our <a href="/terms-of-use">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
 					</div>
 				 </form>
+
+				 <!-- Success -->	
+				<div class="box-cont" id="box-cont">
+				  <div class="box">
+
+					  <div class="box-message-cont"> 
+
+						  <i class="fa fa-check"></i>
+						  <h1>Success!</h1>
+						  <p>Thanks for your interest!</p>
+						  <p>Your message has been submitted successfully</p>
+
+					  </div>
+
+				  </div>
+				</div>
+			<!-- Success -->
+				 
 			</div>
+			
+			
+			
 		</div>
 	  
 	 </div>

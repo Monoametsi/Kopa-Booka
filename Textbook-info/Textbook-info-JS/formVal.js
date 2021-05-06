@@ -221,9 +221,11 @@ for(i = 0; i < formFields.length; i++){
 //Submit validation
 let submitBtn = document.getElementById('submitFormInfo');
 let sellersContactNum = document.getElementById('Post-Id'); 
+let successBoxCont = document.getElementById('box-cont');
 
 submitBtn.onclick = function(){
 	let icons = document.getElementsByClassName("ikon");
+	let form = document.getElementById("form");
 	let formActionAttr = document.getElementById("form").action;
 
 	titleValidator();
@@ -254,7 +256,7 @@ submitBtn.onclick = function(){
 		  subject: messageToSellerValidator() 
 		}
 
-		/*for(formValue in userInput){
+		for(formValue in userInput){
 			formData.append(formValue, userInput[formValue].trim());
 		}
 
@@ -266,11 +268,11 @@ submitBtn.onclick = function(){
 
 			return formdata;
 		}).then((result) => {
-			modalContent.style.display = "none";
+			form.style.display = "none";
 			successBoxCont.style.display = "flex";
 		}).catch((err) => {
 			console.log(err);
-		});*/
+		});
 
 		return false;
 	}

@@ -1000,6 +1000,7 @@ input[type=submit]:hover{
 	text-decoration: underline;
 }
 
+/*Success box message*/
 .box-cont{
 	display: none;
     justify-content: center;
@@ -1073,6 +1074,7 @@ input[type=submit]:hover{
 	font-size: 0.9rem;
 	margin-bottom: 20px;
 }
+/*Success box message*/
 
 /*Modal -- end*/
 
