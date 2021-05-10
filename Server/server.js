@@ -2,8 +2,8 @@ const express = require('express');
 const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const fs = require('fs');
 const homePage = require('./home-page');
+const myMessages = require('./my-messages');
 const buyersMessage = require('./return-url');
 const adUpdater = require('./edit-ad-post.js');
 const adEditer = require('./edit-ad.js');
@@ -52,6 +52,7 @@ const { adRemover } = removeAd;
 const { edit_ad } = adEditer;
 const { updateUsersAds } = adUpdater;
 const { messageOfInterest } = buyersMessage;
+const { my_Messages } = myMessages ;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -63,6 +64,7 @@ app.use(express.static(path.join(dirname, 'register-outcome')));
 app.use(express.static(path.join(dirname, 'Dashboard')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'Profile')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'My-Ads')));
+app.use(express.static(path.join(dirname, 'Dashboard', 'My-Messages')));
 app.use(express.static(path.join(dirname, 'Post-Ad-page')));
 app.use(express.static(path.join(dirname, 'Textbook-info')));
 app.use(express.static(path.join(dirname, 'About-Us')));
@@ -208,7 +210,7 @@ app.post('/edit-ad/:id', requireAuth, checkCurrentUser, updateUsersAds);
 
 app.post('/delete/:id', adRemover);
 
-//app.get('/my-messages', requireAuth, checkCurrentUser, my_Messages);
+app.get('/my-messages', requireAuth, checkCurrentUser, my_Messages);
 //Dashboard
 
 //Place-Advert
