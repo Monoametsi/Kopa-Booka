@@ -114,7 +114,7 @@
 			</div>
 			
 			<div class="searchEngine">
-				<input type="search" name="search_messages" id="search-messages" class="inputField-styling" placeholder="Search buyers email or phone number...">
+				<input type="search" name="search_messages" id="search-messages" class="inputField-styling" placeholder="Search buyers email or phone number or by advert title...">
 				<button class="searchEngine-btn" id="searchEngine-btn"><i class="fa fa-search"></i>Search</button>
 			</div>
 
@@ -160,21 +160,165 @@
 				
 			</table>
 			
+			<% if(msg.length === 0){ %>
+				<div class="no-posts-found" id="no-posts-found" style="display: flex;">
+					<div class="no-posts-found-title">
+						<h1 id="no-post-found-title"> You do not have any ads. </h1>
+					</div>
+
+					<div class="no-posts-img">
+						<img src="/Images/open-cardboard-box.png">
+					</div>
+
+					<div class="no-posts-btn-cont">
+						<a href="/place-advert" class="no-posts-btn">
+							Place Advert
+						</a>
+					</div>
+				</div>
+			<% }else { %>
+				<div class="no-posts-found" id="no-posts-found">
+					<div class="no-posts-found-title">
+						<h1 id="no-post-found-title"> No Messages Received </h1>
+					</div>
+
+					<div class="no-posts-img">
+						<img src="/Images/open-cardboard-box.png">
+					</div>
+				</div>
+			<% } %>
+
 		</div>
 	</section>
-	
-		<div class="btn">
-	<button id="Slide-btn">SHOW SLIDE</button>
-</div>
 
 	<%- include("partials/footer"); -%>
-	
-	
-	
+
 	<% 
-	
-		let slideShowAds = () => { %>
+
+		let slideShowAds = (messages) => { %>
+
+		<%	let { 
+				
+				firstname,
+				tel,
+				email,
+				Post_Id,
+				subject,
+				date_created
+
+			} = messages; 
+
+			let date = new Date(date_created);
 			
+			let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			
+			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
+
+		%>
+
+		<div class="post-info-cont">
+
+			<div class="slide-closer" tabindex="1"> 
+				<i class="fa fa-times"></i> <span> Close</span>
+			</div>
+
+			<div class="post-info">
+				<div class="buyersMessage-cont">
+
+					<div class="buyersMessage-title">
+						<i class="fa fa-envelope"></i>
+						<h4>Email</h4>
+					</div>
+
+					<div class="info-message-cont">
+					  <div class="buyers-info">
+							<div> <i class="fa fa-user"></i> <span> <%= firstname %> </span> </div>
+							<% if(tel === "" || tel.length === 0) { %>
+								<div class="white" style="display: none;"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
+							<% } else { %>
+								<div class="white"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
+							<% } %>
+							<div class="white"> <i class="fa fa-envelope"></i> <span> <%= email %> </span> </div>
+							<div> <i class="fa fa-calendar"></i> <span> <%= messageSentDate %> </span> </div>
+					  </div>
+
+					  <div class="buyers-message">
+							<p> <%= subject %> </p>
+					  </div>
+					</div>
+
+				</div>
+				
+				<% 
+
+				usersAds.map((ad) => { 
+					if(ad._id === Post_Id ){ %>
+					
+
+					<% 
+
+					let {
+
+						_id,
+						Name,
+						Mail,
+						Tel,
+						Whatsapp_tel,
+						Main_Category,
+						Sub_Category,
+						Text_Book_Title,
+						Edition_Number,
+						Author_Name,
+						Condition,
+						Text_Book_Price,
+						Negotiation,
+						Description,
+						Campus,
+						UploadedImages	
+
+						} = ad; 
+
+						let img = UploadedImages[0];
+						let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+
+					%>
+
+					<div class="post-card">
+						<div class="img-cont">
+							<a href="<%= `/view-ad/${ _id }` %>">
+								<img src="<%= imgStr %>">
+							</a>
+						</div>
+
+						<div class="post-details">
+
+							<div class="post-title-cont">
+								<a href="<%= `/view-ad/${ _id }` %>"> <h4 class="post-title"> <%= Text_Book_Title %> </h4> </a>
+							</div>
+
+							<div class="post-descript">
+								<span> <%= Text_Book_Price %> For Sale </span>
+								<p> <%= Description %> </p>
+							</div>
+
+							<div class="post-date-cont">
+								<div class="post-date">
+									Created: <span>25 Mar 17:17</span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+						
+				<%	} 
+				})
+				
+				%>
+
+			</div>
+		</div>
+
+		
 	<%	}
 	
 	%>
@@ -187,65 +331,7 @@
 	
 <div class="MessageDetailsInfo-cont" id="post-info-cont">
 
-	<div class="post-info-cont">
-		
-		<div class="slide-closer" id="closer" tabindex="1"> 
-			<i class="fa fa-times"></i> <span> Close</span>
-		</div>
-		
-		<div class="post-info">
-			<div class="buyersMessage-cont">
-				
-				<div class="buyersMessage-title">
-					<i class="fa fa-envelope"></i>
-					<h4>Email</h4>
-				</div>
-				
-				<div class="info-message-cont">
-				  <div class="buyers-info">
-						<div> <i class="fa fa-user"></i> <span> Junior </span> </div>
-						<div class="white"> <i class="fa fa-phone"></i> <span> 0739936217 </span> </div>
-						<div class="white"> <i class="fa fa-envelope"></i> <span> inherejump@gmail.com </span> </div>
-						<div> <i class="fa fa-calendar"></i> <span> 15: 00 </span> </div>
-				  </div>
-
-				  <div class="buyers-message">
-						<p> Hi, I am interested in the Fundamentals
-						Of Financial Accounting </p>
-				  </div>
-				</div>
-
-			</div>
-
-			<div class="post-card">
-				<div class="img-cont">
-					<a href="#">
-						<img src="https://i.ibb.co/cTPwJJS/IMG-20210427-091547-edit.jpg">
-					</a>
-				</div>
-				
-				<div class="post-details">
-
-					<div class="post-title-cont">
-						<a href="#"> <h4 class="post-title"> Fundamentals Of Financial Accounting </h4> </a>
-					</div>
-
-					<div class="post-descript">
-						<span> R400 For Sale </span>
-						<p> Clean and in very good condition  </p>
-					</div>
-
-					<div class="post-date-cont">
-						<div class="post-date">
-							Created: <span>25 Mar 17:17</span>
-						</div>
-					</div>
-
-				</div>
-			</div>
-
-		</div>
-	</div>
+	<% msg.map(slideShowAds) %>
 
 </div>
 
@@ -272,35 +358,6 @@
 	
 	
 
-<script>
-
-let slide = document.getElementById("post-info-cont");
-let slideCloser = document.getElementById("closer");
-let slideBtn = document.getElementById("Slide-btn");
-
-function closer(){
-	 if(slide.style.width === '50%'){
-    	slide.style.width = '0';
-    	slide.style.borderLeft = '0';
-    }else{
-    	slide.style.width = '50%';
-    	slide.style.borderLeft = '1px solid #888';
-    }
-}
-
-slideBtn.onclick = () => {
-   closer();
-}
-
-slideCloser.onclick = () => {
-   closer();
-}
-
-
-
-
-
-</script>
 <script src="/JS/my-messages.js"></script>
 <script src="/JS/myMsg-searchEngine.js"></script>
 </body>

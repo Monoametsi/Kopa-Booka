@@ -259,18 +259,20 @@ th .checkbox:checked:after{
 	z-index: 1;
 	height: 100%;
     width: 0;
+	max-width: 100%;
     top: 0;
     right: 0;
 	transition: 0.3s;
 	background-color: #eee;
     box-shadow: 0 0 12px rgba(0,0,0,0.3);
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .post-info-cont{
-    display: flex;
+    display: none;
 	position: relative;
-	margin-top: 5rem;
+	margin-top: 9rem;
 }
 
 .post-info{
@@ -446,7 +448,7 @@ img{
 .slide-closer{
 	display: flex;
 	position: absolute;
-	bottom: 90%;
+	bottom: 88%;
 	right: 95px;
 	font-size: 1.3rem;
 	opacity: 0.4;
@@ -474,3 +476,65 @@ img{
 .fa-times{
 	align-self: center;
 }
+
+/* No Posts Found*/
+
+.no-posts-found{
+	display: none;
+	margin: auto;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 2.5rem;
+}
+
+.no-posts-found-title{
+	margin-bottom: -10px;
+}
+
+.no-posts-found-title h1{
+	font-family: montserrat, sans-serif;
+	color: #0eee;
+	transition: 0.3s;
+}
+
+.no-posts-found-title h1:hover{
+	color: #0acdff;
+}
+
+.no-posts-img{
+	margin-bottom: 8px;
+	width: 100%;
+	max-width: 160px;
+}
+
+.no-posts-img > img{
+	width: 100%;
+	height: auto;
+	max-width: 260px;
+}
+
+.no-posts-btn{
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	white-space: nowrap;
+	padding: 12px 8px;
+	background-color: rgb(91, 172, 222);
+	cursor: pointer;
+	transition: 0.3s;
+	color: #fff;
+	font-size: 1rem;
+	font-family: montserrat, sans-serif;
+}
+
+.no-posts-btn:hover{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+	background-color: rgb(80, 160, 280);
+	color: #000;
+}
+
+.no-posts-btn-cont{
+	margin-top: 14px;
+}
+
+/* No Posts Found*/
