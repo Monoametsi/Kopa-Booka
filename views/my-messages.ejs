@@ -49,12 +49,11 @@
 			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
 			
 		%>
-			
-			
+
 			<tr>
 
 					<td>
-						<input type="checkbox" class="checkbox">
+						<input type="checkbox" class="checkbox sub-checkBox">
 					</td>
 					
 					<td>
@@ -91,7 +90,7 @@
 					
 					<td>
 						<div class="content-title-cont">
-							<i class="fa fa-trash"></i>
+							<i class="fa fa-trash" tabindex="1"></i>
 							<div class="content-title">Delete</div>
 						</div>
 					</td>
@@ -108,11 +107,19 @@
 	
 	<section id="my-messages-cont">
 		<div class="searchMyMessages-cont">
-			<div class="myMessage-header">
-				<h1>Messages</h1>
-				<span><%= msg.length %></span>
+			<div class="header-cont">
+				<div class="myMessage-header">
+					<h1>Messages</h1>
+					<span><%= msg.length %></span>
+				</div>
+
+				<button class="deleteAll-cont" id="deleteAll-cont">
+					<i class="fa fa-trash"></i>
+					<h1>Delete Selected</h1>
+					<div class="content-title" id="content-title">Delete Selected</div>
+				</button>
 			</div>
-			
+
 			<div class="searchEngine">
 				<input type="search" name="search_messages" id="search-messages" class="inputField-styling" placeholder="Search buyers email or phone number or by advert title...">
 				<button class="searchEngine-btn" id="searchEngine-btn"><i class="fa fa-search"></i>Search</button>
@@ -122,7 +129,7 @@
 				<tr>
 
 					<th>
-						<input type="checkbox" class="checkbox">
+						<input type="checkbox" class="checkbox" id="main-checkbox">
 					</th>
 
 					<th>

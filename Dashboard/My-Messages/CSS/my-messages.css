@@ -32,11 +32,17 @@ a{
 
 #my-messages-cont{
 	margin: 2rem 1rem;
-	margin-bottom: 6rem;
+	margin-bottom: 6.85rem;
 }
 
 .searchMyMessages-cont{
-	
+
+}
+
+.header-cont{
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
 }
 
 .myMessage-header{
@@ -49,13 +55,36 @@ a{
 	background-color: #e9ecef;
 }
 
-.myMessage-header h1, .myMessage-header span{
+.deleteAll-cont{
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 2.3rem;
+	background-color: red;
+	border-radius: 5px;
+	color: #fff;
+	padding: 0 8px;
+	cursor: pointer;
+	transition: 0.3s;
+	border: none;
+	outline: none;
+	margin-right: 10px;
+	margin-bottom: 8px;
+	user-select: none;
+}
+
+.myMessage-header h1, .myMessage-header span, .deleteAll-cont h1{
 	font-family: montserrat, sans-serif;
 }
 
-.myMessage-header h1{
+.myMessage-header h1, .deleteAll-cont h1{
 	font-size: 1rem;
 	font-weight: 500;
+}
+
+.deleteAll-cont h1{
+	padding-left: 4px;
 }
 
 .myMessage-header span{
@@ -206,7 +235,7 @@ th .checkbox:checked:after{
 	position: relative;
 }
 
-.fa-trash{
+td .fa-trash{
 	border-radius: 3px;
 	padding: 6px 8px;
 	background-color: red;
@@ -216,10 +245,14 @@ th .checkbox:checked:after{
 	transition: 0.3s;
 }
 
-.content-title{
+td .fa-trash:focus{
+	box-shadow: inset 0 10px 14px rgb(0 0 0 / 45%);
+}
+
+.content-title-cont > .content-title, .deleteAll-cont > .content-title{
 	display: flex;
 	top: -2.2rem;
-	right: 6.5px;
+	right: 2px;
 	font-size: 12px;
 	padding: 6px 8px;
 	opacity: 0;
@@ -235,7 +268,14 @@ th .checkbox:checked:after{
 	user-select: none;
 }
 
-.content-title:after{
+.deleteAll-cont > .content-title{
+	display: none;
+	font-size: 15px;
+	top: -2.4rem;
+	right: 18.5px;
+}
+
+.content-title-cont > .content-title:after, .deleteAll-cont > .content-title:after{
 	content:"";
 	top: 100%;
 	left: 45%;
@@ -245,13 +285,28 @@ th .checkbox:checked:after{
 	border-color: rgba(0,0,0,0.8) transparent transparent transparent;
 }
 
-.fa-trash:hover + .content-title{
+td .fa-trash:hover + .content-title, .deleteAll-cont:hover .content-title{
 	opacity: 1;
 }
 
+.smooth-in{
+	animation-name: smooth-in;
+	animation-duration: 0.3s;
+}
 
-.btn button{
-	cursor: pointer;
+@keyframes smooth-in{
+	from{ opacity: 0; }
+	to{ opacity: 1; }
+}
+
+.smooth-out{
+	animation-name: smooth-out;
+	animation-duration: 0.3s;
+}
+
+@keyframes smooth-out{
+	from{ opacity: 1; }
+	to{ opacity: 0; }
 }
 
 .MessageDetailsInfo-cont{
