@@ -1,0 +1,33 @@
+@media screen and (max-width: 960px){
+	
+	.deleteAll-cont{
+		display: none;
+	}
+	
+	td .sub-checkBox{
+		display: none;
+	}
+	
+	td:nth-child(3),td:nth-child(4),td:nth-child(5),td:nth-child(6),td:nth-child(7){
+		display: flex;
+		justify-content: center;
+	}
+	
+	th #main-checkbox, th{
+		display: none;
+	}
+	
+	td .fa-trash{
+		font-size: 1.4rem;
+	}
+	
+	td .fa-envelope{
+		font-size: 1.4rem;
+	}
+}
+
+@media screen and (max-width: 650px){
+	.searchEngine-btn span{
+		display: none;
+	}
+}

@@ -30,8 +30,6 @@ let messageOfInterest = async (req, res) => {
 	  subject,
 	  date_created: date
 	}
-	
-	console.log(userInput);
 
 	await Users.find().then((result) => {
 
@@ -43,12 +41,11 @@ let messageOfInterest = async (req, res) => {
 					let num = userData.My_Ads.indexOf(map);
 
 					if(userData.My_Ads[num]._id === Post_Id){
-						console.log(userData.Email);
 
 						let updateUsersMessages = (res) => {
 							let usersInfo = { Email: userData.Email };
 							let buyersMessage = { $push: { Ad_Messages: userInput } }
-							
+
 							Users.updateOne(usersInfo, buyersMessage, (err, res) => {
 								if(err) throw err;
 							})
@@ -58,7 +55,7 @@ let messageOfInterest = async (req, res) => {
 					}
 				});
 		});
-		
+
 	}).catch((err) => {
 		console.log(err);
 	});

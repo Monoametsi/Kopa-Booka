@@ -4,10 +4,10 @@ let slideCard = document.getElementsByClassName("post-info-cont");
 let slideCloser = document.getElementsByClassName("slide-closer");
 let noAdsFound = document.getElementById('no-posts-found');
 
-let width = document.getElementById('num');
+let width = document.getElementById('width-num');
 
 window.onresize = () => {
-	num.innerHTML = window.innerWidth;
+	width.innerHTML = window.innerWidth;
 }
 
 function closer(){

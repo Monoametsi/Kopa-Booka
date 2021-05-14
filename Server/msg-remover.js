@@ -5,13 +5,13 @@ const { Users } = user;
 
 let msgRemover = (req, res) => {
 	let token = req.cookies.token;
-	
+
 	let { id } = req.params;
-	
+
 	let deletedBulk = id.split(',');
 	
 	if(token){
-		
+
 		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
 			if(err){
 				res.redirect('/');
@@ -22,7 +22,6 @@ let msgRemover = (req, res) => {
 				let msgDeleter = (res) => {
 
 					deletedBulk.map((msgId) => {
-						console.log(msgId)
 						let usersInfo = { Email: email };
 						let msgInfo = { msgId: msgId };
 						let removedMsg = { $pull: { Ad_Messages: msgInfo } };
@@ -37,7 +36,7 @@ let msgRemover = (req, res) => {
 
 				await msgDeleter();
 			}
-		})
+		});
 
 	}else{
 		res.redirect('/');
