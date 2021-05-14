@@ -4,6 +4,12 @@ let slideCard = document.getElementsByClassName("post-info-cont");
 let slideCloser = document.getElementsByClassName("slide-closer");
 let noAdsFound = document.getElementById('no-posts-found');
 
+let width = document.getElementById('num');
+
+window.onresize = () => {
+	num.innerHTML = window.innerWidth;
+}
+
 function closer(){
 	if(slideCont.style.width !== '50%'){
     	slideCont.style.width = '50%';
