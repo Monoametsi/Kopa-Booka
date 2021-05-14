@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const homePage = require('./home-page');
+const messageRemover = require('./msg-remover');
 const myMessages = require('./my-messages');
 const buyersMessage = require('./return-url');
 const adUpdater = require('./edit-ad-post.js');
@@ -53,6 +54,7 @@ const { edit_ad } = adEditer;
 const { updateUsersAds } = adUpdater;
 const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages ;
+const { msgRemover } = messageRemover ;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -209,6 +211,8 @@ app.get('/edit-ad/:id', requireAuth, checkCurrentUser, edit_ad);
 app.post('/edit-ad/:id', requireAuth, checkCurrentUser, updateUsersAds);
 
 app.post('/delete/:id', adRemover);
+
+app.post('/delete-message/:id', msgRemover);
 
 app.get('/my-messages', requireAuth, checkCurrentUser, my_Messages);
 //Dashboard

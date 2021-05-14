@@ -33,33 +33,34 @@
 		
 		<%	let { 
 				
-				 firstname,
-				 tel,
-				 email,
-				 Post_Id,
-				 subject,
-				 date_created
+				msgId,
+				firstname,
+				tel,
+				email,
+				Post_Id,
+				subject,
+				date_created
 				
-			} = messages; 
-			
+			} = messages;
+
 			let date = new Date(date_created);
-			
+
 			let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-			
+
 			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
-			
+
 		%>
 
-			<tr>
+			<tr id="<%= `${ msgId }` %>">
 
 					<td>
 						<input type="checkbox" class="checkbox sub-checkBox">
 					</td>
-					
+
 					<td>
 						<i class="fa fa-envelope"></i>
 					</td>
-					
+
 					<td>
 						<% 
 
@@ -162,25 +163,22 @@
 			
 				</tr>
 				
-				
-				<% msg.map(displayMessages) %>
+				<% if(msg.length > 0){ %>
+					<% msg.map(displayMessages) %>
+				<% }else { %>
+
+				<% } %>
 				
 			</table>
 			
 			<% if(msg.length === 0){ %>
 				<div class="no-posts-found" id="no-posts-found" style="display: flex;">
 					<div class="no-posts-found-title">
-						<h1 id="no-post-found-title"> You do not have any ads. </h1>
+						<h1 id="no-post-found-title"> No Messages Received </h1>
 					</div>
 
 					<div class="no-posts-img">
 						<img src="/Images/open-cardboard-box.png">
-					</div>
-
-					<div class="no-posts-btn-cont">
-						<a href="/place-advert" class="no-posts-btn">
-							Place Advert
-						</a>
 					</div>
 				</div>
 			<% }else { %>
@@ -206,6 +204,7 @@
 
 		<%	let { 
 				
+				msgId,
 				firstname,
 				tel,
 				email,
@@ -240,7 +239,7 @@
 					<div class="info-message-cont">
 					  <div class="buyers-info">
 							<div> <i class="fa fa-user"></i> <span> <%= firstname %> </span> </div>
-							<% if(tel === "" || tel.length === 0) { %>
+							<% if(tel === "" || tel.length === 0 || tel === undefined) { %>
 								<div class="white" style="display: none;"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
 							<% } else { %>
 								<div class="white"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
@@ -300,7 +299,7 @@
 						<div class="post-details">
 
 							<div class="post-title-cont">
-								<a href="<%= `/view-ad/${ _id }` %>"> <h4 class="post-title"> <%= Text_Book_Title %> </h4> </a>
+								<a href="<%= `/view-ad/${ _id }` %>"> <h4 class="post-title" id="<%= msgId %>"> <%= Text_Book_Title %> </h4> </a>
 							</div>
 
 							<div class="post-descript">
@@ -335,13 +334,15 @@
 	
 	
 	
-	
+<% if(msg.length > 0) {%>
 <div class="MessageDetailsInfo-cont" id="post-info-cont">
 
 	<% msg.map(slideShowAds) %>
 
 </div>
+<% }else { %>
 
+<% } %>
 	
 	
 	

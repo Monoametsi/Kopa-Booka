@@ -27,41 +27,58 @@ slideTerminator();
 
 function slideDisplayer(){
 	let num = 0;
+	let numOfDisplayedMsgs = 0;
 	for(let i = 1; i < table.rows.length; i++){
-
+		
+		if(window.getComputedStyle(table.rows[i], null).display != 'none'){
+			numOfDisplayedMsgs++;
+		}
 
 		table.rows[i].onclick = function(event){
-			let tableTitle = this.cells[2].innerHTML.trim();
-			let tableDate = this.cells[6].innerHTML.trim();
-
+			let tableId = this.id;
+			
 			for(let j = 0; j < slideCard.length; j++){
+				
 				
 				slideCard[j].style.display = 'none';
 
-				let cardTitle = slideCard[j].children[1].children[1].children[1].children[0].children[0].children[0].innerHTML.trim();
-				let cardDate = slideCard[j].children[1].children[0].children[1].children[0].children[3].children[1].innerHTML.trim();
+				let cardId = slideCard[j].children[1].children[1].children[1].children[0].children[0].children[0].id;
 				
 				if(event.target === this.cells[0].children[0]){
 					if(slideCont.style.width !== '50%'){
 						return null;
 					}
 				}
-				
+
 				if(event.target === this.cells[7].children[0].children[0]){
 					if(slideCont.style.width !== '50%'){
 						num++;
-						
-						if((table.rows.length - 1) === 1){
+
+						if((table.rows.length - 1) === 1 || num === numOfDisplayedMsgs){
 							noAdsFound.style.display = 'flex';
 						}else{
 							noAdsFound.style.display = 'none';
 						}
 						this.remove();
+
+						fetch(`/delete-message/${ this.id }`, {
+							method: 'POST'
+						}).then((response) => {
+							if(response.ok){
+								console.log(response);
+								return;
+							}
+							
+							throw new Error('Response Failed')
+						}).catch((err) => {
+							console.log(err);
+						});
+						
 						return null;
 					}
 				}
 
-				if(tableTitle === cardTitle && tableDate === cardDate){
+				if(tableId === cardId){
 					slideCard[j].style.display = 'flex';
 					closer();
 				}else{
@@ -108,12 +125,14 @@ function searchEnginSystem(){
 
 searchEngineBtn.onclick = () => {
 	searchEnginSystem();
+	slideDisplayer();
 }
 
 searchEngine.onkeydown = (event) => {
 
 	if(event.keyCode === 13){
 		searchEnginSystem();
+		slideDisplayer();
 	}
 
 }
@@ -149,6 +168,7 @@ deleteAllBtn.onmouseout = () => {
 deleteAllBtn.onclick = () => {
 	let currentNum = 0;
 	let numOfDisplayedMsgs = 0;
+	let deletedBulk = []
 	let subCheckBoxArr = Array.from(subCheckBox);
 
 	subCheckBoxArr.map((checkBox) => {
@@ -156,6 +176,7 @@ deleteAllBtn.onclick = () => {
 
 		if(checkBox.checked && window.getComputedStyle(tableRow, null).display != 'none'){
 			currentNum++;
+			deletedBulk.push(tableRow.id);
 			tableRow.remove();
 		}
 		
@@ -168,6 +189,21 @@ deleteAllBtn.onclick = () => {
 		}else{
 			noAdsFound.style.display = 'none';
 		}
-	})
+	});
+
+	if(deletedBulk.length > 0){
+		fetch(`/delete-message/${ deletedBulk }`,{ 
+			method: 'POST'
+		}).then((response) => {
+			if(response.ok){
+				console.log(response);
+				return;
+			}
+
+			throw new Error('Response Failed');
+		}).catch((err) => {
+			console.log(err);
+		})
+	}
 
 }

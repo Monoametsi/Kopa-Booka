@@ -35,7 +35,7 @@ let adRemover = (req, res) => {
 				let deleteUsersAd = (res) => {
 
 					DeletedBulk.map((deletedAd) => {
-						let removeSelectedAds = { _id: deletedAd };
+							let removeSelectedAds = { _id: deletedAd };
 							let student = { Email: email }
 							let removeUsersAds = { $pull: { My_Ads: removeSelectedAds } }
 

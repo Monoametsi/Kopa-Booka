@@ -1,10 +1,13 @@
 const ads = require('./Ads_mongodb');
+const uuid = require('uuid');
 const { Advertisements } = ads;
 const user = require('./mongo_db');
 const { Users } = user;
 
 let messageOfInterest = async (req, res) => {
 	let formData = req.body;
+	let date = new Date();
+	let msgId = uuid.v4();
 	
 	let {
 	  firstname,
@@ -19,13 +22,16 @@ let messageOfInterest = async (req, res) => {
 	}
 	
 	let userInput = {
+	  msgId: msgId,
 	  firstname,
 	  tel,
 	  email,
 	  Post_Id,
 	  subject,
-	  date_created: new Date()
+	  date_created: date
 	}
+	
+	console.log(userInput);
 
 	await Users.find().then((result) => {
 
