@@ -3,7 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const homePage = require('./home-page');
-const forgetPassword = require('./forget-password');
+const forgotPassword = require('./forget-password');
 const messageRemover = require('./msg-remover');
 const myMessages = require('./my-messages');
 const buyersMessage = require('./return-url');
@@ -56,7 +56,7 @@ const { updateUsersAds } = adUpdater;
 const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
-const {forget_password } = forgetPassword;
+const { forgot_password  } = forgotPassword;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -197,7 +197,7 @@ app.get('/logout', requireAuth, checkCurrentUser, logout);
 
 //Forget-Password
 
-app.get('/forget-password', checkCurrentUser, forget_password);
+app.get('/forgot-password', checkCurrentUser, forgot_password);
 
 //Forget-Password
 
