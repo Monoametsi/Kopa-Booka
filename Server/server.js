@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const homePage = require('./home-page');
+const forgetPassword = require('./forget-password');
 const messageRemover = require('./msg-remover');
 const myMessages = require('./my-messages');
 const buyersMessage = require('./return-url');
@@ -53,8 +54,9 @@ const { adRemover } = removeAd;
 const { edit_ad } = adEditer;
 const { updateUsersAds } = adUpdater;
 const { messageOfInterest } = buyersMessage;
-const { my_Messages } = myMessages ;
-const { msgRemover } = messageRemover ;
+const { my_Messages } = myMessages;
+const { msgRemover } = messageRemover;
+const {forget_password } = forgetPassword;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -67,6 +69,7 @@ app.use(express.static(path.join(dirname, 'Dashboard')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'Profile')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'My-Ads')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'My-Messages')));
+app.use(express.static(path.join(dirname, 'Forgot-Password')));
 app.use(express.static(path.join(dirname, 'Post-Ad-page')));
 app.use(express.static(path.join(dirname, 'Textbook-info')));
 app.use(express.static(path.join(dirname, 'About-Us')));
@@ -191,6 +194,12 @@ app.post('/login', requireLoginAuth, checkCurrentUser, Login);
 
 app.get('/logout', requireAuth, checkCurrentUser, logout);
 //Login
+
+//Forget-Password
+
+app.get('/forget-password', checkCurrentUser, forget_password);
+
+//Forget-Password
 
 
 //Dashboard

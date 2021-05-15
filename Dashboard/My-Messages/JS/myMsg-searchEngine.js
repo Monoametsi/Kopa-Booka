@@ -7,7 +7,7 @@ let noAdsFound = document.getElementById('no-posts-found');
 let width = document.getElementById('width-num');
 
 window.onresize = () => {
-	width.innerHTML = window.innerWidth;
+	//width.innerHTML = window.innerWidth;
 
 	if(window.innerWidth >= 1210 && slideCont.style.width !== '0px'){
 		slideCont.style.width = '50%';
@@ -25,7 +25,7 @@ window.onresize = () => {
 }
 
 function closer(){
-	
+
 	if(slideCont.style.width === '0px' || slideCont.style.width === ''){
 		if(window.innerWidth >= 1210){
 			slideCont.style.width = '50%';

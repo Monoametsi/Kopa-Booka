@@ -1,80 +1,19 @@
-@media screen and (max-width: 1125px){
-	.foot-content{
-		margin-right: 0;
-	}
-}
-
 @media screen and (max-width: 890px){
-	
+
 	#login-form{
 		margin-top: 7rem;
 	}
-	
-	.foot-web{
-		display: none;
-		flex-direction: row;
-	}
-	
-	.footMobile-web{
-		display: flex;
-		justify-content: center;
-	}
-	
-	.footMobileWeb-link{
-		white-space: nowrap;
-	}
-	
-	.foot-content{
-		margin-right: 2.5rem;
-	}
-	
-	.foot-title{
-		margin-left: 0;
-	}
+
 }
 
 @media screen and (max-width: 790px){
-	
+
 	#login-form{
 		margin-top: 6.5rem;
 	}
-	
+
 	.login-cont{
 		width: 90%;
 	}
-	.foot-title{
-		white-space: nowrap;
-	}
-}
 
-@media screen and (max-width: 668px){
-	
-	.mobileLogo{
-		display: flex;
-		justify-content: center;
-		margin-right: 1.1rem;
-	}
-	
-	.regMobile-title{
-		font-size: 2.4rem;
-		font-family: montserrat, sans-serif;
-		text-shadow: 0 0 2px rgba(0,0,0,0.6);
-	}
-	
-	.footMobile-web{
-		display: flex;
-		margin-right: 2.5rem;
-	}
-	
-	.foot-info > .logo{
-		display: none;
-	}
-	
-	.foot-info{
-		justify-content: space-around;
-	}
-	
-	.foot-title{
-		white-space: nowrap;
-	}
 }
