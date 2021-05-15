@@ -56,7 +56,7 @@ const { updateUsersAds } = adUpdater;
 const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
-const { forgot_password  } = forgotPassword;
+const { forgot_password, forgot_password_post } = forgotPassword;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -198,6 +198,8 @@ app.get('/logout', requireAuth, checkCurrentUser, logout);
 //Forget-Password
 
 app.get('/forgot-password', checkCurrentUser, forgot_password);
+
+app.post('/forgot-password', checkCurrentUser, forgot_password_post);
 
 //Forget-Password
 
