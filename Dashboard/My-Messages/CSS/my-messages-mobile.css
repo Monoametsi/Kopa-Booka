@@ -3,7 +3,7 @@
 	.deleteAll-cont{
 		display: none;
 	}
-	
+
 	td .sub-checkBox{
 		display: none;
 	}
@@ -24,10 +24,54 @@
 	td .fa-envelope{
 		font-size: 1.4rem;
 	}
+	
+	
 }
 
 @media screen and (max-width: 650px){
 	.searchEngine-btn span{
 		display: none;
+	}
+}
+
+@media screen and (max-width: 630px){
+	
+	.post-info-cont{
+		margin-top: 6rem;
+	}
+	
+	.post-card, .info-message-cont{
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.post-info{
+		padding-right: 1rem;
+	}
+	
+	.buyers-info{
+		margin-right: 0;
+	}
+	
+	.buyers-message{
+		width: 100%;
+		margin-top: 1rem;
+	}
+	
+	.img-cont{
+		align-self: center;
+		width: 100%;
+		max-width: 100%;
+	}
+	
+	img{
+		width: 300px;
+		height: 300px;
+		max-width: 100%;
+	}
+
+	.slide-closer{
+		bottom: 93%;
 	}
 }

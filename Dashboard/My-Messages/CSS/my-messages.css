@@ -313,7 +313,7 @@ td .fa-trash:hover + .content-title, .deleteAll-cont:hover .content-title{
 	position: fixed;
 	z-index: 1;
 	height: 100%;
-    width: 0;
+    width: 0px;
 	max-width: 100%;
     top: 0;
     right: 0;
@@ -326,11 +326,13 @@ td .fa-trash:hover + .content-title, .deleteAll-cont:hover .content-title{
 
 .post-info-cont{
     display: none;
+	width: 100%;
 	position: relative;
 	margin-top: 9rem;
 }
 
 .post-info{
+	width: 100%;
 	align-self: center;
 	display: flex;
     border-radius: 5px;
@@ -504,7 +506,7 @@ img{
 	display: flex;
 	position: absolute;
 	bottom: 88%;
-	right: 95px;
+	right: 18px;
 	font-size: 1.3rem;
 	opacity: 0.4;
 	padding: 4px 8px;

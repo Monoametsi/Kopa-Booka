@@ -8,20 +8,46 @@ let width = document.getElementById('width-num');
 
 window.onresize = () => {
 	width.innerHTML = window.innerWidth;
+
+	if(window.innerWidth >= 1210 && slideCont.style.width !== '0px'){
+		slideCont.style.width = '50%';
+		slideCont.style.borderLeft = '1px solid #888';
+	}else if(window.innerWidth > 870 && window.innerWidth <= 1210 && slideCont.style.width !== '0px'){
+		slideCont.style.width = '70%';
+		slideCont.style.borderLeft = '1px solid #888';
+	}else if(window.innerWidth > 675 &&window.innerWidth <= 870 && slideCont.style.width !== '0px'){
+		slideCont.style.width = '90%';
+		slideCont.style.borderLeft = '1px solid #888';
+	}else if(window.innerWidth <= 675 && slideCont.style.width !== '0px'){
+		slideCont.style.width = '100%';
+		slideCont.style.borderLeft = '1px solid #888';
+	}
 }
 
 function closer(){
-	if(slideCont.style.width !== '50%'){
-    	slideCont.style.width = '50%';
-    	slideCont.style.borderLeft = '1px solid #888';
-		return true;
+	
+	if(slideCont.style.width === '0px' || slideCont.style.width === ''){
+		if(window.innerWidth >= 1210){
+			slideCont.style.width = '50%';
+			slideCont.style.borderLeft = '1px solid #888';
+		}else if(window.innerWidth > 870 && window.innerWidth <= 1210){
+			slideCont.style.width = '70%';
+			slideCont.style.borderLeft = '1px solid #888';
+		}else if(window.innerWidth > 675 &&window.innerWidth <= 870){
+			slideCont.style.width = '90%';
+			slideCont.style.borderLeft = '1px solid #888';
+		}else if(window.innerWidth <= 675){
+			slideCont.style.width = '100%';
+			slideCont.style.borderLeft = '1px solid #888';
+		}
+
 	}
 }
 
 function slideTerminator(){
 	for(let i = 0; i < slideCloser.length; i++){
 		slideCloser[i].onclick = () => {
-			  if(slideCont.style.width === '50%'){
+			  if(slideCont.style.width !== '0px' || slideCont.style.width !== ''){
 				slideCont.style.width = '0';
 				slideCont.style.borderLeft = '0';
 			}
@@ -51,13 +77,13 @@ function slideDisplayer(){
 				let cardId = slideCard[j].children[1].children[1].children[1].children[0].children[0].children[0].id;
 				
 				if(event.target === this.cells[0].children[0]){
-					if(slideCont.style.width !== '50%'){
+					if(slideCont.style.width === '0px' || slideCont.style.width === ''){
 						return null;
 					}
 				}
 
 				if(event.target === this.cells[7].children[0].children[0]){
-					if(slideCont.style.width !== '50%'){
+					if(slideCont.style.width === '0px' || slideCont.style.width === ''){
 						num++;
 
 						if((table.rows.length - 1) === 1 || num === numOfDisplayedMsgs){

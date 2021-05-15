@@ -253,7 +253,7 @@
 					</div>
 
 				</div>
-				
+
 				<% 
 
 				usersAds.map((ad) => { 
@@ -289,11 +289,11 @@
 					%>
 
 					<div class="post-card">
-						<div class="img-cont">
-							<a href="<%= `/view-ad/${ _id }` %>">
-								<img src="<%= imgStr %>">
-							</a>
-						</div>
+						<a href="<%= `/view-ad/${ _id }` %>">
+							<div class="img-cont">
+									<img src="<%= imgStr %>">
+							</div>
+						</a>
 
 						<div class="post-details">
 
