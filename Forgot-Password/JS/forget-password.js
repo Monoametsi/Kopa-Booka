@@ -40,42 +40,42 @@ window.onscroll = function() {
 }
 
 // Scroll Top Function
-// let scrollTop = document.getElementById("scrollTopper");
+let scrollTop = document.getElementById("scrollTopper");
 
-// scrollTop.onclick = function(){
-	// let pageLengthCounter = 0;
-	// let scrollTopperInterval = setInterval(scrollTopper, 20);
+scrollTop.onclick = function(){
+	let pageLengthCounter = 0;
+	let scrollTopperInterval = setInterval(scrollTopper, 20);
 	
-	// function scrollTopper(){
-		// if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
-				// window.scrollBy(0, pageLengthCounter--);
-		// }else{
-			// clearInterval(scrollTopperInterval);
-		// }
-	// }
-// }
+	function scrollTopper(){
+		if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
+				window.scrollBy(0, pageLengthCounter--);
+		}else{
+			clearInterval(scrollTopperInterval);
+		}
+	}
+}
 
 // footer list dropdown
-// let btn = document.getElementById('btn');
-// let arrow = document.getElementById('arrow');
+let btn = document.getElementById('btn');
+let arrow = document.getElementById('arrow');
 
-// function listSlider(list,animeClass){
-	// let divisionList = list.nextElementSibling;
-	// arrow.classList.toggle('flip-up');
+function listSlider(list,animeClass){
+	let divisionList = list.nextElementSibling;
+	arrow.classList.toggle('flip-up');
 
-	// if(divisionList.style.maxHeight){
-		// divisionList.style.maxHeight = null;
-		// divisionList.style.transition = '0.3s';
+	if(divisionList.style.maxHeight){
+		divisionList.style.maxHeight = null;
+		divisionList.style.transition = '0.3s';
 
-	// }else{
-		// divisionList.style.transition = '0.3s';
-		// divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
-	// }
-// }
+	}else{
+		divisionList.style.transition = '0.3s';
+		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
+	}
+}
 
-// btn.onclick = function(){
-	// listSlider(this);
-// }
+btn.onclick = function(){
+	listSlider(this);
+}
 
 //Menu dropdown
 let listDropper =  document.getElementById('menu-DropDown');
