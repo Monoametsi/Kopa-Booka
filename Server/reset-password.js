@@ -52,7 +52,7 @@ const emailPwdResetLink = async (email) => {
 		subject: 'Reset your password',
 		html: emailMessage
 	}
-	
+
 	await transporter.sendMail(mailInfo, (err, success) => {
 		if(err){
 			success = false;
@@ -62,7 +62,7 @@ const emailPwdResetLink = async (email) => {
 			console.log(`Sucesss: ${ success }`);
 		}
 	})
-	
+
 	// if(success === true){
 		// return res.redirect();
 	// }else{
@@ -72,5 +72,5 @@ const emailPwdResetLink = async (email) => {
 }
 
 module.exports = {
-	
+	emailPwdResetLink
 }

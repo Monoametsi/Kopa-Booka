@@ -56,7 +56,7 @@ const { updateUsersAds } = adUpdater;
 const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
-const { forgot_password, forgot_password_post } = forgotPassword;
+const { forgot_password, forgot_password_post, forgot_password_confirm, forgot_password_failuer } = forgotPassword;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -200,6 +200,10 @@ app.get('/logout', requireAuth, checkCurrentUser, logout);
 app.get('/forgot-password', checkCurrentUser, forgot_password);
 
 app.post('/forgot-password', checkCurrentUser, forgot_password_post);
+
+app.get('/forgot-password-confirmation', checkCurrentUser, forgot_password_confirm);
+
+app.get('/forgot-password-failure', checkCurrentUser, forgot_password_failuer);
 
 //app.get('/reset-password/:usersToken', checkCurrentUser, reset_password);
 

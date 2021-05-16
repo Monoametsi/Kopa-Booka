@@ -2,7 +2,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const emailValidation = require('./emailValidator');
-//const emailResetLink = require('./reset-link');
+//const emailResetLink = require('./reset-password');
 const user = require('./mongo_db');
 const { Users } = user;
 const { emailValidator } = emailValidation;
@@ -55,7 +55,17 @@ let forgot_password_post = (req, res) => {
 	})
 }
 
+let forgot_password_confirm = (req, res) => {
+	res.render('forget-password-confirmation');
+}
+
+let forgot_password_failuer = (req, res) => {
+	res.render('forget-password-confirmation');
+}
+
 module.exports = {
 	forgot_password,
-	forgot_password_post
+	forgot_password_post,
+	forgot_password_confirm,
+	forgot_password_failuer
 }
