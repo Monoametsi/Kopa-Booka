@@ -201,6 +201,10 @@ app.get('/forgot-password', checkCurrentUser, forgot_password);
 
 app.post('/forgot-password', checkCurrentUser, forgot_password_post);
 
+//app.get('/reset-password/:usersToken', checkCurrentUser, reset_password);
+
+//app.post('/reset-password/:usersToken', checkCurrentUser, reset_password_post);
+
 //Forget-Password
 
 

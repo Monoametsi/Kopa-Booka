@@ -3,7 +3,7 @@ const { google } = require('googleapis');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const path = require('path');
-//https://t.co/dRW7cCihOu?amp=1
+
 dotenv.config({path:path.join(__dirname, '.env')});
 
 const CLIENT_ID = process.env.CLIENT_ID.toString();

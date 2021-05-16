@@ -32,10 +32,9 @@ let forgot_password_post = (req, res) => {
 	let emailRegexChecks = {
 		emailRegEx: validationEmailChecks.emailOneDot.test(email) || validationEmailChecks.emailTwoDots.test(email) || validationEmailChecks.emailThreeDots.test(email)
 	}
-	
-	
+
 	Users.find().then((result) => {
-		
+
 		if(emailValidator(email) === false){
 			return res.render('forgot-password-post', { emailRegexChecks, email, notFound });
 		}else{
@@ -50,6 +49,7 @@ let forgot_password_post = (req, res) => {
 				return res.render('forgot-password-post', { emailRegexChecks, email, notFound });
 			}
 		}
+
 	}).catch((err) => {
 		console.log(err);
 	})
