@@ -2,17 +2,17 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const emailValidation = require('./emailValidator');
-//const emailResetLink = require('./reset-password');
+const emailResetLink = require('./reset-password');
 const user = require('./mongo_db');
 const { Users } = user;
 const { emailValidator } = emailValidation;
-//const { emailPwdResetLink } = emailResetLink;
+const { emailPwdResetLink } = emailResetLink;
 
 let forgot_password = (req, res) => {
 	res.render('forget-password');
 }
 
-let forgot_password_post = (req, res) => {
+let forgot_password_post = async (req, res) => {
 	let formData = req.body;
 	
 	let notFound;
@@ -20,7 +20,7 @@ let forgot_password_post = (req, res) => {
 	let { email } = formData;
 	
 	let findEmail = (usersEmail) =>{
-		usersEmail.Email === email;
+		return usersEmail.Email === email;
 	}
 
 	let validationEmailChecks = {
@@ -33,16 +33,16 @@ let forgot_password_post = (req, res) => {
 		emailRegEx: validationEmailChecks.emailOneDot.test(email) || validationEmailChecks.emailTwoDots.test(email) || validationEmailChecks.emailThreeDots.test(email)
 	}
 
-	Users.find().then((result) => {
+	await Users.find().then( async (result) => {
 
 		if(emailValidator(email) === false){
 			return res.render('forgot-password-post', { emailRegexChecks, email, notFound });
 		}else{
 			if(result.filter(findEmail).length > 0){
-				result.filter(findEmail).map((usersEmail) => {
-					let foundEmail = usersEmail;
+				result.filter(findEmail).map( async (usersEmail) => {
+					let foundEmail = usersEmail.Email.trim();
 
-					//return emailPwdResetLink(foundEmail);
+					return await emailPwdResetLink(foundEmail,res);
 				});
 			}else{
 				notFound = true;
@@ -60,7 +60,7 @@ let forgot_password_confirm = (req, res) => {
 }
 
 let forgot_password_failuer = (req, res) => {
-	res.render('forget-password-confirmation');
+	res.render('forgot-password-failure');
 }
 
 module.exports = {

@@ -169,6 +169,7 @@ a{
 }
 
 .forgotPass{
+	color: rgba(0,0,250,1);
 	text-decoration: none;
 	transition: 0.3s;
 	font-size: 1rem;
@@ -176,7 +177,6 @@ a{
 }
 
 .forgotPass:hover{
-	color: rgba(0,0,250,1);
 	border-bottom: 1px solid rgba(0,0,250,1);
 }
 
