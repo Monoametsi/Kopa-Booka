@@ -39,13 +39,13 @@ window.onscroll = function() {
     return hideBar();
 }
 
-//Scroll Top Function
+// Scroll Top Function
 let scrollTop = document.getElementById("scrollTopper");
 
 scrollTop.onclick = function(){
 	let pageLengthCounter = 0;
 	let scrollTopperInterval = setInterval(scrollTopper, 20);
-
+	
 	function scrollTopper(){
 		if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
 				window.scrollBy(0, pageLengthCounter--);
@@ -55,7 +55,7 @@ scrollTop.onclick = function(){
 	}
 }
 
-//footer list dropdown
+// footer list dropdown
 let btn = document.getElementById('btn');
 let arrow = document.getElementById('arrow');
 
@@ -131,18 +131,24 @@ let menuCollapser = () => {
     }
 }
 
-roundIcon.onclick = () => {
-    menuCollapser();
+if(roundIcon !== null){
+	roundIcon.onclick = () => {
+		menuCollapser();
+	}
 }
 
 window.onclick = (event) => {
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
-	let displayValue = window.getComputedStyle(loginMenu, null).display;
-	if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
-		arrower.classList.remove('rotater');
-		dashboardMenu.style.maxHeight = null;
-		dashboardMenu.style.transition = '.3s';
-		naver.style.maxHeight = null;
-		naver.style.transition = '.3s';
+	
+	if(loginMenu !== undefined){
+		let displayValue = window.getComputedStyle(loginMenu, null).display;
+		if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
+			arrower.classList.remove('rotater');
+			dashboardMenu.style.maxHeight = null;
+			dashboardMenu.style.transition = '.3s';
+			naver.style.maxHeight = null;
+			naver.style.transition = '.3s';
+		}
 	}
+	
 }

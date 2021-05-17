@@ -34,7 +34,7 @@ email.oninput = () => {
 	emailValidation();
 }
 
-let submitBtn = document.getElementById('btn');
+let submitBtn = document.getElementById('sub-btn');
 
 submitBtn.onclick = () => {
 	emailValidation();

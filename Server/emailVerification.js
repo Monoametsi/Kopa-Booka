@@ -39,7 +39,7 @@ const mailDeliverer = async (email, ress) => {
 		expiresIn: '3d'
 	});
 
-	let mailUrl = `${process.env.CLIENT_URL}/email-verification/${token}`;
+	let mailUrl = `${ process.env.CLIENT_URL }/email-verification/${ token }`;
 
 	let mailOptions = {
 		from: 'pt.projects.submission@gmail.com',

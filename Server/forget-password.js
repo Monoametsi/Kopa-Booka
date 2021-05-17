@@ -2,7 +2,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const emailValidation = require('./emailValidator');
-const emailResetLink = require('./reset-password');
+const emailResetLink = require('./reset-password-email-link');
 const user = require('./mongo_db');
 const { Users } = user;
 const { emailValidator } = emailValidation;
@@ -42,7 +42,7 @@ let forgot_password_post = async (req, res) => {
 				result.filter(findEmail).map( async (usersEmail) => {
 					let foundEmail = usersEmail.Email.trim();
 
-					return await emailPwdResetLink(foundEmail,res);
+					return await emailPwdResetLink(foundEmail, res);
 				});
 			}else{
 				notFound = true;

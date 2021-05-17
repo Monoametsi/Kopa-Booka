@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const homePage = require('./home-page');
+const resetPassword = require('./reset-password');
 const forgotPassword = require('./forget-password');
 const messageRemover = require('./msg-remover');
 const myMessages = require('./my-messages');
@@ -57,6 +58,7 @@ const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
 const { forgot_password, forgot_password_post, forgot_password_confirm, forgot_password_failuer } = forgotPassword;
+const { reset_password } = resetPassword;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -70,6 +72,7 @@ app.use(express.static(path.join(dirname, 'Dashboard', 'Profile')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'My-Ads')));
 app.use(express.static(path.join(dirname, 'Dashboard', 'My-Messages')));
 app.use(express.static(path.join(dirname, 'Forgot-Password')));
+app.use(express.static(path.join(dirname, 'reset-password')));
 app.use(express.static(path.join(dirname, 'Post-Ad-page')));
 app.use(express.static(path.join(dirname, 'Textbook-info')));
 app.use(express.static(path.join(dirname, 'About-Us')));
@@ -204,6 +207,8 @@ app.post('/forgot-password', checkCurrentUser, forgot_password_post);
 app.get('/forgot-password-confirmation', checkCurrentUser, forgot_password_confirm);
 
 app.get('/forgot-password-failure', checkCurrentUser, forgot_password_failuer);
+
+app.get('/reset-password', checkCurrentUser, reset_password);
 
 //app.get('/reset-password/:usersToken', checkCurrentUser, reset_password);
 
