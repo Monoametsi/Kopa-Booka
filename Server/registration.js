@@ -4,7 +4,7 @@ const validator = require('./validator');
 const emailVerification = require('./emailVerification');
 const uuid = require('uuid');
 const bcrypt = require('bcryptjs');
-const { passwordEmailValidation } = validator;
+const { passwordEmailValidation, emailValidation } = validator;
 const { mailDeliverer } = emailVerification;
 const user = require('./mongo_db');
 const { Users } = user;
@@ -60,7 +60,7 @@ let Register = async (req, res) => {
 
 	Users.find().then((result) => {
 
-		if(passwordEmailValidation(password, passConfirmation, email) === false){
+		if(passwordEmailValidation(password, passConfirmation) === false || emailValidation(email) === false){
 			return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json, alreadyExists });
 
 		}else{

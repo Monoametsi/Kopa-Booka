@@ -1,5 +1,5 @@
 let pwd = document.getElementById('pwd');
-let passConfirm = document.getElementById('confirm_pwd');
+let passConfirm = document.getElementById('confirm-pwd');
 
 pwd.oninput = () => {
 	passwordValidation();

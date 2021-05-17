@@ -150,5 +150,5 @@ window.onclick = (event) => {
 			naver.style.transition = '.3s';
 		}
 	}
-	
+
 }
