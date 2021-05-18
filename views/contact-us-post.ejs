@@ -54,37 +54,93 @@
 			<div class="contactCard-form">
 				<form action="/contact-us" method="POST">
 
+					
+					<% if(name === "" || name.length === 0 || name === undefined || name === null) {%>
+					<div class="inputField-cont">
+						<div class="label-cont">
+							<label for="Username">Name<span class="required">*</span></label>
+							<label for="Username" class="validifier" id="Username-Err" style="display: flex;">Required</label>
+						</div>
+						<input type="text" id="Username" class="inputField-styling redBox" name="name" placeholder="Enter your name..." value="<%= name %>">
+					</div>
+					<% }else { %>
 					<div class="inputField-cont">
 						<div class="label-cont">
 							<label for="Username">Name<span class="required">*</span></label>
 							<label for="Username" class="validifier" id="Username-Err"></label>
 						</div>
-						<input type="text" id="Username" class="inputField-styling" name="name" placeholder="Enter your name...">
+						<input type="text" id="Username" class="inputField-styling" name="name" placeholder="Enter your name..." value="<%= name %>">
 					</div>
+					<% } %>
 
+					
+					
+					<% if(email === "" || email.length === 0  || email === null || email === undefined){ %>
+					<div class="inputField-cont">
+						<div class="label-cont">
+							<label for="Usersemail">Email<span class="required">*</span></label>
+							<label for="Usersemail" class="validifier" id="mailErr" style="display: flex;">Required</label>
+						</div>
+						<input type="email" id="Usersemail" class="inputField-styling redBox" name="email" placeholder="Enter your email..." value="<%= email %>">
+					</div>
+					<% }else if(emailRegexChecks.emailRegEx === false) { %>
+					<div class="inputField-cont">
+						<div class="label-cont">
+							<label for="Usersemail">Email<span class="required">*</span></label>
+							<label for="Usersemail" class="validifier" id="mailErr" style="display: flex;">Invalid</label>
+						</div>
+						<input type="email" id="Usersemail" class="inputField-styling redBox" name="email" placeholder="Enter your email..." value="<%= email %>">
+					</div>	
+					<% } else { %>
 					<div class="inputField-cont">
 						<div class="label-cont">
 							<label for="Usersemail">Email<span class="required">*</span></label>
 							<label for="Usersemail" class="validifier" id="mailErr"></label>
 						</div>
-						<input type="email" id="Usersemail" class="inputField-styling" name="email" placeholder="Enter your email...">
+						<input type="email" id="Usersemail" class="inputField-styling" name="email" placeholder="Enter your email..." value="<%= email %>">
 					</div>
+					<% } %>
 
+					
+					<% if(contactValCheck.allNumFormatTest === false) {%>
+					<div class="inputField-cont">
+						<div class="label-cont">
+							<label for="Usercontact">Contact Number</label>
+							<label for="Userscontact" class="validifier" id="contactNum-Err" style="display: flex;">Invalid</label>
+						</div>
+						<input type="tel" id="Userscontact" class="inputField-styling redBox" name="tel" placeholder="Enter your contacts..." value="<%= tel %>">
+					</div>
+					<% } else { %>
 					<div class="inputField-cont">
 						<div class="label-cont">
 							<label for="Usercontact">Contact Number</label>
 							<label for="Userscontact" class="validifier" id="contactNum-Err"></label>
 						</div>
-						<input type="tel" id="Userscontact" class="inputField-styling" name="tel" placeholder="Enter your contacts...">
-					</div>	
+						<input type="tel" id="Userscontact" class="inputField-styling" name="tel" placeholder="Enter your contacts..." value="<%= tel %>">
+					</div>
+					<% } %>
 
+
+
+					<% if(subject === "" || subject.length === 0 || subject === undefined || subject === null) {%>
+					<div class="inputField-cont">
+						<div class="label-cont">
+							<label for="subject">Message<span class="required">*</span></label>
+							<label for="subject" class="validifier" id="subject-Err" style="display: flex;">Required</label>
+						</div>
+						<textarea id="subject" name="subject" class="Message-redBox"><%= subject %></textarea>
+					</div>
+					<% }else { %>
 					<div class="inputField-cont">
 						<div class="label-cont">
 							<label for="subject">Message<span class="required">*</span></label>
 							<label for="subject" class="validifier" id="subject-Err"></label>
 						</div>
-						<textarea id="subject" name="subject"></textarea>
+						<textarea id="subject" name="subject"><%= subject %></textarea>
 					</div>
+					<% } %>
+
+
 					<input type="submit" id="submitFormInfo" value="Send">
 				</form>
 			</div>

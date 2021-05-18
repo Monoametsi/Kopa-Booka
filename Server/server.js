@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const homePage = require('./home-page');
+const contactUs = require('./contact-us');
 const resetPassword = require('./reset-password');
 const forgotPassword = require('./forget-password');
 const messageRemover = require('./msg-remover');
@@ -58,7 +59,8 @@ const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
 const { forgot_password, forgot_password_post, forgot_password_confirm, forgot_password_failuer } = forgotPassword;
-const { reset_password_post, reset_password_get } = resetPassword;
+const { reset_password_post, reset_password_get, reset_password_confirmation, reset_password_token_failure, reset_password_not_found } = resetPassword;
+const { contact_us_get, contact_us_post } = contactUs;
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -136,15 +138,26 @@ app.get('/Ad-board/:searchQuery/:pageQuery', checkCurrentUser, displayAds);
 app.post('/return-url?', messageOfInterest);
 //Search Results
 
+//View-ad
 app.get('/view-ad/:id', checkCurrentUser, viewAd);
+//View-ad
+
+//About-Us
 
 app.get('/About-Us', checkCurrentUser, (req, res) => {
 	res.status(200).render('About-Us');
 });
 
-app.get('/contact-us', checkCurrentUser, (req, res) => {
-	res.status(200).render('contact-us');
-});
+//About-Us
+
+
+//Contact-Us
+
+app.get('/contact-us', checkCurrentUser, contact_us_get);
+
+app.post('/contact-us', checkCurrentUser, contact_us_post);
+
+//Contact-Us
 
 
 //Registration
@@ -208,14 +221,15 @@ app.get('/forgot-password-confirmation', checkCurrentUser, forgot_password_confi
 
 app.get('/forgot-password-failure', checkCurrentUser, forgot_password_failuer);
 
-app.get('/reset-password', checkCurrentUser, reset_password_get);
+app.get('/reset-password/:usersToken', checkCurrentUser, reset_password_get);
 
-app.post('/reset-password/', checkCurrentUser, reset_password_post);
+app.post('/reset-password/:usersToken', checkCurrentUser, reset_password_post);
 
-// app.post('/reset-password/:usersToken', checkCurrentUser, reset_password);
+app.get('/reset-password-confirmation', checkCurrentUser, reset_password_confirmation);
 
-//app.post('/reset-password/:usersToken', checkCurrentUser, reset_password_post);
+app.get('/reset-password-token-failure', checkCurrentUser, reset_password_token_failure);
 
+app.get('/email-not-found', checkCurrentUser, reset_password_not_found);
 //Forget-Password
 
 

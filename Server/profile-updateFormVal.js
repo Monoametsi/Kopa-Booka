@@ -1,6 +1,15 @@
-let titleSelectValidator = (name, surname, listVal) => {	
+let titleSelectValidator = (name, surname, listVal) => {
 
-	if(name === '' || name === undefined || name === null || surname === '' || surname === undefined || surname === null || listVal === 'select campus'){
+	if(name === '' || name === undefined || name.length === 0 || name === null || surname === ''|| surname.length === 0 || surname === undefined || surname === null || listVal === 'select campus'){
+		return false;
+
+	}else{
+		return true;
+	}
+}
+
+let nameValidator = (name, message) => {
+	if(name === '' || name.length === 0 || name === undefined || name === null || message === '' || message.length === 0 || message === undefined || message === null){
 		return false;
 
 	}else{
@@ -58,4 +67,4 @@ let contactNumValidator = (contactNumVal) => {
   }
 }
 
-module.exports = { titleSelectValidator, contactNumValidator };
+module.exports = { titleSelectValidator, contactNumValidator, nameValidator };

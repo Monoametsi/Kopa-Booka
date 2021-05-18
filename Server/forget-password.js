@@ -13,6 +13,7 @@ let forgot_password = (req, res) => {
 }
 
 let forgot_password_post = async (req, res) => {
+
 	let formData = req.body;
 	
 	let notFound;

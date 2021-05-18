@@ -126,8 +126,10 @@ let menuCollapser = () => {
     }
 }
 
-roundIcon.onclick = () => {
-    menuCollapser();
+if(roundIcon !== null){
+	roundIcon.onclick = () => {
+		menuCollapser();
+	}
 }
 
 window.onclick = (event) => {

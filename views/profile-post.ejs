@@ -49,10 +49,10 @@
 						</div>
 						<div class="nameAddress-details input">
 							<div class="inputlabel-cont">
-							<% if(name === "" || name === undefined || name === null) {%>
+							<% if(name === "" || name === undefined || name === null || name.length === 0) {%>
 								<div class="label-cont">
 									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
-									<span class="validifier" id="first-name-Err" style="display: flex;"><%= "Required" %></span>
+									<span class="validifier" id="first-name-Err" style="display: flex;">Required</span>
 								</div>
 								<input type="text" class="inputField-styling redBox" placeholder="Enter your name..." name="name" id="first-name">
 							<% } else {%>
@@ -67,7 +67,7 @@
 							<% if(surname === "" || surname === undefined || surname === null) {%>
 								<div class="label-cont">
 									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
-									<span class="validifier" id="last-name-Err" style="display: flex;"><%= "Required" %></span>
+									<span class="validifier" id="last-name-Err" style="display: flex;">Required</span>
 								</div>
 								<input type="text" class="inputField-styling redBox" placeholder="Enter your surname..." name="surname" id="last-name">
 							<% }else { %>
@@ -85,7 +85,7 @@
 						<% if(contactValCheck.findEmpty) {%>
 								<div class="label-cont">
 									<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
-									<span class="validifier" id="telNum-Err" style="display: flex;"><%= "Required" %></span>
+									<span class="validifier" id="telNum-Err" style="display: flex;">Required</span>
 								</div>
 								<input type="tel" class="inputField-styling redBox" placeholder="Mobile or telephone number..." name="tel" id="telNum">
 						<% } else if(contactValCheck.allNumFormatTest){ %>
@@ -97,7 +97,7 @@
 						<% } else { %>
 							<div class="label-cont">
 								<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
-								<span class="validifier" id="telNum-Err" style="display: flex;"><%= "Invalid" %></span>
+								<span class="validifier" id="telNum-Err" style="display: flex;">Invalid</span>
 							</div>
 							<input type="tel" class="inputField-styling redBox" placeholder="Mobile or telephone number..." name="tel" id="telNum">
 						<% } %>
@@ -106,7 +106,7 @@
 							<% if(campus === "select campus") {%>
 								<div class="label-cont">
 									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err" style="display: flex;"><%= "Required" %></span>
+									<span class="validifier" id="select-campus-Err" style="display: flex;">Required</span>
 								</div>
 								<select name="campus" id="select-campus" class="redBox">
 									<option value="select campus">Select campus</option>

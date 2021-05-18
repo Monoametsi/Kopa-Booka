@@ -55,13 +55,13 @@
 					<% if(email === "" || email === undefined || email === null || email.length === 0) { %>
 						<div class="label-cont">
 							<label for="email" class="label">Email <span class="required">*</span></label>
-							<label for="email" class="validifier" style="display: flex;"> <%=  "Required" %> </label>
+							<label for="email" class="validifier" style="display: flex;">Required</label>
 						</div>
 						<input type="email" name="email" id="Usersemail" class="inputField-styling redBox" placeholder="Insert email address...">
 					<% } else if(emailRegexChecks.emailRegEx === false){ %>
 						<div class="label-cont">
 							<label for="email" class="label">Email <span class="required">*</span></label>
-							<label for="email" class="validifier" style="display: flex;"> <%=  "Invalid Email" %> </label>
+							<label for="email" class="validifier" style="display: flex;">Invalid Email</label>
 						</div>
 						<input type="email" name="email" id="Usersemail" class="inputField-styling redBox" placeholder="Insert email address...">
 					<% } else { %>
@@ -77,37 +77,37 @@
 					<% if(validationPasswordChecks.findEmpty) { %>
 						<div class="label-cont">
 							<label for="password" class="label">Password <span class="required">*</span></label>
-							<label for="password" class="validifier" id="passwordErr" style="display: flex;"> <%=  "Required" %>  </label>
+							<label for="password" class="validifier" id="passwordErr" style="display: flex;">Required</label>
 						</div>
 						<input type="password" id="password" name="password" class="inputField-styling redBox" placeholder="Insert Atleast 7 or more characters...">
 					<% } else  if(validationPasswordChecks.findLength) { %>
 						<div class="label-cont">
 							<label for="password" class="label">Password <span class="required">*</span></label>
-							<label for="password" class="validifier" id="passwordErr" style="display: flex;"> <%=  "Must be between 7 to 16 characters" %>  </label>
+							<label for="password" class="validifier" id="passwordErr" style="display: flex;">Must be between 7 to 16 characters </label>
 						</div>
 						<input type="password" id="password" name="password" class="inputField-styling redBox" placeholder="Insert Atleast 7 or more characters...">
 					<% } else  if(validationPasswordChecks.findUpperCase) { %>
 						<div class="label-cont">
 							<label for="password" class="label">Password <span class="required">*</span></label>
-							<label for="password" class="validifier" id="passwordErr" style="display: flex;"> <%=  "Include atleast 1 Uppercase character" %>  </label>
+							<label for="password" class="validifier" id="passwordErr" style="display: flex;">Include atleast 1 Uppercase character</label>
 						</div>
 						<input type="password" id="password" name="password" class="inputField-styling redBox" placeholder="Insert Atleast 7 or more characters...">
 					<% } else  if(validationPasswordChecks.findLowerCase) { %>
 						<div class="label-cont">
 							<label for="password" class="label">Password <span class="required">*</span></label>
-							<label for="password" class="validifier" id="passwordErr" style="display: flex;"> <%=  "Include atleast 1 lowecase character" %>  </label>
+							<label for="password" class="validifier" id="passwordErr" style="display: flex;">Include atleast 1 lowecase character</label>
 						</div>
 						<input type="password" id="password" name="password" class="inputField-styling redBox" placeholder="Insert Atleast 7 or more characters...">
 					<% } else  if(validationPasswordChecks.findSpecialChar) { %>
 						<div class="label-cont">
 							<label for="password" class="label">Password <span class="required">*</span></label>
-							<label for="password" class="validifier" id="passwordErr" style="display: flex;"> <%=  "Include atleast 1 special character" %>  </label>
+							<label for="password" class="validifier" id="passwordErr" style="display: flex;">Include atleast 1 special character</label>
 						</div>
 						<input type="password" id="password" name="password" class="inputField-styling redBox" placeholder="Insert Atleast 7 or more characters...">
 					<% } else  if(validationPasswordChecks.findDigit) { %>
 						<div class="label-cont">
 							<label for="password" class="label">Password <span class="required">*</span></label>
-							<label for="password" class="validifier" id="passwordErr" style="display: flex;"> <%=  "Include atleast 1 numeric digit" %>  </label>
+							<label for="password" class="validifier" id="passwordErr" style="display: flex;">Include atleast 1 numeric digit</label>
 						</div>
 						<input type="password" id="password" name="password" class="inputField-styling redBox" placeholder="Insert Atleast 7 or more characters...">
 					<% } else { %>
@@ -126,7 +126,7 @@
 					<% if(validationPasswordChecks.findMatch) { %>
 						<div class="label-cont">
 							<label for="passConfirmation" class="label">Confirm password <span class="required">*</span></label>
-							<label for="passConfirmation" class="validifier" id="passConfErr" style="display: flex;"> <%=  "Passwords dont match!" %> </label>
+							<label for="passConfirmation" class="validifier" id="passConfErr" style="display: flex;">Passwords dont match!</label>
 						</div>
 						<input type="password" id="passConf" name="passConfirmation" class="inputField-styling redBox" placeholder="Re-enter password...">
 					<% } else { %>
