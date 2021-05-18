@@ -20,10 +20,10 @@ section{
 	height: 100vh;
 	min-height: 40rem;
 	background-attachment: fixed;
-	background-position: bottom right;
+	/* background-position: bottom right; */
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../About-Us-Images/Sell.jpg'); 
+	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../About-Us-Images/uj2.jpg'); 
 }
 
 #about-header{
@@ -71,13 +71,13 @@ section{
 
 .goal-description p{
 	font-size: 1.2rem;
-	line-height: 1.8rem;
+	line-height: 2rem;
 	width: 74%;
 	text-align: center;
 }
 
 .MJ{
-	color: #0acdff;
+	color: #007cc2;
 	text-decoration: none;
 	transition: 0.3s;
 }

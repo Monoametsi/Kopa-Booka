@@ -59,10 +59,6 @@
 	#contact-card{
 		width: 80%;
 	}
-
-}
-
-@media screen and (max-width: 790px){
 	
 	.contact-slogan{
 		display: none;
@@ -72,7 +68,11 @@
 		display: inline-block;
 		line-height: 1.6rem;
 	}
-	
+
+}
+
+@media screen and (max-width: 790px){
+
 	#contact-card{
 		width: 100%;
 	}
