@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/Images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Header-CSS/header.css">
+<link rel="stylesheet" href="/Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="/Footer-CSS/footer.css">
+<link rel="stylesheet" href="/Footer-CSS/footer-mobile.css">
+<link rel="stylesheet" href="/CSS/Post Ad.css">
+<link rel="stylesheet" href="/CSS/Post Ad Mobile.css">
+<title>Kopa Booka | Contact Us Error</title>
+</head>
+<body>
+
+	<%- include("partials/header"); -%>
+
+	<section class="messageBox-cont">
+		<div class="message-box" style="width: 800px;">
+			<div class="messageTitle-cont">
+				<i class="fa fa-times"></i>
+				<h1 class="messageTitle">Something went wrong</h1>
+			</div>
+
+			<div class="message-cont">
+				<p class="message">Sorry, an error occured which prevented the information you inserted in the contact form from being recieved, 
+				please check your internet connection, click the button below to return to the contact us page and try again.</p>
+			</div>
+
+			<div class="messageBoxRedirect-cont">
+				<a href="/contact-us" class="messageRedirect">Go back to contact us page.</a>
+			</div>
+		</div>
+	</section>
+	
+	<%- include("partials/footer"); -%>
+	
+  <script src="/Post-Ad-Page-JS/Post Ad.js"></script>
+</body>
+</html>
