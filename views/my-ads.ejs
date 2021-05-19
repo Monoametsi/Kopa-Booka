@@ -61,7 +61,7 @@
 		</div>
 
 		<% let usersAd = (data) => { %>
-		<% 
+		<% console.log(data)
 
 		let {
 
@@ -80,6 +80,7 @@
 			Negotiation,
 			Description,
 			Campus,
+			Viewed_Count,
 			UploadedImages	
 
 			} = data; 
@@ -151,7 +152,11 @@
 							</div>
 							<div class="stat-cont">
 								<i class="fa fa-eye"></i>
+								<% if(Viewed_Count === undefined ) {%>
 								<span> 0 </span>
+								<% } else{ %>
+								<span> <%= Viewed_Count.length %> </span>
+								<% } %>
 							</div>
 						</div>
 

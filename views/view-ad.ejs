@@ -23,7 +23,23 @@
   
  <section id="adv">
  
- 
+			
+			<%
+			
+				let minutesFormat = (time) => {
+					if(time > 10){
+						return time;
+					}else{
+						return `0${ time }`;
+					}
+				}
+				
+				let date = new Date(Date_Created);
+
+				let messageSentDate = `${ minutesFormat(date.getDate()) }/${ date.getMonth() + 1 }/${ date.getFullYear() }`;
+			
+			%>
+			
 
 			<div id="myModal" class="modal">
 				<span class="close"> &times </span>
@@ -126,7 +142,7 @@
 
 				<div class="ad-info">
 					<em class="left">Published:</em>
-					<b class="right">20/03/2020</b>
+					<b class="right"><%= messageSentDate %></b>
 				</div>
 
 				<div class="ad-info">
@@ -274,12 +290,21 @@
 
 				<div class="ad-info">
 					<em class="left">Published:</em>
-					<b class="right">20/03/2020</b>
+					<b class="right"><%= messageSentDate %></b>
 				</div>
 
 				<div class="ad-info">
 					<em class="left">Campus:</em>
 					<b class="right"><%= stringCapitalizer(Campus)  %></b>
+				</div>
+				
+				<div class="ad-info">
+					<em class="left">Viewed:</em>
+					<% if ((Viewed_Count.length + 1) === 1) {%>
+					<b class="right"><%= `${ Viewed_Count.length + 1 } view` %></b>
+					<% }else { %>
+					<b class="right"><%= `${ Viewed_Count.length + 1 } views` %></b>
+					<% } %>
 				</div>
 				
 				<div class="ad-info">

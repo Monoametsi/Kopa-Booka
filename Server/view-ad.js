@@ -47,6 +47,7 @@ let viewAd = (req, res) =>{
 		Description,
 		Campus,
 		Viewed_Count,
+		Date_Created,
 		UploadedImages
 		} = result[i]; 
 
@@ -69,10 +70,10 @@ let viewAd = (req, res) =>{
 
 				let updateUsersViewCount = (res) => {
 					let ad = { "My_Ads._id": id };
-					let viewCountAdded = { $push: { Viewed_Count: 1 }  };
+					let viewCountAdded = { $push: { "My_Ads.$.Viewed_Count": 1 }  };
 					
 					Users.updateOne(ad, viewCountAdded, (err, res) => {
-						if(err) throw err;
+						if(err) throw console.log(err);
 					})
 				}
 				
@@ -98,6 +99,7 @@ let viewAd = (req, res) =>{
 					stringCapitalizer,
 					UploadedImages,
 					Viewed_Count,
+					Date_Created,
 					ordinal
 				});
 			}
@@ -114,11 +116,6 @@ let viewAd = (req, res) =>{
 	});
 };
 
-// let clicked = (req, res) => {
-	
-// }
-
 module.exports = {
-	viewAd,
-	/*clicked*/
+	viewAd
 }
