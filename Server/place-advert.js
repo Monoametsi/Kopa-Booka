@@ -76,7 +76,7 @@ let placeAdvert = async (req, res) => {
 			}
 		}
 
-		console.log(files);
+		//console.log(files);
 
 		const adverts = await new Advertisements({
 			_id: UserId,
@@ -94,6 +94,8 @@ let placeAdvert = async (req, res) => {
 			Negotiation: negotiation,
 			Description,
 			Campus: campus,
+			Viewed_Count: [],
+			Date_Created: new Date(),
 			UploadedImages 
 		});
 
@@ -125,6 +127,8 @@ let placeAdvert = async (req, res) => {
 						Negotiation: negotiation,
 						Description,
 						Campus: campus,
+						Viewed_Count: [],
+						Date_Created: new Date(),
 						UploadedImages
 					}
 

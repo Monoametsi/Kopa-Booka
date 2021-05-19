@@ -3,11 +3,7 @@ let userName = document.getElementById('Username');
 let	userNameErr = document.getElementById('Username-Err');
 
 userName.oninput = function (){
-	userNameValidator();
-}
-
-function userNameValidator(){
-	titleValidator();
+	titleValidator()
 }
 
 function titleValidator(){
@@ -153,20 +149,22 @@ function messageToSellerValidator(){
 //Submit validation
 let submitBtn = document.getElementById('submitFormInfo');
 
-submitBtn.onclick = function(event){
-	event.preventDefault();
-	let icons = document.getElementsByClassName("ikon");
+submitBtn.onclick = function(){
+	titleValidator();
+	contactNumValidator();
+	emailValidator();
+	messageToSellerValidator();
+	
+	if(titleValidator() === false){
+		return titleValidator();
 
-	if(userNameValidator()){
-		return userNameValidator();
-
-	}else if(contactNumValidator()){
+	}else if(contactNumValidator() === false){
 		return contactNumValidator();
 
-	}else if(emailValidator()){
+	}else if(emailValidator() === false){
 		return emailValidator();
 
-	}else if(messageToSellerValidator()){
+	}else if(messageToSellerValidator() === false){
 		return messageToSellerValidator();
 	}
 }

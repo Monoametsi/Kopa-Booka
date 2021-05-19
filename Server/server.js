@@ -35,6 +35,8 @@ const mongoDb = require('mongodb');
 const mongoose = require('mongoose');
 const mongoUrl = process.env.Database.toString();
 const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
+
+//module functions
 const { passwordEmailValidation } = validator;
 const { mailDeliverer } = emailVerification;
 const user = require('./mongo_db');
@@ -47,7 +49,7 @@ const { requireAuth } = authMiddleWare;
 const { token_verifier } = tokenVerifier;
 const { Register } = registration;
 const { displayAds } = adDisplay;
-const { viewAd } = viewAdDetails;
+const { viewAd, /*clicked*/ } = viewAdDetails;
 const { homePageAds } = homePage;
 const { registeration_failure } = regFailure;
 const { tokenErr } = token_Error;
@@ -60,7 +62,9 @@ const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
 const { forgot_password, forgot_password_post, forgot_password_confirm, forgot_password_failuer } = forgotPassword;
 const { reset_password_post, reset_password_get, reset_password_confirmation, reset_password_token_failure, reset_password_not_found } = resetPassword;
-const { contact_us_get, contact_us_post } = contactUs;
+const { contact_us_get, contact_us_post, contact_us_success, contact_us_failure } = contactUs;
+//module functions
+
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
 
@@ -140,23 +144,24 @@ app.post('/return-url?', messageOfInterest);
 
 //View-ad
 app.get('/view-ad/:id', checkCurrentUser, viewAd);
+
+// app.get('/clicked/:id', checkCurrentUser, clicked);
 //View-ad
 
 //About-Us
-
 app.get('/About-Us', checkCurrentUser, (req, res) => {
 	res.status(200).render('About-Us');
 });
-
 //About-Us
 
-
 //Contact-Us
-
 app.get('/contact-us', checkCurrentUser, contact_us_get);
 
 app.post('/contact-us', checkCurrentUser, contact_us_post);
 
+app.get('/contact-us-success', checkCurrentUser, contact_us_success);
+
+app.get('/contact-us-failure', checkCurrentUser, contact_us_failure);
 //Contact-Us
 
 
@@ -230,6 +235,7 @@ app.get('/reset-password-confirmation', checkCurrentUser, reset_password_confirm
 app.get('/reset-password-token-failure', checkCurrentUser, reset_password_token_failure);
 
 app.get('/email-not-found', checkCurrentUser, reset_password_not_found);
+
 //Forget-Password
 
 

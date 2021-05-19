@@ -1,15 +1,17 @@
+const contactUsEmailer = require('./contact-us-email');
 const profileUpadeFormVal = require('./profile-updateFormVal');
 const contactValChecker = require('./contactValCheck');
 const validator = require('./validator');
 const { emailValidation } = validator;
 const { phoneNumFormats, telNumFormats } = contactValChecker;
-const { nameValidator, contactNumValidator } = profileUpadeFormVal;
+const { nameValidator, contactUsNumValidator } = profileUpadeFormVal;
+const { contact_us_emailer } = contactUsEmailer;
 
 let contact_us_get = (req, res) => {
 	res.status(200).render('contact-us');
 }
 
-let contact_us_post = (req, res) => {
+let contact_us_post = async (req, res) => {
 	
 	let { name, email, tel, subject } = req.body;
 	
@@ -57,14 +59,24 @@ let contact_us_post = (req, res) => {
 	   findEmpty : tel === '' || tel === undefined || tel === null || tel.length === 0
 	}
 
-	if(nameValidator(name, subject) === false || contactNumValidator(tel) === false || emailValidation(email) === false){
+	if(nameValidator(name, subject) === false || contactUsNumValidator(tel) === false || emailValidation(email) === false){
 		res.status(200).render('contact-us-post', { contactValCheck, emailRegexChecks, name, subject, email, tel });
 	}else{
-		res.status(200).render('contact-us-post', { contactValCheck, emailRegexChecks, name, subject, email, tel });
+		await contact_us_emailer(res, name, email, tel, subject);
 	}
+}
+
+let contact_us_success = (req, res) => {
+	res.status(200).render('contact-us-success');
+}
+
+let contact_us_failure = (req, res) => {
+	res.status(200).render('contact-us-failure');
 }
 
 module.exports = {
 	contact_us_get,
-	contact_us_post
+	contact_us_post,
+	contact_us_success,
+	contact_us_failure
 }

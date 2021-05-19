@@ -1,3 +1,4 @@
+const ordinal = require('ordinal');
 const ejs = require('ejs');
 const cookieParser = require('cookie-parser');
 const path = require('path');
@@ -11,7 +12,8 @@ const { Users } = user;
 
 let viewAd = (req, res) =>{
 	let { id } = req.params;
-	Advertisements.find().then((result) => {
+
+	Advertisements.find().then( async (result) => {
 		
 	let stringCapitalizer = (Campus) => {
 
@@ -44,6 +46,7 @@ let viewAd = (req, res) =>{
 		Negotiation,
 		Description,
 		Campus,
+		Viewed_Count,
 		UploadedImages
 		} = result[i]; 
 
@@ -53,7 +56,30 @@ let viewAd = (req, res) =>{
 		}
 
 		if(Boolean(result.find(idMatcher)) === true){ 
-			if(result[i]._id === id){ 
+			if(result[i]._id === id){
+				
+				let updateViewCount = (res) => {
+					let ad = { _id: id };
+					let viewCountAdded = { $push: { Viewed_Count: 1 }  };
+					
+					Advertisements.updateOne(ad, viewCountAdded, (err, res) => {
+						if(err) throw err;
+					})
+				}
+
+				let updateUsersViewCount = (res) => {
+					let ad = { "My_Ads._id": id };
+					let viewCountAdded = { $push: { Viewed_Count: 1 }  };
+					
+					Users.updateOne(ad, viewCountAdded, (err, res) => {
+						if(err) throw err;
+					})
+				}
+				
+				await updateViewCount();
+
+				await updateUsersViewCount();
+				
 				return res.status(200).render('view-ad', {
 					_id,
 					Mail,
@@ -70,7 +96,9 @@ let viewAd = (req, res) =>{
 					Description,
 					Campus,
 					stringCapitalizer,
-					UploadedImages
+					UploadedImages,
+					Viewed_Count,
+					ordinal
 				});
 			}
 		}else{
@@ -86,6 +114,11 @@ let viewAd = (req, res) =>{
 	});
 };
 
+// let clicked = (req, res) => {
+	
+// }
+
 module.exports = {
-	viewAd
-};
+	viewAd,
+	/*clicked*/
+}

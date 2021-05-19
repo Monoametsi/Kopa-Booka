@@ -64,6 +64,14 @@ const ads_schema = new Schema({
 		type: String,
 		required: true
 	},
+	Viewed_Count: {
+		type: Array,
+		required: false
+	},
+	Date_Created: {
+		type: String,
+		required: true
+	},
 	UploadedImages: {
 		type: Array,
 		required: true

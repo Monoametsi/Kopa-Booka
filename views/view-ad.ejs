@@ -19,7 +19,7 @@
 </title>
 <body>
 
-<%- include("partials/header"); -%>	
+<%- include("partials/header"); -%>
   
  <section id="adv">
  
@@ -121,7 +121,7 @@
 				
 				<div class="ad-info">
 					<em class="left">Edition:</em>
-					<b class="right"><%= `${ Edition_Number }` %></b>
+					<b class="right"><%= `${ ordinal(parseInt(Edition_Number)) }` %></b>
 				</div>
 
 				<div class="ad-info">
@@ -132,6 +132,15 @@
 				<div class="ad-info">
 					<em class="left">Campus:</em>
 					<b class="right"><%= stringCapitalizer(Campus)  %></b>
+				</div>
+				
+				<div class="ad-info">
+					<em class="left">Viewed:</em>
+					<% if ((Viewed_Count.length + 1) === 1) {%>
+					<b class="right"><%= `${ Viewed_Count.length + 1 } view` %></b>
+					<% }else { %>
+					<b class="right"><%= `${ Viewed_Count.length + 1 } views` %></b>
+					<% } %>
 				</div>
 				
 				<div class="ad-info">

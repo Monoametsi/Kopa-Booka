@@ -86,7 +86,7 @@ hr.line{
 	transition: 0.3s;
 }
 
-.contact-info  a:hover{
+.contact-info a:hover{
 	color: rgba(0,0,250,1);
 	text-decoration: underline;
 }

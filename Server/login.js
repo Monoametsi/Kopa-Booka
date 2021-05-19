@@ -25,7 +25,7 @@ let Login = async (req, res) => {
 	}
 
 	await Users.find().then( async (result) => {
-		console.log(`Boolean is: ${Boolean(result.find(mailPwdMatcher))}`);
+		//console.log(`Boolean is: ${Boolean(result.find(mailPwdMatcher))}`);
 		let auth, emailMatcher, verifiedCheck;
 
 		if(result.length > 0){
