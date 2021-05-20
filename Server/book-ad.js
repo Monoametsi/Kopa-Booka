@@ -1,16 +1,14 @@
-const ejs = require('ejs');
-const cookieParser = require('cookie-parser');
-const path = require('path');
-const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
-const fs = require('fs');
+const dateFormater = require('./dateFormater');
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const catAndCamp = require('./category-db');
+const { dateDisplayer } = dateFormater;
 const { Advertisements } = ads;
 const { Category_and_campus_col } = catAndCamp;
 const { Users } = user;
 
 let displayAds = (req, res) => {
+	var noAdsAvailable;
 	var showSearchedAds = [];
 	var isTrue;
 	var num = 0;
@@ -21,7 +19,7 @@ let displayAds = (req, res) => {
 	let { searchQuery, pageQuery } = req.params;
 
 	Advertisements.find().then((result) => {
-		
+		//pagination numbering
 		let urlPageNum;
 	    let pageNumSearch = req.url.search(/\/page-\d/);
 
@@ -30,13 +28,11 @@ let displayAds = (req, res) => {
 		}else{
 
 			urlPageNum = req.url.slice(pageNumSearch);
-			
+
 			urlPageNum = urlPageNum.slice(urlPageNum.search(/\d/));
 		}
-		
-		
-		
 
+		//Counting sub categories
 		let categoryLister = (College_of_Business_and_Economics) => {
 			let count = {};
 
@@ -54,29 +50,39 @@ let displayAds = (req, res) => {
 
 			return count;
 		}
-
+		
+		//Displaying ad content
 		let numOfAdsDisplay = (data) => {
 			return data;
 		}
-
+		
+		//Low to high price sorting
 		let lowToHighPrices = (lowPrice, highPrice) => {
 			return lowPrice.Text_Book_Price - highPrice.Text_Book_Price;
 		}
-
+		
+		//High to low price sorting
 		let highToLowPrices = (lowPrice, highPrice) => {
 			return highPrice.Text_Book_Price - lowPrice.Text_Book_Price;
 		}
-
+		
+		//Sort method function
 		let sortPrices = (arr, sortMethod) => {
 			arr.sort(sortMethod);
 		}
 		
+		//Sort method url
 		let sortListUrl = req.url === `/Ad-board` || req.url === `/Ad-board/latest-Ads` || req.url === `/Ad-board/price-low-to-high` || req.url === `/Ad-board/price-high-to-low`;
-
+		
+		//Functionality for the regulation of search results.
 		if(sortListUrl){
 			startingNum
 			totalAmountOfAds = result.length;
 			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
+			
+			if(result.length === 0){
+				noAdsAvailable = true;
+			}
 
 		}else if(searchQuery.toLowerCase().search(/page-\d/) !== -1 && req.url.search("/Ad-board/price-high-to-low") !== -1){
 			numOfCurrentAds = result.slice(0, 20).map(numOfAdsDisplay).length;
@@ -274,7 +280,8 @@ let displayAds = (req, res) => {
 				}
 			}
 		}
-
+		
+		//Word capitalizer
 		let stringCapitalizer = (Campus) => {
 
 			let arrStr = Campus.split(" "); 
@@ -307,6 +314,8 @@ let displayAds = (req, res) => {
 			sortPrices, 
 			lowToHighPrices, 
 			highToLowPrices,
+			dateDisplayer,
+			noAdsAvailable,
 			Category_and_campus_col
 		});
 		}).catch((err) => {

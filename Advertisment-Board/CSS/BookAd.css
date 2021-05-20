@@ -26,6 +26,7 @@ section{
 
 .categories-cont{
 	margin-top: 3.5rem;
+	margin-right: 1rem;
 	max-width: 100%;
 }
 
@@ -35,7 +36,7 @@ section{
 	padding: 8px;
 	border-radius: 0 0 5px 0;
 	flex-direction: column;
-	width: 87.5%;
+	width: 94.5%;
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
@@ -185,6 +186,7 @@ section{
 	display: flex;
 	flex-direction: column;
 	margin-left: -2.8rem;
+	width: 100%;
 }
 
 /*Ad Page title -- start*/
@@ -1174,6 +1176,10 @@ input[type=submit]:hover{
 	cursor: default;
 }
 
+.messageTitle-cont > img{
+	width: 110px;
+}
+
 .messageTitle-cont > .fa-search:before{
 	animation-name: glow;
 	animation-duration: 1.8s;
@@ -1195,10 +1201,24 @@ input[type=submit]:hover{
 	font-family: montserrat, sans-serif;
 }
 
+.no-posts-available{
+	color: 	#000;
+}
+
 .message{
 	font-size: 1.2rem;
 	line-height: 1.9rem;
 	font-family: "Poppins", sans-serif;
 }
 
+.message > a{
+	transition: 0.3s;
+	color: rgba(0,0,250,1);
+	text-decoration: none;
+	border-bottom: 1px solid transparent;
+}
+
+.message > a:hover{
+	border-bottom: 1px solid rgba(0,0,250,1);
+}
 /*Message-Box*/

@@ -1,4 +1,3 @@
-const ejs = require('ejs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const formidable = require('formidable');
@@ -76,8 +75,6 @@ let placeAdvert = async (req, res) => {
 			}
 		}
 
-		//console.log(files);
-
 		const adverts = await new Advertisements({
 			_id: UserId,
 			Name: name,
@@ -129,6 +126,7 @@ let placeAdvert = async (req, res) => {
 						Campus: campus,
 						Viewed_Count: [],
 						Date_Created: new Date(),
+						Date_Updated: "",
 						UploadedImages
 					}
 

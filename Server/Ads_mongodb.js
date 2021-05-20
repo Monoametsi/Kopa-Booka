@@ -72,6 +72,10 @@ const ads_schema = new Schema({
 		type: String,
 		required: true
 	},
+	Date_Updated: {
+		type: String,
+		required: false
+	},
 	UploadedImages: {
 		type: Array,
 		required: true

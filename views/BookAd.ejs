@@ -212,21 +212,34 @@
 	  <div class="advertisements">
 			<div class="Ad-title">
 		  <% if(Object.keys(req.params).length === 0 || searchQuery.toLowerCase().search(/page-\d/) !== -1 || sortListUrl ) { %>
-				<h1><b>All Ads</b> on Kopa-Booka</h1>
+				
+				<% if(noAdsAvailable) { %>
+					<h1>No Ads on Kopa-Booka</h1>
+				<% } else {%>
+					<h1><b>All Ads</b> on Kopa-Booka</h1>
+				<% } %>
+				
+				
 		  <% } else if(req.url.search("/category/") !== -1){ %>
 				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
 		  <% } else { %>
 				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
 		 <% } %>
 			</div>
+			
+			<% if(noAdsAvailable) { %>
+			
+			<% } else {%>
 			<div class="search-engine">
 				<div class="searcher">
 					<button type="submit" class="but search-btn" id="search-btn"><i class="fa fa-search fa-fw search-btn"></i></button>
 					<input type="text" class="search" id="searcher" name="search-engine" placeholder="Search for textbook title...">
 				</div>
 			</div>
-
-		<%	if(notFound === false){ %>
+			<% } %>
+			
+			
+		<%	if(notFound === false && noAdsAvailable !== true){ %>
 				<div class="AdTracker-SortByDiv">
 					<div class="AdTracker-TotalNum">
 						<p class="AdTrackerNum"> <b><%= startingNum %></b> to <b><%= numOfCurrentAds %></b> of <b><%= totalAmountOfAds %></b> Ads</p>
@@ -346,6 +359,22 @@
 			<!-- Success -->	
 				
 			</div>
+			
+			
+			<% if(noAdsAvailable) { %>
+				<div class="messageBox-cont">
+					<div class="message-box">
+						<div class="messageTitle-cont">
+							<img src="/Images/empty-set-mathematical-notation-computer-icons-mathematics-symbol-png-favpng-Nhd1quu2TEGLyZWUSR2QMxMZm-removebg-preview.png">
+							<h1 class="messageTitle no-posts-available">No Ads Available</h1>
+						</div>
+
+						<div class="message-cont">
+							<p class="message">There are no ads available, be the first to place an ad by clicking <a href="/place-advert">here</a>.</p>
+						</div>
+					</div>
+				</div>
+			<% } %>
 			
 			
 		<% let displayNextSecAds = (sortLIstMethod) => { %>
@@ -600,6 +629,7 @@
 				Text_Book_Price,
 				Description,
 				Campus,
+				Date_Created,
 				UploadedImages
 				} = adData; 
 
@@ -607,7 +637,7 @@
 			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
 
 				num++;
-
+				
 			%>
 
 			<div class="Sellers-item">
@@ -638,10 +668,17 @@
 						   <i class="fa fa-phone"></i>
 						<%= Tel %>
 						</h3> 
+						<% if(Date_Created !== undefined) {%>
 						<h3 class="time">
 						   <i class="fa fa-clock"></i>
-						 2 hours
-						</h3> 					
+						<%= dateDisplayer(Date_Created) %>
+						</h3>
+						<% }else { %>
+						<h3 class="time">
+						   <i class="fa fa-clock"></i>
+							2 hours
+						</h3> 
+						<% } %>
 					</div>
 				</div>
 
@@ -823,12 +860,14 @@
 
 
 		<%
+
 		   let totalAds = totalAmountOfAds;
 		   let secNum = 2;
 		   let remainderAdsTotal = totalAds % 20;
 		   let pagininationTotal = totalAds / 20;
 		   let plusUrlNum = parseInt(urlPageNum) + 1;
 		   let minusUrlNum = parseInt(urlPageNum) - 1;
+
 		%>
 
 			<% if(totalAds < 20 || notFound === true){ %>
@@ -850,9 +889,9 @@
 						<% } %>
 			<%		for(let i = 1; i < pagininationTotal; i++){ %>
 
-						<% if(secNum === i){ %>
-						<%	secNum += 1; %>
-						<% } %>
+						<% if(secNum === i){ 
+							secNum += 1; 
+						} %>
 
 							<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` === req.url){ %>
 								<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` %>"  class="pageNumber-link active"><%= i + 1 %></a></li>
@@ -888,9 +927,9 @@
 						<% } %>
 			<%		for(let i = 1; i < addOneToTotal; i++){ %>
 
-						<% if(secNum === i){ %>
-						<%	secNum += 1; %>
-						<% } %>
+						<% if(secNum === i){ 
+							secNum += 1; 
+						 } %>
 
 							<%	if(`${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` === req.url){ %>
 								<li><a href="<%= `${req.url.replace(/\/page-\d/,"")}/page-${(i + 1)}` %>"  class="pageNumber-link active"><%= i + 1 %></a></li>

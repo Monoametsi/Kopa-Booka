@@ -279,12 +279,19 @@
 						Negotiation,
 						Description,
 						Campus,
+						Date_Created,
 						UploadedImages	
 
 						} = ad; 
 
 						let img = UploadedImages[0];
 						let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+
+						let date = new Date(Date_Created);
+
+						let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+						let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
 
 					%>
 
@@ -308,7 +315,7 @@
 
 							<div class="post-date-cont">
 								<div class="post-date">
-									Created: <span>25 Mar 17:17</span>
+									Created: <span><%= messageSentDate %></span>
 								</div>
 							</div>
 

@@ -102,6 +102,7 @@ let updateUsersAds = async (req, res) => {
 							Negotiation: negotiation,
 							Description,
 							Campus: campus,
+							Date_Updated: new Date(),
 							UploadedImages
 							
 							}
@@ -131,6 +132,7 @@ let updateUsersAds = async (req, res) => {
 							"My_Ads.$.Negotiation": negotiation,
 							"My_Ads.$.Description": Description,
 							"My_Ads.$.Campus": campus,
+							"My_Ads.$.Date_Updated": new Date(),
 							"My_Ads.$.UploadedImages": UploadedImages
 							
 							}
