@@ -93,6 +93,7 @@ let placeAdvert = async (req, res) => {
 			Campus: campus,
 			Viewed_Count: [],
 			Date_Created: new Date(),
+			Date_Updated: "",
 			UploadedImages 
 		});
 

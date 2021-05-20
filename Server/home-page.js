@@ -15,7 +15,7 @@ let homePageAds = (req, res) => {
 		let mainCategoryAds = [];
 			for(i = 0; i < result.length; i++){
 				let { Main_Category } = result[i];
-				
+
 				if(Main_Category === mainCat){
 					mainCategoryAds.push(result[i]);
 				}
@@ -24,7 +24,7 @@ let homePageAds = (req, res) => {
 			mainCategoryAds.reverse();
 			return mainCategoryAds;
 		}
-		
+
 		res.status(200).render('index', {
 			result,
 			mainCatAdsDisplay
@@ -36,4 +36,4 @@ let homePageAds = (req, res) => {
 
 module.exports = {
 	homePageAds
-};
+}
