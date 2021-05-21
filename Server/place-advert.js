@@ -65,7 +65,7 @@ let placeAdvert = async (req, res) => {
 		for(imgName in fields){
 			if(imgName.search('First_') !== -1){
 				let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
-				let firstImgPath = `C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\imageUploads\\${ firstImg }`;
+				let firstImgPath = `${ dirname }\\imageUploads\\${ firstImg }`;
 
 				for(i = 0; i < UploadedImages.length; i++){
 					if(UploadedImages[i] === firstImgPath){
