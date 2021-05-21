@@ -228,8 +228,8 @@
 			</div>
 			
 			<% if(noAdsAvailable) { %>
-			
-			<% } else {%>
+	
+			<% } else { %>
 			<div class="search-engine">
 				<div class="searcher">
 					<button type="submit" class="but search-btn" id="search-btn"><i class="fa fa-search fa-fw search-btn"></i></button>
@@ -643,7 +643,7 @@
 			<div class="Sellers-item">
 				<div class="textBook-img">
 					<a href="<%= `/view-ad/${ _id }` %>">
-						<img src= "<%= imgStr %>" id="img" alt="Textbook">
+						<img src= "<%= imgStr.replace("/app", "") %>" id="img" alt="Textbook">
 						<h1 class="Camera-cont">
 							<i class="fa fa-camera"></i>
 						<%= `+${UploadedImages.length}` %>
@@ -704,7 +704,7 @@
 					</div>
 					<div class="MobileTextbook-Img">
 						<a href="<%= `/view-ad/${ _id }` %>">
-							<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
+							<img src= "<%= imgStr.replace("/app", "") %>" id="Mobile-Img" alt="Textbook">
 							<h1 class="MobileCamera-Cont">
 								<i class="fa fa-camera"></i>
 								<%= `+${UploadedImages.length}` %>
