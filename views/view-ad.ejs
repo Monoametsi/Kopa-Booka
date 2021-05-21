@@ -64,7 +64,7 @@
 		<div class="slideCont">
 			<div class="slide-container">
 			<%	for(i = 0; i < UploadedImages.length; i++){  %>
-			<%		let imgStr = UploadedImages[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); %>
+			<%		let imgStr = UploadedImages[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); %>
 					<div class="slides">
 						<img src="<%= imgStr %>"   onclick = "showModal();presentSlide(<%= i + 1 %>)"  alt="Tax-textbook" >
 					</div>
@@ -75,7 +75,7 @@
 
 			<div class="row">
 			<%	for(i = 0; i < UploadedImages.length; i++){ %>
-			<%	let imgStr = UploadedImages[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); %>
+			<%	let imgStr = UploadedImages[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); %>
 					<div class="column">
 						<div class="pic">
 							<img class="demo cursor" src="<%= imgStr %>" class="pic"  onclick="currentSlide(<%= i + 1 %>)" alt="Tax-textbook">
