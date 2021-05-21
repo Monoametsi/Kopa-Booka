@@ -35,7 +35,6 @@ const mongoDb = require('mongodb');
 const mongoose = require('mongoose');
 const mongoUrl = process.env.Database.toString();
 const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
-console.log(dirname);
 
 //module functions
 const { passwordEmailValidation } = validator;
