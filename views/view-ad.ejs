@@ -46,7 +46,7 @@
 
 				<div class="modal-content">
 					<%	for(i = 0; i < UploadedImages.length; i++){ %>
-					<%	let imgStr = UploadedImages[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); %>
+					<%	let imgStr = UploadedImages[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); %>
 						<div class="mySlides">
 							<img src="<%= imgStr %>" class="name" alt="Tax-textbook">
 						</div>

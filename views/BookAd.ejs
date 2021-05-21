@@ -634,7 +634,7 @@
 				} = adData; 
 
 			    let img = UploadedImages[0];
-			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
 
 				num++;
 				
@@ -643,7 +643,7 @@
 			<div class="Sellers-item">
 				<div class="textBook-img">
 					<a href="<%= `/view-ad/${ _id }` %>">
-						<img src= "<%= imgStr.replace("/app", "") %>" id="img" alt="Textbook">
+						<img src= "<%= imgStr %>" id="img" alt="Textbook">
 						<h1 class="Camera-cont">
 							<i class="fa fa-camera"></i>
 						<%= `+${UploadedImages.length}` %>
@@ -704,7 +704,7 @@
 					</div>
 					<div class="MobileTextbook-Img">
 						<a href="<%= `/view-ad/${ _id }` %>">
-							<img src= "<%= imgStr.replace("/app", "") %>" id="Mobile-Img" alt="Textbook">
+							<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
 							<h1 class="MobileCamera-Cont">
 								<i class="fa fa-camera"></i>
 								<%= `+${UploadedImages.length}` %>
