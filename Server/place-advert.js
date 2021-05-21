@@ -44,9 +44,20 @@ let placeAdvert = async (req, res) => {
 		if(files.uploaded.length === undefined){
 			let oldPath = files.uploaded.path;
 			let newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
-			fs.rename(oldPath, newPath, (err) => {
-				if (err) throw err;
-			});
+			fs.readFile(oldPath, function (err, data) {
+					if (err) throw err;
+					console.log('File read!');
+
+					// Write the file
+					fs.writeFile(newPath, data, function (err) {
+						if (err) throw err;
+					});
+
+					// Delete the file
+					fs.unlink(oldpath, function (err) {
+						if (err) throw err;
+					});
+				});
 
 			UploadedImages.push(newPath);
 	
@@ -54,8 +65,19 @@ let placeAdvert = async (req, res) => {
 			for(var i = 0; i < files.uploaded.length; i++){
 				let oldPath = files.uploaded[i].path;
 				let newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
-				fs.rename(oldPath, newPath, (err) => {
+				 fs.readFile(oldPath, function (err, data) {
 					if (err) throw err;
+					console.log('File read!');
+
+					// Write the file
+					fs.writeFile(newPath, data, function (err) {
+						if (err) throw err;
+					});
+
+					// Delete the file
+					fs.unlink(oldpath, function (err) {
+						if (err) throw err;
+					});
 				});
 
 				UploadedImages.push(newPath);
