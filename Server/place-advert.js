@@ -43,7 +43,12 @@ let placeAdvert = async (req, res) => {
 
 		if(files.uploaded.length === undefined){
 			let oldPath = files.uploaded.path;
-			let newPath = dirname + '/imageUploads/' + files.uploaded.name;
+			if(dirname === '/app'){
+				let newPath = '/imageUploads/' + files.uploaded.name;
+			}else{
+				let newPath = dirname + '/imageUploads/' + files.uploaded.name;
+			}
+			
 			await fs.readFile(oldPath, function (err, data) {
 					if (err) throw err;
 					console.log('File read!');
@@ -64,7 +69,11 @@ let placeAdvert = async (req, res) => {
 		}else if(files.uploaded.length >= 1){
 			for(var i = 0; i < files.uploaded.length; i++){
 				let oldPath = files.uploaded[i].path;
-				let newPath = dirname + '/imageUploads/' + files.uploaded[i].name;
+				if(dirname === '/app'){
+					let newPath = '/imageUploads/' + files.uploaded.name;
+				}else{
+					let newPath = dirname + '/imageUploads/' + files.uploaded.name;
+				}
 				await fs.readFile(oldPath, function (err, data) {
 					if (err) throw err;
 					console.log('File read!');
