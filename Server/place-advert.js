@@ -15,6 +15,8 @@ let placeAdvert = async (req, res) => {
 	let token = req.cookies.token;
 
 	let form = new formidable.IncomingForm({ multiples: true });
+	
+	console.log(form);
 
 	await form.parse(req, async (err, fields, files) => {
 		var UploadedImages = [];
@@ -37,8 +39,6 @@ let placeAdvert = async (req, res) => {
 			Description, 
 			campus 
 		} = formData;
-		
-		console.log(dirname);
 
 		let UserId = uuid.v4().slice(0, uuid.v4().search("-"));
 
