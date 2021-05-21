@@ -150,10 +150,12 @@ let placeAdvert = async (req, res) => {
 		}else{
 			res.redirect('/');
 		}
+		
+		return res.redirect('/place-advert-success');
 
 	});
 
-	return res.redirect('/place-advert-success');
+	
 }
 
 module.exports = { placeAdvert }
