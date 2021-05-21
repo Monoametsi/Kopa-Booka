@@ -16,7 +16,9 @@ let placeAdvert = async (req, res) => {
 
 	let form = new formidable.IncomingForm({ multiples: true });
 
-	form.parse(req, async (err, fields, files) => {
+	console.log(form);
+
+	await form.parse(req, async (err, fields, files) => {
 		var UploadedImages = [];
 
 		let formData = fields;
@@ -42,7 +44,7 @@ let placeAdvert = async (req, res) => {
 
 		if(files.uploaded.length === undefined){
 			let oldPath = files.uploaded.path;
-			let newPath = dirname + '/imageUploads/' + files.uploaded.name;
+			let newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
 			fs.rename(oldPath, newPath, (err) => {
 				if (err) throw err;
 			});
@@ -52,7 +54,7 @@ let placeAdvert = async (req, res) => {
 		}else if(files.uploaded.length >= 1){
 			for(var i = 0; i < files.uploaded.length; i++){
 				let oldPath = files.uploaded[i].path;
-				let newPath = dirname + '/imageUploads/' + files.uploaded[i].name;
+				let newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
 				fs.rename(oldPath, newPath, (err) => {
 					if (err) throw err;
 				});
@@ -149,12 +151,10 @@ let placeAdvert = async (req, res) => {
 		}else{
 			res.redirect('/');
 		}
-		
-		
-		return res.redirect('/place-advert-success');
 
 	});
 
+	return res.redirect('/place-advert-success');
 }
 
 module.exports = { placeAdvert }
