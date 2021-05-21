@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const formidable = require('formidable');
 const path = require('path');
-const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
+const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
 const fs = require('fs');
 const uuid = require('uuid');
 const user = require('./mongo_db');
@@ -11,6 +11,7 @@ const { Advertisements } = ads;
 const { Users } = user;
 
 let placeAdvert = async (req, res) => {
+
 	let token = req.cookies.token;
 
 	let form = new formidable.IncomingForm({ multiples: true });
@@ -99,7 +100,7 @@ let placeAdvert = async (req, res) => {
 
 		await adverts.save().catch((err) => {
 				console.log(err);
-			});
+		});
 
 		if(token){
 			jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
