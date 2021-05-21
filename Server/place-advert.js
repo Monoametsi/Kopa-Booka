@@ -11,7 +11,7 @@ const { Advertisements } = ads;
 const { Users } = user;
 
 let placeAdvert = async (req, res) => {
-
+	console.log(dirname);
 	let token = req.cookies.token;
 
 	let form = new formidable.IncomingForm({ multiples: true });
@@ -61,7 +61,7 @@ let placeAdvert = async (req, res) => {
 
 			}
 		}
-		console.log(dirname);
+
 		for(imgName in fields){
 			if(imgName.search('First_') !== -1){
 				let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
