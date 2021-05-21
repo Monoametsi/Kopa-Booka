@@ -16,8 +16,6 @@ let placeAdvert = async (req, res) => {
 
 	let form = new formidable.IncomingForm({ multiples: true });
 
-	console.log(form);
-
 	await form.parse(req, async (err, fields, files) => {
 		var UploadedImages = [];
 
