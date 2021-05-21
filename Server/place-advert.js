@@ -15,10 +15,10 @@ let placeAdvert = async (req, res) => {
 	let token = req.cookies.token;
 
 	let form = new formidable.IncomingForm({ multiples: true });
-	
+
 	console.log(form);
 
-	await form.parse(req, async (err, fields, files) => {
+	form.parse(req, async (err, fields, files) => {
 		var UploadedImages = [];
 
 		let formData = fields;
@@ -151,10 +151,12 @@ let placeAdvert = async (req, res) => {
 		}else{
 			res.redirect('/');
 		}
+		
+		
+		return res.redirect('/place-advert-success');
 
 	});
 
-	return res.redirect('/place-advert-success');
 }
 
 module.exports = { placeAdvert }
