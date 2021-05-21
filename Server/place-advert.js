@@ -54,7 +54,7 @@ let placeAdvert = async (req, res) => {
 					});
 
 					// Delete the file
-					fs.unlink(oldpath, function (err) {
+					fs.unlink(oldPath, function (err) {
 						if (err) throw err;
 					});
 				});
@@ -75,7 +75,7 @@ let placeAdvert = async (req, res) => {
 					});
 
 					// Delete the file
-					fs.unlink(oldpath, function (err) {
+					fs.unlink(oldPath, function (err) {
 						if (err) throw err;
 					});
 				});
