@@ -37,6 +37,8 @@ let placeAdvert = async (req, res) => {
 			Description, 
 			campus 
 		} = formData;
+		
+		console.log(files);
 
 		let UserId = uuid.v4().slice(0, uuid.v4().search("-"));
 
@@ -76,7 +78,7 @@ let placeAdvert = async (req, res) => {
 			}
 		}
 		
-		console.log(UploadedImages);
+		
 
 		const adverts = await new Advertisements({
 			_id: UserId,
