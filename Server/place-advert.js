@@ -38,7 +38,7 @@ let placeAdvert = async (req, res) => {
 			campus 
 		} = formData;
 		
-		console.log(dirname);
+		console.log(files);
 
 		let UserId = uuid.v4().slice(0, uuid.v4().search("-"));
 
