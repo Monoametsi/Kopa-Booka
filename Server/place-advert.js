@@ -61,7 +61,7 @@ let placeAdvert = async (req, res) => {
 
 			}
 		}
-
+		console.log(dirname);
 		for(imgName in fields){
 			if(imgName.search('First_') !== -1){
 				let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
@@ -99,7 +99,7 @@ let placeAdvert = async (req, res) => {
 		});
 
 		await adverts.save().catch((err) => {
-				console.log(err);
+			console.log(err);
 		});
 
 		if(token){
