@@ -5,6 +5,12 @@ const path = require('path');
 const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
 const fs = require('fs');
 const uuid = require('uuid');
+const fileValidator = require('./files-validator');
+const profileUpadeFormVal = require('./profile-updateFormVal');
+const contactValChecker = require('./contactValCheck');
+const { phoneNumFormats, telNumFormats } = contactValChecker;
+const { placeAdTitleValidator, contactNumValidator } = profileUpadeFormVal;
+const { files_Validator } = fileValidator;
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const { Advertisements } = ads;
@@ -38,6 +44,47 @@ let placeAdvert = async (req, res) => {
 			Description, 
 			campus 
 		} = formData;
+		
+		let phoneNumFormatTests = {
+		   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel),
+		   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel),
+		   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel),
+		   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel),
+		   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel),
+		   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel),
+		   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel),
+		   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel),
+		   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel)
+		}
+
+		let telNumFormatTests = {
+		   telZeroOneTest : telNumFormats.telZeroOne.test(tel),
+		   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel),
+		   telZeroThreeTest : telNumFormats.telZeroThree.test(tel),
+		   telZeroFourTest : telNumFormats.telZeroFour.test(tel),
+		   telZeroFiveTest : telNumFormats.telZeroFive.test(tel)
+		}
+
+		let numRegexChecks = {
+		   zeroSixFormatTest : phoneNumFormatTests.sixZeroFormatTest || phoneNumFormatTests.sixOneFormatTest|| phoneNumFormatTests.sixTwoFormatTest || phoneNumFormatTests.sixThreeFormatTest || phoneNumFormatTests.sixFourFormatTest || phoneNumFormatTests.sixFiveFormatTest || phoneNumFormatTests.sixSixFormatTest || phoneNumFormatTests.sixSevenFormatTest || phoneNumFormatTests.sixEightFormatTest,
+		   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel),
+		   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel),
+		   telFormats : telNumFormatTests.telZeroOneTest || telNumFormatTests.telZeroTwoTest || telNumFormatTests.telZeroThreeTest || telNumFormatTests.telZeroFourTest || telNumFormatTests.telZeroFiveTest
+		}
+
+		let contactValCheck = {
+
+		   allNumFormatTest : numRegexChecks.zeroSixFormatTest || numRegexChecks.sevenFormatTest || numRegexChecks.eightFormatTest || numRegexChecks.telFormats,
+
+		   findEmpty : tel === '' || tel === undefined || tel === null
+		}
+
+
+
+		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false || files_Validator(files) === false){
+			return res.status(200).render('place-advert-post', { formData });
+
+		}else{
 
 		let UserId = uuid.v4().slice(0, uuid.v4().search("-"));
 
@@ -49,45 +96,45 @@ let placeAdvert = async (req, res) => {
 			}else{
 				newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
 			}
-			console.log(newPath);
-			await fs.readFile(oldPath, function (err, data) {
+
+			await fs.readFile(oldPath, async function (err, data) {
 					if (err) throw err;
 					console.log('File read!');
 
 					// Write the file
-					fs.writeFile(newPath, data, function (err) {
+					await fs.writeFile(newPath, data, function (err) {
 						if (err) throw err;
 					});
 
 					// Delete the file
-					fs.unlink(oldPath, function (err) {
+					await fs.unlink(oldPath, function (err) {
 						if (err) throw err;
 					});
 				});
 
 			UploadedImages.push(newPath);
-	
+
 		}else if(files.uploaded.length >= 1){
-			for(var i = 0; i < files.uploaded.length; i++){
+			for(let i = 0; i < files.uploaded.length; i++){
 				let oldPath = files.uploaded[i].path;
 				let newPath;
 				if(dirname === '/app'){
-					newPath = dirname + '/imageUploads/' + files.uploaded.name;
+					newPath = dirname + '/imageUploads/' + files.uploaded[i].name;
 				}else{
-					newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
+					newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
 				}
-				console.log(newPath);
-				await fs.readFile(oldPath, function (err, data) {
+
+				await fs.readFile(oldPath, async function (err, data) {
 					if (err) throw err;
 					console.log('File read!');
 
 					// Write the file
-					fs.writeFile(newPath, data, function (err) {
+					await fs.writeFile(newPath, data, function (err) {
 						if (err) throw err;
 					});
 
 					// Delete the file
-					fs.unlink(oldPath, function (err) {
+					await fs.unlink(oldPath, function (err) {
 						if (err) throw err;
 					});
 				});
@@ -106,7 +153,7 @@ let placeAdvert = async (req, res) => {
 				}else{
 					firstImgPath = `${ dirname }\\imageUploads\\${ firstImg }`;
 				}
-				console.log(firstImgPath);
+
 				for(i = 0; i < UploadedImages.length; i++){
 					if(UploadedImages[i] === firstImgPath){
 						UploadedImages.splice(i, 1);
@@ -191,10 +238,18 @@ let placeAdvert = async (req, res) => {
 		}
 		
 		return res.redirect('/place-advert-success');
-
+	  }
 	});
 
 	
 }
 
-module.exports = { placeAdvert }
+let placeAdvert_get = (req, res) => {
+	res.status(200).render('place-advert', { res, req });
+}
+
+let jsEnabledCheck = (req, res) => {
+	res.status(200).render('enable-js');
+}
+
+module.exports = { placeAdvert, placeAdvert_get, jsEnabledCheck }

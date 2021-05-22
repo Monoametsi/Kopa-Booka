@@ -42,14 +42,14 @@ const { mailDeliverer } = emailVerification;
 const user = require('./mongo_db');
 const { Users } = user;
 const { profileUpdater, getProfileUpdate } = profileUpdate;
-const { placeAdvert, jsEnabledCheck } = placeAd;
+const { placeAdvert, jsEnabledCheck, placeAdvert_get } = placeAd;
 const { Login, requireLoginAuth, logout, checkCurrentUser } = login;
 const { passwordUpdater } = passwordUpdate;
 const { requireAuth } = authMiddleWare;
 const { token_verifier } = tokenVerifier;
 const { Register } = registration;
 const { displayAds } = adDisplay;
-const { viewAd, /*clicked*/ } = viewAdDetails;
+const { viewAd } = viewAdDetails;
 const { homePageAds } = homePage;
 const { registeration_failure } = regFailure;
 const { tokenErr } = token_Error;
@@ -264,9 +264,7 @@ app.get('/my-messages', requireAuth, checkCurrentUser, my_Messages);
 //Dashboard
 
 //Place-Advert
-app.get('/place-advert', checkCurrentUser, (req, res) => {
-	res.status(200).render('place-advert', { res, req });
-});
+app.get('/place-advert', checkCurrentUser, placeAdvert_get);
 
 app.post('/place-advert', requireAuth, checkCurrentUser, placeAdvert);
 
@@ -275,9 +273,7 @@ app.get('/place-advert-success', checkCurrentUser, (req, res) => {
 });
 //Place-Advert
 
-app.get('/enable-js', checkCurrentUser, (req, res) => {
-	res.status(200).render('enable-js');
-});
+app.get('/enable-js', checkCurrentUser, jsEnabledCheck);
 
 app.get('/privacy-policy', checkCurrentUser, (req, res) => {
 	res.status(200).render('privacy-policy');

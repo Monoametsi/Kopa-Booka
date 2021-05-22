@@ -515,7 +515,7 @@ input[type=submit]:hover{
 }
 
 .message-box{
-	margin-top: 4.7rem;
+	margin-top: 8.7rem;
 	text-align: center;
 	width: 650px;
 	flex-direction: column;
@@ -563,7 +563,7 @@ input[type=submit]:hover{
 }
 
 .messageTitle{
-	margin-top: 0;
+	margin-top: 14px;
 	font-size: 2rem;
 	color: 	#FF0000;
 	font-family: montserrat, sans-serif;

@@ -21,6 +21,27 @@
 <body>
 
 	<%- include("partials/header"); -%>
+	
+	<% 
+
+		let {
+			name, 
+			mail, 
+			tel, 
+			Whatsapptel,
+			chooseCats, 
+			chooseSubCat,
+			TexBookTitle, 
+			EditionNum, 
+			AuthorName, 
+			condition, 
+			TextbookPrice, 
+			negotiation, 
+			Description, 
+			campus 
+		} = formData;
+	
+	%>
 
 	<% if(user) { %>
 	<section id="postForm">
@@ -48,7 +69,7 @@
 								</label>
 								<label for="AdvertCreator" class="validifier" id="AdvertCreator-Err"></label>
 							</div>
-							<input type="text" class="inputField-styling bottomMobile-spacing" placeholder="Advertisers name..." name="name" id="AdvertCreator">
+							<input type="text" class="inputField-styling bottomMobile-spacing" value="<%= name %>" placeholder="Advertisers name..." name="name" id="AdvertCreator">
 						</div>
 
 						<div class="inputlabel-cont">
@@ -59,7 +80,7 @@
 								<label for="emaill" class="validifier" id="mailErr">
 								</label>
 						    </div>
-							<input type="email" value="<%= user %>" class="inputField-styling bottomMobile-spacing" placeholder="Enter email..." name="mail" id="emaill">
+							<input type="email" value="<%= mail %>" class="inputField-styling bottomMobile-spacing" placeholder="Enter email..." name="mail" id="emaill">
 						</div>
 
 						<div class="inputlabel-cont">
@@ -69,7 +90,7 @@
 								</label>
 								<label for="contactNum" class="validifier" id="contactNum-Err"></label>
 							</div>
-							<input type="tel" class="inputField-styling bottomMobile-spacing" name="tel" placeholder="Enter contact number..." id="contactNum">
+							<input type="tel" class="inputField-styling bottomMobile-spacing" value="<%= tel %>" name="tel" placeholder="Enter contact number..." id="contactNum">
 						</div>
 					</div>
 
@@ -138,7 +159,7 @@
 									<label for="book-title" class="label">Textbook Title <span class="required">*</span></label>
 									<label for="book-title" class="validifier" id="book-title-Err"></label>
 								</div>
-								<input type="text" class="inputField-styling bottomMobile-spacing" placeholder="Enter text book title..." name="TexBookTitle" id="book-title">
+								<input type="text" value="<%= TexBookTitle %>" class="inputField-styling bottomMobile-spacing" placeholder="Enter text book title..." name="TexBookTitle" id="book-title">
 							</div>
 
 							<div class="inputlabel-cont">
@@ -146,7 +167,7 @@
 									<label for="Edition-Num" class="label">Edition Number <span class="required">*</span></label>
 									<label for="Edition-Num" class="validifier" id="Edition-Num-Err"></label>
 								</div>
-								<input type="tel" class="inputField-styling bottomMobile-spacing" placeholder="Enter edition number..." name="EditionNum" id="Edition-Num">
+								<input type="tel"  value="<%= EditionNum %>" class="inputField-styling bottomMobile-spacing" placeholder="Enter edition number..." name="EditionNum" id="Edition-Num">
 							</div>
 
 							<div class="inputlabel-cont">
@@ -154,7 +175,7 @@
 									<label for="Author-Name" class="label">Name of Author <span class="required">*</span></label>
 									<label for="Author-Name" class="validifier" id="Author-Name-Err"></label>
 								</div>
-								<input type="text" class="inputField-styling bottomMobile-spacing" placeholder="Enter name of author..." name="AuthorName" id="Author-Name">
+								<input type="text" value="<%= AuthorName %>" class="inputField-styling bottomMobile-spacing" placeholder="Enter name of author..." name="AuthorName" id="Author-Name">
 							</div>
 						</div>
 						
@@ -178,7 +199,7 @@
 									<label for="book-price" class="label">Textbook Price <span class="required">*</span></label>
 									<label for="book-price" class="validifier" id="book-price-Err"></label>
 								</div>
-								<input type="tel" class="inputField-styling bottomMobile-spacing" placeholder="Price(R)" name="TextbookPrice" id="book-price" >
+								<input type="tel"  value="<%= TextbookPrice %>" class="inputField-styling bottomMobile-spacing" placeholder="Price(R)" name="TextbookPrice" id="book-price" >
 							</div>
 
 							<div class="inputlabel-cont">
@@ -202,7 +223,7 @@
 									<label for="book-descrip" class="label">Description <span class="required">*</span></label>
 									<label for="book-descrip" class="validifier" id="book-descrip-Err" style="margin-right: 14px;"></label>
 								</div>
-								<textarea id="book-descrip" name="Description"  placeholder="Write a description of your ad..."></textarea>
+								<textarea id="book-descrip" name="Description"  placeholder="Write a description of your ad..."><%= Description %></textarea>
 							</div>
 						</div>
 

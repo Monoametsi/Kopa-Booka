@@ -47,7 +47,7 @@ function uploader(uploadFiles, action){
         img.setAttribute("width", "200");
 		img.setAttribute("height", "130");
         img.className = "visual";
-		img.id = `${fileName}`;
+		img.id = `${ fileName }`;
         let span = document.createElement("i");
         span.className = "shut fa";
 		span.className += " fa-trash";
@@ -56,7 +56,7 @@ function uploader(uploadFiles, action){
 		let imgCheckBox = document.createElement("input");
 		imgCheckBox.setAttribute("type", "checkbox");
 		imgCheckBox.setAttribute("class", "main-img");
-		imgCheckBox.setAttribute("name", `First_image-${fileName}`);
+		imgCheckBox.setAttribute("name", `First_image-${ fileName }`);
 		imgCheckBox.setAttribute("id", "whatsapp-enabler");
 		checkBoxDiv.innerHTML = '<span class="mainImg-text">Main image</span>';
 		checkBoxDiv.appendChild(imgCheckBox);
@@ -69,7 +69,7 @@ function uploader(uploadFiles, action){
 			alert("Sorry only JPEG,PNG & JPG is supported");
 			upload.files = dt.files;
 			return false;
-			
+
 		} else if(fileSize > 5000000){
 			alert("Files should not exceed the Maximum file size of 5MB");
 			upload.files = dt.files;

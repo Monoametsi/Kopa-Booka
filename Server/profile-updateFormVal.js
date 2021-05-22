@@ -17,6 +17,34 @@ let nameValidator = (name, message) => {
 	}
 }
 
+let placeAdTitleValidator = (name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, bookDescriptionVal, listVal_1, listVal_2, listVal_3, listVal_4, listVal_5) => {
+
+	let nameVal = name === '' || name.length === 0 || name === undefined || name === null;
+	let texBookTitleVal = TexBookTitle === '' || TexBookTitle.length === 0 || TexBookTitle === undefined || TexBookTitle === null;
+	let authorNameVal = AuthorName === '' || AuthorName.length === 0 || AuthorName === undefined || AuthorName === null;
+	let editionNumVal = EditionNum === '' || EditionNum.length === 0 || EditionNum === undefined || EditionNum === null;
+	let textbookPriceVal = TextbookPrice === '' || TextbookPrice.length === 0 || TextbookPrice === undefined || TextbookPrice === null;
+	let findNonDigit = /\D/;
+
+	let listVal1 = listVal_1 === 'please select'    || listVal_1 === '' || listVal_1.length === 0;
+	let listVal2 = listVal_2 === 'please select'    || listVal_2 === '' || listVal_2.length === 0;
+	let listVal3 = listVal_3 === 'select condition' || listVal_3 === '' || listVal_3.length === 0;
+	let listVal4 = listVal_4 === 'please select'    || listVal_4 === '' || listVal_4.length === 0;
+	let listVal5 = listVal_5 === 'select campus'    || listVal_5 === '' || listVal_5.length === 0;
+
+	if(nameVal || texBookTitleVal || authorNameVal || editionNumVal || textbookPriceVal || listVal1 || listVal2 || listVal3 || listVal4 || listVal5){
+		return false;
+
+	}else if(EditionNum.search(findNonDigit) !== -1 || TextbookPrice.search(findNonDigit) !== -1){
+		return false;	
+			
+	}else if(!(bookDescriptionVal.length >= 30 && bookDescriptionVal.length <= 1000)){
+		return false;
+	}else{
+		return true;
+	}
+}
+
 let contactNumValidator = (contactNumVal) => {
 
   let zeroSixZeroFormat = /^[0]{1}[6]{1}[0]{1}[3-9]{1}[0-9]{6}$/;
@@ -116,4 +144,4 @@ let contactUsNumValidator = (contactNumVal) => {
   }
 }
 
-module.exports = { titleSelectValidator, contactNumValidator, nameValidator, contactUsNumValidator };
+module.exports = { placeAdTitleValidator, titleSelectValidator, contactNumValidator, nameValidator, contactUsNumValidator };

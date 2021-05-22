@@ -476,7 +476,7 @@
 		let nameErr = errorMessage;
 		let findNonDigit = /\D/;
 		
-		if(nameVal === ''){
+		if(nameVal === '' || nameVal.length === 0 || nameVal === undefined || nameVal === null){
 			nameErr.style.display = 'flex';
 			name.classList.add('redBox');
 			nameErr.innerText = 'Required';
@@ -510,8 +510,8 @@
 			bookDescription.classList.add('redBox')
 			bookDescriptionErr.innerText = 'Required';
 			return false;
-			
-		}else if(!(bookDescriptionVal.length >= 30) || !(bookDescriptionVal.length <= 1000)){
+
+		}else if(!(bookDescriptionVal.length >= 30 && bookDescriptionVal.length <= 1000)){
 			bookDescriptionErr.style.display = 'flex';
 			bookDescription.classList.add('redBox');
 			bookDescriptionErr.innerText = 'Must be between 30 and 1000 characters';
