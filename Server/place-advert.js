@@ -5,12 +5,16 @@ const path = require('path');
 const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
 const fs = require('fs');
 const uuid = require('uuid');
+const catAndCamp = require('./category-db');
+const { Category_and_campus_col } = catAndCamp;
 const fileValidator = require('./files-validator');
+const email_validator = require('./emailValidator');
 const profileUpadeFormVal = require('./profile-updateFormVal');
 const contactValChecker = require('./contactValCheck');
 const { phoneNumFormats, telNumFormats } = contactValChecker;
 const { placeAdTitleValidator, contactNumValidator } = profileUpadeFormVal;
 const { files_Validator } = fileValidator;
+const { emailValidator } = email_validator;
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const { Advertisements } = ads;
@@ -21,8 +25,23 @@ let placeAdvert = async (req, res) => {
 	let token = req.cookies.token;
 
 	let form = new formidable.IncomingForm({ multiples: true });
+	
+	Category_and_campus_col.find().then((result) => {
+		
+		form.parse(req, async (err, fields, files) => {
+			
+		let stringCapitalizer = (Campus) => {
 
-	form.parse(req, async (err, fields, files) => {
+			let arrStr = Campus.split(" "); 
+			let campusArr = []; 
+
+			arrStr.map((tring) => {
+				tring = tring.replace(tring[0], tring[0].toUpperCase());
+				campusArr.push(tring);
+			}); 
+
+			return campusArr.toString().replace(/,/g , " ");
+		}
 
 		var UploadedImages = [];
 
@@ -46,29 +65,29 @@ let placeAdvert = async (req, res) => {
 		} = formData;
 		
 		let phoneNumFormatTests = {
-		   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel),
-		   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel),
-		   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel),
-		   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel),
-		   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel),
-		   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel),
-		   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel),
-		   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel),
-		   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel)
+		   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel.trim()),
+		   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel.trim()),
+		   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel.trim()),
+		   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel.trim()),
+		   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel.trim()),
+		   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel.trim()),
+		   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel.trim()),
+		   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel.trim()),
+		   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel.trim())
 		}
 
 		let telNumFormatTests = {
-		   telZeroOneTest : telNumFormats.telZeroOne.test(tel),
-		   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel),
-		   telZeroThreeTest : telNumFormats.telZeroThree.test(tel),
-		   telZeroFourTest : telNumFormats.telZeroFour.test(tel),
-		   telZeroFiveTest : telNumFormats.telZeroFive.test(tel)
+		   telZeroOneTest : telNumFormats.telZeroOne.test(tel.trim()),
+		   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel.trim()),
+		   telZeroThreeTest : telNumFormats.telZeroThree.test(tel.trim()),
+		   telZeroFourTest : telNumFormats.telZeroFour.test(tel.trim()),
+		   telZeroFiveTest : telNumFormats.telZeroFive.test(tel.trim())
 		}
 
 		let numRegexChecks = {
 		   zeroSixFormatTest : phoneNumFormatTests.sixZeroFormatTest || phoneNumFormatTests.sixOneFormatTest|| phoneNumFormatTests.sixTwoFormatTest || phoneNumFormatTests.sixThreeFormatTest || phoneNumFormatTests.sixFourFormatTest || phoneNumFormatTests.sixFiveFormatTest || phoneNumFormatTests.sixSixFormatTest || phoneNumFormatTests.sixSevenFormatTest || phoneNumFormatTests.sixEightFormatTest,
-		   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel),
-		   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel),
+		   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel.trim()),
+		   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel.trim()),
 		   telFormats : telNumFormatTests.telZeroOneTest || telNumFormatTests.telZeroTwoTest || telNumFormatTests.telZeroThreeTest || telNumFormatTests.telZeroFourTest || telNumFormatTests.telZeroFiveTest
 		}
 
@@ -76,13 +95,21 @@ let placeAdvert = async (req, res) => {
 
 		   allNumFormatTest : numRegexChecks.zeroSixFormatTest || numRegexChecks.sevenFormatTest || numRegexChecks.eightFormatTest || numRegexChecks.telFormats,
 
-		   findEmpty : tel === '' || tel === undefined || tel === null
+		   findEmpty : tel.trim() === '' || tel.trim() === undefined || tel.trim() === null || tel.trim().length === 0
+		}
+		
+		let validationEmailChecks = {
+			emailOneDot: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/,
+			emailTwoDots: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/,
+			emailThreeDots: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/
 		}
 
+		let emailRegexChecks = {
+			emailRegEx: validationEmailChecks.emailOneDot.test(mail.trim()) || validationEmailChecks.emailTwoDots.test(mail.trim()) || validationEmailChecks.emailThreeDots.test(mail.trim())
+		}
 
-
-		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false || files_Validator(files) === false){
-			return res.status(200).render('place-advert-post', { formData });
+		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) || files_Validator(files) === false){
+			return res.status(200).render('place-advert-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer });
 
 		}else{
 
@@ -240,7 +267,17 @@ let placeAdvert = async (req, res) => {
 		return res.redirect('/place-advert-success');
 	  }
 	});
-
+		
+		
+		
+		
+		
+		
+		
+		
+	}).catch((err) => {
+		console.log(err);
+	});
 	
 }
 

@@ -184,7 +184,7 @@
 
 	//Select list validation
 	function selectListValidator(name, errorMessage){
-		let nameVal = name.value;
+		let nameVal = name.value.trim();
 		let nameErr = errorMessage;
 		
 		if(nameVal == 'please select' || nameVal == 'select condition' || nameVal == 'select campus'){
@@ -213,7 +213,7 @@
 	
 	function titleValidator(name,errorMessage){	
 	
-		if(name.value === ''){
+		if(name.value.trim() === ''){
 			errorMessage.style.display = 'flex';
 			name.classList.add('redBox');
 			errorMessage.innerText = 'Required';
@@ -233,7 +233,7 @@
 	}
 	
 	function emailValidator(){
-		let emailVal = email.value;
+		let emailVal = email.value.trim();
 		let threeDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,15}\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
 		let oneDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,15}$/;
 		let twoDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
@@ -270,7 +270,7 @@
 	
 	function contactNumValidator(){
 	  let contactNumErr = document.getElementById('contactNum-Err');
-	  let contactNumVal = contactNum.value;
+	  let contactNumVal = contactNum.value.trim();
 	  
 	  let zeroSixZeroFormat = /^[0]{1}[6]{1}[0]{1}[3-9]{1}[0-9]{6}$/;
 	  let zeroSixOneFormat = /^[0]{1}[6]{1}[1]{1}[0-9]{1}[0-9]{6}$/;
@@ -365,7 +365,7 @@
 	  let whatsappNumErr = document.getElementById('watsappNum-Err');
 	  let whatsappEnabler = document.getElementById('whatsapp-enabler');
 	  let whatsappEnabled = whatsappEnabler.checked;
-	  let whatsappNumVal = whatsappNum.value;
+	  let whatsappNumVal = whatsappNum.value.trim();
 	  
 	  let zeroSixZeroFormat = /^[0]{1}[6]{1}[0]{1}[3-9]{1}[0-9]{6}$/;
 	  let zeroSixOneFormat = /^[0]{1}[6]{1}[1]{1}[0-9]{1}[0-9]{6}$/;
@@ -472,7 +472,7 @@
 	}
 	
 	function editionAndPriceValidator(name,errorMessage){
-		let nameVal = name.value;
+		let nameVal = name.value.trim();
 		let nameErr = errorMessage;
 		let findNonDigit = /\D/;
 		
@@ -502,7 +502,7 @@
 	}
 	
 	function bookDescriptionValidator(){
-		let bookDescriptionVal = document.getElementById('book-descrip').value;
+		let bookDescriptionVal = document.getElementById('book-descrip').value.trim();
 	    let	bookDescriptionErr = document.getElementById('book-descrip-Err');
 		
 		if(bookDescriptionVal === ''){

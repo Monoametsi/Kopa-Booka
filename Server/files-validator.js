@@ -3,8 +3,10 @@ let files_Validator = (files) => {
 	let imgType = ["image/png", "image/jpg", "image/jpeg"];
 	let fileType;
 	let fileSize;
-
-	if(files.uploaded.length === undefined){
+	
+	if(files.uploaded.size === 0){
+		return false;
+	}else if(files.uploaded.length === undefined){
 
 		fileType = files.uploaded.type;
 		fileSize = files.uploaded.size;
