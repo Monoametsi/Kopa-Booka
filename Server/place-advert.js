@@ -25,20 +25,20 @@ let placeAdvert = async (req, res) => {
 	let token = req.cookies.token;
 
 	let form = new formidable.IncomingForm({ multiples: true });
-	
+
 	Category_and_campus_col.find().then((result) => {
-		
+
 		form.parse(req, async (err, fields, files) => {
-			
+
 		let stringCapitalizer = (Campus) => {
 
-			let arrStr = Campus.split(" "); 
+			let arrStr = Campus.split(" ");
 			let campusArr = []; 
 
 			arrStr.map((tring) => {
 				tring = tring.replace(tring[0], tring[0].toUpperCase());
 				campusArr.push(tring);
-			}); 
+			});
 
 			return campusArr.toString().replace(/,/g , " ");
 		}
@@ -95,7 +95,7 @@ let placeAdvert = async (req, res) => {
 
 		   allNumFormatTest : numRegexChecks.zeroSixFormatTest || numRegexChecks.sevenFormatTest || numRegexChecks.eightFormatTest || numRegexChecks.telFormats,
 
-		   findEmpty : tel.trim() === '' || tel.trim() === undefined || tel.trim() === null || tel.trim().length === 0
+		   findEmpty : tel.trim() === '' || tel === undefined || tel === null || tel.trim().length === 0
 		}
 		
 		let validationEmailChecks = {
@@ -108,8 +108,11 @@ let placeAdvert = async (req, res) => {
 			emailRegEx: validationEmailChecks.emailOneDot.test(mail.trim()) || validationEmailChecks.emailTwoDots.test(mail.trim()) || validationEmailChecks.emailThreeDots.test(mail.trim())
 		}
 
-		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) || files_Validator(files) === false){
-			return res.status(200).render('place-advert-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer });
+		// console.log(files_Validator(files));
+
+		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) || files_Validator(files)[0] === false){
+
+			return res.status(200).render('place-advert-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator });
 
 		}else{
 
@@ -189,25 +192,23 @@ let placeAdvert = async (req, res) => {
 				}
 			}
 		}
-		
-		
 
 		const adverts = await new Advertisements({
 			_id: UserId,
-			Name: name,
-			Mail: mail,
-			Tel: tel,
-			Whatsapp_tel: Whatsapptel,
-			Main_Category: chooseCats,
-			Sub_Category: chooseSubCat,
-			Text_Book_Title: TexBookTitle,
-			Edition_Number: EditionNum,
-			Author_Name: AuthorName,
-			Condition: condition,
-			Text_Book_Price: TextbookPrice,
-			Negotiation: negotiation,
+			Name: name.trim(),
+			Mail: mail.trim(),
+			Tel: tel.trim(),
+			Whatsapp_tel: Whatsapptel.trim(),
+			Main_Category: chooseCats.trim(),
+			Sub_Category: chooseSubCat.trim(),
+			Text_Book_Title: TexBookTitle.trim(),
+			Edition_Number: EditionNum.trim(),
+			Author_Name: AuthorName.trim(),
+			Condition: condition.trim(),
+			Text_Book_Price: TextbookPrice.trim(),
+			Negotiation: negotiation.trim(),
 			Description,
-			Campus: campus,
+			Campus: campus.trim(),
 			Viewed_Count: [],
 			Date_Created: new Date(),
 			Date_Updated: "",
@@ -228,20 +229,20 @@ let placeAdvert = async (req, res) => {
 
 					let users_ad = {
 						_id: UserId,
-						Name: name,
-						Mail: mail,
-						Tel: tel,
-						Whatsapp_tel: Whatsapptel,
-						Main_Category: chooseCats,
-						Sub_Category: chooseSubCat,
-						Text_Book_Title: TexBookTitle,
-						Edition_Number: EditionNum,
-						Author_Name: AuthorName,
-						Condition: condition,
-						Text_Book_Price: TextbookPrice,
-						Negotiation: negotiation,
+						Name: name.trim(),
+						Mail: mail.trim(),
+						Tel: tel.trim(),
+						Whatsapp_tel: Whatsapptel.trim(),
+						Main_Category: chooseCats.trim(),
+						Sub_Category: chooseSubCat.trim(),
+						Text_Book_Title: TexBookTitle.trim(),
+						Edition_Number: EditionNum.trim(),
+						Author_Name: AuthorName.trim(),
+						Condition: condition.trim(),
+						Text_Book_Price: TextbookPrice.trim(),
+						Negotiation: negotiation.trim(),
 						Description,
-						Campus: campus,
+						Campus: campus.trim(),
 						Viewed_Count: [],
 						Date_Created: new Date(),
 						Date_Updated: "",
@@ -266,14 +267,7 @@ let placeAdvert = async (req, res) => {
 		
 		return res.redirect('/place-advert-success');
 	  }
-	});
-		
-		
-		
-		
-		
-		
-		
+	});	
 		
 	}).catch((err) => {
 		console.log(err);

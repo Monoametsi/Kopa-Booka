@@ -141,6 +141,12 @@ select:focus{
 	box-shadow: 0 0 3px 1.5px #6acdff;
 }
 
+.red{
+	font-weight: 600;
+	color: red;
+	text-shadow: 0 0 1.5px red;
+}
+
 .redBox{
 	border: 1px solid red;
 }

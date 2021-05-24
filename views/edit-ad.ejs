@@ -309,7 +309,7 @@
 						<%	let imgs = UploadedImages;
 
 							for(let i = 0; i < imgs.length; i++){  
-								let imgStr = imgs[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+								let imgStr = imgs[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", "");; 
 								let imgName = imgStr.replace("\\imageUploads\\", "");
 								if(i === 0){ %>
 								<div id="load-img">
@@ -369,10 +369,13 @@
 	<% } %>
 
 	<%- include("partials/footer"); -%>
-	
+
   <script src="/JS/Post Ad.js"></script>
+ <% if(!user) {%>
+  <% }else { %>
   <script src="/JS/upload.js"></script>
   <script src="/JS/form.js" ></script>
+  <% } %>
   
 </body>
 </html>

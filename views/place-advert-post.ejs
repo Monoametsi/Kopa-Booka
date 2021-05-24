@@ -607,9 +607,27 @@
 								<input type="file" name="uploaded" accept="image/*" id="upl" multiple />
 							</label>
 
+							<% if(files_Validator(files)[1] === "noFiles") { %>
+							<div class="uploadrules-cont">
+								<span class="upload-rules red" style="font-size: 20px;" id="red">Please upload atleast 1 image</span>
+							</div>
+							<% }else if(files_Validator(files)[1] === "invalidExt") { %>
+							<div class="uploadrules-cont">
+								<span class="upload-rules red" style="font-size: 20px;" id="red">Sorry only JPEG,PNG & JPG is supported</span>
+							</div>
+							<% }else if(files_Validator(files)[1] === "overSizeLimit"){  %>
+							<div class="uploadrules-cont">
+								<span class="upload-rules red" style="font-size: 20px;" id="red">Files should not exceed the Maximum file size of 5MB</span>
+							</div>
+							<% }else if(files_Validator(files)[1] === "exceededLimit"){  %>
+							<div class="uploadrules-cont">
+								<span class="upload-rules red" style="font-size: 20px;" id="red">Only a maximun of 10 files allowed</span>
+							</div>
+							<% }else {  %>
 							<div class="uploadrules-cont">
 								<span class="upload-rules">Add up to 10 images</span>
 							</div>
+							<% } %>
 
 							<div class="file-names" id="pic">
 								<div class="box-title" id="box-title">
