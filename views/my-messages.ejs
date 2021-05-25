@@ -280,6 +280,7 @@
 						Description,
 						Campus,
 						Date_Created,
+						Date_Updated,
 						UploadedImages	
 
 						} = ad; 
@@ -288,10 +289,14 @@
 						let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
 
 						let date = new Date(Date_Created);
+						
+						let updatedDate = new Date(Date_Updated);
 
 						let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 						let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
+						
+						let UpdatedMessageSentDate = `${ minutesFormat(updatedDate.getDate()) } ${ months[updatedDate.getMonth()] } ${ minutesFormat(updatedDate.getHours()) }:${ minutesFormat(updatedDate.getMinutes()) }`;
 
 					%>
 
@@ -317,6 +322,13 @@
 								<div class="post-date">
 									Created: <span><%= messageSentDate %></span>
 								</div>
+
+								<% if(UpdatedMessageSentDate.search("undefined") !== -1){ %>
+								<% }else{ %>
+								<div class="post-date">
+									Updated: <span><%= UpdatedMessageSentDate %></span>
+								</div>
+								<% } %>
 							</div>
 
 						</div>

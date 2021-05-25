@@ -1,16 +1,27 @@
-const ejs = require('ejs');
-const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const formidable = require('formidable');
 const path = require('path');
-const dirname = __dirname.slice(0, __dirname.search(/\\Server/i));
+const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
 const fs = require('fs');
+const uuid = require('uuid');
+const catAndCamp = require('./category-db');
+const { Category_and_campus_col } = catAndCamp;
+const fileValidator = require('./files-validator');
+const email_validator = require('./emailValidator');
+const profileUpadeFormVal = require('./profile-updateFormVal');
+const contactValChecker = require('./contactValCheck');
+const { phoneNumFormats, telNumFormats } = contactValChecker;
+const { placeAdTitleValidator, contactNumValidator } = profileUpadeFormVal;
+const { files_Validator } = fileValidator;
+const { emailValidator } = email_validator;
+const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const { Advertisements } = ads;
-const user = require('./mongo_db');
 const { Users } = user;
 
 let updateUsersAds = async (req, res) => {
+
 	let token = req.cookies.token;
 
 	let { id } = req.params;
@@ -46,112 +57,203 @@ let updateUsersAds = async (req, res) => {
 						Description, 
 						campus
 					} = formData;
-
-					if(files.uploaded.length === undefined){
-						let oldPath = files.uploaded.path;
-						let newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
-						fs.rename(oldPath, newPath, (err) => {
-							if (err) throw err;
-						});
-
-						UploadedImages.push(newPath);
-
-					}else if(files.uploaded.length >= 1){
-						for(var i = 0; i < files.uploaded.length; i++){
-							let oldPath = files.uploaded[i].path;
-							let newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
-							fs.rename(oldPath, newPath, (err) => {
-								if (err) throw err;
-							});
-
-						UploadedImages.push(newPath);
-
-						}
+					
+					
+					let phoneNumFormatTests = {
+					   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel.trim()),
+					   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel.trim()),
+					   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel.trim()),
+					   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel.trim()),
+					   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel.trim()),
+					   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel.trim()),
+					   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel.trim()),
+					   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel.trim()),
+					   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel.trim())
 					}
 
-					for(imgName in fields){
-						if(imgName.search('First_') !== -1){
-							let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
-							let firstImgPath = `C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\imageUploads\\${ firstImg }`;
+					let telNumFormatTests = {
+					   telZeroOneTest : telNumFormats.telZeroOne.test(tel.trim()),
+					   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel.trim()),
+					   telZeroThreeTest : telNumFormats.telZeroThree.test(tel.trim()),
+					   telZeroFourTest : telNumFormats.telZeroFour.test(tel.trim()),
+					   telZeroFiveTest : telNumFormats.telZeroFive.test(tel.trim())
+					}
 
-							for(i = 0; i < UploadedImages.length; i++){
-								if(UploadedImages[i] === firstImgPath){
-									UploadedImages.splice(i, 1);
-									UploadedImages.unshift(firstImgPath);
+					let numRegexChecks = {
+					   zeroSixFormatTest : phoneNumFormatTests.sixZeroFormatTest || phoneNumFormatTests.sixOneFormatTest|| phoneNumFormatTests.sixTwoFormatTest || phoneNumFormatTests.sixThreeFormatTest || phoneNumFormatTests.sixFourFormatTest || phoneNumFormatTests.sixFiveFormatTest || phoneNumFormatTests.sixSixFormatTest || phoneNumFormatTests.sixSevenFormatTest || phoneNumFormatTests.sixEightFormatTest,
+					   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel.trim()),
+					   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel.trim()),
+					   telFormats : telNumFormatTests.telZeroOneTest || telNumFormatTests.telZeroTwoTest || telNumFormatTests.telZeroThreeTest || telNumFormatTests.telZeroFourTest || telNumFormatTests.telZeroFiveTest
+					}
+
+					let contactValCheck = {
+
+					   allNumFormatTest : numRegexChecks.zeroSixFormatTest || numRegexChecks.sevenFormatTest || numRegexChecks.eightFormatTest || numRegexChecks.telFormats,
+
+					   findEmpty : tel.trim() === '' || tel === undefined || tel === null || tel.trim().length === 0
+					}
+					
+					let validationEmailChecks = {
+						emailOneDot: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/,
+						emailTwoDots: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/,
+						emailThreeDots: /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/
+					}
+
+					let emailRegexChecks = {
+						emailRegEx: validationEmailChecks.emailOneDot.test(mail.trim()) || validationEmailChecks.emailTwoDots.test(mail.trim()) || validationEmailChecks.emailThreeDots.test(mail.trim())
+					}
+					
+					if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) === false || files_Validator(files)[0] === false){
+
+						return res.status(200).render('edit-ad-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator });
+
+					}else{
+
+						if(files.uploaded.length === undefined){
+							let oldPath = files.uploaded.path;
+							let newPath;
+							if(dirname === '/app'){
+								newPath = dirname + '/imageUploads/' + files.uploaded.name;
+							}else{
+								newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
+							}
+
+							await fs.readFile(oldPath, async function (err, data) {
+									if (err) throw err;
+									console.log('File read!');
+
+									// Write the file
+									await fs.writeFile(newPath, data, function (err) {
+										if (err) throw err;
+									});
+
+									// Delete the file
+									await fs.unlink(oldPath, function (err) {
+										if (err) throw err;
+									});
+								});
+
+							UploadedImages.push(newPath);
+
+						}else if(files.uploaded.length >= 1){
+							for(let i = 0; i < files.uploaded.length; i++){
+								let oldPath = files.uploaded[i].path;
+								let newPath;
+								if(dirname === '/app'){
+									newPath = dirname + '/imageUploads/' + files.uploaded[i].name;
+								}else{
+									newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
+								}
+
+								await fs.readFile(oldPath, async function (err, data) {
+									if (err) throw err;
+									console.log('File read!');
+
+									// Write the file
+									await fs.writeFile(newPath, data, function (err) {
+										if (err) throw err;
+									});
+
+									// Delete the file
+									await fs.unlink(oldPath, function (err) {
+										if (err) throw err;
+									});
+								});
+
+								UploadedImages.push(newPath);
+
+							}
+						}
+						
+						for(imgName in fields){
+							if(imgName.search('First_') !== -1){
+								let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
+								let firstImgPath;
+								if(dirname === '/app'){
+									firstImgPath = `${ dirname }/imageUploads/${ firstImg }`;
+								}else{
+									firstImgPath = `${ dirname }\\imageUploads\\${ firstImg }`;
+								}
+
+								for(i = 0; i < UploadedImages.length; i++){
+									if(UploadedImages[i] === firstImgPath){
+										UploadedImages.splice(i, 1);
+										UploadedImages.unshift(firstImgPath);
+									}
 								}
 							}
 						}
-					}
-					
-					let updateAdvertisementDb = (res) => {
-						let ad_ID = { _id: id };
-						let updatedValues = {
-						$set: { 
 						
-							Name: name,
-							Mail: mail,
-							Tel: tel,
-							Whatsapp_tel: Whatsapptel,
-							Main_Category: chooseCats,
-							Sub_Category: chooseSubCat,
-							Text_Book_Title: TexBookTitle,
-							Edition_Number: EditionNum,
-							Author_Name: AuthorName,
-							Condition: condition,
-							Text_Book_Price: TextbookPrice,
-							Negotiation: negotiation,
-							Description,
-							Campus: campus,
-							Date_Updated: new Date(),
-							UploadedImages
-							
-							}
-						}
-						
-						Advertisements.updateOne(ad_ID, updatedValues, (err, res) => {
-							if(err) throw err;
-						});
-					}
-					
-					let updateUserDB = (res) => {
-						let userInfo = { Email: email, "My_Ads._id": id };
-						let updatedAd = { 
+						let updateAdvertisementDb = (res) => {
+							let ad_ID = { _id: id };
+							let updatedValues = {
 							$set: { 
-							
-							"My_Ads.$.Name": name,
-							"My_Ads.$.Mail": mail,
-							"My_Ads.$.Tel": tel,
-							"My_Ads.$.Whatsapp_tel": Whatsapptel,
-							"My_Ads.$.Main_Category": chooseCats,
-							"My_Ads.$.Sub_Category": chooseSubCat,
-							"My_Ads.$.Text_Book_Title": TexBookTitle,
-							"My_Ads.$.Edition_Number": EditionNum,
-							"My_Ads.$.Author_Name": AuthorName,
-							"My_Ads.$.Condition": condition,
-							"My_Ads.$.Text_Book_Price": TextbookPrice,
-							"My_Ads.$.Negotiation": negotiation,
-							"My_Ads.$.Description": Description,
-							"My_Ads.$.Campus": campus,
-							"My_Ads.$.Date_Updated": new Date(),
-							"My_Ads.$.UploadedImages": UploadedImages
-							
+
+								Name: name.trim(),
+								Mail: mail.trim(),
+								Tel: tel.trim(),
+								Whatsapp_tel: Whatsapptel.trim(),
+								Main_Category: chooseCats.trim(),
+								Sub_Category: chooseSubCat.trim(),
+								Text_Book_Title: TexBookTitle.trim(),
+								Edition_Number: EditionNum.trim(),
+								Author_Name: AuthorName.trim(),
+								Condition: condition.trim(),
+								Text_Book_Price: TextbookPrice.trim(),
+								Negotiation: negotiation.trim(),
+								Description: Description.trim(),
+								Campus: campus.trim(),
+								Date_Updated: new Date(),
+								UploadedImages
+								
+								}
 							}
+
+							Advertisements.updateOne(ad_ID, updatedValues, (err, res) => {
+								if(err) throw err;
+							});
 						}
-						
-						Users.updateOne(userInfo, updatedAd, (err, res) => {
-							if(err) throw err;
-						});
+
+						let updateUserDB = (res) => {
+							let userInfo = { Email: email, "My_Ads._id": id };
+							let updatedAd = { 
+								$set: { 
+								
+								"My_Ads.$.Name": name.trim(),
+								"My_Ads.$.Mail": mail.trim(),
+								"My_Ads.$.Tel": tel.trim(),
+								"My_Ads.$.Whatsapp_tel": Whatsapptel.trim(),
+								"My_Ads.$.Main_Category": chooseCats.trim(),
+								"My_Ads.$.Sub_Category": chooseSubCat.trim(),
+								"My_Ads.$.Text_Book_Title": TexBookTitle.trim(),
+								"My_Ads.$.Edition_Number": EditionNum.trim(),
+								"My_Ads.$.Author_Name": AuthorName.trim(),
+								"My_Ads.$.Condition": condition.trim(),
+								"My_Ads.$.Text_Book_Price": TextbookPrice.trim(),
+								"My_Ads.$.Negotiation": negotiation.trim(),
+								"My_Ads.$.Description": Description.trim(),
+								"My_Ads.$.Campus": campus.trim(),
+								"My_Ads.$.Date_Updated": new Date(),
+								"My_Ads.$.UploadedImages": UploadedImages
+								
+								}
+							}
+
+							Users.updateOne(userInfo, updatedAd, (err, res) => {
+								if(err) throw err;
+							});
+						}
+
+						await updateAdvertisementDb();
+
+						await updateUserDB();
+
+						return res.redirect('/place-advert-success');
 					}
-
-					await updateAdvertisementDb();
-
-					await updateUserDB();
-
-					return res.redirect('/place-advert-success');
 				});
 			}
 		});
-	
+
 	}else{
 		res.redirect('/');
 	}

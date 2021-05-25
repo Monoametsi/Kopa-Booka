@@ -48,7 +48,7 @@ function searchAdSystem(){
 	}
 	for(let i = 0; i < adTitle.length; i++){
 		
-		let adBox = adTitle[i].parentElement.parentElement.parentElement.parentElement.parentElement;
+		let adBox = adTitle[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
 		if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null){
 			num++ 

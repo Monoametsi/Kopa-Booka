@@ -44,7 +44,7 @@
 		  UploadedImages
 
 		} = ad_Data;
-		console.log(ad_Data);
+
 	%>
 
 	<% if(user) { %>
@@ -299,19 +299,22 @@
 									<i class="fa fa-upload"></i>
 									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
 								</div>
-						<%	}else{ %>
+							<%	}else{ %>
 								<div class="box-title" id="box-title">
 									<i class="fa fa-upload"></i>
 									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
 								</div>
-						<% } %>
+							<% } %>
 
-						<%	let imgs = UploadedImages;
+						<%	
+						
+							let imgs = UploadedImages;
 
-							for(let i = 0; i < imgs.length; i++){  
+							for(let i = 0; i < imgs.length; i++){
 								let imgStr = imgs[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", "");; 
 								let imgName = imgStr.replace("\\imageUploads\\", "");
-								if(i === 0){ %>
+								if(i === 0){ 
+						%>
 								<div id="load-img">
 									<img src="<%= imgStr %>" width="200" height="130" class="visual" id="<%= `${ imgName }` %>">
 									<i class="shut fa fa-trash"></i>
@@ -329,7 +332,7 @@
 										<input type="checkbox" class="main-img" name="<%= `First_image-${ imgName }` %>" id="whatsapp-enabler">
 									</div>
 								</div>
-						<% } %>
+							<% } %>
 						<%	} %>
 
 						

@@ -5,6 +5,7 @@ const path = require('path');
 const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
 const fs = require('fs');
 const uuid = require('uuid');
+const fileRenamer = require('./file-renaming');
 const catAndCamp = require('./category-db');
 const { Category_and_campus_col } = catAndCamp;
 const fileValidator = require('./files-validator');
@@ -15,6 +16,7 @@ const { phoneNumFormats, telNumFormats } = contactValChecker;
 const { placeAdTitleValidator, contactNumValidator } = profileUpadeFormVal;
 const { files_Validator } = fileValidator;
 const { emailValidator } = email_validator;
+const { file_renamer } = fileRenamer;
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const { Advertisements } = ads;
@@ -63,7 +65,7 @@ let placeAdvert = async (req, res) => {
 			Description, 
 			campus 
 		} = formData;
-		
+
 		let phoneNumFormatTests = {
 		   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel.trim()),
 		   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel.trim()),
@@ -110,9 +112,9 @@ let placeAdvert = async (req, res) => {
 
 		// console.log(files_Validator(files));
 
-		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) || files_Validator(files)[0] === false){
+		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) === false || files_Validator(files)[0] === false){
 
-			return res.status(200).render('place-advert-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator });
+			return res.status(200).render('place-advert-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator, file_renamer, dirname, fs, fields });
 
 		}else{
 
@@ -207,7 +209,7 @@ let placeAdvert = async (req, res) => {
 			Condition: condition.trim(),
 			Text_Book_Price: TextbookPrice.trim(),
 			Negotiation: negotiation.trim(),
-			Description,
+			Description: Description.trim(),
 			Campus: campus.trim(),
 			Viewed_Count: [],
 			Date_Created: new Date(),
@@ -241,7 +243,7 @@ let placeAdvert = async (req, res) => {
 						Condition: condition.trim(),
 						Text_Book_Price: TextbookPrice.trim(),
 						Negotiation: negotiation.trim(),
-						Description,
+						Description: Description.trim(),
 						Campus: campus.trim(),
 						Viewed_Count: [],
 						Date_Created: new Date(),

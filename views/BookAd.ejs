@@ -27,6 +27,88 @@
 					<i class="fa fa-caret-down switch-arrow"></i>
 				</div>
 				<ul class="faculty" id="facultyLists">
+				
+				
+				<% 
+				let artsCat, businessCat, eduCat, engCat, healthCat, humanCate, lawCat, scienceCat, campusCat;
+				
+				function catey(){
+					let num;
+					for(i = 0; i < cat_camp_list.length; i++){
+						let { 
+						
+						Art_Design_and_Architecture,
+						College_of_Business_and_Economics,
+						Education,
+						Engineering_and_Built_Environment,
+						Health_Sciences,
+						Humanities,
+						Law,
+						Science,
+						Campus
+
+						} = cat_camp_list[i];
+
+						categoryLister(Art_Design_and_Architecture);
+						
+						categoryLister(College_of_Business_and_Economics);
+						
+						categoryLister(Education);
+						
+						categoryLister(Engineering_and_Built_Environment);
+						
+						categoryLister(Health_Sciences);
+						
+						categoryLister(Humanities);
+						
+						categoryLister(Law);
+						
+						categoryLister(Science);
+
+						for(catName in categoryLister(Art_Design_and_Architecture)){ 
+							artsCat = categoryLister(Art_Design_and_Architecture)[catName];
+						}
+						
+						for(catName in categoryLister(College_of_Business_and_Economics)){ 
+							businessCat = categoryLister(College_of_Business_and_Economics)[catName];
+						}
+						
+						for(catName in categoryLister(Education)){ 
+							eduCat = categoryLister(Education)[catName];
+						}
+						
+						for(catName in categoryLister(Engineering_and_Built_Environment)){ 
+							engCat = categoryLister(Engineering_and_Built_Environment)[catName];
+						}
+						
+						for(catName in categoryLister(Health_Sciences)){ 
+							healthCat = categoryLister(Health_Sciences)[catName];
+						}
+						
+						for(catName in categoryLister(Humanities)){ 
+							humanCate = categoryLister(Humanities)[catName];
+						}
+						
+						for(catName in categoryLister(Law)){ 
+							lawCat = categoryLister(Law)[catName];
+						}
+						
+						for(catName in categoryLister(Science)){ 
+							scienceCat = categoryLister(Science)[catName];
+						}
+						
+						for(catName in categoryLister(Campus)){ 
+							campusCat = categoryLister(Campus)[catName];
+						}
+						
+					}
+				}
+				
+				catey();
+				
+				%>
+				
+					<% if(artsCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Art Design and Architecture</span>
@@ -46,7 +128,10 @@
 							
 						</ul>
 					</li>
-
+					<% } %>
+				
+					
+					<% if(businessCat) {%>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">College of Business and Economics</span>
@@ -68,7 +153,10 @@
 							
 						</ul>
 					</li>
-
+					<% } %>
+					
+			
+					<% if(eduCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Education</span>
@@ -87,7 +175,9 @@
 						<%	}%>
 						</ul>
 					</li>
-
+					<% } %>
+					
+					<% if(engCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Engineering and Built Environment</span>
@@ -106,7 +196,9 @@
 						<%	}%>
 						</ul>
 					</li>
-
+					<% } %>
+					
+					<% if(healthCat) {%>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Health Sciences</span>
@@ -125,7 +217,10 @@
 						<%	}%>
 						</ul>
 					</li>
-
+					<% } %>
+					
+					
+					<% if(humanCate) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Humanities</span>
@@ -144,7 +239,10 @@
 						<%	}%>
 						</ul>
 					</li>
-
+					<% } %>
+					
+					
+					<% if(lawCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Law</span>
@@ -163,7 +261,9 @@
 						<%	}%>
 						</ul>
 					</li>
+					<% } %>
 
+					<% if(scienceCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Science</span>
@@ -183,12 +283,14 @@
 						</ul>
 					</li>
 				</ul>
+				<% } %>
 
 				<div class="category clicker">
 					<h4 class="arrow category-title"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Campus</span></h4>
 					<i class="fa fa-caret-down"></i>
 				</div>
-
+				
+				<% if(campusCat) {%>
 				<ul class="campus-options" id="CampusList">
 					<% 
 					  for(i = 0; i < cat_camp_list.length; i++){
@@ -201,6 +303,8 @@
 					
 				<%	} %>
 				</ul>
+				<% } %>
+				
 			</div>
 		</div>
 		

@@ -27,28 +27,30 @@ function uploadValidator(){
 	}
 }
 
-if(errMsg.innerHTML.trim() === 'Please upload atleast 1 image') {
-	errMsg.classList.remove('red');
-	errMsg.style.fontSize = '1rem';
-	errMsg.innerHTML = 'Add up to 10 images';
-	alerter('Please upload atleast 1 image');
+if(errMsg !== null){
+	if(errMsg.innerHTML.trim() === 'Please upload atleast 1 image') {
+		errMsg.classList.remove('red');
+		errMsg.style.fontSize = '1rem';
+		errMsg.innerHTML = 'Add up to 10 images';
+		alerter('Please upload atleast 1 image');
 
-}else if(errMsg.innerHTML.trim() === 'Sorry only JPEG,PNG & JPG is supported') {
-	errMsg.classList.remove('red');
-	errMsg.style.fontSize = '1rem';
-	errMsg.innerHTML = 'Add up to 10 images';
-	alerter("Sorry only JPEG,PNG & JPG is supported");
+	}else if(errMsg.innerHTML.trim() === 'Sorry only JPEG,PNG & JPG is supported') {
+		errMsg.classList.remove('red');
+		errMsg.style.fontSize = '1rem';
+		errMsg.innerHTML = 'Add up to 10 images';
+		alerter("Sorry only JPEG,PNG & JPG is supported");
 
-}else if(errMsg.innerHTML.trim() === 'Files should not exceed the Maximum file size of 5MB') {
-	errMsg.classList.remove('red');
-	errMsg.style.fontSize = '1rem';
-	errMsg.innerHTML = 'Add up to 10 images';
-	alerter("Files should not exceed the Maximum file size of 5MB");
-}else if(errMsg.innerHTML.trim() === 'Only a maximun of 10 files allowed') {
-	errMsg.classList.remove('red');
-	errMsg.style.fontSize = '1rem';
-	errMsg.innerHTML = 'Add up to 10 images';
-	alerter("Only a maximun of 10 files allowed");
+	}else if(errMsg.innerHTML.trim() === 'Files should not exceed the Maximum file size of 5MB') {
+		errMsg.classList.remove('red');
+		errMsg.style.fontSize = '1rem';
+		errMsg.innerHTML = 'Add up to 10 images';
+		alerter("Files should not exceed the Maximum file size of 5MB");
+	}else if(errMsg.innerHTML.trim() === 'Only a maximun of 10 files allowed') {
+		errMsg.classList.remove('red');
+		errMsg.style.fontSize = '1rem';
+		errMsg.innerHTML = 'Add up to 10 images';
+		alerter("Only a maximun of 10 files allowed");
+	}
 }
 
 upload.onchange = () => {

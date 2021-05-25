@@ -80,6 +80,7 @@
 			Negotiation,
 			Description,
 			Campus,
+			Date_Created,
 			Viewed_Count,
 			UploadedImages	
 
@@ -87,6 +88,22 @@
 
 			let img = UploadedImages[0];
 			let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
+			
+			let minutesFormat = (time) => {
+				if(time > 10){
+					return time;
+				}else{
+					return `0${ time }`;
+				}
+			}
+			
+			let date = new Date(Date_Created);
+
+			let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
+			
+			%>
 
 		%>	
 			
@@ -96,13 +113,13 @@
 				<div class="postBox">
 
 					<div class="top-sect">
-						<div class="img-cont">
+						<a href="<%= `/view-ad/${ _id }` %>" class="img-cont">
 							<img src="<%= imgStr %>">
-						</div>
-						
+						</a>
+
 						<div class="mid-sec">
 							<div class="post-title-cont">
-								<h1 class="post-title"> <%= Text_Book_Title %> </h1>
+								<a href="<%= `/view-ad/${ _id }` %>" ><h1 class="post-title"> <%= Text_Book_Title %> </h1></a>
 							</div>
 
 							<div class="post-details-cont">
@@ -111,7 +128,7 @@
 								</div>
 
 								<div class="post-details">
-									<i class="fa fa-clock"></i>Created: <b>17 Mar 17:04</b>
+									<i class="fa fa-clock"></i>Created: <b><%= messageSentDate %></b>
 								</div>
 
 								<div class="post-details">
