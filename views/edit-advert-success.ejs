@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/Images/favicon.png">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
+<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Header-CSS/header.css">
+<link rel="stylesheet" href="/Header-CSS/headerMobile.css">
+<link rel="stylesheet" href="/Footer-CSS/footer.css">
+<link rel="stylesheet" href="/Footer-CSS/footer-mobile.css">
+<link rel="stylesheet" href="/CSS/Post Ad.css">
+<link rel="stylesheet" href="/CSS/Post Ad Mobile.css">
+<title> Your ad has been successfully placed | Kopa Booka </title>
+</head>
+<body>
+
+	<%- include("partials/header"); -%>
+
+	<section class="messageBox-cont" style="margin-top: 4.6rem;">
+		<div class="message-box" style="width: 550px;">
+			<div class="messageTitle-cont">
+				<i class="fa fa-check" style="color:#7FFF00;"></i>
+				<h1 class="messageTitle" style="color:#7FFF00;">Success!</h1>
+			</div>
+
+			<div class="message-cont">
+				<p class="message">Your ad has been placed successfully.</p>
+			</div>
+
+			<div class="messageBoxRedirect-cont">
+				<a href="/place-advert" class="messageRedirect">Place another Ad.</a>
+				<span id="down"></span>
+				<a href="/my-ads" class="messageRedirect">Go to the My Ads.</a>
+			</div>
+		</div>
+	</section>
+
+	<%- include("partials/footer"); -%>
+	
+  <script src="/JS/Post Ad.js"></script>
+</body>
+</html>

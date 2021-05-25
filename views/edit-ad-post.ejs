@@ -62,7 +62,7 @@
 					<h1 class="postAdForm-title">Advertiser's details</h1>
 				</div>
 
-				<form action="/edit-ad/<%= _id %>" enctype="multipart/form-data" method="post" class="form" id="form">
+				<form action="/edit-ad/<%= id %>" enctype="multipart/form-data" method="post" class="form" id="form">
 					<div class="adverterName input">
 						
 						
@@ -216,7 +216,7 @@
 						</div>
 					</div>
 					
-						<% } %>
+					<% } %>
 					<% } %>
 					
 
@@ -613,7 +613,7 @@
 							</div>
 							<% }else if(files_Validator(files)[1] === "invalidExt") { %>
 							<div class="uploadrules-cont">
-								<span class="upload-rules red" style="font-size: 20px;" id="red">Sorry only JPEG,PNG & JPG is supported</span>
+								<span class="upload-rules red" style="font-size: 20px;" id="red">Only JPEG,PNG & JPG is supported</span>
 							</div>
 							<% }else if(files_Validator(files)[1] === "overSizeLimit"){  %>
 							<div class="uploadrules-cont">
@@ -629,14 +629,93 @@
 							</div>
 							<% } %>
 
+							
+
+							<%
+
+							let fileValidator = files_Validator(files)[1] === "noFiles" || files_Validator(files)[1] === "invalidExt" || files_Validator(files)[1] === "overSizeLimit" || files_Validator(files)[1] === "exceededLimit";
+							
+							if(fileValidator){
+
+							%>
+
 							<div class="file-names" id="pic">
 								<div class="box-title" id="box-title">
 									<i class="fa fa-upload"></i>
-									<h1 class="UploadDrop-title">
-										Upload or drag and drop images here
-									</h1>
+									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
 								</div>
 							</div>
+
+							<%
+
+							}else{
+
+								let imgs = file_renamer(files, dirname, fs);
+								let firstImg;
+
+								for(imgName in fields){
+									if(imgName.search("First_") !== -1){
+										firstImg = imgName.slice(imgName.search("-") + 1, imgName.length);
+									}
+								}
+							%>
+
+							<div class="file-names" id="pic">
+							<% if(imgs.length > 0){ %>
+								<div class="box-title" id="box-title" style="display: none">
+									<i class="fa fa-upload"></i>
+									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
+								</div>
+							<% } else { %>
+								<div class="box-title" id="box-title">
+									<i class="fa fa-upload"></i>
+									<h1 class="UploadDrop-title">Upload or drag and drop images here</h1>
+								</div>
+							<% } %>
+								
+							<%	
+
+								imgs.map((img) => {
+									
+									let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
+									let imgName = imgStr.replace("/imageUploads/", "").replace("\\imageUploads\\", ""); 
+
+
+							%>
+
+									<% if(imgName === firstImg){ %>
+									<div id="load-img">
+										<img src="<%= imgStr %>" width="200" height="130" class="visual" id="<%= `${ imgName }` %>">
+										<i class="shut fa fa-trash"></i>
+										<div class="checkBox-cont">
+											<span class="mainImg-text">Main image</span>
+											<input type="checkbox" class="main-img" name="<%= `First_image-${ imgName }` %>" id="whatsapp-enabler" checked>
+										</div>
+									</div>
+									<% }else { %>
+
+									<div id="load-img">
+										<img src="<%= imgStr %>" width="200" height="130" class="visual" id="<%= `${ imgName }` %>">
+										<i class="shut fa fa-trash"></i>
+										<div class="checkBox-cont">
+											<span class="mainImg-text">Main image</span>
+											<input type="checkbox" class="main-img" name="<%= `First_image-${ imgName }` %>" id="whatsapp-enabler">
+										</div>
+									</div>
+
+									<% } %>
+
+							<%			
+								});
+								
+							
+							%>
+							</div>
+
+							<% } %>
+
+
+
 
 						</div>
 						<div class="sub-cont">

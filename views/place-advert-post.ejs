@@ -649,18 +649,16 @@
 							<%
 
 							}else{
-								
+
 								let imgs = file_renamer(files, dirname, fs);
 								let firstImg;
-								
+
 								for(imgName in fields){
 									if(imgName.search("First_") !== -1){
-										console.log(imgName[0])
 										firstImg = imgName.slice(imgName.search("-") + 1, imgName.length);
 									}
 								}
 							%>
-
 
 							<div class="file-names" id="pic">
 							<% if(imgs.length > 0){ %>
@@ -681,6 +679,7 @@
 									
 									let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
 									let imgName = imgStr.replace("\\imageUploads\\", ""); 
+									console.log(imgName);
 
 							%>
 

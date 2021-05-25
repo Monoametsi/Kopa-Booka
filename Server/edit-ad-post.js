@@ -5,6 +5,7 @@ const path = require('path');
 const dirname = __dirname.slice(0, __dirname.search(/SERVER/i) - 1);
 const fs = require('fs');
 const uuid = require('uuid');
+const fileRenamer = require('./file-renaming');
 const catAndCamp = require('./category-db');
 const { Category_and_campus_col } = catAndCamp;
 const fileValidator = require('./files-validator');
@@ -15,6 +16,7 @@ const { phoneNumFormats, telNumFormats } = contactValChecker;
 const { placeAdTitleValidator, contactNumValidator } = profileUpadeFormVal;
 const { files_Validator } = fileValidator;
 const { emailValidator } = email_validator;
+const { file_renamer } = fileRenamer;
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const { Advertisements } = ads;
@@ -25,6 +27,17 @@ let updateUsersAds = async (req, res) => {
 	let token = req.cookies.token;
 
 	let { id } = req.params;
+	
+	Advertisements.find().then((result) => {
+		
+		let findId = (usersAdId) => {
+			return usersAdId._id === id;
+		}
+		
+		if(result.filter(findId).length === 0){
+			res.redirect('/');
+		}
+	})
 
 	let form = new formidable.IncomingForm({ multiples: true });
 
@@ -32,8 +45,24 @@ let updateUsersAds = async (req, res) => {
 		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
 			if(err){
 				res.redirect('/');
-			}else{
-					await form.parse(req, async (err, fields, files) => {
+			}else{	
+					
+				Category_and_campus_col.find().then((result) => {	
+					form.parse(req, async (err, fields, files) => {
+						
+					let stringCapitalizer = (Campus) => {
+
+						let arrStr = Campus.split(" ");
+						let campusArr = []; 
+
+						arrStr.map((tring) => {
+							tring = tring.replace(tring[0], tring[0].toUpperCase());
+							campusArr.push(tring);
+						});
+
+						return campusArr.toString().replace(/,/g , " ");
+					}
+	
 
 					var UploadedImages = [];
 
@@ -57,8 +86,7 @@ let updateUsersAds = async (req, res) => {
 						Description, 
 						campus
 					} = formData;
-					
-					
+
 					let phoneNumFormatTests = {
 					   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel.trim()),
 					   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel.trim()),
@@ -105,7 +133,7 @@ let updateUsersAds = async (req, res) => {
 					
 					if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) === false || files_Validator(files)[0] === false){
 
-						return res.status(200).render('edit-ad-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator });
+						return res.status(200).render('edit-ad-post', { id, formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator, file_renamer, dirname, fs, fields });
 
 					}else{
 
@@ -248,9 +276,10 @@ let updateUsersAds = async (req, res) => {
 
 						await updateUserDB();
 
-						return res.redirect('/place-advert-success');
+						return res.redirect(`/edit-ad-success/${ id }`);
 					}
 				});
+			 })
 			}
 		});
 
@@ -259,6 +288,25 @@ let updateUsersAds = async (req, res) => {
 	}
 }
 
+let editAdSuccess = (req, res) => {
+	let { id } = req.params;
+	
+	Advertisements.find().then((result) => {
+		
+		let findId = (usersAdId) => {
+			return usersAdId._id === id;
+		}
+		
+		if(result.filter(findId).length > 0){
+			res.status(200).render('edit-advert-success');
+		}else{
+			res.redirect('/');
+		}
+	})
+	
+}
+
 module.exports = {
-	updateUsersAds
+	updateUsersAds,
+	editAdSuccess
 }

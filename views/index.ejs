@@ -43,6 +43,7 @@
 				_id,
 				Text_Book_Title,
 				Text_Book_Price,
+				Date_Created,
 				UploadedImages
 				} = data; 
 
@@ -59,7 +60,7 @@
 					<div class="categorieyBox-info">
 						<h5 class="categorieyBox-title"><%= Text_Book_Title %></h5>
 						<h5 class="categorieyBox-price"><%= Text_Book_Price %></h5>
-						<h5 class="categorieyBox-time"> 2 hours ago</h5>
+						<h5 class="categorieyBox-time"><%= dateDisplayer(Date_Created) %></h5>
 					</div>
 				</li>
 			</a>

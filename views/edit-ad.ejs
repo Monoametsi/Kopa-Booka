@@ -306,15 +306,17 @@
 								</div>
 							<% } %>
 
-						<%	
-						
+							<%	
+
 							let imgs = UploadedImages;
 
 							for(let i = 0; i < imgs.length; i++){
-								let imgStr = imgs[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", "");; 
-								let imgName = imgStr.replace("\\imageUploads\\", "");
-								if(i === 0){ 
-						%>
+								let imgStr = imgs[i].toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
+								let imgName = imgStr.replace("/imageUploads/", "").replace("\\imageUploads\\", "");
+								
+								if(i === 0){
+							
+							%>
 								<div id="load-img">
 									<img src="<%= imgStr %>" width="200" height="130" class="visual" id="<%= `${ imgName }` %>">
 									<i class="shut fa fa-trash"></i>
@@ -323,7 +325,7 @@
 										<input type="checkbox" class="main-img" name="<%= `First_image-${ imgName }` %>" id="whatsapp-enabler" checked>
 									</div>
 								</div>
-						<%		} else { %>
+							<%	} else { %>
 								<div id="load-img">
 									<img src="<%= imgStr %>" width="200" height="130" class="visual" id="<%= `${ imgName }` %>">
 									<i class="shut fa fa-trash"></i>

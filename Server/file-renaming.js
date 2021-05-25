@@ -1,7 +1,7 @@
 
 let file_renamer = (files, dirname, fs) => {
 	var imagesNotUploaded = [];
-	
+
 	if(files.uploaded.length === undefined){
 		let oldPath = files.uploaded.path;
 		let newPath;

@@ -1,10 +1,11 @@
-const ejs = require('ejs');
+const dateFormater = require('./dateFormater');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const fs = require('fs');
 const user = require('./mongo_db');
 const ads = require('./Ads_mongodb');
 const catAndCamp = require('./category-db');
+const { dateDisplayer } = dateFormater;
 const { Advertisements } = ads;
 const { Category_and_campus_col } = catAndCamp;
 
@@ -27,7 +28,8 @@ let homePageAds = (req, res) => {
 
 		res.status(200).render('index', {
 			result,
-			mainCatAdsDisplay
+			mainCatAdsDisplay,
+			dateDisplayer
 		});
 	}).catch((err) => {
 		console.log(err);

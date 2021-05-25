@@ -56,7 +56,7 @@ const { tokenErr } = token_Error;
 const { my_Ads } = usersAds;
 const { adRemover } = removeAd;
 const { edit_ad } = adEditer;
-const { updateUsersAds } = adUpdater;
+const { updateUsersAds, editAdSuccess } = adUpdater;
 const { messageOfInterest } = buyersMessage;
 const { my_Messages } = myMessages;
 const { msgRemover } = messageRemover;
@@ -67,6 +67,8 @@ const { contact_us_get, contact_us_post, contact_us_success, contact_us_failure 
 
 const jsonFilePath = path.join(__dirname, 'registrationData.json');
 const dotenv = require('dotenv');
+
+app.disable('etag');
 
 app.use(express.static(path.join(dirname, 'Home')));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -255,6 +257,8 @@ app.get('/my-ads', requireAuth, checkCurrentUser, my_Ads);
 app.get('/edit-ad/:id', requireAuth, checkCurrentUser, edit_ad);
 
 app.post('/edit-ad/:id', requireAuth, checkCurrentUser, updateUsersAds);
+
+app.get('/edit-ad-success/:id', requireAuth, checkCurrentUser, editAdSuccess);
 
 app.post('/delete/:id', adRemover);
 
