@@ -20,7 +20,12 @@
 	<%- include("partials/header"); -%>
 
   <section id="Search-results-cont">
-	  <div class="categories-cont closeList" id="categories-cont">
+	
+	<% if(noAdsAvailable) {%>
+	  <div class="categories-cont closeList" id="categories-cont" style="width: 25rem;">
+	<% }else { %>
+		<div class="categories-cont closeList" id="categories-cont">
+	<% } %>
 			<div class="all-categories" id="all-categories">
 				<div class="category clicker" id="closeOpen-list">
 					<h4 class="category-title">Catagory</h4>
@@ -30,7 +35,7 @@
 				
 				
 				<%
-
+				
 				let artsCat, businessCat, eduCat, engCat, healthCat, humanCate, lawCat, scienceCat, campusCat;
 				
 				function catey(){
@@ -285,13 +290,14 @@
 					</li>
 				</ul>
 				<% } %>
-
+				
+				<% if(campusCat) {%>
 				<div class="category clicker">
 					<h4 class="arrow category-title"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Campus</span></h4>
 					<i class="fa fa-caret-down"></i>
 				</div>
 				
-				<% if(campusCat) {%>
+				
 				<ul class="campus-options" id="CampusList">
 					<% 
 					  for(i = 0; i < cat_camp_list.length; i++){
@@ -308,6 +314,7 @@
 				
 			</div>
 		</div>
+		
 		
 		
 
@@ -771,19 +778,12 @@
 						
 						<h3 class="location">
 						   <i class="fa fa-phone"></i>
-						<%= Tel %>
+						<%= contactNumFormat(Tel) %>
 						</h3> 
-						<% if(Date_Created !== undefined) {%>
 						<h3 class="time">
 						   <i class="fa fa-clock"></i>
 						<%= dateDisplayer(Date_Created) %>
 						</h3>
-						<% }else { %>
-						<h3 class="time">
-						   <i class="fa fa-clock"></i>
-							2 hours
-						</h3> 
-						<% } %>
 					</div>
 				</div>
 

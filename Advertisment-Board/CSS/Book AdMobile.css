@@ -244,6 +244,13 @@
 	.advertisements{
 		margin-left: 0rem;
 	}
+	
+	.messageBox-cont{
+		margin: auto;
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+	
 }
 	
 @media screen and (max-width: 568px){

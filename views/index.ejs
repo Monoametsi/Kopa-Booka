@@ -74,6 +74,30 @@
 			</div>
 
 			<div class="categories">
+			
+			<% 
+			
+			if(result.length === 0){ 
+			%>
+				
+				<div class="messageBox-cont">
+					<div class="message-box">
+						<div class="messageTitle-cont">
+							<img src="/Images/empty-set-mathematical-notation-computer-icons-mathematics-symbol-png-favpng-Nhd1quu2TEGLyZWUSR2QMxMZm-removebg-preview.png">
+							<h1 class="messageTitle no-posts-available">No Ads Available</h1>
+						</div>
+
+						<div class="message-cont">
+							<p class="message">There are no ads available, be the first to place an ad by clicking <a href="/place-advert">here</a>.</p>
+						</div>
+					</div>
+				</div>
+				
+			<%
+			} 
+			%>
+			
+			
 			<% if(mainCatAdsDisplay("Art Design and Architecture").length > 0) {%>
 				<div class="categorieyBox-cont">
 					<div class="categoriey-box">

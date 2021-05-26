@@ -90,8 +90,11 @@
 	<% } %>
 	
 	<%	if(req.url.search("/Ad-board") !== -1){ %>
+			<% if(noAdsAvailable) {%>
+			<% }else { %>
 			<div class="RefineSearch-Cont" id="RefineSearch-Cont">
 				<a href="#top" id="refine-search" class="RefineSearch-Btn">Refine Search</a>
 			</div>
+			<% } %>
 	<%	} %>
 </nav>

@@ -180,9 +180,9 @@ function modalOpener(headerTitle, advertId){
 	modal.classList.remove('fadeOut');
 	modal.style.display = "block";
 	modalContent.style.display = "flex";
-	messageToSeller.value = `Hi, I am interested in ${ adTitle }`;
+	messageToSeller.value.trim() = `Hi, I am interested in ${ adTitle }`;
 
-	if(messageToSeller.value.length > 0){
+	if(messageToSeller.value.trim().length > 0){
 		messageToSellerErr.style.display = 'none';
 		messageToSeller.classList.remove('Message-redBox');
 	}

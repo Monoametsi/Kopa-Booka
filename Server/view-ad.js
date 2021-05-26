@@ -14,6 +14,11 @@ let viewAd = (req, res) =>{
 	let { id } = req.params;
 
 	Advertisements.find().then( async (result) => {
+	
+	function contactNumFormat(tel){
+		let contact = tel.split('');
+		return `${contact.slice(0, 3).join("")} ${contact.slice(3, 6).join("")} ${contact.slice(6, 10).join("")}`;
+	}
 		
 	let stringCapitalizer = (Campus) => {
 
@@ -100,7 +105,8 @@ let viewAd = (req, res) =>{
 					UploadedImages,
 					Viewed_Count,
 					Date_Created,
-					ordinal
+					ordinal,
+					contactNumFormat
 				});
 			}
 		}else{

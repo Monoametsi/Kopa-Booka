@@ -17,7 +17,7 @@ userName.oninput = function (){
 function titleValidator(){
 	let icon = document.getElementsByClassName("ikon")[0];
 
-	if(userName.value === ''){
+	if(userName.value.trim() === ''){
 		userNameErr.style.display = 'flex';
 		userName.classList.add('redBox');
 		userNameErr.innerText = 'Required';
@@ -29,7 +29,7 @@ function titleValidator(){
 		userNameErr.style.display = 'none';
 		userName.classList.remove('redBox');
 		icon.classList.remove('redBorder', 'Shadow');
-		return userName.value;
+		return userName.value.trim();
 	}
 }
 
@@ -50,7 +50,7 @@ contactNum.oninput = function (){
 
 function contactNumValidator(){
   let contactNumErr = document.getElementById('contactNum-Err');
-  let contactNumVal = contactNum.value;
+  let contactNumVal = contactNum.value.trim();
   let icon = document.getElementsByClassName("ikon")[1];
   
   let zeroSixZeroFormat = /^[0]{1}[6]{1}[0]{1}[3-9]{1}[0-9]{6}$/;
@@ -130,10 +130,10 @@ email.oninput =	function (){
 
 function emailValidator(){
 	let icon = document.getElementsByClassName("ikon")[2];
-	let emailVal = email.value;
-	let threeDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
-	let oneDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2,15}$/;
-	let twoDot = /^\w+([\.\-\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~]?\w+)*@[a-zA-Z0-9]+([-]?[a-zA-Z0-9]+)*\.[a-zA-Z]{2}\.[a-zA-Z]{2}$/;
+	let emailVal = email.value.trim();
+	let threeDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
+	let oneDot =  /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
+	let twoDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 	let threeDotFormat = threeDot.test(emailVal);
 	let oneDotFormat = oneDot.test(emailVal);
 	let twoDotFormat = twoDot.test(emailVal);
@@ -173,7 +173,7 @@ messageToSeller.oninput = function(){
 }
 	
 function messageToSellerValidator(){
-	let messageToSellerVal = messageToSeller.value;
+	let messageToSellerVal = messageToSeller.value.trim();
 	let	messageToSellerErr = document.getElementById('subject-Err');
 	
 	if(messageToSellerVal === ''){
@@ -252,7 +252,7 @@ submitBtn.onclick = function(){
 		  firstname: titleValidator(),
 		  tel: contactNumValidator(),
 		  email: emailValidator(),
-		  Post_Id: sellersContactNum.value,
+		  Post_Id: sellersContactNum.value.trim(),
 		  subject: messageToSellerValidator() 
 		}
 

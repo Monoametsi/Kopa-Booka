@@ -19,6 +19,13 @@ let displayAds = (req, res) => {
 	let { searchQuery, pageQuery } = req.params;
 
 	Advertisements.find().then((result) => {
+		
+		function contactNumFormat(tel){
+			let contact = tel.split('');
+			return `${contact.slice(0, 3).join("")} ${contact.slice(3, 6).join("")} ${contact.slice(6, 10).join("")}`;
+		}
+		
+		
 		//pagination numbering
 		let urlPageNum;
 	    let pageNumSearch = req.url.search(/\/page-\d/);
@@ -316,6 +323,7 @@ let displayAds = (req, res) => {
 			highToLowPrices,
 			dateDisplayer,
 			noAdsAvailable,
+			contactNumFormat,
 			Category_and_campus_col
 		});
 		}).catch((err) => {

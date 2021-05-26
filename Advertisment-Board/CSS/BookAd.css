@@ -19,7 +19,7 @@ section{
 /*Search-results section*/
 #Search-results-cont{
 	display: flex;
-	margin-bottom: 6rem;
+	margin-bottom: 12rem;
 }
 
 /*Category Lists -- start*/
@@ -1156,6 +1156,7 @@ input[type=submit]:hover{
 .messageBox-cont{
 	display: flex;
 	margin: 1rem 2rem;
+	
 }
 
 .message-box{
