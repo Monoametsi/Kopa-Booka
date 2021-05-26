@@ -24,8 +24,8 @@ let my_Messages = (req, res) => {
 					if(emailExist.length > 0){
 						emailExist.map((data) => { 
 							let msg = data.Ad_Messages;
-							let usersAds = data.My_Ads;
-							res.status(200).render('my-messages', { msg, usersAds });
+
+							res.status(200).render('my-messages', { msg });
 						})
 					}else{
 						res.redirect('/');
