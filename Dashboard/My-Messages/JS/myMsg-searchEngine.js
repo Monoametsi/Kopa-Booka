@@ -9,16 +9,16 @@ let width = document.getElementById('width-num');
 window.onresize = () => {
 	//width.innerHTML = window.innerWidth;
 
-	if(window.innerWidth >= 1210 && slideCont.style.width !== '0px'){
+	if(window.innerWidth >= 1210 && slideCont.style.width !== '0px' && slideCont.style.width !== ''){
 		slideCont.style.width = '50%';
 		slideCont.style.borderLeft = '1px solid #888';
-	}else if(window.innerWidth > 870 && window.innerWidth <= 1210 && slideCont.style.width !== '0px'){
+	}else if(window.innerWidth > 870 && window.innerWidth <= 1210 && slideCont.style.width !== '0px' && slideCont.style.width !== ''){
 		slideCont.style.width = '70%';
 		slideCont.style.borderLeft = '1px solid #888';
-	}else if(window.innerWidth > 675 &&window.innerWidth <= 870 && slideCont.style.width !== '0px'){
+	}else if(window.innerWidth > 675 &&window.innerWidth <= 870 && slideCont.style.width !== '0px' && slideCont.style.width !== ''){
 		slideCont.style.width = '90%';
 		slideCont.style.borderLeft = '1px solid #888';
-	}else if(window.innerWidth <= 675 && slideCont.style.width !== '0px'){
+	}else if(window.innerWidth <= 675 && slideCont.style.width !== '0px' && slideCont.style.width !== ''){
 		slideCont.style.width = '100%';
 		slideCont.style.borderLeft = '1px solid #888';
 	}

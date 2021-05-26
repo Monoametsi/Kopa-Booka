@@ -272,6 +272,37 @@ let updateUsersAds = async (req, res) => {
 							});
 						}
 
+						let updateMsgAd = (res) => {
+							let adMsgId = { "Ad_Messages.msgAd._id":  id }
+							let updatedMsgAd = {
+								$set: {
+								"Ad_Messages.$.msgAd.Name": name.trim(),
+								"Ad_Messages.$.msgAd.Mail": mail.trim(),
+								"Ad_Messages.$.msgAd.Tel": tel.trim(),
+								"Ad_Messages.$.msgAd.Whatsapp_tel": Whatsapptel.trim(),
+								"Ad_Messages.$.msgAd.Main_Category": chooseCats.trim(),
+								"Ad_Messages.$.msgAd.Sub_Category": chooseSubCat.trim(),
+								"Ad_Messages.$.msgAd.Text_Book_Title": TexBookTitle.trim(),
+								"Ad_Messages.$.msgAd.Edition_Number": EditionNum.trim(),
+								"Ad_Messages.$.msgAd.Author_Name": AuthorName.trim(),
+								"Ad_Messages.$.msgAd.Condition": condition.trim(),
+								"Ad_Messages.$.msgAd.Text_Book_Price": TextbookPrice.trim(),
+								"Ad_Messages.$.msgAd.Negotiation": negotiation.trim(),
+								"Ad_Messages.$.msgAd.Description": Description.trim(),
+								"Ad_Messages.$.msgAd.Campus": campus.trim(),
+								"Ad_Messages.$.msgAd.Date_Updated": new Date(),
+								"Ad_Messages.$.msgAd.UploadedImages": UploadedImages
+								}
+							}
+
+							Users.updateMany(adMsgId, updatedMsgAd, (err, res) => {
+								if(err) throw err;
+							});
+
+						}
+						
+						await updateMsgAd();
+
 						await updateAdvertisementDb();
 
 						await updateUserDB();

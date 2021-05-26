@@ -41,7 +41,9 @@ let messageOfInterest = async (req, res) => {
 					let num = userData.My_Ads.indexOf(map);
 
 					if(userData.My_Ads[num]._id === Post_Id){
-
+						
+						userInput.msgAd = userData.My_Ads[num];
+						
 						let updateUsersMessages = (res) => {
 							let usersInfo = { Email: userData.Email };
 							let buyersMessage = { $push: { Ad_Messages: userInput } }
