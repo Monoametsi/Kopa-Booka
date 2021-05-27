@@ -104,12 +104,16 @@ const checkCurrentUser = (req, res, next) => {
 					if(Boolean(result.find(mailPwdMatcher)) === true){
 						res.locals.user = email;
 						res.locals.req = req;
+						next();
+					}else{
+						res.cookie('token', '', { maxAge: 1 });
+						res.redirect('/');
 					}
 				}).catch((err) => {
 					console.log(err);
 				});
 
-				next();
+				
 			}
 		});
 	}else {
