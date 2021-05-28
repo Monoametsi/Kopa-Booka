@@ -27,7 +27,7 @@ section{
 .categories-cont{
 	margin-top: 3.5rem;
 	margin-right: 1rem;
-	max-width: 100%;
+	width: 35%;
 }
 
 .all-categories{
@@ -36,7 +36,7 @@ section{
 	padding: 8px;
 	border-radius: 0 0 5px 0;
 	flex-direction: column;
-	width: 94.5%;
+	width: 94%;
 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
@@ -58,7 +58,7 @@ section{
 }
 
 .faculty-arrow{
-	top: 0;
+	top: 4.5px;
 	right: 5px;
 }
 
@@ -420,6 +420,7 @@ button.but:hover + .search{
 }
 
 .MobileCard-Title{
+	line-height: 2.3rem;
 	cursor: pointer;
 	font-family: montserrat, sans-serif;
 	font-size: 1.8rem;
@@ -730,7 +731,7 @@ button.but:hover + .search{
 }
 
 .modal-closer{
-	font-size: 3rem;
+	font-size: 2.5rem;
 	font-weight: bold;
 	cursor: pointer;
 	color: rgb(260,0,0);
@@ -756,7 +757,7 @@ button.but:hover + .search{
 .validifier-cont{
 	display: flex;
 	justify-content: flex-end;
-	transition: 0.8s;
+	transition: 0.6s;
 }
 
 .validifier{
@@ -768,9 +769,9 @@ button.but:hover + .search{
 	margin-right: 2.8px;
 	border-radius: 3px;
 	animation-name: smooth-appearance;
-	animation-duration: 0.8s;
+	animation-duration: 0.6s;
 	color: #fff;
-	transition: 0.8s;
+	transition: 0.6s;
 }
 
 @keyframes smooth-appearance{

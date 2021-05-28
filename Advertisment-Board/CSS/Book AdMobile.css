@@ -8,10 +8,6 @@
 }
 
 @media screen and (max-width: 1195px){
-
-	.advertisements{
-		margin-left: -3.8rem;
-	}
 	
 	.AdDescription-body{
 		-webkit-line-clamp: 2;
@@ -34,10 +30,6 @@
 }
 
 @media screen and (max-width: 1125px){
-	
-	.advertisements{
-		margin-left: -3.8rem;
-	}
 	
 	.Sellers-item{
 		height: 10rem;
@@ -66,13 +58,6 @@
 
 @media screen and (max-width: 1100px){
 	
-	.advertisements{
-		margin-left: -4.8rem;
-	}
-
-	.all-categories{
-		width: 80%;
-	}
 
 	.AdDescription-body{
 		-webkit-line-clamp: 2;
@@ -125,12 +110,9 @@
 	
 	.advertisements{
 		width: 100%;
-		margin-left: -2.5rem;
 	}
 	
-	.all-categories{
-		width: 85%;
-	}
+	
 
 	.AdDescription-body{
 		-webkit-line-clamp: 1;
@@ -153,40 +135,45 @@
 	.Ad-title{
 		padding-top: 3rem;
 	}
-
-	.advertisements{
-		width: 100%;
-		margin-left: -3.5rem;
+	
+	.categories-cont{
+		width: auto;
+		max-width: 100%;
 	}
 	
-	.all-categories{
-		width: 80%;
+	.category:first-child{
+		margin-top: 1rem;
+	}
+
+}
+
+@media screen and (max-width: 820px){
+
+	.Ad-title{
+		padding-right: 1.5rem;
+		padding-left: 1.5rem;
 	}
 
 }
 
 @media screen and (max-width: 790px){
-	
+
 	.searcher{
 		width: 85%;
 	}
-	
+
 	#Mobile-Img{
 		height: 100%;
 	}
-	
-	.advertisements{
-		width: 100%;
-		margin-left: -5.5rem;
-	}
-	
-	.all-categories{
-		width: 75%;
-	}
-	
+
 	.pageNumber-link{
 		padding: 6px;
 		width: 2.5rem;
+	}
+	
+	.MobileCard-Title{
+		padding-right: 9px;
+		padding-left: 9px;
 	}
 
 }
@@ -221,9 +208,7 @@
 		max-width: 100%;
 	}
 	
-	.inputField-styling::placeholder{
-		font-size: 1rem;
-	}
+	
 
 	.categories-cont{
 		margin-top: 5rem;

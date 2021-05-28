@@ -1,10 +1,10 @@
-const ejs = require('ejs');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const user = require('./mongo_db');
 const { Users } = user;
 
 let my_Ads = (req, res) => {
+
 	let token = req.cookies.token;
 
 	if(token){

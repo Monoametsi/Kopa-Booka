@@ -127,7 +127,7 @@
 						<% } %>
 						
 						
-						<% if(contactValCheck.findEmpty) {%>
+						<% if(contactValCheck.findEmpty) { %>
 						<div class="inputlabel-cont">
 							<div class="label-cont">
 								<label for="contactNum" class="label">
@@ -198,7 +198,7 @@
 						</div>
 					</div>
 
-					<% }else { %>
+						<% }else { %>
 					
 					<div class="input whatsapp-cont">
 						<div class="inputlabel-cont">
@@ -216,7 +216,7 @@
 						</div>
 					</div>
 					
-					<% } %>
+						<% } %>
 					<% } %>
 					
 
@@ -239,11 +239,11 @@
 
 									<select name="chooseCats" id="catChoices" class="conAndNeg redBox bottomMobile-spacing">
 										<option value="please select" selected>Please Select</option>
-										<% result.map((main_cat) => { %>
-											<%	main_cat.Main_Category.map((mainCatElements) => { %>
+										<% result.map((main_cat) => { 
+												main_cat.Main_Category.map((mainCatElements) => { %>
 												<option value="<%= mainCatElements %>" ><%= mainCatElements %></option>
-											<% }) %>
-										<% }) %>
+											<% });
+										}) %>
 									</select>
 									<% }else { %>
 									<div class="label-cont">
@@ -255,15 +255,15 @@
 
 									<select name="chooseCats" id="catChoices" class="conAndNeg bottomMobile-spacing">
 										<option value="please select">Please Select</option>
-										<% result.map((main_cat) => { %>
-											<%	main_cat.Main_Category.map((mainCatElements) => { %>
-											<%	if(mainCatElements === chooseCats.trim()){ %>
+										<% result.map((main_cat) => { 
+												main_cat.Main_Category.map((mainCatElements) => { 
+												if(mainCatElements === chooseCats.trim()){ %>
 												<option value="<%= mainCatElements %>" selected><%= mainCatElements %></option>
 											<%	}else{ %>
 												<option value="<%= mainCatElements %>"><%= mainCatElements %></option>
-											<%	} %> 
-											<% }) %>
-										<% }) %>
+											<%	}  
+											 }) 
+										}) %>
 									</select>
 
 									<% } %>
@@ -282,24 +282,24 @@
 									</div>
 									<select name="chooseSubCat" id="subCatChoices" class="conAndNeg redBox bottomMobile-spacing">
 										<option value="please select" selected>Please Select</option>
-										<% result.map((cats) => { %> 
-										<%	let replaceUnderScore = chooseCats.trim().replace(/\s/g, "_"); %> 
-												
+										<% result.map((cats) => { 
+											let replaceUnderScore = chooseCats.trim().replace(/\s/g, "_"); %> 
 
-										<%	for(catName in cats){ %>
 
-										<%	if(replaceUnderScore === catName){ %>
-										<%		cats[replaceUnderScore].map((subCatElements) => { %>
-											<% if(subCatElements === stringCapitalizer(chooseSubCat.trim())){ %>
+										<%	for(catName in cats){ 
+
+											if(replaceUnderScore === catName){ 
+												cats[replaceUnderScore].map((subCatElements) => { 
+											 if(subCatElements === stringCapitalizer(chooseSubCat.trim())){ %>
 												<option value="<%= subCatElements.toLowerCase() %>" selected><%= subCatElements %></option>
 											<% }else { %> 
 												<option value="<%= subCatElements.toLowerCase() %>"><%= subCatElements %></option>
 											<% }%>
 
-										<%  });  %>
-										<%		} %>
-										<%	} %>
-										<% }) %>
+										<%  	});  
+											  } 
+											}
+										 }) %>
 										
 									</select>
 								</div>
@@ -314,24 +314,23 @@
 									<select name="chooseSubCat" id="subCatChoices" class="conAndNeg bottomMobile-spacing">
 										<option value="please select">Please Select</option>
 										
-										<% result.map((cats) => { %> 
-										<%	let replaceUnderScore = chooseCats.trim().replace(/\s/g, "_"); %> 
-												
+										<% result.map((cats) => { 
+											let replaceUnderScore = chooseCats.trim().replace(/\s/g, "_");  
 
-										<%	for(catName in cats){ %>
+											for(catName in cats){ 
 
-										<%	if(replaceUnderScore === catName){ %>
-										<%		cats[replaceUnderScore].map((subCatElements) => { %>
-											<% if(subCatElements === stringCapitalizer(chooseSubCat.trim())){ %>
+											if(replaceUnderScore === catName){ 
+												cats[replaceUnderScore].map((subCatElements) => { 
+											 if(subCatElements === stringCapitalizer(chooseSubCat.trim())){ %>
 												<option value="<%= subCatElements.toLowerCase() %>" selected><%= subCatElements %></option>
 											<% }else { %> 
 												<option value="<%= subCatElements.toLowerCase() %>"><%= subCatElements %></option>
-											<% }%>
+											<% }
 
-										<%  });  %>
-										<%		} %>
-										<%	} %>
-										<% }) %>
+												});  
+											  } 
+											} 
+										 }) %>
 										
 									</select>
 								</div>
@@ -421,15 +420,15 @@
 								</div>
 
 								<select name="condition" id="book-condition" class="selectWidth redBox bottomMobile-spacing">
-									<% result.map((cat) => { %>
-									<%	cat.Textbook_Condition.map((Condition) => { %>
-									<%		if(Condition.toLowerCase() === condition){ %>
+									<% result.map((cat) => { 
+										cat.Textbook_Condition.map((Condition) => { 
+											if(Condition.toLowerCase() === condition){ %>
 												<option value="<%= Condition.toLowerCase() %>" selected><%= Condition %></option>
 									<%		}else { %>
 												<option value="<%= Condition.toLowerCase() %>"><%= Condition %></option>
-									<% } %>
-									<%	}); %>
-									<% }) %>
+										<% } 
+										}); 
+									 }) %>
 								</select>
 							</div>
 							<% } else { %>
@@ -440,15 +439,15 @@
 								</div>
 
 								<select name="condition" id="book-condition" class="selectWidth bottomMobile-spacing">
-									<% result.map((cat) => { %>
-									<%	cat.Textbook_Condition.map((Condition) => { %>
-									<%		if(Condition.toLowerCase() === condition){ %>
+									<% result.map((cat) => { 
+										cat.Textbook_Condition.map((Condition) => { 
+											if(Condition.toLowerCase() === condition){ %>
 												<option value="<%= Condition.toLowerCase() %>" selected><%= Condition %></option>
 									<%		}else { %>
 												<option value="<%= Condition.toLowerCase() %>"><%= Condition %></option>
-									<% } %>
-									<%	}); %>
-									<% }) %>
+										<% } 
+										}); 
+									}) %>
 								</select>
 							</div>
 							<% }  %>
@@ -491,11 +490,11 @@
 
 								<select name="negotiation" id="negotiable" class="selectWidth redBox bottomMobile-spacing">
 									<option value="please select" selected>Please Select</option>
-									<% result.map((cat) => { %>
-									<%	cat.Negotiable.map((negotiable) => { %>
+									<% result.map((cat) => { 
+										cat.Negotiable.map((negotiable) => { %>
 											<option value="<%= negotiable.toLowerCase() %>" ><%= negotiable %></option>
-									<%	}); %>
-									<% }) %>
+									<%	}); 
+									 }) %>
 								</select>
 							</div>
 							<% } else { %>
@@ -507,15 +506,15 @@
 
 								<select name="negotiation" id="negotiable" class="selectWidth bottomMobile-spacing">
 									<option value="please select">Please Select</option>
-									<% result.map((cat) => { %>
-									<%	cat.Negotiable.map((negotiable) => { %>
-									<%		if(negotiable.toLowerCase() === negotiation){ %>
+									<% result.map((cat) => { 
+										cat.Negotiable.map((negotiable) => { 
+											if(negotiable.toLowerCase() === negotiation){ %>
 												<option value="<%= negotiable.toLowerCase() %>" selected><%= negotiable %></option>
 									<%		}else { %>
 												<option value="<%= negotiable.toLowerCase() %>"><%= negotiable %></option>
-									<% } %>
-									<%	}); %>
-									<% }) %>
+									<% } 
+										}); 
+									 }) %>
 								</select>
 							</div>
 							<% } %>	
@@ -561,18 +560,17 @@
 						</div>
 						<% } %>
 
-
 						<% if(campus.trim() === "select campus" || campus.trim() === "" || campus.trim().length === 0) {%>
 						<div class="campus input">
 							<div class="inputlabel-cont">
 								<label for="select-campus" class="label">Which campus do you sell at? <span class="required">*</span></label>
 								<select name="campus" id="select-campus" class="selectWidth redBox">
 									<option value="select campus" selected>Select campus</option>
-									<% result.map((cat) => { %>
-									<%	cat.Campus.map((Campus) => { %>
+									<% result.map((cat) => { 
+										cat.Campus.map((Campus) => { %>
 											<option value="<%= Campus.toLowerCase() %>" ><%= Campus %></option>
-									<%	}); %>
-									<% }) %>
+									<% 	}); 
+									 }) %>
 								</select>
 								<label for="select-campus" class="validifier" id="select-campus-Err" style="display: flex; border-radius:3px; align-self: center; padding:2px 8px; margin-right: 0;">Required</label>
 							</div>
@@ -583,15 +581,15 @@
 								<label for="select-campus" class="label">Which campus do you sell at? <span class="required">*</span></label>
 								<select name="campus" id="select-campus" class="selectWidth">
 									<option value="select campus">Select campus</option>
-									<% result.map((cat) => { %>
-									<%	cat.Campus.map((Campus) => { %>
-									<%		if(Campus.toLowerCase() === campus){ %>
+									<% result.map((cat) => { 
+										cat.Campus.map((Campus) => { 
+											if(Campus.toLowerCase() === campus){ %>
 												<option value="<%= Campus.toLowerCase() %>" selected><%= Campus %></option>
 									<%		}else { %>
 												<option value="<%= Campus.toLowerCase() %>"><%= Campus %></option>
-									<% } %>
-									<%	}); %>
-									<% }) %>
+									<% } 
+										}); 
+									 }) %>
 								</select>
 								<label for="select-campus" class="validifier" id="select-campus-Err" style="border-radius:3px ;align-self: center;padding:2px 8px; margin-right: 0;"></label>
 							</div>
@@ -726,7 +724,7 @@
 			</div>
 		</div>
 	</section>	
-	<% } else if(!user){ %>
+	<% } else { %>
 
 	<section class="messageBox-cont">
 		<div class="message-box">
@@ -751,11 +749,10 @@
 	<%- include("partials/footer"); -%>
 	
   <script src="/JS/Post Ad.js"></script>
-  <% if(!user) {%>
-  <% }else { %>
-  <script src="/JS/upload.js"></script>
+  <% if(user) {%>
+   <script src="/JS/upload.js"></script>
   <script src="/JS/form.js" ></script>
   <% } %>
-  
+ 
 </body>
 </html>

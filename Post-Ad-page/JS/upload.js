@@ -2,8 +2,11 @@ let upload = document.getElementById("upl");
 let fileDiv = document.getElementById("pic");
 let divTitle = document.getElementById("box-title");
 let errMsg = document.getElementById('red');
+
+//Creates access to fileObject for adding, editing, and removing files.
 const dt = new ClipboardEvent('').clipboardData || new DataTransfer();
 
+//Alert message for errors sent from the backend
 function alerter(msg){
 	setTimeout(
 		() => {
@@ -14,6 +17,7 @@ function alerter(msg){
 	return false;
 }
 
+//Alert message for to inform user to upload atleast 1 image if they don't.
 function uploadValidator(){
 	if(upload.value === ""){
 
@@ -27,6 +31,7 @@ function uploadValidator(){
 	}
 }
 
+//Condition for Replacing error message from backend with alert box.
 if(errMsg !== null){
 	if(errMsg.innerHTML.trim() === 'Please upload atleast 1 image') {
 		errMsg.classList.remove('red');
@@ -53,6 +58,7 @@ if(errMsg !== null){
 	}
 }
 
+//Onchange functionality for uploading images
 upload.onchange = () => {
 
 	if(uploader(upload.files, 'action') === false){
@@ -60,6 +66,7 @@ upload.onchange = () => {
 	}
 }
 
+//Functionality for uploading images via clicking upload btn
 function uploader(uploadFiles, action){
 	action;
     let fileList = uploadFiles;
@@ -123,6 +130,7 @@ function uploader(uploadFiles, action){
 		return imgRemover();
 }
 
+// Functionality to remove deleted images from fileList Object.
 function removeFileFromFileList(closeDiv) {
   const input = upload;
   const { files } = input;
@@ -135,6 +143,7 @@ function removeFileFromFileList(closeDiv) {
   }
 }
 
+// Functionality keeping files in fileList Object rather then havig them removed if user tries to upload over the upload limit.
 function inputDtFileEqualizer() {
   const input = upload;
   const { files } = input;
@@ -144,6 +153,7 @@ function inputDtFileEqualizer() {
   }
 }
 
+//Functionality for deleting image.
 let imgRemover = () => {
     let visual = document.getElementsByClassName("visual");
     let shut = document.getElementsByClassName("shut");
@@ -182,6 +192,7 @@ let imgRemover = () => {
 	}
 }
 
+//Functionality for draging image to upload box
 fileDiv.ondragover = () => {
 	imgDragger(event);
 }
@@ -190,6 +201,7 @@ function imgDragger(action){
 	action.preventDefault();
 }
 
+//Functionality for uploading images via clicking drag and drop
 fileDiv.ondrop = () => {
 	if(uploader(event.dataTransfer.files, event.preventDefault()) === false){
 		return false;
@@ -198,6 +210,7 @@ fileDiv.ondrop = () => {
 	console.log(upload.files);
 }
 
+//Functionality for turning image src's from backend into blob urls.
 (function(){
 
 	let UsersImgs = document.getElementsByClassName('visual');
@@ -210,6 +223,7 @@ fileDiv.ondrop = () => {
 
 		if(imgUrl.search('/imageUploads/') !== -1){
 			fetch(imgUrl).then(async (response) => {
+
 				const contentType = response.headers.get('content-type');
 				const blobCoversion = await response.blob();
 				UsersImgs[i].src = URL.createObjectURL(blobCoversion);
@@ -218,6 +232,7 @@ fileDiv.ondrop = () => {
 				upload.files = dt.files;
 				console.log(blobCoversion);
 				console.log(upload.files);
+
 			});
 		}
 	}

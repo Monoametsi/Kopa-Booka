@@ -14,6 +14,7 @@ let adCounterBtn = document.getElementById('sort-list-btn');
 
 let hiddenBtn = document.getElementById('hidden-sort-list-btn');
 
+//Functionality for toggling of the btn that displays the number of ads
 adCounterBtn.onclick = () => {
 	let displayValue = window.getComputedStyle(hiddenBtn, null).display;
 	
@@ -42,26 +43,37 @@ defaultAdNum();
 function searchAdSystem(){
 	let num = 0;
 	let hiddenAds = [];
-
+	
+	//Condition for what message should be displayed when no string value is placed in the search input field
 	if(searchAd.value.trim() === "" || searchAd.trim().value.length === 0 || searchAd.value === null || searchAd.value === undefined){
 		noPostFoundTitle.innerHTML = `You do not have any ads.`;
 	}else{
 		noPostFoundTitle.innerHTML = `No Ads found`; 
 	}
 
+	//Looping through all ads.
 	for(let i = 0; i < adTitle.length; i++){
-		
+			
+		//Variable representing the title of the adboxes parentElemet i.e(The whole advert container)
 		let adBox = adTitle[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
-		if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null || searchAd.value === undefined){
+		//Conditon for what should happend when theres no string value in the search box when clicked. 
+		//In this case all ads should be displayed when this happens
+		if(searchAd.value.trim() === "" || searchAd.value.trim().length === 0 || searchAd.value === null || searchAd.value === undefined){
 			num++ 
 			
+			//displays all ads
 			adBox.style.display = 'flex';
+
+			//Number format for the number of ads displayed.
 			if(num <= 1){
 				numOfAds.innerHTML = `${ num } Ad`;
 			}else{
 				numOfAds.innerHTML = `${ num } Ads`;
 			}
+
+		//Condition for what should happen when theres a match. 
+		// Ads that satisfy the match must be displayed, those that dont are hidden
 		} else if(searchAd.value.trim() === adTitle[i].innerText.trim()){
 			num++
 			adBox.style.display = 'flex';
@@ -74,10 +86,12 @@ function searchAdSystem(){
 			adBox.style.display = 'none';
 		}
 		
+		//Hidden ads placed in an array
 		if(window.getComputedStyle(adBox, null).display === 'none'){
 			hiddenAds.push(adBox);
 		}
-
+		
+		//Condition for if there are no ads that match. In this case nothing but a 'no ads found' message is displayed.
 		if(hiddenAds.length === adTitle.length){
 			numOfAds.innerHTML = `${ num } Ad`;
 			noAdsFound.style.display = 'flex';
@@ -88,10 +102,12 @@ function searchAdSystem(){
 	}
 }
 
+//Search btn click functionality
 searchBtn.onclick = () =>{
 	searchAdSystem();
 }
 
+//Search input field functionality when enter btn is clicked
 searchAd.onkeydown = (event) => {
 	
 	if(event.keyCode === 13){
@@ -103,6 +119,7 @@ let deleteAllCheckBox = document.getElementById('checkbox');
 
 let adCheckBoxes = document.getElementsByClassName('post-checkbox');
 
+//Check all adboxes when select all checkbox is clicked
 deleteAllCheckBox.onclick = () => {
 
 	for(let i = 0; i < adCheckBoxes.length; i++){
@@ -118,21 +135,31 @@ deleteAllCheckBox.onclick = () => {
 let deleteSelectedAds = document.getElementById('delete-All');
 let deletededElements = [];
 
+//Deleting checked ads functionality
 deleteSelectedAds.onclick = () => {
 	
+	//all checkboxes placed in array
 	let checkboxArr = Array.from(adCheckBoxes);
+	
+	//Counting number of checked ads
 	let num = 0;
 
 	checkboxArr.map((ad) => {
-
+		
+		//checkbox parent element, i.e( the advert box )
 		let adBox = ad.parentElement.parentElement.parentElement.parentElement;
-
+		
+		//Conditon for checking checked ads to be deleted
 		if(ad.checked && window.getComputedStyle(adBox, null).display !== 'none'){
 			num++
+			
+			//Ads to be deleted placed in array to be sent to server in order to be deleted.
 			deletededElements.push(adBox.id)
-
+			
+			//Removes ad from the frontend
 			adBox.remove();
-
+			
+			//Conditon for number format
 			if(num <= 1){
 				numOfAds.innerHTML = `${ num } Ad`;
 			}else if(num === checkboxArr.length){
@@ -140,7 +167,8 @@ deleteSelectedAds.onclick = () => {
 			}else{
 				numOfAds.innerHTML = `${ num } Ads`;
 			}
-
+			
+			//Condition for if all ads get deleted a message should be displayed
 			if(num === checkboxArr.length || (num === adTitle.length  && searchAd.value.length > 0)){
 				numOfAds.innerHTML = `0 Ad`;
 				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
@@ -149,6 +177,7 @@ deleteSelectedAds.onclick = () => {
 				noAdsFound.style.display = 'none';
 			}
 
+			//Fetch api sends the deleted elements to the server to be deleted on the backend via the delete url
 			fetch(`/delete/${ deletededElements.join('+') }`, {
 				method: 'POST'
 			}).then((response) => {
@@ -167,26 +196,41 @@ deleteSelectedAds.onclick = () => {
 
 let singleAdDelete = document.getElementsByClassName('individual-post');
 
+//Functionality for when an individual ad gets posted
 let singleAdDeleter = () => {
+		//Counting number of ads deleted
 		let num = 0;
+
+		//Counting total amount of ads
 		let total = singleAdDelete.length;
+	
 		let outcome;
 
+		//Looping through all ads
 		for(let i = 0; i < singleAdDelete.length; i++){
-
+		
+		//Each indivual ads delete btns parentElement container.
 		outcome = singleAdDelete[i].parentElement.parentElement.parentElement.parentElement;
 
+		//Functionality for what occurs when delete btn is clicked.
 		singleAdDelete[i].onclick = function(){
+			//Counting amount of deleted ads
 			num++;
+			
+			//Individual ad delete btns parentElement container.
 			let adBox = this.parentElement.parentElement.parentElement.parentElement;
-
+			
+			//Conditon for how to display number of deleted ads
 			if(num <= 1){
 				numOfAds.innerHTML = `${ num } Ad`;
 			}else{
 				numOfAds.innerHTML = `${ num } Ads`;
 			}
 
+			//Functionality that removes ad from the frontend
 			adBox.remove();
+			
+			//Condition to account for when all ads have been deleted via the clicking of the deleted icon.
 			if(num === total || (num === adTitle.length && searchAd.value.length > 0)){
 				numOfAds.innerHTML = `0 Ad`;
 				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
@@ -195,6 +239,7 @@ let singleAdDeleter = () => {
 				noAdsFound.style.display = 'none';
 			}
 
+			//Fetch Api sends the deleted ad to a be deleted on the backend via the delete url.
 			fetch(`/delete/${ adBox.id }`, {
 				method: 'POST'
 			}).then((response) => {

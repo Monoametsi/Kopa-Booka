@@ -1,68 +1,7 @@
 	let main_cat = document.getElementById("catChoices");
     let sub_cat = document.getElementById("subCatChoices");
-    
-	main_cat.onchange = function(){
-		selectListValidator(main_cat, catChoicesErr);
-		dynamicLister(main_cat,catChoicesErr);
-	}
-
-    function dynamicLister(name, nameErr){
-		sub_cat.innerHTML = '<option value="please select">Please Select</option>';
-    	switch(main_cat.value){
-            case 'please select':
-			selectListValidator(sub_cat,subCatChoicesErr);
-			name.style.border = '1px solid red';
-            break;
-			
-			case 'Art Design and Architecture':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-            return categorizer('Art Design and Architecture',arts);
-            break;
-			
-            case 'College of Business and Economics':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-            return categorizer('College of Business and Economics',business);
-            break;
-			
-            case 'Education':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-            return categorizer('Education',education);
-            break;
-			
-            case 'Engineering and Built Environment':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-			return categorizer('Engineering and Built Environment',engineering);
-			break;
-			
-			case 'Health Sciences':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-			return categorizer('Health Sciences',healthScience);
-			break;
-			
-			case 'Humanities':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-			return categorizer('Humanities',humanities);
-			break;
-			
-			case 'Law':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-			return categorizer('Law',law);
-			break;
-			
-			case 'Science':
-			nameErr.style.display = 'none';
-			name.style.border = '1px solid #9acdff';
-			return categorizer('Science',science);
-        }
-    }
 	
+	//Object representing the each of a univeristy's faculties and their properties are an array of each faculty's departments.
     faculty = {
       'Art Design and Architecture':[
         'Architecture', 
@@ -159,18 +98,21 @@
         'Zoology'
         ]
     }
-
-    let arts = faculty['Art Design and Architecture'];
-    let business = faculty['College of Business and Economics'];
-    let education = faculty.Education;
-    let engineering = faculty['Engineering and Built Environment'];
-    let	healthScience = faculty['Health Sciences'];
-    let humanities = faculty.Humanities;
-    let law = faculty.Law;
-    let science = faculty.Science;
-
+	
+	//Onchange functionality for main category select list
+	main_cat.onchange = function(){
+		selectListValidator(main_cat, catChoicesErr);
+		sub_cat.innerHTML = '<option value="please select">Please Select</option>';
+		for(name in faculty){
+			if(main_cat.value === name){
+				return categorizer(name, faculty[name]);
+			}
+		}
+	}
+	
+	//Functionality for dynamic select option.
 	function categorizer(mainCat,subCat){
-		if(main_cat.value == mainCat){
+		if(main_cat.value.trim() == mainCat){
 			for(let i = 0; i <	subCat.length; i++)
 	    {
 			let selec = document.createElement("option");

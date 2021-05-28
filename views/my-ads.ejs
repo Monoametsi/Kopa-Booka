@@ -28,13 +28,15 @@
 	<section id="all-posts-cont">
 		<div class="posts-searchInput-cont">
 			<div class="post-section-director-cont">
-				<div class="post-section-director-title-cont">
-					<h4>All ADS</h4>
-					<span class="post-total" style="font-weight: bold;"> <%= amountOfAds %> </span>
+				<div class="post-section-header-cont">
+					<div class="post-section-director-title-cont">
+						<h4>All ADS</h4>
+						<span class="post-total" style="font-weight: bold;"> <%= amountOfAds %> </span>
+					</div>
 				</div>
 
 				<div class="searchInput-cont">
-					<input type="search" placeholder="Search your ads" name="search-post" id="search-post" class="searchInput-Field-styling">
+					<input type="search" placeholder="Search your ads..." name="search-post" id="search-post" class="searchInput-Field-styling">
 					<button class="search-btn" id="search-btn"><i class="fa fa-search"></i> Search </button>
 				</div>
 			</div>
@@ -66,20 +68,13 @@
 		let {
 
 			_id,
-			Name,
-			Mail,
 			Tel,
 			Whatsapp_tel,
 			Main_Category,
-			Sub_Category,
 			Text_Book_Title,
 			Edition_Number,
-			Author_Name,
-			Condition,
 			Text_Book_Price,
-			Negotiation,
 			Description,
-			Campus,
 			Date_Created,
 			Viewed_Count,
 			UploadedImages	
@@ -149,31 +144,28 @@
 						</div>
 						
 						<%
-						let num = 0;
+						let numOfMessages = 0;
 
-						userData.Ad_Messages.map((messageDetails) => {
+						userData.Ad_Messages.map((message) => {
 						
-							if(messageDetails.Post_Id === _id){ 
-								num++
+							if(message.Post_Id === _id){ 
+								numOfMessages++
 							%>
 								
 						<%	}
 						});
-						
+
 						%>
 						
 						<div class="post-stats">
 							<div class="stat-cont">
 								<i class="fa fa-envelope"></i>
-								<span> <%= num %> </span>
+								<span> <%= numOfMessages %> </span>
 							</div>
+
 							<div class="stat-cont">
 								<i class="fa fa-eye"></i>
-								<% if(Viewed_Count === undefined ) {%>
-								<span> 0 </span>
-								<% } else{ %>
 								<span> <%= Viewed_Count.length %> </span>
-								<% } %>
 							</div>
 						</div>
 

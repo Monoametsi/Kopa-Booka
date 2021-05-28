@@ -65,10 +65,9 @@ const { reset_password_post, reset_password_get, reset_password_confirmation, re
 const { contact_us_get, contact_us_post, contact_us_success, contact_us_failure } = contactUs;
 //module functions
 
+app.disable('etag');
 
 const dotenv = require('dotenv');
-
-app.disable('etag');
 
 app.use(express.static(path.join(dirname, 'Home')));
 app.use(bodyParser.urlencoded({ extended: false }));

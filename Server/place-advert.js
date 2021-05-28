@@ -26,6 +26,23 @@ let placeAdvert = async (req, res) => {
 
 	let token = req.cookies.token;
 
+	let renameFiles = (oldPath, newPath) => {
+		fs.readFile(oldPath, async function (err, data) {
+			if (err) throw err;
+			console.log('File read!');
+
+			// Write the file
+			await fs.writeFile(newPath, data, function (err) {
+				if (err) throw err;
+			});
+
+			// Delete the file
+			await fs.unlink(oldPath, function (err) {
+				if (err) throw err;
+			});
+		});
+	}
+
 	let form = new formidable.IncomingForm({ multiples: true });
 
 	Category_and_campus_col.find().then((result) => {
@@ -110,8 +127,6 @@ let placeAdvert = async (req, res) => {
 			emailRegEx: validationEmailChecks.emailOneDot.test(mail.trim()) || validationEmailChecks.emailTwoDots.test(mail.trim()) || validationEmailChecks.emailThreeDots.test(mail.trim())
 		}
 
-		// console.log(files_Validator(files));
-
 		if(placeAdTitleValidator(name, TexBookTitle, AuthorName, EditionNum, TextbookPrice, Description, chooseCats, chooseSubCat, condition, negotiation, campus) === false || contactNumValidator(tel) === false ||  emailValidator(mail) === false || files_Validator(files)[0] === false){
 
 			return res.status(200).render('place-advert-post', { formData, contactValCheck, emailRegexChecks, result, stringCapitalizer, files, files_Validator, file_renamer, dirname, fs, fields });
@@ -129,20 +144,7 @@ let placeAdvert = async (req, res) => {
 				newPath = dirname + '\\imageUploads\\' + files.uploaded.name;
 			}
 
-			await fs.readFile(oldPath, async function (err, data) {
-					if (err) throw err;
-					console.log('File read!');
-
-					// Write the file
-					await fs.writeFile(newPath, data, function (err) {
-						if (err) throw err;
-					});
-
-					// Delete the file
-					await fs.unlink(oldPath, function (err) {
-						if (err) throw err;
-					});
-				});
+			await renameFiles(oldPath, newPath)
 
 			UploadedImages.push(newPath);
 
@@ -156,26 +158,13 @@ let placeAdvert = async (req, res) => {
 					newPath = dirname + '\\imageUploads\\' + files.uploaded[i].name;
 				}
 
-				await fs.readFile(oldPath, async function (err, data) {
-					if (err) throw err;
-					console.log('File read!');
-
-					// Write the file
-					await fs.writeFile(newPath, data, function (err) {
-						if (err) throw err;
-					});
-
-					// Delete the file
-					await fs.unlink(oldPath, function (err) {
-						if (err) throw err;
-					});
-				});
+				await renameFiles(oldPath, newPath);
 
 				UploadedImages.push(newPath);
 
 			}
 		}
-		
+
 		for(imgName in fields){
 			if(imgName.search('First_') !== -1){
 				let firstImg = imgName.slice(imgName.search('-') + 1, imgName.length);
@@ -224,7 +213,7 @@ let placeAdvert = async (req, res) => {
 		if(token){
 			jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
 				if(err){
-					return res.status(400).json({ err })
+					res.redirect('/');
 				}else{
 
 					let { email } = decodedToken;
@@ -278,7 +267,13 @@ let placeAdvert = async (req, res) => {
 }
 
 let placeAdvert_get = (req, res) => {
-	res.status(200).render('place-advert', { res, req });
+
+	Category_and_campus_col.find().then((result) => {
+		return res.status(200).render('place-advert', { res, req, result });
+	}).catch((err) => {
+		console.log(err);
+	});
+
 }
 
 let jsEnabledCheck = (req, res) => {

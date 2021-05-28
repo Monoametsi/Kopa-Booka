@@ -7,13 +7,11 @@ let files_Validator = (files) => {
 	if(files.uploaded.size === 0){
 
 		return [false, 'noFiles'];
-	
+
 	}else if(files.uploaded.length === undefined){
 
 		fileType = files.uploaded.type;
 		fileSize = files.uploaded.size;
-
-		// console.log(`fileType: ${ fileType }\n fileSize: ${ fileSize }`);
 
 		if(fileType != imgType[0] && fileType != imgType[1] && fileType != imgType[2]){
 			return [false, 'invalidExt'];
@@ -23,13 +21,11 @@ let files_Validator = (files) => {
 
 		}
 	}else if(files.uploaded.length >= 1 && files.uploaded.length <= 10){
-		
+
 		files.uploaded.map((file) => {
 
 			fileType = file.type;
 			fileSize = file.size;
-
-			// console.log(`fileType: ${ fileType }\n fileSize: ${ fileSize }`);
 
 			if(fileType != imgType[0] && fileType != imgType[1] && fileType != imgType[2]){
 				return [false, 'invalidExt'];

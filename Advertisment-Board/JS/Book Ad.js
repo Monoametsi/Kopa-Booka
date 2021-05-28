@@ -2,13 +2,11 @@
 let topNav = document.getElementById("Topnav");
 let scrollUp = window.pageYOffset;
 
-/*
 let num = document.getElementById('width-num');
 
 window.onresize = () => {
 	num.innerHTML = window.innerWidth;
 }
-*/
 
 let hideBar = function() {
     let scrollDown = window.pageYOffset;

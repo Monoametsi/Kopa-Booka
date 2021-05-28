@@ -21,8 +21,8 @@
 
   <section id="Search-results-cont">
 	
-	<% if(noAdsAvailable) {%>
-	  <div class="categories-cont closeList" id="categories-cont" style="width: 25rem;">
+	<% if(noAdsAvailable) { %>
+		<div class="categories-cont closeList" id="categories-cont" style="width: 25rem;">
 	<% }else { %>
 		<div class="categories-cont closeList" id="categories-cont">
 	<% } %>
@@ -137,24 +137,26 @@
 					<% } %>
 				
 					
-					<% if(businessCat) {%>
+					<% if(businessCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
 							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">College of Business and Economics</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
+
 						<ul class="department-list">
 
-					<% 
-					  for(i = 0; i < cat_camp_list.length; i++){
-						let { College_of_Business_and_Economics } = cat_camp_list[i];
-						categoryLister(College_of_Business_and_Economics);
-					
-					 for(catName in categoryLister(College_of_Business_and_Economics)){ %>
-						<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(College_of_Business_and_Economics)[catName] %></span></a></li>
-					<%}%>
-					
-				<%	}%>
+							<% 
+							  for(i = 0; i < cat_camp_list.length; i++){
+								let { College_of_Business_and_Economics } = cat_camp_list[i];
+								categoryLister(College_of_Business_and_Economics);
+							
+							 for(catName in categoryLister(College_of_Business_and_Economics)){ 
+							%>
+								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(College_of_Business_and_Economics)[catName] %></span></a></li>
+							<% }
+
+							} %>
 									
 							
 						</ul>
@@ -288,10 +290,10 @@
 						<%	} %>
 						</ul>
 					</li>
-				</ul>
 				<% } %>
+				</ul>
 				
-				<% if(campusCat) {%>
+				<% if(campusCat) { %>
 				<div class="category clicker">
 					<h4 class="arrow category-title"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Campus</span></h4>
 					<i class="fa fa-caret-down"></i>
@@ -306,9 +308,9 @@
 
 					 for(catName in categoryLister(Campus)){ %>
 						<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Campus)[catName] %></span></a></li>
-					<%}%>
+					<% }
 					
-				<%	} %>
+					} %>
 				</ul>
 				<% } %>
 				

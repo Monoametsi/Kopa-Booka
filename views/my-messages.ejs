@@ -160,11 +160,13 @@
 			
 				</tr>
 				
-				<% if(msg.length > 0){ %>
-					<% msg.map(displayMessages) %>
-				<% }else { %>
+				<% 
+				
+				if(msg.length > 0){ 
+					msg.map(displayMessages) 
+				}
 
-				<% } %>
+				 %>
 				
 			</table>
 			
@@ -235,7 +237,7 @@
 					<div class="info-message-cont">
 					  <div class="buyers-info">
 							<div> <i class="fa fa-user"></i> <span> <%= firstname %> </span> </div>
-							<% if(tel === "" || tel.length === 0 || tel === undefined) { %>
+							<% if(tel.trim() === "" || tel.trim().length === 0 || tel === undefined) { %>
 								<div class="white" style="display: none;"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
 							<% } else { %>
 								<div class="white"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
@@ -257,20 +259,11 @@
 					let {
 
 						_id,
-						Name,
-						Mail,
 						Tel,
 						Whatsapp_tel,
-						Main_Category,
-						Sub_Category,
 						Text_Book_Title,
-						Edition_Number,
-						Author_Name,
-						Condition,
 						Text_Book_Price,
-						Negotiation,
 						Description,
-						Campus,
 						Date_Created,
 						Date_Updated,
 						UploadedImages	
@@ -313,8 +306,7 @@
 									Created: <span><%= msgAdDateFormat %></span>
 								</div>
 
-								<% if(UpdatedMessageSentDate.search("undefined") !== -1){ %>
-								<% }else{ %>
+								<% if(UpdatedMessageSentDate.search("undefined") === -1){ %>
 								<div class="post-date">
 									Updated: <span><%= UpdatedMessageSentDate %></span>
 								</div>
@@ -323,14 +315,14 @@
 
 						</div>
 					</div>
-						
-			
 
 			</div>
 		</div>
 
 		
-	<%	}
+	<%	
+
+		}
 	
 	%>
 
@@ -341,8 +333,6 @@
 	<% msg.map(slideShowAds) %>
 
 </div>
-<% }else { %>
-
 <% } %>
 
 
