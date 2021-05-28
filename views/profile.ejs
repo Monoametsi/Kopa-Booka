@@ -35,7 +35,7 @@
 						</div>
 						<div class="nameAddress-details input">
 							<div class="inputlabel-cont">
-							<% if(Name === "") { %>
+							<% if(Name.trim() === "") { %>
 								<div class="label-cont">
 									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
 									<span class="validifier" id="first-name-Err"></span>
@@ -50,7 +50,7 @@
 							<% } %>
 							</div>
 							<div class="inputlabel-cont">
-							<% if(Surname === "") {%>
+							<% if(Surname.trim() === "") {%>
 								<div class="label-cont">
 									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
 									<span class="validifier" id="last-name-Err"></span>
@@ -67,7 +67,7 @@
 						</div>
 						<div class="number-details input">
 							<div class="inputlabel-cont">
-							<% if(Tel === "") {%>
+							<% if(Tel.trim() === "") {%>
 								<div class="label-cont">
 									<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
 									<span class="validifier" id="telNum-Err"></span>
@@ -81,76 +81,45 @@
 								<input type="tel" class="inputField-styling" placeholder="Mobile or telephone number..." value="<%= Tel %>" name="tel" id="telNum">
 							<% } %>
 							</div>
+							<% if(Campus.trim() === "select campus" || Campus.trim() === "") { %>
 							<div class="inputlabel-cont">
 								<div class="label-cont">
 									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
 									<span class="validifier" id="select-campus-Err"></span>
 								</div>
-							<% if(Campus === "select campus") {%>
+
 								<select name="campus" id="select-campus" >
 									<option value="select campus" selected>Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
+									<% categories.map((cat) => { %>
+									<%	cat.Campus.map((campus) => { %>
+											<option value="<%= campus.toLowerCase() %>" ><%= campus %></option>
+									<%	}); %>
+									<% }) %>
 								</select>
-							<% } else if(Campus === "any campus") {%>
-								<select name="campus" id="select-campus" >
-									<option value="select campus">Select campus</option>
-									<option value="any campus" selected>Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(Campus === "soweto campus") {%>
-								<select name="campus" id="select-campus" >
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus" selected>Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% }  else if(Campus === "bunting campus") {%>
-								<select name="campus" id="select-campus" >
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus" selected>Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(Campus === "auckland park campus") {%>
-								<select name="campus" id="select-campus" >
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus" selected>Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% }  else if(Campus === "doornfontein campus") {%>
-								<select name="campus" id="select-campus" >
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus" selected>Doornfontein campus</option>
-								</select>
-							<% } else { %>
-								<select name="campus" id="select-campus" >
-									<option value="select campus" selected>Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } %>
+
 							</div>
+							<% }else { %>
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
+									<span class="validifier" id="select-campus-Err"></span>
+								</div>
+
+								<select name="campus" id="select-campus" >
+									<option value="select campus" selected>Select campus</option>
+									<% categories.map((cat) => { %>
+									<%	cat.Campus.map((campus) => { %>
+										<% if(Campus.toLowerCase() === campus.toLowerCase()){ %>
+												<option value="<%= campus.toLowerCase() %>" selected><%= campus %></option>
+										<% 	}else { %>
+												<option value="<%= campus.toLowerCase() %>"><%= campus %></option>
+									<% } %>
+									<%	}); %>
+									<% }) %>
+								</select>
+
+							</div>
+							<% } %>
 						</div>
 						<div class="sub-cont">
 							<input type="submit" id="submit-update" class="sub" value="Update Profile">

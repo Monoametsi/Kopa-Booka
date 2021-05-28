@@ -27,7 +27,6 @@
 			<h1 class="regMobile-title">Register Your Account<br>Today</h1>
 		</div>
 	</section>
-	<% let { email, password, passConfirmation } = json; %>
 
 	<% if(alreadyExists) {%>
 		<div class="registered-cont">
@@ -37,8 +36,6 @@
 			   </span>
 			</div>
 		</div>
-	<% } else { %>
-		
 	<% } %>
 
 	<section id="register-form">
@@ -52,16 +49,16 @@
 
 				<form action="/register" method="POST" class="form">
 					<div class="inputField-cont">
-					<% if(email === "" || email === undefined || email === null || email.length === 0) { %>
+					<% if(mail === "" || mail === undefined || mail === null || mail.length === 0) { %>
 						<div class="label-cont">
 							<label for="email" class="label">Email <span class="required">*</span></label>
-							<label for="email" class="validifier" style="display: flex;">Required</label>
+							<label for="email" class="validifier" style="display: flex;" id="mailErr">Required</label>
 						</div>
 						<input type="email" name="email" id="Usersemail" class="inputField-styling redBox" placeholder="Insert email address...">
 					<% } else if(emailRegexChecks.emailRegEx === false){ %>
 						<div class="label-cont">
 							<label for="email" class="label">Email <span class="required">*</span></label>
-							<label for="email" class="validifier" style="display: flex;">Invalid Email</label>
+							<label for="email" class="validifier" style="display: flex;" id="mailErr">Invalid Email</label>
 						</div>
 						<input type="email" name="email" id="Usersemail" class="inputField-styling redBox" placeholder="Insert email address...">
 					<% } else { %>

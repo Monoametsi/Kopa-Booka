@@ -1,4 +1,3 @@
-const ejs = require('ejs');
 const registration = require('./registration');
 const validator = require('./validator');
 const emailVerification = require('./emailVerification');
@@ -13,14 +12,20 @@ let Register = async (req, res) => {
 	let json = req.body;
 	let { email, password, passConfirmation } = json;
 
+	let mail = email.trim();
+
+	let pwd = password.trim();
+
+	let pwdConf = passConfirmation.trim();
+
 	let validationPasswordChecks = {
-		findEmpty: password === '' || password === undefined || password === null,
-		findLength: (!(password.length >= 7) || !(password.length <= 16)),
-		findUpperCase: password.search(/[A-Z]/) === -1,
-		findLowerCase: password.search(/[a-z]/) === -1,
-		findSpecialChar: password.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/) === -1,
-		findDigit: password.search(/[0-9]/) === -1,
-		findMatch: password !== passConfirmation
+		findEmpty: pwd === '' || pwd === undefined || pwd === null || pwd.length === 0,
+		findLength: (!(pwd.length >= 7) || !(pwd.length <= 16)),
+		findUpperCase: pwd.search(/[A-Z]/) === -1,
+		findLowerCase: pwd.search(/[a-z]/) === -1,
+		findSpecialChar: pwd.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/) === -1,
+		findDigit: pwd.search(/[0-9]/) === -1,
+		findMatch: pwd !== pwdConf
 	}
 
 	let validationEmailChecks = {
@@ -30,16 +35,16 @@ let Register = async (req, res) => {
 	}
 
 	let emailRegexChecks = {
-		emailRegEx: validationEmailChecks.emailOneDot.test(email) || validationEmailChecks.emailTwoDots.test(email) || validationEmailChecks.emailThreeDots.test(email)
+		emailRegEx: validationEmailChecks.emailOneDot.test(mail) || validationEmailChecks.emailTwoDots.test(mail) || validationEmailChecks.emailThreeDots.test(mail)
 	}
 	
 	let salt = await bcrypt.genSalt();
 	
-	let pass = await bcrypt.hash(password, salt);
+	let pass = await bcrypt.hash(pwd, salt);
 
 	let newEntry = {
 		UserId: uuid.v4().slice(0, uuid.v4().search("-")),
-		Email: email,
+		Email: mail,
 		Password: pass,
 		isVerified: false,
 		My_Ads: [],
@@ -55,13 +60,13 @@ let Register = async (req, res) => {
 	let alreadyExists;
 
 	let emailMatcher = (not) => {
-		return not.Email === email;
+		return not.Email === mail;
 	}
 
 	Users.find().then((result) => {
 
-		if(passwordEmailValidation(password, passConfirmation) === false || emailValidation(email) === false){
-			return res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json, alreadyExists });
+		if(passwordEmailValidation(pwd, pwdConf) === false || emailValidation(mail) === false){
+			return res.render('register', { emailMatcher, validationPasswordChecks, emailRegexChecks, mail, alreadyExists });
 
 		}else{
 			if(Boolean(result.find(emailMatcher)) !== true){
@@ -80,12 +85,12 @@ let Register = async (req, res) => {
 				});
 
 				user.save().then( async () => {
-					await mailDeliverer(email, res);
+					await mailDeliverer(mail, res);
 				});
 
 			}else{
 				alreadyExists = true;
-				res.render('register', { result, Users, emailMatcher, validationPasswordChecks, emailRegexChecks, json, alreadyExists });
+				return res.render('register', { emailMatcher, validationPasswordChecks, emailRegexChecks, mail, alreadyExists });
 			}
 		}
 

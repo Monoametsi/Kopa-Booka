@@ -17,21 +17,21 @@ let token_verifier = async (req, res) => {
 				let { email } = decodedToken;
 
 				let emailMatcher = (not) => {
-					return not.Email === email;
+					return not.Email === email.trim();
 				}
 
 		await	Users.find().then( async (result) => {
 					if(Boolean(result.find(emailMatcher)) === true){
-						let moveObject = (email, res) => {
-						let myquery = { Email: email };
-						let newvalues = { $set: { isVerified: true } };
+						let moveObject = (res) => {
+							let myquery = { Email: email.trim() };
+							let newvalues = { $set: { isVerified: true } };
 
-						Users.updateOne(myquery, newvalues, (err, res) => {
-								if(err) throw err;
+							Users.updateOne(myquery, newvalues, (err, res) => {
+									if(err) throw err;
 							});
 						}
 
-						await moveObject(email);
+						await moveObject();
 						return res.redirect('/verify-account-success');
 					}else{
 						return res.redirect('/token-not-found');

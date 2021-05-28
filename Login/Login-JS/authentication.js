@@ -10,7 +10,7 @@ mail.oninput =	function (){
 }
 
 function emailValidator(){
-	let emailVal = mail.value;
+	let emailVal = mail.value.trim();
 
 	let mailErr = document.getElementById('mailErr');
 
@@ -33,7 +33,7 @@ pwd.oninput = function (){
 }
 
 function passwordValidation(){
-	let pwdVal = pwd.value;
+	let pwdVal = pwd.value.trim();
 
 	let pwdErr = document.getElementById('passwordErr');
 	
@@ -52,7 +52,9 @@ function passwordValidation(){
 
 //Submit Validator
 subBtn.onclick = () => {
-	let checkedBox = check.checked;
+	// let checkedBox = check.checked;
+	emailValidator();
+	passwordValidation();
 
 	if(emailValidator() === false){
 		return emailValidator();

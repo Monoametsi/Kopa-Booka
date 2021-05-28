@@ -27,6 +27,7 @@ adCounterBtn.onclick = () => {
 	
 }
 
+//Counting number of ads
 function defaultAdNum(){
 	if(adTitle.length <= 1){
 		numOfAds.innerHTML = `${ adTitle.length } Ad`;
@@ -37,29 +38,31 @@ function defaultAdNum(){
 
 defaultAdNum();
 
+//Search ad system
 function searchAdSystem(){
 	let num = 0;
-	let x = [];
-	
-	if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null){
+	let hiddenAds = [];
+
+	if(searchAd.value.trim() === "" || searchAd.trim().value.length === 0 || searchAd.value === null || searchAd.value === undefined){
 		noPostFoundTitle.innerHTML = `You do not have any ads.`;
 	}else{
 		noPostFoundTitle.innerHTML = `No Ads found`; 
 	}
+
 	for(let i = 0; i < adTitle.length; i++){
 		
 		let adBox = adTitle[i].parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
 
-		if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null){
+		if(searchAd.value === "" || searchAd.value.length === 0 || searchAd.value === null || searchAd.value === undefined){
 			num++ 
 			
 			adBox.style.display = 'flex';
 			if(num <= 1){
-				numOfAds.innerHTML = `${num} Ad`;
+				numOfAds.innerHTML = `${ num } Ad`;
 			}else{
-				numOfAds.innerHTML = `${num} Ads`;
+				numOfAds.innerHTML = `${ num } Ads`;
 			}
-		} else if(searchAd.value === adTitle[i].innerText.trim()){
+		} else if(searchAd.value.trim() === adTitle[i].innerText.trim()){
 			num++
 			adBox.style.display = 'flex';
 			if(num <= 1){
@@ -71,13 +74,12 @@ function searchAdSystem(){
 			adBox.style.display = 'none';
 		}
 		
-		
 		if(window.getComputedStyle(adBox, null).display === 'none'){
-			x.push(adBox);
+			hiddenAds.push(adBox);
 		}
 
-		if(x.length === adTitle.length){
-			numOfAds.innerHTML = `${num} Ad`;
+		if(hiddenAds.length === adTitle.length){
+			numOfAds.innerHTML = `${ num } Ad`;
 			noAdsFound.style.display = 'flex';
 		}else{
 			noAdsFound.style.display = 'none';
@@ -102,14 +104,14 @@ let deleteAllCheckBox = document.getElementById('checkbox');
 let adCheckBoxes = document.getElementsByClassName('post-checkbox');
 
 deleteAllCheckBox.onclick = () => {
-	
+
 	for(let i = 0; i < adCheckBoxes.length; i++){
-			if(deleteAllCheckBox.checked){
-				adCheckBoxes[i].checked = true;
-		
-			}else{
-				adCheckBoxes[i].checked = false;
-			}
+		if(deleteAllCheckBox.checked){
+			adCheckBoxes[i].checked = true;
+
+		}else{
+			adCheckBoxes[i].checked = false;
+		}
 	}
 }
 
@@ -118,10 +120,10 @@ let deletededElements = [];
 
 deleteSelectedAds.onclick = () => {
 	
-	let x = Array.from(adCheckBoxes);
+	let checkboxArr = Array.from(adCheckBoxes);
 	let num = 0;
 
-	x.map((ad) => {
+	checkboxArr.map((ad) => {
 
 		let adBox = ad.parentElement.parentElement.parentElement.parentElement;
 
@@ -133,13 +135,13 @@ deleteSelectedAds.onclick = () => {
 
 			if(num <= 1){
 				numOfAds.innerHTML = `${ num } Ad`;
-			}else if(num === x.length){
+			}else if(num === checkboxArr.length){
 				numOfAds.innerHTML = `0 Ad`;
 			}else{
 				numOfAds.innerHTML = `${ num } Ads`;
 			}
 
-			if(num === x.length || (num === adTitle.length  && searchAd.value.length > 0)){
+			if(num === checkboxArr.length || (num === adTitle.length  && searchAd.value.length > 0)){
 				numOfAds.innerHTML = `0 Ad`;
 				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
 				noAdsFound.style.display = 'flex';
@@ -169,8 +171,11 @@ let singleAdDeleter = () => {
 		let num = 0;
 		let total = singleAdDelete.length;
 		let outcome;
+
 		for(let i = 0; i < singleAdDelete.length; i++){
+
 		outcome = singleAdDelete[i].parentElement.parentElement.parentElement.parentElement;
+
 		singleAdDelete[i].onclick = function(){
 			num++;
 			let adBox = this.parentElement.parentElement.parentElement.parentElement;

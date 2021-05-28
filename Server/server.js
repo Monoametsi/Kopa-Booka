@@ -65,6 +65,7 @@ const { reset_password_post, reset_password_get, reset_password_confirmation, re
 const { contact_us_get, contact_us_post, contact_us_success, contact_us_failure } = contactUs;
 //module functions
 
+
 const dotenv = require('dotenv');
 
 app.disable('etag');
@@ -144,9 +145,9 @@ app.post('/return-url?', messageOfInterest);
 //Search Results
 
 //View-ad
+
 app.get('/view-ad/:id', checkCurrentUser, viewAd);
 
-// app.get('/clicked/:id', checkCurrentUser, clicked);
 //View-ad
 
 //About-Us

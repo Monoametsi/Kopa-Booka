@@ -8,7 +8,6 @@
 		justify-content: stretch;
 		flex-direction: column;
 	}
-	
 	.number-details{
 		display: flex;
 		flex-direction: column;
@@ -22,6 +21,14 @@
 		margin-bottom: 0;
 	}
 	
+	.inputlabel-cont, .changepass-cont > .inputlabel-cont{
+		margin-bottom: 8px;
+	}
+	
+	.sub-cont{
+		margin-top: 1.8rem;
+	}
+	
 	.formPassword{
 		width: 100%;
 	}
@@ -33,7 +40,7 @@
 	
 @media screen and (max-width: 1100px){
 
-	.form{
+	.form, .formPassword{
 		width: 80%;
 	}
 }
@@ -43,24 +50,25 @@
 		margin-right: 1.5rem;
 		margin-left: 1.5rem;
 	}
-	
+
 	.profile-contact{
 		flex-direction: column;
 	}
-	
+
 	.change-password{
 		max-height: 100%;
 	}
-	
+
 	.form{
 		width: 100%;
 		margin: 0;
-		margin-bottom: 2rem;
+		margin-bottom: 3rem;
 	}
 	
 	.formPassword{
+		width: 100%;
 		margin: 0;
-		margin: 0;
+		margin-bottom: 4rem;
 		margin-left: 0;
 	}
 

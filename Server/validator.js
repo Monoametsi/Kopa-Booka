@@ -5,7 +5,7 @@ let passwordEmailValidation = (pwdVal, passConfVal) => {
 	let findSpecialChar = pwdVal.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/);
 	let findDigit = pwdVal.search(/[0-9]/);
 
-	if(pwdVal === ''){
+	if(pwdVal === '' || pwdVal === undefined || pwdVal === null || pwdVal.length === 0){
 		return false;
 		
 	}else if(!(pwdVal.length >= 7) || !(pwdVal.length <= 16)){

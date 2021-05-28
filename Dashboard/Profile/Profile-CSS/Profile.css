@@ -209,22 +209,10 @@ select:focus{
 .validifier{
 	display: none;
 	background-color: red;
+	font-size: 14px;
 	font-weight: 600;
 	font-family: montserrat, sans-serif;
-	padding: 0 8px;
-	border-radius: 3px;
-	animation-name: smooth-appearance;
-	animation-duration: 0.3s;
-	color: #fff;
-	white-space: nowrap;
-}
-
-.ejs-validifier{
-	display: flex;
-	background-color: red;
-	font-weight: 600;
-	font-family: montserrat, sans-serif;
-	padding: 0 8px;
+	padding: 0 4px;
 	border-radius: 3px;
 	animation-name: smooth-appearance;
 	animation-duration: 0.3s;

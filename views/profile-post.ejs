@@ -49,7 +49,7 @@
 						</div>
 						<div class="nameAddress-details input">
 							<div class="inputlabel-cont">
-							<% if(name === "" || name === undefined || name === null || name.length === 0) {%>
+							<% if(name.trim() === "" || name === undefined || name === null || name.trim().length === 0) {%>
 								<div class="label-cont">
 									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
 									<span class="validifier" id="first-name-Err" style="display: flex;">Required</span>
@@ -60,11 +60,11 @@
 									<label for="first-name" class="label">Name <span class="required">*</span></label></label>
 									<span class="validifier" id="first-name-Err"></span>
 								</div>
-								<input type="text" class="inputField-styling" placeholder="Enter your name..." value="<%= name %>"  name="name" id="first-name">
+								<input type="text" class="inputField-styling" placeholder="Enter your name..." value="<%= name.trim() %>"  name="name" id="first-name">
 							<% } %>
 							</div>
 							<div class="inputlabel-cont">
-							<% if(surname === "" || surname === undefined || surname === null) {%>
+							<% if(surname.trim() === "" || surname === undefined || surname === null || surname.trim().length === 0) {%>
 								<div class="label-cont">
 									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
 									<span class="validifier" id="last-name-Err" style="display: flex;">Required</span>
@@ -76,10 +76,11 @@
 									<label for="last-name" class="label">Surname <span class="required">*</span></label></label>
 									<span class="validifier" id="last-name-Err"></span>
 								</div>
-								<input type="text" class="inputField-styling" placeholder="Enter your surname..." value="<%= surname %>"  name="surname" id="last-name">
+								<input type="text" class="inputField-styling" placeholder="Enter your surname..." value="<%= surname.trim() %>"  name="surname" id="last-name">
 							<% } %>
 							</div>
 						</div>
+
 						<div class="number-details input">
 							<div class="inputlabel-cont">
 						<% if(contactValCheck.findEmpty) {%>
@@ -93,117 +94,63 @@
 								<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
 								<span class="validifier" id="telNum-Err"></span>
 							</div>
-							<input type="tel" class="inputField-styling" placeholder="Mobile or telephone number..." value="<%= tel %>"  name="tel" id="telNum">
+							<input type="tel" class="inputField-styling" placeholder="Mobile or telephone number..." value="<%= tel.trim() %>"  name="tel" id="telNum">
 						<% } else { %>
 							<div class="label-cont">
 								<label for="telNum" class="label">Phone Number <span class="required">*</span></label>
 								<span class="validifier" id="telNum-Err" style="display: flex;">Invalid</span>
 							</div>
-							<input type="tel" class="inputField-styling redBox" placeholder="Mobile or telephone number..." name="tel" id="telNum">
+							<input type="tel" class="inputField-styling redBox" placeholder="Mobile or telephone number..." value="<%= tel.trim() %>"  name="tel" id="telNum">
 						<% } %>
 							</div>
+
+							<% if(campus === "select campus") { %>
 							<div class="inputlabel-cont">
-							<% if(campus === "select campus") {%>
 								<div class="label-cont">
 									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
 									<span class="validifier" id="select-campus-Err" style="display: flex;">Required</span>
 								</div>
 								<select name="campus" id="select-campus" class="redBox">
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(campus === "any campus"){ %>
-								<div class="label-cont">
-									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err"></span>
-								</div>
-								<select name="campus" id="select-campus">
-									<option value="select campus">Select campus</option>
-									<option value="any campus" selected>Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(campus === "soweto campus"){ %>
-								<div class="label-cont">
-									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err"></span>
-								</div>
-								<select name="campus" id="select-campus">
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus" selected>Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(campus === "bunting campus"){ %>
-								<div class="label-cont">
-									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err"></span>
-								</div>
-								<select name="campus" id="select-campus">
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus" selected>Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(campus === "auckland park campus"){ %>
-								<div class="label-cont">
-									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err"></span>
-								</div>
-								<select name="campus" id="select-campus">
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus" selected>Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
-								</select>
-							<% } else if(campus === "doornfontein campus"){ %>
-								<div class="label-cont">
-									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err"></span>
-								</div>
-								<select name="campus" id="select-campus">
-									<option value="select campus">Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus" selected>Doornfontein campus</option>
-								</select>
-							<% } else{ %>
-								<div class="label-cont">
-									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
-									<span class="validifier" id="select-campus-Err" style="display: flex;">Required</span>
-								</div>
-								<select name="campus" id="select-campus">
 									<option value="select campus" selected>Select campus</option>
-									<option value="any campus">Any campus</option>
-									<option value="soweto campus">Soweto campus</option>
-									<option value="bunting campus">Bunting campus</option>
-									<option value="auckland park campus">Auckland park campus</option>
-									<option value="doornfontein campus">Doornfontein campus</option>
+								<% categories.map((cat) => { %>
+									<%	cat.Campus.map((Campus) => { %>
+											<option value="<%= Campus.toLowerCase() %>" ><%= Campus %></option>
+									<%	}); %>
+									<% }) %>
 								</select>
-							<% } %>
+
 							</div>
+							<% }else { %>
+							<div class="inputlabel-cont">
+								<div class="label-cont">
+									<label for="select-campus" class="label">Campus where you sell at <span class="required">*</span></label>
+									<span class="validifier" id="select-campus-Err"></span>
+								</div>
+								<select name="campus" id="select-campus">
+									<option value="select campus">Select campus</option>
+								<% categories.map((cat) => { %>
+									<%	cat.Campus.map((Campus) => { %>
+										<% if(campus.toLowerCase() === Campus.toLowerCase()){ %>
+												
+												<option value="<%= Campus.toLowerCase() %>" selected><%= Campus %></option>
+										<% 	}else { %>
+												<option value="<%= Campus.toLowerCase() %>"><%= Campus %></option>
+									<% } %>
+									<%	}); %>
+									<% }) %>
+								</select>
+							
+							</div>
+							<% } %>
 						</div>
+
 						<div class="sub-cont">
 							<input type="submit" id="submit-update" class="sub" value="Update Profile">
 						</div>
 					</div>
 				</form>
 
-				<form  method="POST" action="/password" class="formPassword">
+				<form method="POST" action="/password" class="formPassword">
 					<div class="change-password">
 						<div class="changepass-header">
 							<h1 class="changepass-title">Change Password</h1>

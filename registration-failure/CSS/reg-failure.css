@@ -128,9 +128,11 @@ label{
 	align-items: center;
 	justify-content: center;
 	background-color: red;
+	font-size: 14px;
 	font-weight: 600;
 	font-family: montserrat, sans-serif;
 	padding: 0 3px;
+	margin-right: 2.5px;
 	border-radius: 3px;
 	animation-name: smooth-appearance;
 	animation-duration: 0.3s;

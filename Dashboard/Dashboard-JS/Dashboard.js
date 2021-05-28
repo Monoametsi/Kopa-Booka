@@ -49,7 +49,6 @@ scrollTop.onclick = function(){
 	function scrollTopper(){
 		if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
 				window.scrollBy(0, pageLengthCounter--);
-					console.log(pageLengthCounter);
 		}else{
 			clearInterval(scrollTopperInterval);
 		}
@@ -88,26 +87,31 @@ let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
 	let divisionList = list.parentElement.nextElementSibling;
-	console.log(divisionList);
+
 	let divisionList2 = divisionList.nextElementSibling;
 	let divisionList3 = divisionList2.children[1].children[1];
-	console.log(divisionList3);
 	
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
 		divisionList2.style.maxHeight = null;
-		divisionList3.style.maxHeight = null;
+		if(divisionList3 !== undefined){
+			divisionList3.style.maxHeight = null;
+			divisionList3.style.transition = '.3s'
+		}
+		
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
-        divisionList3.style.transition = '.3s'
+        
 
 	}else{
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
 		divisionList2.style.maxHeight = divisionList2.scrollHeight  + 'px';
-		divisionList3.style.transition = '.3s';
-    	divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		if(divisionList3 !== undefined){
+			divisionList3.style.transition = '.3s';
+			divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		}
 	}
 }
 
@@ -127,18 +131,23 @@ let menuCollapser = () => {
     }
 }
 
-roundIcon.onclick = () => {
-    menuCollapser();
+if(roundIcon !== null){
+	roundIcon.onclick = () => {
+		menuCollapser();
+	}
 }
 
 window.onclick = (event) => {
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
-	let displayValue = window.getComputedStyle(loginMenu, null).display;
-	if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
-		arrower.classList.remove('rotater');
-		dashboardMenu.style.maxHeight = null;
-		dashboardMenu.style.transition = '.3s';
-		naver.style.maxHeight = null;
-		naver.style.transition = '.3s';
+	
+	if(loginMenu !== undefined){
+		let displayValue = window.getComputedStyle(loginMenu, null).display;
+		if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
+			arrower.classList.remove('rotater');
+			dashboardMenu.style.maxHeight = null;
+			dashboardMenu.style.transition = '.3s';
+			naver.style.maxHeight = null;
+			naver.style.transition = '.3s';
+		}
 	}
 }

@@ -6,6 +6,8 @@ const contactValChecker = require('./contactValCheck');
 const { phoneNumFormats, telNumFormats } = contactValChecker;
 const { titleSelectValidator, contactNumValidator } = profileUpadeFormVal;
 const bcrypt = require('bcryptjs');
+const catAndCamp = require('./category-db');
+const { Category_and_campus_col } = catAndCamp;
 const user = require('./mongo_db');
 const { Users } = user;
 
@@ -17,29 +19,29 @@ let profileUpdater = (req, res) => {
 	let { name, surname, tel, campus } = formData;
 	
 	let phoneNumFormatTests = {
-	   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel),
-	   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel),
-	   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel),
-	   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel),
-	   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel),
-	   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel),
-	   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel),
-	   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel),
-	   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel)
+	   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel.trim()),
+	   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel.trim()),
+	   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel.trim()),
+	   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel.trim()),
+	   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel.trim()),
+	   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel.trim()),
+	   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel.trim()),
+	   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel.trim()),
+	   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel.trim())
 	}
 
 	let telNumFormatTests = {
-	   telZeroOneTest : telNumFormats.telZeroOne.test(tel),
-	   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel),
-	   telZeroThreeTest : telNumFormats.telZeroThree.test(tel),
-	   telZeroFourTest : telNumFormats.telZeroFour.test(tel),
-	   telZeroFiveTest : telNumFormats.telZeroFive.test(tel)
+	   telZeroOneTest : telNumFormats.telZeroOne.test(tel.trim()),
+	   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel.trim()),
+	   telZeroThreeTest : telNumFormats.telZeroThree.test(tel.trim()),
+	   telZeroFourTest : telNumFormats.telZeroFour.test(tel.trim()),
+	   telZeroFiveTest : telNumFormats.telZeroFive.test(tel.trim())
 	}
 
 	let numRegexChecks = {
 	   zeroSixFormatTest : phoneNumFormatTests.sixZeroFormatTest || phoneNumFormatTests.sixOneFormatTest|| phoneNumFormatTests.sixTwoFormatTest || phoneNumFormatTests.sixThreeFormatTest || phoneNumFormatTests.sixFourFormatTest || phoneNumFormatTests.sixFiveFormatTest || phoneNumFormatTests.sixSixFormatTest || phoneNumFormatTests.sixSevenFormatTest || phoneNumFormatTests.sixEightFormatTest,
-	   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel),
-	   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel),
+	   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel.trim()),
+	   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel.trim()),
 	   telFormats : telNumFormatTests.telZeroOneTest || telNumFormatTests.telZeroTwoTest || telNumFormatTests.telZeroThreeTest || telNumFormatTests.telZeroFourTest || telNumFormatTests.telZeroFiveTest
 	}
 
@@ -47,74 +49,91 @@ let profileUpdater = (req, res) => {
 
 	   allNumFormatTest : numRegexChecks.zeroSixFormatTest || numRegexChecks.sevenFormatTest || numRegexChecks.eightFormatTest || numRegexChecks.telFormats,
 
-	   findEmpty : tel === '' || tel === undefined || tel === null
+	   findEmpty : tel.trim() === '' || tel === undefined || tel === null || tel.trim().length === 0
 	}
-	
+
 	let success;
-
-	if(titleSelectValidator(name, surname, campus) === false || contactNumValidator(tel) === false){
-		res.status(200).render('profile-post', { success, formData,  contactValCheck });
-	}else{
-
-		if(token){
-			jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
-				if(err){
-					return res.status(400).json({ err });
-				}else{
+	
+	Category_and_campus_col.find().then((categories) => {
 		
-					let { email } = decodedToken;
+		if(titleSelectValidator(name.trim(), surname.trim(), campus.trim()) === false || contactNumValidator(tel.trim()) === false){
 
-					let updateUserProfile = (email, res) => {
-						let myquery = { Email: email };
-						let newvalues = { $set: { Name: name, Surname: surname, Tel: tel, Campus: campus } };
-
-						Users.updateOne(myquery, newvalues, (err, res) => {
-							if(err) throw err;
-						});
-					}
-
-					let success = true;
-					await updateUserProfile(email);
-					res.status(200).render('profile-post', { success, formData,  contactValCheck });
-
-				}
-			});
+			return res.status(200).render('profile-post', { success, formData,  contactValCheck, categories });
+		
 		}else{
-			return res.status(401).json({error: 'There\'s a problem'})
+
+			if(token){
+				jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
+					if(err){
+						return res.redirect('/');
+					}else{
+			
+						let { email } = decodedToken;
+
+						let updateUserProfile = (res) => {
+							let myquery = { Email: email.trim() };
+							let newvalues = { $set: { Name: name.trim(), Surname: surname.trim(), Tel: tel.trim(), Campus: campus.trim() } };
+
+							Users.updateOne(myquery, newvalues, (err, res) => {
+								if(err) throw err;
+							});
+						}
+
+						let success = true;
+						
+						await updateUserProfile();
+						
+						return res.status(200).render('profile-post', { success, formData,  contactValCheck, categories });
+
+					}
+				});
+			}else{
+				return res.redirect('/');
+			}
 		}
-	}
+	
+	}).catch((err) => { 
+		console.log(err); 
+	})
+
 }
 
 let getProfileUpdate = async (req, res) => {
 	
 	let token = req.cookies.token;
 	
-	if(token){
-		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
-			if(err){
-				return res.status(400).json({ err });
-			}else{
+	Category_and_campus_col.find().then((categories) => {
 
-				let { email } = decodedToken;
+		if(token){
+			jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
+				if(err){
+					return res.redirect('/');
+				}else{
 
-				await Users.find().then( async (result) => {
-					for(let i = 0, len = result.length; i < len; i++){
-						emailMatcher = result[i].Email === email;
+					let { email } = decodedToken;
 
-						if(emailMatcher){
-							let { Name, Surname, Tel, Campus } = result[i];
+					await Users.find().then( async (result) => {
+						for(let i = 0, len = result.length; i < len; i++){
+							emailMatcher = result[i].Email === email;
 
-							res.status(200).render('profile', { Name, Surname, Tel, Campus });
+							if(emailMatcher){
+								let { Name, Surname, Tel, Campus } = result[i];
+
+								res.status(200).render('profile', { Name, Surname, Tel, Campus, categories });
+							}
 						}
-					}
-				}).catch((err) => {
-					console.log(err);
-				})
-			}
-		});
-	}else{
-		return res.status(401).json({error: 'There\'s a problem'})
-	}
+					}).catch((err) => {
+						console.log(err);
+					})
+				}
+			});
+		}else{
+			return res.redirect('/');
+		}
+
+	}).catch((err) => { 
+		console.log(err) 
+	})
 
 }
 

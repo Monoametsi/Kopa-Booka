@@ -10,7 +10,7 @@ let my_Ads = (req, res) => {
 	if(token){
 		jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, decodedToken) => {
 			if(err){
-				return res.status(400).json({ err })
+				return res.redirect('/');
 			}else{
 
 				let { email } = decodedToken;
@@ -37,7 +37,7 @@ let my_Ads = (req, res) => {
 			}
 		});
 	}else{
-		res.redirect('/');
+		return res.redirect('/');
 	}
 }
 

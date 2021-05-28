@@ -12,7 +12,7 @@ let messageOfInterest = async (req, res) => {
 	let formData = req.body;
 	let date = new Date();
 	let msgId = uuid.v4();
-	
+
 	let {
 	  firstname,
 	  tel,
@@ -20,7 +20,7 @@ let messageOfInterest = async (req, res) => {
 	  Post_Id,
 	  subject 
 	} = formData;
-	
+
 	let findIndex = (ads) => {
 		return ads._id === Post_Id;
 	}
@@ -34,11 +34,13 @@ let messageOfInterest = async (req, res) => {
 	  subject,
 	  date_created: date
 	}
-	
+
 	if(nameValidator(firstname, subject) === false || emailValidator(email) === false || contactUsNumValidator(tel) === false){
+
 		for(formUrl in req.query){
 			res.redirect(`/${ formUrl }`);
 		}
+
 	}else{
 	
 		await Users.find().then((result) => {
@@ -75,6 +77,7 @@ let messageOfInterest = async (req, res) => {
 		for(formUrl in req.query){
 			res.redirect(`/${ formUrl }`);
 		}
+
 	}
 }
 

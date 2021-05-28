@@ -7,7 +7,7 @@ emailInputField.oninput = () => {
 }
 
 function emailValidation(){
-	let emailInputFieldVal = emailInputField.value;
+	let emailInputFieldVal = emailInputField.value.trim();
 	let emailOneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
 	let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 	let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
@@ -33,9 +33,9 @@ let subBtn = document.getElementById('submit');
 
 subBtn.onclick = () => {
 	emailValidation();
+
 	if(emailValidation() === false){
-		emailValidation();
-		return false;
+		return emailValidation();
 	}else{
 		return true;
 	}

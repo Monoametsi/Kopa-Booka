@@ -12,16 +12,16 @@ passConfirm.oninput = () => {
 }
 
 function passwordValidation(){
-	let pwdVal = pwd.value;
-	let passConfVal = passConfirm.value;
+	let pwdVal = pwd.value.trim();
+	let passConfVal = passConfirm.value.trim();
 	let pwdErr = document.getElementById('passwordErr');
 	let passConfErr = document.getElementById('passConfErr');
 	let findUpperCase = pwdVal.search(/[A-Z]/);
 	let findLowerCase = pwdVal.search(/[a-z]/);
 	let findSpecialChar = pwdVal.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/);
 	let findDigit = pwdVal.search(/[0-9]/);
-	
-	if(pwdVal === '' || pwdVal === undefined || pwdVal === null){
+
+	if(pwdVal === '' || pwdVal === undefined || pwdVal === null || pwdVal.length === 0){
 		pwdErr.style.display = 'flex';
 		pwd.classList.add('redBox');
 		pwdErr.innerText = 'Required';
@@ -65,8 +65,8 @@ function passwordValidation(){
 }
 
 function passwordCofirmation(){
-	let pwdVal = pwd.value;
-	let passConfVal = passConfirm.value;
+	let pwdVal = pwd.value.trim();
+	let passConfVal = passConfirm.value.trim();
 	let pwdErr = document.getElementById('passwordErr');
 	let passConfErr = document.getElementById('passConfErr');
 	
@@ -85,7 +85,7 @@ function passwordCofirmation(){
 //Email address validation
 let emailField = document.getElementById('Usersemail');
 
-emailField.oninput =	() => {
+emailField.oninput = () => {
 	emailValidation();
 }
 
@@ -94,14 +94,14 @@ emailField.oninput = function(){
 }
 
 function emailValidation(){
-	let emailFieldVal = emailField.value;
+	let emailFieldVal = emailField.value.trim();
 	let emailErr = document.getElementById('mailErr');
 	let emailOneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
 	let emailTwoDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 	let emailThreeDots = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 	let emailRegEx = emailOneDot.test(emailFieldVal) || emailTwoDots.test(emailFieldVal) || emailThreeDots.test(emailFieldVal);
 
-	if(emailFieldVal === '' || emailFieldVal === undefined){
+	if(emailFieldVal === '' || emailFieldVal.length === 0 || emailFieldVal === undefined || emailFieldVal === null){
 		emailErr.style.display = 'flex';
 		emailErr.innerHTML = 'Required';
 		emailField.classList.add('redBox');
@@ -122,6 +122,7 @@ function emailValidation(){
 
 //Submit validation 
 let subBtn = document.getElementById('sub');
+
 subBtn.onclick = () => {
 	emailValidation();
 	passwordValidation();

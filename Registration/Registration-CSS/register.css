@@ -77,11 +77,6 @@ a{
 	border-bottom: 1px solid transparent;
 }
 
-.ejs-validifier{
-	padding: 3px;
-	font-weight: 300;
-}
-
 .regMobile-title{
 	font-size: 2.8rem;
 	line-height: 3rem;
@@ -127,18 +122,6 @@ a{
 
 .validifier{
 	display: none;
-	background-color: red;
-	font-weight: 600;
-	font-family: montserrat, sans-serif;
-	padding: 0 8px;
-	border-radius: 3px;
-	animation-name: smooth-appearance;
-	animation-duration: 0.3s;
-	color: #fff;
-}
-
-.ejs-validifier{
-	display: flex;
 	background-color: red;
 	font-weight: 600;
 	font-family: montserrat, sans-serif;
@@ -213,14 +196,15 @@ a{
 }
 
 .reg-link{
-	color: #0acdff;
+	color: #009cc2;
 	text-decoration: none;
+	border-bottom: 1px solid transparent;
 	transition: 0.3s;
 }
 
 .reg-link:hover{
-	color: rgba(0,0,250,1);
-	text-decoration: underline;
+	color: rgba(0, 0, 280, 1);
+	border-bottom: 1px solid rgba(0, 0, 250, 1);
 }
 
 input[type=submit]{

@@ -21,12 +21,12 @@ function userSurnameValidator(){
 
 function titleValidator(name,errorMessage){	
 
-	if(name.value === ''){
+	if(name.value.trim() === '' || name.value === undefined || name.value === null || name.value.trim().length === 0){
 		errorMessage.style.display = 'flex';
 		name.classList.add('redBox');
 		errorMessage.innerText = 'Required';
 		return false;
-		
+
 	}else{
 		errorMessage.style.display = 'none';
 		name.classList.remove('redBox');
@@ -43,7 +43,7 @@ contactNum.oninput = function (){
 
 function contactNumValidator(){
   let contactNumErr = document.getElementById('telNum-Err');
-  let contactNumVal = contactNum.value;
+  let contactNumVal = contactNum.value.trim();
   
   let zeroSixZeroFormat = /^[0]{1}[6]{1}[0]{1}[3-9]{1}[0-9]{6}$/;
   let zeroSixOneFormat = /^[0]{1}[6]{1}[1]{1}[0-9]{1}[0-9]{6}$/;
@@ -86,13 +86,13 @@ function contactNumValidator(){
 	contactNumErr.style.display = 'none';
 	contactNum.classList.remove('redBox');
 	return true;
-	
-  }else if(contactNumVal == ''){
+
+  }else if(contactNumVal == '' || contactNumVal == undefined || contactNumVal == null || contactNumVal.length == 0){
 	contactNumErr.style.display = 'flex';
 	contactNum.classList.add('redBox');
 	contactNumErr.innerText = 'Required';
 	return false;
-	
+
   }else{
 	contactNumErr.style.display = 'flex';
 	contactNum.classList.add('redBox');
@@ -106,10 +106,10 @@ let selectCampus = document.getElementById('select-campus');
 let selectCampusErr = document.getElementById('select-campus-Err');
 		
 function selectListValidator(){
-	let nameVal = selectCampus.value;
+	let nameVal = selectCampus.value.trim();
 	let nameErr = selectCampusErr;
 
-	if(nameVal == 'select campus'){
+	if(nameVal === 'select campus' || nameVal === undefined || nameVal === null || nameVal.length === 0){
 		selectCampusErr.style.display = 'flex';
 		selectCampus.classList.add('redBox');
 		selectCampusErr.innerText = 'Required';
@@ -161,14 +161,14 @@ oldPwd.oninput = function(){
 
 function newPasswordValidation(){
 
-	let newPwdVal = newPwd.value;
+	let newPwdVal = newPwd.value.trim();
 	let newPwdErr = document.getElementById('newPass-Err');
 	let findUpperCase = newPwdVal.search(/[A-Z]/);
 	let findLowerCase = newPwdVal.search(/[a-z]/);
 	let findSpecialChar = newPwdVal.search(/[!/@/#/$/%/&/'/*/+/-///=/?/^/_/`/{/|/}/~/]/);
 	let findDigit = newPwdVal.search(/[0-9]/);
 	
-	if(newPwdVal === '' || newPwdVal === undefined || newPwdVal === null){
+	if(newPwdVal === '' || newPwdVal === undefined || newPwdVal === null || newPwdVal.length === 0){
 		newPwdErr.style.display = 'flex';
 		newPwd.classList.add('redBox');
 		newPwdErr.innerText = 'Required';
@@ -213,10 +213,10 @@ function newPasswordValidation(){
 
 function oldPasswordValidation(){
 
-	let oldPwdVal = oldPwd.value;
+	let oldPwdVal = oldPwd.value.trim();
 	let oldPwdErr = document.getElementById('oldPass-Err');
-	
-	if(oldPwdVal === '' || oldPwdVal === undefined || oldPwdVal === null){
+
+	if(oldPwdVal === '' || oldPwdVal === undefined || oldPwdVal === null || oldPwdVal.length === 0){
 		oldPwdErr.style.display = 'flex';
 		oldPwdErr.innerText = 'Required';
 		oldPwd.classList.add('redBox');

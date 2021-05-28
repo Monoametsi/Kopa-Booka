@@ -25,15 +25,19 @@
 				<div class="formBox-message-header">
 					<i class="fa fa-frown-o"></i>
 					<h1> Oops something went wrong... </h1>
-					
-					<h4> The token given to you has expired or is invalid, please enter the email you registered with in order to be sent 
-					a new token which will expire in 3 days, please utilise it before the expiry date.</h4>
+
+					<h4> 
+					The verification link you were sent contained a token that has 
+					either expired or is invalid, please enter the email you registered with to be sent 
+					a new verification link that will include a token which will expire in 3 days, 
+					please utilise it before the expiry date.
+					</h4>
 
 				</div>
 
 				<div class="formBox-form">
 					<form action="/token-error" method="POST" class="form">
-					<% if(email === "" || email === undefined || email === null || email.length === 0) {%>
+					<% if(email.trim() === "" || email === undefined || email === null || email.trim().length === 0) {%>
 						<div class="inputField-cont">
 							<div class="label-cont">
 								<label for="email">

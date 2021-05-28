@@ -12,6 +12,12 @@ let hideBar = function(){
     scrollUp = scrollDown;
 }
 
+// let num = document.getElementById('width-num');
+
+// window.onresize = () => {
+	// num.innerHTML = window.innerWidth;
+// }
+
 window.onscroll = function(){
     let bodyScrol = document.body.scrollTop;
     let htmlScrol = document.documentElement.scrollTop;
@@ -154,11 +160,14 @@ window.onclick = (event) => {
 }
 
 //Success-Box closer
-let boxCloser = document.getElementById('box-closer');
+let boxCloser = document.getElementsByClassName('box-closer');
 let successBox = document.getElementById('success-box');
 
 if(boxCloser !== null){
-	boxCloser.onclick = () => {
-		successBox.style.display = 'none';
+	for(i = 0; i < boxCloser.length; i++){
+			boxCloser[i].onclick = function() {
+				this.parentElement.style.display = 'none';
+			}
 	}
+	
 }

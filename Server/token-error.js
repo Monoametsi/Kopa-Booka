@@ -30,9 +30,10 @@ let tokenErr = async (req, res) => {
 		return res.status(200).render('token-error-post', { email, emailRegexChecks });
 	}else{
 
-	 await	Users.find().then( async (result) => {
+	await   Users.find().then( async (result) => {
 				if(Boolean(result.find(emailMatcher)) === true){
 					await mailDeliverer(email, res);
+
 				}else{
 					return res.redirect('/token-not-found');
 				}
