@@ -267,7 +267,7 @@
 		contactNumErr.style.display = 'none';
 		contactNum.classList.remove('redBox');
 		
-	  }else if(contactNumVal === ''){
+	  }else if(contactNumVal === '' || contactNumVal === undefined || contactNumVal === null || contactNumVal.length === 0){
 		contactNumErr.style.display = 'flex';
 		contactNum.classList.add('redBox');
 		contactNumErr.innerText = 'Required';
@@ -294,7 +294,7 @@
 		let whatsappEnabler = document.getElementById('whatsapp-enabler');
 		let whatsappEnabled = whatsappEnabler.checked;
 		
-		if(whatsappEnabled === true){
+		if(whatsappEnabled){
 			return whatSappNumValidator();
 			
 		}else{
@@ -446,8 +446,8 @@
 	function bookDescriptionValidator(){
 		let bookDescriptionVal = document.getElementById('book-descrip').value.trim();
 	    let	bookDescriptionErr = document.getElementById('book-descrip-Err');
-		
-		if(bookDescriptionVal === ''){
+
+		if(bookDescriptionVal === '' || bookDescriptionVal === undefined || bookDescriptionVal === null || bookDescriptionVal.length === 0){
 			bookDescriptionErr.style.display = 'flex';
 			bookDescription.classList.add('redBox')
 			bookDescriptionErr.innerText = 'Required';
