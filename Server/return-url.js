@@ -36,7 +36,7 @@ let messageOfInterest = async (req, res) => {
 	}
 
 	if(nameValidator(firstname, subject) === false || emailValidator(email) === false || contactUsNumValidator(tel) === false){
-
+		console.log('Refused');
 		for(formUrl in req.query){
 			res.redirect(`/${ formUrl }`);
 		}
@@ -64,7 +64,7 @@ let messageOfInterest = async (req, res) => {
 									if(err) throw err;
 								})
 							}
-
+							console.log('Sent');
 							await updateUsersMessages();
 						}
 					});

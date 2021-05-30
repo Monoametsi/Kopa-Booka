@@ -85,7 +85,8 @@
 			let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
 			
 			let minutesFormat = (time) => {
-				if(time > 10){
+				if(time >= 10){
+
 					return time;
 				}else{
 					return `0${ time }`;
@@ -114,7 +115,7 @@
 
 						<div class="mid-sec">
 							<div class="post-title-cont">
-								<a href="<%= `/view-ad/${ _id }` %>" ><h1 class="post-title"> <%= Text_Book_Title %> </h1></a>
+								<a href="<%= `/view-ad/${ _id }` %>"> <h1 class="post-title"> <%= Text_Book_Title %> </h1> </a>
 							</div>
 
 							<div class="post-details-cont">
@@ -144,15 +145,14 @@
 						</div>
 						
 						<%
+
 						let numOfMessages = 0;
 
 						userData.Ad_Messages.map((message) => {
 						
 							if(message.Post_Id === _id){ 
-								numOfMessages++
-							%>
-								
-						<%	}
+								numOfMessages++;
+							}
 						});
 
 						%>

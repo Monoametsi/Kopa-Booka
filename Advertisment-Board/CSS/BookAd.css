@@ -751,7 +751,7 @@ button.but:hover + .search{
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	padding: 8px;
+	padding: 3px;
 }
 
 .validifier-cont{
@@ -764,8 +764,9 @@ button.but:hover + .search{
 	display: none;
 	background-color: red;
 	font-weight: 600;
+	font-size: 14.5px;
 	font-family: montserrat, sans-serif;
-	padding: 0 8px;
+	padding: 0 6px;
 	margin-right: 2.8px;
 	border-radius: 3px;
 	animation-name: smooth-appearance;
@@ -791,7 +792,7 @@ button.but:hover + .search{
 	padding: 12px;
 	border-radius: 5px 0 0 5px;
 	transition: 0.3s;
-	margin-right: -2px;
+	/* margin-right: -2px; */
 }
 
 .inputField-cont{
@@ -799,15 +800,14 @@ button.but:hover + .search{
 	display: flex;
 	margin-bottom: 1.2rem;
 	width: 100%;
-	transition: 0.8s;
 }
 
 .inputField-styling{
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 1.1rem;
+	font-size: 1rem;
+	font-weight: 600;
 	width: 100%;
 	border-radius: 0 5px 5px 0;
-	padding: 12px;
+	padding: 10px;
 	outline: none;
 	border: 1px solid #0acdff;
 	transition: 0.3s;
@@ -870,10 +870,12 @@ label{
 }
 
 textarea{
-	font-size: 1.1rem;
 	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	font-weight: 600;
 	line-height: 1.5rem;
-	padding: 1rem;
+	padding: 8px;
+	padding-left: 10px;
 	height: 10rem;
 	resize: vertical;
 	width: 100%;
@@ -888,7 +890,7 @@ textarea:focus{
 }
 
 textarea::placeholder{
-	font-size: 1.1rem;
+	font-size: 1rem;
 	padding: 0.2rem;
 }
 
@@ -905,13 +907,13 @@ textarea::placeholder{
 	left: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto; 
+	overflow: auto;
+	transition: 0.3s;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background-color: rgba(0,0,0,0.8);
-	transition: 0.3s;
-	animation-name: fadeIn;
 	animation-duration: 1s;
+	animation-name: fadeIn;
+	background-color: rgba(0,0,0,0.8);
 }
 
 .modal-content{
@@ -940,35 +942,35 @@ textarea::placeholder{
 }
 
 @-webkit-keyframes micro{
-	 from {transform: translate(0,-70rem); opacity: 0;}
+	from {transform: translate(0,-70rem); opacity: 0;}
   to {transform: translate(0, 0);  opacity: 1;}
 }
 
 @keyframes micro{
-	 0% {transform: translate(0,-70rem); opacity: 0;}
+	0% {transform: translate(0,-70rem); opacity: 0;}
   100% {transform: translate(0, 0); opacity: 1;}
 }
 
 @keyframes slideUp{
-	 0% {transform: translate(0,0); opacity: 1;}
+	0% {transform: translate(0,0); opacity: 1;}
   100% {transform: translate(0, -70rem); opacity: 0;}
 }
 
 @keyframes fadeOut{
-	 0% {opacity: 1;}
+	0% {opacity: 1;}
   100% {opacity: 0;}
 }
 
 @keyframes fadeIn{
-	 0% {opacity: 0;}
+	0% {opacity: 0;}
   100% {opacity: 1;}
 }
 
 input[type=submit]{
 	text-align: center;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	width: 100%;
-	padding: 10px;
+	padding: 9.5px;
 	font-weight: bold;
 	margin-bottom: 8px;
 	border-radius: 5px;
@@ -988,13 +990,13 @@ input[type=submit]:hover{
 
 .termPol{
 	text-align: center;
-	line-height: 1.5rem;
+	line-height: 1.9rem;
 	text-decoration: none;
 }
 
 .termPol a{
 	text-decoration: none;
-	color: #0acdff;
+	color: #009cc2;
 	transition: 0.3s;
 }
 

@@ -17,7 +17,7 @@ userName.oninput = function (){
 function titleValidator(){
 	let icon = document.getElementsByClassName("ikon")[0];
 
-	if(userName.value.trim() === ''){
+	if(userName.value.trim() === '' || userName.value.trim() === undefined || userName.value.trim() === null || userName.value.trim().length === 0){
 		userNameErr.style.display = 'flex';
 		userName.classList.add('redBox');
 		userNameErr.innerText = 'Required';
@@ -97,7 +97,7 @@ function contactNumValidator(){
 	icon.classList.add('Icon-boxShadower');
 	return contactNumVal;
 	
-  }else if(contactNumVal == ''){
+  }else if(contactNumVal === '' || contactNumVal === undefined || contactNumVal === null ||contactNumVal.length === 0){
 	contactNumErr.style.display = 'none';
 	contactNum.classList.remove('redBox');
 	icon.classList.remove('redBorder', 'Shadow');
@@ -140,7 +140,7 @@ function emailValidator(){
 	let emailFormats = threeDotFormat || twoDotFormat || oneDotFormat;
 	let mailErr = document.getElementById('mailErr');
 	
-	if(emailVal === ''){
+	if(emailVal === '' || emailVal === undefined || emailVal === null || emailVal.length === 0){
 		mailErr.style.display = 'flex';
 		mailErr.innerText = 'Required';
 		email.classList.add('redBox');
@@ -165,18 +165,17 @@ function emailValidator(){
 }
 
 //Select field validation
-
 let messageToSeller = document.getElementById('subject');
-	
+
 messageToSeller.oninput = function(){
 	messageToSellerValidator();
 }
-	
+
 function messageToSellerValidator(){
 	let messageToSellerVal = messageToSeller.value.trim();
 	let	messageToSellerErr = document.getElementById('subject-Err');
 	
-	if(messageToSellerVal === ''){
+	if(messageToSellerVal === '' || messageToSellerVal === undefined || messageToSellerVal === null || messageToSellerVal.length === 0){
 		messageToSellerErr.style.display = 'flex';
 		messageToSeller.classList.add('Message-redBox');
 		messageToSellerErr.innerText = 'Required';
@@ -204,8 +203,8 @@ function fieldOnFocus(inputField){
 }
 
 function fieldOnBlur(inputField){
-		let icons = inputField.parentElement.children[0];
-		icons.classList.remove('Icon-boxShadower', 'Shadow');
+	let icons = inputField.parentElement.children[0];
+	icons.classList.remove('Icon-boxShadower', 'Shadow');
 }
 
 for(i = 0; i < formFields.length; i++){
@@ -251,6 +250,7 @@ submitBtn.onclick = function(){
 
 	}else if(messageToSellerValidator() === false){
 		return messageToSellerValidator();
+
 	}else{
 
 		let formData = new URLSearchParams();
@@ -275,8 +275,10 @@ submitBtn.onclick = function(){
 
 			return formdata;
 		}).then((result) => {
+
 			modalContent.style.display = "none";
 			successBoxCont.style.display = "flex";
+
 		}).catch((err) => {
 			console.log(err);
 		});
@@ -298,7 +300,7 @@ let searchInputFunc = () => {
 	if(searchInputVal.length === 0){
 		window.location.assign('/Ad-board');
 	}else{
-		window.location.assign(`/Ad-board/${searchInputVal}`);
+		window.location.assign(`/Ad-board/${ searchInputVal }`);
 	}
 }
 

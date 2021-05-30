@@ -38,9 +38,10 @@
 	</div>
 	
 	
-	<% let findMainCat = (data) => { %>
-		<%	let {
+	<% let findMainCat = (data) => { 
+			let {
 				_id,
+				Main_Category,
 				Text_Book_Title,
 				Text_Book_Price,
 				Date_Created,
@@ -51,19 +52,36 @@
 			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
 
 		%>
-			<a href="<%= `/view-ad/${ _id } ` %>">
-				<li class="categorieyBox-link">
-					<div class="categorieyBox-image">
-						<img src="<%= imgStr %>">
-					</div>
+		<div class="categorieyBox-cont">
+			<div class="categoriey-box">
+				<div class="categorieyBox-header">
+					<h1>Lastest <span><%= Main_Category %></span> Ads</h1>
+				</div>
 
-					<div class="categorieyBox-info">
-						<h5 class="categorieyBox-title"><%= Text_Book_Title %></h5>
-						<h5 class="categorieyBox-price"><%= Text_Book_Price %></h5>
-						<h5 class="categorieyBox-time"><%= dateDisplayer(Date_Created) %></h5>
-					</div>
-				</li>
-			</a>
+				<ul class="categorieyBox-list">
+
+					<a href="<%= `/view-ad/${ _id } ` %>">
+						<li class="categorieyBox-link">
+							<div class="categorieyBox-image">
+								<img src="<%= imgStr %>">
+							</div>
+
+							<div class="categorieyBox-info">
+								<h5 class="categorieyBox-title"><%= Text_Book_Title %></h5>
+								<h5 class="categorieyBox-price"><%= Text_Book_Price %></h5>
+								<h5 class="categorieyBox-time"><%= dateDisplayer(Date_Created) %></h5>
+							</div>
+						</li>
+					</a>
+		
+				</ul>
+
+				<div class="categorieyBox-footer">
+					<h1><%=`See all  ${ Main_Category } Ads`  %></h1>
+				</div>
+			</div>
+		</div>
+
 	<% } %>
 	
 
@@ -97,184 +115,33 @@
 			} 
 			%>
 			
-			
-			<% if(mainCatAdsDisplay("Art Design and Architecture").length > 0) {%>
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Art Design and Architecture</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-
-						<% 
-							mainCatAdsDisplay("Art Design and Architecture").slice(0, 4).map(findMainCat)
-						%>	
-
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Art Design and Architecture Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
+				<% 
 				
 				
-			<% if(mainCatAdsDisplay("College of Business and Economics").length > 0) {%>
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>College of Business and Economics</span> Ads</h1>
-						</div>
+				outcome.map((catObj) => {
+					catObj.Main_Category.map((mainCategory) => {
+						if(mainCatAdsDisplay(mainCategory).length > 0){
+							mainCatAdsDisplay(mainCategory).slice(0, 4).map(findMainCat);
+						}
+					})
+					
+					
+				});
 
-						<ul class="categorieyBox-list">
-							<% 
-								mainCatAdsDisplay("College of Business and Economics").slice(0, 4).map(findMainCat) 
-							%>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all College of Business and Economics Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
+				%>
 				
-			
-			<% if(mainCatAdsDisplay("Education").length > 0) {%>
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Education</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-							<% 
-								mainCatAdsDisplay("Education").slice(0, 4).map(findMainCat) 
-							%>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Education Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
-				
-			<% if(mainCatAdsDisplay("Engineering and Built Environment").length > 0) {%>
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Engineering and Built Environment</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-							<% 
-								mainCatAdsDisplay("Engineering and Built Environment").slice(0, 4).map(findMainCat) 
-							%>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Engineering and Built Environment Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
-				
-				
-			<% if(mainCatAdsDisplay("Health Sciences").length > 0) {%>	
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Health Sciences</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-							<% 
-								mainCatAdsDisplay("Health Sciences").slice(0, 4).map(findMainCat) 
-							%>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Health Sciences Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
-				
-				
-			<% if(mainCatAdsDisplay("Humanities").length > 0) {%>		
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Humanities</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-							<% 
-								mainCatAdsDisplay("Humanities").slice(0, 4).map(findMainCat) 
-							%>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Humanities Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
-			
-			
-			<% if(mainCatAdsDisplay("Law").length > 0) {%>
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Law</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-							<% mainCatAdsDisplay("Law").slice(0, 4).map(findMainCat) %>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Law Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
-				
-			<% if(mainCatAdsDisplay("Science").length > 0) {%>	
-				<div class="categorieyBox-cont">
-					<div class="categoriey-box">
-						<div class="categorieyBox-header">
-							<h1>Lastest <span>Science</span> Ads</h1>
-						</div>
-
-						<ul class="categorieyBox-list">
-							<% mainCatAdsDisplay("Science").slice(0, 4).map(findMainCat) %>
-							
-						</ul>
-
-						<div class="categorieyBox-footer">
-							<h1>See all Science Ads</h1>
-						</div>
-					</div>
-				</div>
-			<% } %>
 				
 			</div>
-			
-			<div class="allAds-cont">
-				<a href="/Ad-board">
-					<button class="btn"> See All Ads</button>
-				</a>
-			</div>
+			<% 
+				if(result.length > 0){ 
+			%>
+				<div class="allAds-cont">
+					<a href="/Ad-board">
+						<button class="btn"> See All Ads</button>
+					</a>
+				</div>
+			<% } %>
+
 		</div>
 	</section>
 	

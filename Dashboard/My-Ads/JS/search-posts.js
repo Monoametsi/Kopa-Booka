@@ -37,6 +37,14 @@ function defaultAdNum(){
 	}
 }
 
+function adNumCounter(num){
+	if(num.length <= 1){
+		return numOfAds.innerHTML =  `${ num } Ad`;
+	}else{
+		return numOfAds.innerHTML =  `${ num } Ads`;
+	}
+}
+
 defaultAdNum();
 
 //Search ad system
@@ -45,7 +53,7 @@ function searchAdSystem(){
 	let hiddenAds = [];
 	
 	//Condition for what message should be displayed when no string value is placed in the search input field
-	if(searchAd.value.trim() === "" || searchAd.trim().value.length === 0 || searchAd.value === null || searchAd.value === undefined){
+	if(searchAd.value.trim() === "" || searchAd.value.trim().length === 0 || searchAd.value === null || searchAd.value === undefined){
 		noPostFoundTitle.innerHTML = `You do not have any ads.`;
 	}else{
 		noPostFoundTitle.innerHTML = `No Ads found`; 
@@ -66,34 +74,28 @@ function searchAdSystem(){
 			adBox.style.display = 'flex';
 
 			//Number format for the number of ads displayed.
-			if(num <= 1){
-				numOfAds.innerHTML = `${ num } Ad`;
-			}else{
-				numOfAds.innerHTML = `${ num } Ads`;
-			}
+			adNumCounter(num);
 
 		//Condition for what should happen when theres a match. 
 		// Ads that satisfy the match must be displayed, those that dont are hidden
-		} else if(searchAd.value.trim() === adTitle[i].innerText.trim()){
-			num++
+		} else if(searchAd.value.toLowerCase().trim() === adTitle[i].innerText.toLowerCase().trim()){
+			num++;
 			adBox.style.display = 'flex';
-			if(num <= 1){
-				numOfAds.innerHTML = `${num} Ad`;
-			}else{
-				numOfAds.innerHTML = `${num} Ads`;
-			}
+
+			adNumCounter(num);
+
 		}else{
 			adBox.style.display = 'none';
 		}
-		
+
 		//Hidden ads placed in an array
 		if(window.getComputedStyle(adBox, null).display === 'none'){
 			hiddenAds.push(adBox);
 		}
-		
+
 		//Condition for if there are no ads that match. In this case nothing but a 'no ads found' message is displayed.
 		if(hiddenAds.length === adTitle.length){
-			numOfAds.innerHTML = `${ num } Ad`;
+			adNumCounter(num);
 			noAdsFound.style.display = 'flex';
 		}else{
 			noAdsFound.style.display = 'none';
@@ -105,6 +107,8 @@ function searchAdSystem(){
 //Search btn click functionality
 searchBtn.onclick = () =>{
 	searchAdSystem();
+	singleAdDeleter();
+	allAdDeleter();
 }
 
 //Search input field functionality when enter btn is clicked
@@ -112,6 +116,8 @@ searchAd.onkeydown = (event) => {
 	
 	if(event.keyCode === 13){
 		searchAdSystem();
+		singleAdDeleter();
+		allAdDeleter();
 	}
 }
 
@@ -133,71 +139,84 @@ deleteAllCheckBox.onclick = () => {
 }
 
 let deleteSelectedAds = document.getElementById('delete-All');
-let deletededElements = [];
 
 //Deleting checked ads functionality
-deleteSelectedAds.onclick = () => {
-	
-	//all checkboxes placed in array
-	let checkboxArr = Array.from(adCheckBoxes);
-	
-	//Counting number of checked ads
-	let num = 0;
+let allAdDeleter = () => {
+	deleteSelectedAds.onclick = () => {
+		let deletededElements = [];
+		
+		let numOfDisplayedAds = 0;
+		
+		//all checkboxes placed in array
+		let checkboxArr = Array.from(adCheckBoxes);
+		
+		//Counting number of checked ads
+		let num = 0;
 
-	checkboxArr.map((ad) => {
-		
-		//checkbox parent element, i.e( the advert box )
-		let adBox = ad.parentElement.parentElement.parentElement.parentElement;
-		
-		//Conditon for checking checked ads to be deleted
-		if(ad.checked && window.getComputedStyle(adBox, null).display !== 'none'){
-			num++
+		checkboxArr.map((ad) => {
 			
-			//Ads to be deleted placed in array to be sent to server in order to be deleted.
-			deletededElements.push(adBox.id)
+			//checkbox parent element, i.e( the advert box )
+			let adBox = ad.parentElement.parentElement.parentElement.parentElement;
 			
-			//Removes ad from the frontend
-			adBox.remove();
-			
-			//Conditon for number format
-			if(num <= 1){
-				numOfAds.innerHTML = `${ num } Ad`;
-			}else if(num === checkboxArr.length){
-				numOfAds.innerHTML = `0 Ad`;
-			}else{
-				numOfAds.innerHTML = `${ num } Ads`;
+			if(window.getComputedStyle(adBox, null).display !== 'none'){
+				numOfDisplayedAds++;
 			}
 			
-			//Condition for if all ads get deleted a message should be displayed
-			if(num === checkboxArr.length || (num === adTitle.length  && searchAd.value.length > 0)){
-				numOfAds.innerHTML = `0 Ad`;
-				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
-				noAdsFound.style.display = 'flex';
-			}else{
-				noAdsFound.style.display = 'none';
-			}
+			//Conditon for checking checked ads to be deleted
+			if(ad.checked && window.getComputedStyle(adBox, null).display !== 'none'){
+				num++
+				
+				//Ads to be deleted placed in array to be sent to server in order to be deleted.
+				deletededElements.push(adBox.id)
+				
+				//Removes ad from the frontend
+				adBox.remove();
 
-			//Fetch api sends the deleted elements to the server to be deleted on the backend via the delete url
-			fetch(`/delete/${ deletededElements.join('+') }`, {
-				method: 'POST'
-			}).then((response) => {
-				if(response.ok){
-					console.log(response);
-					return;
+				//Conditon for number format
+				if(num <= 1){
+					numOfAds.innerHTML = `${ num } Ad`;
+				}else if(num === checkboxArr.length){
+					numOfAds.innerHTML = `0 Ad`;
+				}else{
+					numOfAds.innerHTML = `${ num } Ads`;
 				}
-				throw new Error('Item failed to send');
-			}).catch((err) => {
-				console.log(err);
-			});
 
-		}
-	});
+				//Condition for if all ads get deleted a message should be displayed
+				if(num === checkboxArr.length || num === numOfDisplayedAds ){
+					numOfAds.innerHTML = `0 Ad`;
+					noPostFoundTitle.innerHTML = `You do not have any ads.`; 
+					noAdsFound.style.display = 'flex';
+				}else{
+					noAdsFound.style.display = 'none';
+				}
+
+				// Fetch api sends the deleted elements to the server to be deleted on the backend via the delete url
+				fetch(`/delete/${ deletededElements.join('+') }`, {
+					method: 'POST'
+				}).then((response) => {
+					if(response.ok){
+						console.log(response);
+						return;
+					}
+					throw new Error('Item failed to send');
+				}).catch((err) => {
+					console.log(err);
+				});
+
+			}
+		});
+	}
 }
+
+allAdDeleter();
 
 let singleAdDelete = document.getElementsByClassName('individual-post');
 
 //Functionality for when an individual ad gets posted
 let singleAdDeleter = () => {
+		
+		let numOfDisplayedAds = 0;
+		
 		//Counting number of ads deleted
 		let num = 0;
 
@@ -211,6 +230,10 @@ let singleAdDeleter = () => {
 		
 		//Each indivual ads delete btns parentElement container.
 		outcome = singleAdDelete[i].parentElement.parentElement.parentElement.parentElement;
+		
+		if(window.getComputedStyle(outcome, null).display !== 'none'){
+			numOfDisplayedAds++
+		}
 
 		//Functionality for what occurs when delete btn is clicked.
 		singleAdDelete[i].onclick = function(){
@@ -221,19 +244,17 @@ let singleAdDeleter = () => {
 			let adBox = this.parentElement.parentElement.parentElement.parentElement;
 			
 			//Conditon for how to display number of deleted ads
-			if(num <= 1){
-				numOfAds.innerHTML = `${ num } Ad`;
-			}else{
-				numOfAds.innerHTML = `${ num } Ads`;
-			}
+			adNumCounter(num);
 
 			//Functionality that removes ad from the frontend
 			adBox.remove();
-			
+
 			//Condition to account for when all ads have been deleted via the clicking of the deleted icon.
-			if(num === total || (num === adTitle.length && searchAd.value.length > 0)){
+			if(num === total || num === numOfDisplayedAds){
 				numOfAds.innerHTML = `0 Ad`;
+
 				noPostFoundTitle.innerHTML = `You do not have any ads.`; 
+
 				noAdsFound.style.display = 'flex';
 			}else{
 				noAdsFound.style.display = 'none';
@@ -243,14 +264,17 @@ let singleAdDeleter = () => {
 			fetch(`/delete/${ adBox.id }`, {
 				method: 'POST'
 			}).then((response) => {
+
 				if(response.ok){
 					console.log(response);
 					return;
 				}
+
 				throw new Error('Item failed to send');
 			}).catch((err) => {
 				console.log(err);
 			});
+
 		}
 	}
 }

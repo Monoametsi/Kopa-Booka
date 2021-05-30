@@ -55,7 +55,6 @@ scrollTop.onclick = function(){
 	function scrollTopper(){
 		if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
 				window.scrollBy(0, pageLengthCounter--);
-					console.log(pageLengthCounter);
 		}else{
 			clearInterval(scrollTopperInterval);
 		}
@@ -97,7 +96,7 @@ function menuDropDown(list){
 
 	let divisionList2 = divisionList.nextElementSibling;
 	let divisionList3 = divisionList2.children[1].children[1];
-	
+
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
 		divisionList2.style.maxHeight = null;
@@ -105,10 +104,9 @@ function menuDropDown(list){
 			divisionList3.style.maxHeight = null;
 			divisionList3.style.transition = '.3s'
 		}
-		
+
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
-        
 
 	}else{
 		divisionList.style.transition = '0.3s';

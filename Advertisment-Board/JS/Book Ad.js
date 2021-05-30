@@ -2,11 +2,11 @@
 let topNav = document.getElementById("Topnav");
 let scrollUp = window.pageYOffset;
 
-let num = document.getElementById('width-num');
+// let num = document.getElementById('width-num');
 
-window.onresize = () => {
-	num.innerHTML = window.innerWidth;
-}
+// window.onresize = () => {
+	// num.innerHTML = window.innerWidth;
+// }
 
 let hideBar = function() {
     let scrollDown = window.pageYOffset;
@@ -178,7 +178,7 @@ function modalOpener(headerTitle, advertId){
 	modal.classList.remove('fadeOut');
 	modal.style.display = "block";
 	modalContent.style.display = "flex";
-	messageToSeller.value.trim() = `Hi, I am interested in ${ adTitle }`;
+	messageToSeller.value = `Hi, I am interested in ${ adTitle }`;
 
 	if(messageToSeller.value.trim().length > 0){
 		messageToSellerErr.style.display = 'none';

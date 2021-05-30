@@ -25,12 +25,20 @@ let homePageAds = (req, res) => {
 			mainCategoryAds.reverse();
 			return mainCategoryAds;
 		}
+			
+		Category_and_campus_col.find().then((outcome) => {
+			
+			res.status(200).render('index', {
+				result,
+				mainCatAdsDisplay,
+				dateDisplayer,
+				outcome
+			});
+			
+		}).catch((err) => {
+			console.log(err);
+		})
 
-		res.status(200).render('index', {
-			result,
-			mainCatAdsDisplay,
-			dateDisplayer
-		});
 	}).catch((err) => {
 		console.log(err);
 	});

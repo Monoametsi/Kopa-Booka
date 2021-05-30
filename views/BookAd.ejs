@@ -126,12 +126,13 @@
 								let { Art_Design_and_Architecture } = cat_camp_list[i];
 								categoryLister(Art_Design_and_Architecture);
 
-							 for(catName in categoryLister(Art_Design_and_Architecture)){ %>
+							 for(catName in categoryLister(Art_Design_and_Architecture)){ 
+							%>
 								<li><a href="<%= `/Ad-board/category/${ catName }` %>" class="department-link"><%= catName %><span><%= categoryLister(Art_Design_and_Architecture)[catName] %></span></a></li>
-							<%}%>
+						   <% } %>
 
-						<%	}%>
-							
+						<%	} %>
+
 						</ul>
 					</li>
 					<% } %>
@@ -444,12 +445,11 @@
 						 </form>
 						 
 						 <div class="termPol">
-							<p>By sending a reply to the seller, you accept our <a href="/terms-of-use">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+							<p>By sending a reply to the advertiser, you accept our <a href="/terms-of-use">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
 						</div>
 					</div>
 				</div>
-				
-				
+
 			<!-- Success -->	
 				<div class="box-cont" id="box-cont">
 				  <div class="box">

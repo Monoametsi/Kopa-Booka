@@ -22,18 +22,42 @@
 
 	<%
 		let minutesFormat = (time) => {
-			if(time > 10){
+			if(time >= 10){
 				return time;
 			}else{
 				return `0${ time }`;
 			}
 		}
+
+		let dateFormater = (dateType) => {
+
+			let date = new Date(dateType);
+
+			let months = [
+				"January",
+				"February", 
+				"March", 
+				"April", 
+				"May", 
+				"June", 
+				"July", 
+				"August", 
+				"September", 
+				"October", 
+				"November", 
+				"December"
+			];
+
+			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
+
+			return messageSentDate; 
+
+		}
 	
-		let displayMessages = (messages) => { 
-	%>
-		
-		<%	let { 
-				
+		let displayMessages = (messages) => {
+			
+			let { 
+
 				msgId,
 				firstname,
 				tel,
@@ -42,14 +66,8 @@
 				subject,
 				msgAd,
 				date_created
-				
+
 			} = messages;
-
-			let date = new Date(date_created);
-
-			let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
 
 		%>
 
@@ -82,7 +100,7 @@
 					</td>
 					
 					<td>
-						<%= messageSentDate %>
+						<%= dateFormater(date_created) %>
 					</td>
 					
 					<td>
@@ -195,11 +213,9 @@
 		</div>
 	</section>
 
-	<% 
+		<% let slideShowAds = (messages) => { 
 
-		let slideShowAds = (messages) => { %>
-
-		<%	let { 
+			let { 
 				
 				msgId,
 				firstname,
@@ -210,13 +226,7 @@
 				msgAd,
 				date_created
 
-			} = messages; 
-
-			let date = new Date(date_created);
-			
-			let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-			
-			let messageSentDate = `${ minutesFormat(date.getDate()) } ${ months[date.getMonth()] } ${ minutesFormat(date.getHours()) }:${ minutesFormat(date.getMinutes()) }`;
+			} = messages;
 
 		%>
 
@@ -243,7 +253,7 @@
 								<div class="white"> <i class="fa fa-phone"></i> <span> <%= tel %> </span> </div>
 							<% } %>
 							<div class="white"> <i class="fa fa-envelope"></i> <span> <%= email %> </span> </div>
-							<div> <i class="fa fa-calendar"></i> <span> <%= messageSentDate %> </span> </div>
+							<div> <i class="fa fa-calendar"></i> <span> <%= dateFormater(date_created) %> </span> </div>
 					  </div>
 
 					  <div class="buyers-message">
@@ -272,14 +282,6 @@
 
 						let img = UploadedImages[0];
 						let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", ""); 
-						
-						let msgAdDate = new Date(Date_Created);
-						
-						let updatedDate = new Date(Date_Updated);
-						
-						let msgAdDateFormat = `${ minutesFormat(msgAdDate.getDate()) } ${ months[msgAdDate.getMonth()] } ${ minutesFormat(msgAdDate.getHours()) }:${ minutesFormat(msgAdDate.getMinutes()) }`;
-						
-						let UpdatedMessageSentDate = `${ minutesFormat(updatedDate.getDate()) } ${ months[updatedDate.getMonth()] } ${ minutesFormat(updatedDate.getHours()) }:${ minutesFormat(updatedDate.getMinutes()) }`;
 
 					%>
 
@@ -303,12 +305,12 @@
 
 							<div class="post-date-cont">
 								<div class="post-date">
-									Created: <span><%= msgAdDateFormat %></span>
+									Created: <span><%= dateFormater(Date_Created) %></span>
 								</div>
 
-								<% if(UpdatedMessageSentDate.search("undefined") === -1){ %>
+								<% if(dateFormater(Date_Updated).search("undefined") === -1){ %>
 								<div class="post-date">
-									Updated: <span><%= UpdatedMessageSentDate %></span>
+									Updated: <span><%= dateFormater(Date_Updated) %></span>
 								</div>
 								<% } %>
 							</div>
@@ -327,7 +329,7 @@
 	%>
 
 	
-<% if(msg.length > 0) {%>
+<% if(msg.length > 0) { %>
 <div class="MessageDetailsInfo-cont" id="post-info-cont">
 
 	<% msg.map(slideShowAds) %>

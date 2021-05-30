@@ -7,8 +7,8 @@ userName.oninput = function (){
 }
 
 function titleValidator(){
-	
-	if(userName.value === ''){
+
+	if(userName.value.trim() === '' || userName.value.trim().length === 0 || userName.value === undefined || userName.value === null){
 		userNameErr.style.display = 'flex';
 		userName.classList.add('redBox');
 		userNameErr.innerText = 'Required';
@@ -24,12 +24,12 @@ function titleValidator(){
 let contactNum = document.getElementById('Userscontact');
 
 contactNum.oninput = function (){
-		contactNumValidator();
+	contactNumValidator();
 }
 
 function contactNumValidator(){
   let contactNumErr = document.getElementById('contactNum-Err');
-  let contactNumVal = contactNum.value;
+  let contactNumVal = contactNum.value.trim();
   
   let zeroSixZeroFormat = /^[0]{1}[6]{1}[0]{1}[3-9]{1}[0-9]{6}$/;
   let zeroSixOneFormat = /^[0]{1}[6]{1}[1]{1}[0-9]{1}[0-9]{6}$/;
@@ -71,8 +71,8 @@ function contactNumValidator(){
   if(zeroSixFormatTest || sevenFormatTest || eightFormatTest || telFormats){  
 	contactNumErr.style.display = 'none';
 	contactNum.classList.remove('redBox');
-	
-  }else if(contactNumVal == ''){
+
+  }else if(contactNumVal === '' || contactNumVal.length === 0){
 	contactNumErr.style.display = 'none';
 	contactNum.classList.remove('redBox');
 	
@@ -92,8 +92,8 @@ email.oninput =	function (){
 }
 
 function emailValidator(){
-	let emailVal = email.value;
-	
+	let emailVal = email.value.trim();
+
 	let threeDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,15}\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
 	let oneDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
 	let twoDot = /^\w+([.!#$%&'*+-/=?^_`{|}~]?\w+)*@[A-Za-z0-9]+[-]?[A-Za-z0-9]+\.[A-Za-z]{2}\.[A-Za-z]{2}$/;
@@ -105,7 +105,7 @@ function emailValidator(){
 	let emailFormats = threeDotFormat || twoDotFormat || oneDotFormat;
 	let mailErr = document.getElementById('mailErr');
 	
-	if(emailVal === ''){
+	if(emailVal === '' || emailVal.length === 0 || emailVal === undefined || emailVal === null){
 		mailErr.style.display = 'flex';
 		mailErr.innerText = 'Required';
 		email.classList.add('redBox');
@@ -131,10 +131,10 @@ messageToSeller.oninput = function(){
 }
 	
 function messageToSellerValidator(){
-	let messageToSellerVal = messageToSeller.value;
+	let messageToSellerVal = messageToSeller.value.trim();
 	let	messageToSellerErr = document.getElementById('subject-Err');
 	
-	if(messageToSellerVal === ''){
+	if(messageToSellerVal === '' || messageToSellerVal.length === 0 ||messageToSellerVal === undefined || messageToSellerVal === null){
 		messageToSellerErr.style.display = 'flex';
 		messageToSeller.classList.add('Message-redBox');
 		messageToSellerErr.innerText = 'Required';

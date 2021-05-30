@@ -27,7 +27,7 @@
 			<%
 			
 				let minutesFormat = (time) => {
-					if(time > 10){
+					if(time >= 10){
 						return time;
 					}else{
 						return `0${ time }`;
@@ -86,8 +86,8 @@
 
 			<div class="ad-details">
 
-				<div class="ad-head">
-					<h1 class="ad-title" id="ad-title"><%= Text_Book_Title %></h1>
+				<div class="post-head">
+					<h1 class="post-title" id="post-title"> <%= Text_Book_Title %> </h1>
 				</div>
 				
 				<div class="ad-amount">
@@ -132,7 +132,7 @@
 				
 				<div class="ad-info">
 					<em class="left">Author:</em>
-					<b class="right"><%= stringCapitalizer(Author_Name) %></b>
+					<b class="right"><%= Author_Name %></b>
 				</div>
 				
 				<div class="ad-info">
@@ -280,12 +280,12 @@
 				
 				<div class="ad-info">
 					<em class="left">Author:</em>
-					<b class="right"><%= stringCapitalizer(Author_Name) %></b>
+					<b class="right"><%= Author_Name %></b>
 				</div>
 				
 				<div class="ad-info">
 					<em class="left">Edition:</em>
-					<b class="right"><%= `${ Edition_Number }` %></b>
+					<b class="right"><%= `${ ordinal(parseInt(Edition_Number)) }` %></b>
 				</div>
 
 				<div class="ad-info">

@@ -22,33 +22,33 @@ let contact_us_post = async (req, res) => {
 	}
 
 	let emailRegexChecks = {
-		emailRegEx: validationEmailChecks.emailOneDot.test(email) || validationEmailChecks.emailTwoDots.test(email) || validationEmailChecks.emailThreeDots.test(email)
+		emailRegEx: validationEmailChecks.emailOneDot.test(email.trim()) || validationEmailChecks.emailTwoDots.test(email.trim()) || validationEmailChecks.emailThreeDots.test(email.trim())
 	}
 	
 	let phoneNumFormatTests = {
-	   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel),
-	   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel),
-	   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel),
-	   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel),
-	   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel),
-	   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel),
-	   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel),
-	   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel),
-	   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel)
+	   sixZeroFormatTest : phoneNumFormats.zeroSixZeroFormat.test(tel.trim()),
+	   sixOneFormatTest : phoneNumFormats.zeroSixOneFormat .test(tel.trim()),
+	   sixTwoFormatTest : phoneNumFormats.zeroSixTwoFormat.test(tel.trim()),
+	   sixThreeFormatTest : phoneNumFormats.zeroSixThreeFormat.test(tel.trim()),
+	   sixFourFormatTest : phoneNumFormats.zeroSixFourFormat.test(tel.trim()),
+	   sixFiveFormatTest : phoneNumFormats.zeroSixFiveFormat.test(tel.trim()),
+	   sixSixFormatTest : phoneNumFormats.zeroSixSixFormat.test(tel.trim()),
+	   sixSevenFormatTest : phoneNumFormats.zeroSixSevenFormat.test(tel.trim()),
+	   sixEightFormatTest : phoneNumFormats.zeroSixEightFormat.test(tel.trim())
 	}
 
 	let telNumFormatTests = {
-	   telZeroOneTest : telNumFormats.telZeroOne.test(tel),
-	   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel),
-	   telZeroThreeTest : telNumFormats.telZeroThree.test(tel),
-	   telZeroFourTest : telNumFormats.telZeroFour.test(tel),
-	   telZeroFiveTest : telNumFormats.telZeroFive.test(tel)
+	   telZeroOneTest : telNumFormats.telZeroOne.test(tel.trim()),
+	   telZeroTwoTest : telNumFormats.telZeroTwo.test(tel.trim()),
+	   telZeroThreeTest : telNumFormats.telZeroThree.test(tel.trim()),
+	   telZeroFourTest : telNumFormats.telZeroFour.test(tel.trim()),
+	   telZeroFiveTest : telNumFormats.telZeroFive.test(tel.trim())
 	}
 
 	let numRegexChecks = {
 	   zeroSixFormatTest : phoneNumFormatTests.sixZeroFormatTest || phoneNumFormatTests.sixOneFormatTest|| phoneNumFormatTests.sixTwoFormatTest || phoneNumFormatTests.sixThreeFormatTest || phoneNumFormatTests.sixFourFormatTest || phoneNumFormatTests.sixFiveFormatTest || phoneNumFormatTests.sixSixFormatTest || phoneNumFormatTests.sixSevenFormatTest || phoneNumFormatTests.sixEightFormatTest,
-	   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel),
-	   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel),
+	   sevenFormatTest : phoneNumFormats.zeroSevenFormat.test(tel.trim()),
+	   eightFormatTest : phoneNumFormats.zeroEightFormat.test(tel.trim()),
 	   telFormats : telNumFormatTests.telZeroOneTest || telNumFormatTests.telZeroTwoTest || telNumFormatTests.telZeroThreeTest || telNumFormatTests.telZeroFourTest || telNumFormatTests.telZeroFiveTest
 	}
 
@@ -56,13 +56,13 @@ let contact_us_post = async (req, res) => {
 
 	   allNumFormatTest : numRegexChecks.zeroSixFormatTest || numRegexChecks.sevenFormatTest || numRegexChecks.eightFormatTest || numRegexChecks.telFormats,
 
-	   findEmpty : tel === '' || tel === undefined || tel === null || tel.length === 0
+	   findEmpty : tel.trim() === '' || tel.trim().length === 0
 	}
 
-	if(nameValidator(name, subject) === false || contactUsNumValidator(tel) === false || emailValidation(email) === false){
-		res.status(200).render('contact-us-post', { contactValCheck, emailRegexChecks, name, subject, email, tel });
+	if(nameValidator(name.trim(), subject.trim()) === false || contactUsNumValidator(tel.trim()) === false || emailValidation(email.trim()) === false){
+		return res.status(200).render('contact-us-post', { contactValCheck, emailRegexChecks, name, subject, email, tel });
 	}else{
-		await contact_us_emailer(res, name, email, tel, subject);
+		await contact_us_emailer(res, name.trim(), email.trim(), tel.trim(), subject.trim());
 	}
 }
 

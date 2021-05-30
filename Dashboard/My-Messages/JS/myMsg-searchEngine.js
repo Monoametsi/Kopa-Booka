@@ -28,7 +28,7 @@ if(slideCont !== null){
 }
 
 //Functionality for displaying of the slides and the size in which it should bbe display.
-function closer(){
+function slideRevealer(){
 
 	if(slideCont.style.width === '0px' || slideCont.style.width === ''){
 		if(window.innerWidth >= 1210){
@@ -72,7 +72,7 @@ function slideDisplayer(){
 	
 	//Looping through all the table rows
 	for(let i = 1; i < table.rows.length; i++){
-		
+
 	//Condition for counting the amount of displayed messges that are not hidden.
 		if(window.getComputedStyle(table.rows[i], null).display != 'none'){
 			numOfDisplayedMsgs++;
@@ -112,7 +112,7 @@ function slideDisplayer(){
 						}
 
 						this.remove();
-	
+
 						//Condition to remove the message from frontend and to send it to be deleted on the backend via fetch api.
 						fetch(`/delete-message/${ this.id }`, {
 							method: 'POST'
@@ -130,11 +130,11 @@ function slideDisplayer(){
 						return null;
 					}
 				}
-				
+
 				//Condition to display message that have identical id's
 				if(tableId === cardId){
 					slideCard[j].style.display = 'flex';
-					closer();
+					slideRevealer();
 				}else{
 					slideCard[j].style.display = 'none';
 				}	
@@ -166,9 +166,9 @@ function searchEnginSystem(){
 		let adTel = table.rows[i].cells[5].innerHTML.trim();
 
 		//condition for to display all messages when search input value is empty
-		if(searchEngineVal.trim() === "" || searchEngineVal.trim().length === 0 || searchEngineVal === null || searchEngineVal === undefined){4
+		if(searchEngineVal.trim() === "" || searchEngineVal.trim().length === 0 || searchEngineVal === null || searchEngineVal === undefined){
 			//Dispalying all messages
-			
+
 			table.rows[i].style.display = 'table-row';
 			
 		//Condition for displaying messges that are a match for the search input value and hidding those that dont.
@@ -216,7 +216,7 @@ let subCheckBox = document.getElementsByClassName('sub-checkBox');
 mainCheckBox.onclick = function(){
 	for(let i = 0; i < subCheckBox.length; i++){
 		let tableRow = subCheckBox[i].parentElement.parentElement;
-		if(this.checked && window.getComputedStyle(tableRow, null).display != 'none'){
+		if(this.checked && window.getComputedStyle(tableRow, null).display !== 'none'){
 			subCheckBox[i].checked = true;
 		}else{
 			subCheckBox[i].checked = false;
@@ -255,16 +255,16 @@ deleteAllBtn.onclick = () => {
 	subCheckBoxArr.map((checkBox) => {
 		//checkbox table row
 		let tableRow = checkBox.parentElement.parentElement;
-	
+
 		//Condition for deleting messages that are checked and not hidden. Also for counting number of non-hidden messages that are checked.
-		if(checkBox.checked && window.getComputedStyle(tableRow, null).display != 'none'){
+		if(checkBox.checked && window.getComputedStyle(tableRow, null).display !== 'none'){
 			currentNum++;
 			deletedBulk.push(tableRow.id);
 			tableRow.remove();
 		}
 
 		//Condition counting messages that are not hidden.
-		if(window.getComputedStyle(tableRow, null).display != 'none'){
+		if(window.getComputedStyle(tableRow, null).display !== 'none'){
 			numOfDisplayedMsgs++
 		}
 
@@ -275,13 +275,13 @@ deleteAllBtn.onclick = () => {
 			noAdsFound.style.display = 'none';
 		}
 	});
-	
 
 	//Condition for sending id of deleted messages to server via delete url so that the server can delete them on the backend
 	if(deletedBulk.length > 0){
 		fetch(`/delete-message/${ deletedBulk }`,{ 
 			method: 'POST'
 		}).then((response) => {
+
 			if(response.ok){
 				console.log(response);
 				return;

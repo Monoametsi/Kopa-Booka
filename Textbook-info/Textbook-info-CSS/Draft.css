@@ -133,17 +133,21 @@ img{
 
 .ad-details{
 	padding: 9px;
-	margin-top: 2rem;
 }
 
-.ad-title, .ad-amount h3{
+.ad-amount h3{
 	margin-bottom: 2rem;
 }
 
-.ad-head{
-	font-size: 1.2rem;
+.post-title{
+	font-size: 25px;
+	color: #000;
+}
+
+.post-head{
 	font-family: montserrat, sans-serif;
-	margin-bottom: -1.2rem;
+	margin-top: 0;
+	margin-bottom: -5px;
 }
 
 .ad-amount{
@@ -153,22 +157,24 @@ img{
 
 .ad-price:before{
 	content: "R";
+	font-size: 1.6rem;
 	padding-right: 2px;
-	color: #0acdff;
+	color: #007cc2;
 	transition: 0.5s;
 }
 
 .ad-price:hover::before{
-	color: #1E90FF;
+	color: #0acdff;
 }
 
 .ad-price{
-	color: #0acdff;
+	font-size: 1.6rem;
+	color: #007cc2;
 	transition: 0.3s;
 }
 
 .ad-price:hover{
-	color: #1E90FF;
+	color: #0acdff;
 }
 
 
@@ -322,21 +328,22 @@ form{
 .validifier-cont{
 	display: flex;
 	justify-content: flex-end;
-	transition: 0.8s;
+	transition: 0.6s;
 }
 
 .validifier{
 	display: none;
 	background-color: red;
+	font-size: 15px;
 	font-weight: 600;
 	font-family: montserrat, sans-serif;
 	padding: 0 8px;
 	margin-right: 2.8px;
 	border-radius: 3px;
 	animation-name: smooth-appearance;
-	animation-duration: 0.8s;
+	animation-duration: 0.6s;
 	color: #fff;
-	transition: 0.8s;
+	transition: 0.6s;
 }
 
 @keyframes smooth-appearance{
@@ -349,7 +356,6 @@ form{
 	display: flex;
 	margin-bottom: 1.2rem;
 	width: 100%;
-	transition: 0.8s;
 }
 
 .ikon{
@@ -372,7 +378,7 @@ form{
 	font-weight: 600;
 	width: 100%;
 	border-radius: 0 5px 5px 0;
-	padding: 12px;
+	padding: 10px;
 	outline: none;
 	border: 1px solid #0acdff;
 	transition: 0.3s;
@@ -454,7 +460,7 @@ textarea:focus{
 }
 
 textarea::placeholder{
-	font-size: 1.1rem;
+	font-size: 1rem;
 	padding: 0.2rem;
 }
 
@@ -492,7 +498,7 @@ input[type=submit]:hover{
 
 .termPol a{
 	text-decoration: none;
-	color: #0acdff;
+	color: #007cc2;
 	transition: 0.3s;
 	line-height: 1.9rem;
 }
@@ -515,6 +521,7 @@ input[type=submit]:hover{
 }
 
 .box-message-cont{
+	margin-top: -1rem;
 	text-align: center;
 	align-self: center;
 } 
@@ -547,147 +554,3 @@ input[type=submit]:hover{
 	margin-bottom: 20px;
 }
 /*Success box message*/
-
-
-.flip-up{
-	transform: rotate(-180deg);
-}
-
-.mobileLogo{
-	display: none;
-	justify-content: center;
-	margin-right: 1.1rem;
-}
-
-.footMobileWeb-title{
-	display: flex;
-	position: relative;
-	align-items: center;
-	justify-content: space-between;
-	margin-top: 10%;
-	cursor: pointer;
-}
-
-.footMobile-title{
-	font-size: 1.2rem;
-	color: #fff;
-}
-
-.fa-caret-down{
-	color: #fff;
-	cursor: pointer;
-	font-size: 1.2rem;
-	transition: 0.3s;
-}
-
-.footMobile-web{
-	display: none;
-	margin: 1.5rem;
-	flex-direction: column;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
-}
-
-.footMobile-list{
-	list-style: none;
-	overflow: hidden;
-	max-height: 0;
-	transition: 1s;
-	opacity: 1;
-}
-
-.footMobileWeb-link{
-	font-size: 1.2rem;
-	color: #fff;
-	transition: 0.3s;
-	text-decoration: none;
-}
-
-.footMobile-list li{
-	padding: 5px;
-	list-style: none;
-}
-
-.foot-link{
-	font-size: 1.2rem;
-	padding-right: 1rem;
-	color: #fff; 
-	transition: 0.6s;
-	text-decoration: none;
-}
-
-.foot-info{
-	display: flex;
-	justify-content: space-between;
-	align-items:center;
-	background-color: #2f4f4f;
-	font-family: montserrat, sans-serif;
-}
-
-.foot-title{
-	align-self: center;
-	font-size: 0.5rem;
-	color: #fff;
-	margin-left: -2.8rem;
-}
-
-.foot-title a{
-	color: #0acdff;
-	text-decoration: none;
-	transition: 0.5s;
-}
-
-.foot-title a:hover{
-	color: #fff;
-}
-
-.foot-content{
-	display: flex;
-	flex-direction: column;
-	margin-right: 4.5rem;
-}
-
-.foot-web{
-	display: flex;
-	flex-direction: row;
-}
-
-.foot-link{
-	font-size: 1.2rem;
-	padding-right: 1rem;
-	color: #fff; 
-	transition: 0.6s;
-	text-decoration: none;
-}
-
-.foot-link:hover, .footMobileWeb-link:hover{
-	color:#0acdff;
-}
-
-.fa-chevron-up{
-	padding: 1rem;
-	border-radius:100%;
-	font-size: 1.5rem;
-	margin-right:2rem;
-	background:#fff;
-	cursor: pointer;
-	text-align: center;
-	transition: 0.3s; 
-}
-
-.fa-chevron-up:hover{
-	background-color:#0acdff;
-	color: #fff;
-}
-
-.bot-name{
-	font-family: montserrat, sans-serif;
-	transition: 0.35s;
-	font-size: 1.5em;
-	text-decoration: none;
-	color: #fff;
-}
-
-.bot-name:hover{
-	color:#0acdff;
-}
