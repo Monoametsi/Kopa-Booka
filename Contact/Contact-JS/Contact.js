@@ -49,7 +49,6 @@ scrollTop.onclick = function(){
 	function scrollTopper(){
 		if(document.body.scrollTop != 0 || document.documentElement.scrollTop != 0){
 				window.scrollBy(0, pageLengthCounter--);
-					console.log(pageLengthCounter);
 		}else{
 			clearInterval(scrollTopperInterval);
 		}

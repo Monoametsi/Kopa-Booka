@@ -49,38 +49,23 @@
 				} = data; 
 
 			    let img = UploadedImages[0];
-			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\"); 
+			    let imgStr = img.toString().replace("C:\\Users\\J_Mosemeng\\Desktop\\Kopa-Booka\\", "\\").replace("/app", "");
 
 		%>
-		<div class="categorieyBox-cont">
-			<div class="categoriey-box">
-				<div class="categorieyBox-header">
-					<h1>Lastest <span><%= Main_Category %></span> Ads</h1>
-				</div>
 
-				<ul class="categorieyBox-list">
+				<a href="<%= `/view-ad/${ _id } ` %>">
+					<li class="categorieyBox-link">
+						<div class="categorieyBox-image">
+							<img src="<%= imgStr %>">
+						</div>
 
-					<a href="<%= `/view-ad/${ _id } ` %>">
-						<li class="categorieyBox-link">
-							<div class="categorieyBox-image">
-								<img src="<%= imgStr %>">
-							</div>
-
-							<div class="categorieyBox-info">
-								<h5 class="categorieyBox-title"><%= Text_Book_Title %></h5>
-								<h5 class="categorieyBox-price"><%= Text_Book_Price %></h5>
-								<h5 class="categorieyBox-time"><%= dateDisplayer(Date_Created) %></h5>
-							</div>
-						</li>
-					</a>
-		
-				</ul>
-
-				<div class="categorieyBox-footer">
-					<h1><%=`See all  ${ Main_Category } Ads`  %></h1>
-				</div>
-			</div>
-		</div>
+						<div class="categorieyBox-info">
+							<h5 class="categorieyBox-title"><%= Text_Book_Title %></h5>
+							<h5 class="categorieyBox-price"><%= Text_Book_Price %></h5>
+							<h5 class="categorieyBox-time"><%= dateDisplayer(Date_Created) %></h5>
+						</div>
+					</li>
+				</a>
 
 	<% } %>
 	
@@ -110,26 +95,40 @@
 						</div>
 					</div>
 				</div>
-				
+
 			<%
 			} 
 			%>
-			
-				<% 
-				
-				
+
+				<%
 				outcome.map((catObj) => {
 					catObj.Main_Category.map((mainCategory) => {
-						if(mainCatAdsDisplay(mainCategory).length > 0){
-							mainCatAdsDisplay(mainCategory).slice(0, 4).map(findMainCat);
-						}
-					})
-					
-					
-				});
-
+						if(mainCatAdsDisplay(mainCategory).length > 0){ 
+							
 				%>
 				
+				<div class="categorieyBox-cont">
+					<div class="categoriey-box">
+						<div class="categorieyBox-header">
+							<h1>Lastest <span><%= mainCategory %></span> Ads</h1>
+						</div>
+						
+						<ul class="categorieyBox-list">
+
+							<% mainCatAdsDisplay(mainCategory).slice(0, 4).map(findMainCat) %>
+
+						</ul>
+
+						<div class="categorieyBox-footer">
+							<h1><%=`See all  ${ mainCategory } Ads`  %></h1>
+						</div>
+					</div>
+				</div>		
+	
+				<%		}
+					})	
+				});
+				%>
 				
 			</div>
 			<% 
