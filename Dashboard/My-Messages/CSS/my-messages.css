@@ -491,6 +491,10 @@ img{
 	display: flex;
 }
 
+.post-date:first-child{
+	margin-right: 3px;
+}
+	
 .post-date{
 	background-color: #e0e0e0;
     font-weight: 400;
