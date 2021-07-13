@@ -6,13 +6,6 @@
 	.categoriey-box{
 		width: 100%;
 	}
-
-	.categorieyBox-title{
-		white-space: nowrap;
-		text-overflow: ellipsis;
-		max-width: auto;
-		overflow: visible;
-	}
 	
 	.browserCategory-title h1{
 		text-align: center;
