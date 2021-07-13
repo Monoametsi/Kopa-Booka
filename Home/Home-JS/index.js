@@ -18,32 +18,26 @@ let hideBar = function() {
     scrollUp = scrollDown;
 }
 
-window.onscroll = function() {
-    let bodyScrol = document.body.scrollTop;
+let menuClassLister = () => {
+	let bodyScrol = document.body.scrollTop;
     let htmlScrol = document.documentElement.scrollTop;
 
     if (bodyScrol > 0 || htmlScrol > 0) {
-        topNav.style.transition = "0.5s";
-        topNav.style.opacity = "0.6";
-        topNav.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "0.6";
-        }
+		topNav.classList.remove('home-menu');
+		topNav.classList.add('scroll-down-menu');
+
     } else {
-        topNav.style.opacity = "1";
-		topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "1";
-        }
+		topNav.classList.remove('scroll-down-menu');
+        topNav.classList.add('home-menu');
     }
-    return hideBar();
 }
+
+window.onscroll = function() {
+   menuClassLister();
+   hideBar();
+}
+
+menuClassLister();
 
 //Scroll Top Function
 let scrollTop = document.getElementById("scrollTopper");
@@ -66,7 +60,7 @@ let btn = document.getElementsByClassName('mobile-info-list-title-cont');
 
 function listSlider(list, arrow){
 	let divisionList = list.nextElementSibling;
-	arrow.classList.toggle('flip-over');
+	arrow.classList.toggle('flip-up');
 
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
@@ -76,6 +70,7 @@ function listSlider(list, arrow){
 		divisionList.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
 	}
+
 }
 
 for(i = 0; i < btn.length; i++){
@@ -95,6 +90,9 @@ let arrower = document.getElementById('menu-arrow');
 let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
+	let bodyScrol = document.body.scrollTop;
+    let htmlScrol = document.documentElement.scrollTop;
+
 	let divisionList = list.parentElement.nextElementSibling;
 
 	let divisionList2 = divisionList.nextElementSibling;
@@ -111,6 +109,10 @@ function menuDropDown(list){
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
 
+		if(htmlScrol === 0){
+			topNav.classList.add('home-menu');
+		}
+
 	}else{
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
@@ -119,6 +121,11 @@ function menuDropDown(list){
 		if(divisionList3 !== undefined){
 			divisionList3.style.transition = '.3s';
 			divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		}
+		
+		
+		if(htmlScrol === 0){
+			topNav.classList.remove('home-menu');
 		}
 	}
 }

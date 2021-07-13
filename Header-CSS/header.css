@@ -6,7 +6,7 @@
 	color: #0acdff;
 }
 
-.menu{
+.menu, .home-menu{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -22,6 +22,22 @@
 	right: 0;
 	z-index: 50;
 	white-space: nowrap;
+	transition: 0.5s;
+}
+
+.scroll-down-menu{
+	opacity: 0.6;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	transition: 0.5s;
+}
+
+.scroll-down-menu:hover{
+	opacity: 1;
+}
+
+.home-menu{
+	background-color: transparent;
+	box-shadow: 0 0 0 rgba(0,0,0,0.3);
 }
 
 .kb-logo-cont{
@@ -46,51 +62,49 @@
 .logo > .fa-bars{
 	display: none;
 	color: #000;
+	font-size: 1.2rem;
+	cursor: pointer;
+	transition: 0.3s;
 }
 
-.logo i, .nav > li > a  i{
+.nav > li > a  i{
 	font-size: 1.4rem;
 	color: orange;
-	transition: 0.2s;
+	transition: 0.3s;
 	cursor: pointer;
-}
-
-.nav  > li > a  i{
 	padding-right: 0.5rem;
 }
 
-.log-name, .link, .share a{
-	text-decoration: none;
-	color: #000;
-}
-
 .nav{
+	transition: 0.3s;
 	list-style-type: none;
 }
 
 .nav li{
 	display: inline-block;
 	cursor: pointer;
-	transition: 0.2s;
+	transition: 0.3s;
 	margin-right: 1.8rem;
 	padding: 0;
 }
 
-.nav li > a > span {
+.nav li > a > span, .home-menu li > a > span{
+	color: #000;
 	font-size: 1.2rem;
 	white-space: nowrap;
+	transition: 0.3s;
+}
+
+.home-menu li > a > span, .home-menu .logo > .fa-bars{
+	color: #fff;
+}
+
+.home-menu li > a > span.active, .nav li > a > span.active{
+	color: #0acdff;
 }
 
 .nav li:last-child{
 	margin-right: 0;
-}
-
-.link{
-	transition: 0.2s;
-}
-
-.link:hover i{
-	color:#0acdff;
 }
 
 .register-logIn{
@@ -124,13 +138,17 @@
 	text-align: center;
 }
 
-.regLogin-link{
+.regLogin-link, .home-menu .regLogin-link{
 	font-size: 1.2rem;
-	transition: 0.2s;
+	transition: 0.3s;
 	color: #000;
 }
 
-.link:hover, .log-name:hover, .fa-bars:hover, .regLogin-link:hover, .regLogin-link:hover i{
+.home-menu .regLogin-link{
+	color: #fff;
+}
+
+.link:hover i,.fa-bars:hover, .regLogin-link:hover, .regLogin-link:hover i, .home-menu li > a:hover span, .nav li > a:hover span{
 	color: #0acdff;
 }
 
