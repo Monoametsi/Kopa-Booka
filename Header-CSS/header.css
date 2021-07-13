@@ -6,6 +6,10 @@
 	color: #0acdff;
 }
 
+/* #active{ */
+	/* color: #0acdff; */
+/* } */
+
 .menu, .home-menu{
 	display: flex;
 	justify-content: space-between;
