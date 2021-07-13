@@ -103,6 +103,7 @@ a{
 	font-family: montserrat, sans-serif;
 	font-size: 1.8rem;
 	font-weight: bold;
+	line-height: 2.5rem;
 }
 
 .categories{
@@ -113,6 +114,8 @@ a{
 
 .categorieyBox-cont{
 	display: flex;
+	width: 100%;
+	max-width: 320px;
 	margin-bottom: 1.8rem;
 }
 
@@ -122,8 +125,7 @@ a{
 	flex-direction: column;
 	border: 3px solid #ddd;
 	background-color: #fff;
-	width: 300px;
-	max-width: 100%;
+	width: 100%;
 	margin: 3px 10px;
 	overflow: hidden;
 }

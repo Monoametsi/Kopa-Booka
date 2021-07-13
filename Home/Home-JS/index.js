@@ -60,7 +60,7 @@ let btn = document.getElementsByClassName('mobile-info-list-title-cont');
 
 function listSlider(list, arrow){
 	let divisionList = list.nextElementSibling;
-	arrow.classList.toggle('flip-up');
+	arrow.classList.toggle('flip-over');
 
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
@@ -165,4 +165,18 @@ window.onclick = (event) => {
 			naver.style.transition = '.3s';
 		}
 	}
+}
+
+let preloader = document.getElementById('preloader-bg-cont');
+
+window.onload = () => {
+	
+	preloader.classList.add('close-preloader');
+	
+	setTimeout(() => {
+
+		preloader.style.display = 'none';
+
+	}, 300)
+	
 }

@@ -6,9 +6,60 @@
 	color: #0acdff;
 }
 
-/* #active{ */
-	/* color: #0acdff; */
-/* } */
+.preloader-bg-cont{
+	position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #2f4f4f;
+    z-index: 50000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.preloader-cont{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);	
+}
+
+.preloader{
+	animation-name: preloader;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+	border: 10px solid #0acdff;
+	border-bottom: 10px solid orange;
+    border-radius: 100%;
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
+@keyframes preloader{
+
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
+
+}
+
+.close-preloader{
+	animation-name: close-preloader;
+    animation-duration: 0.3s;
+}
+
+@keyframes close-preloader{
+
+    from{ opacity: 1; }
+    to{ opacity: 0; }
+
+}
 
 .menu, .home-menu{
 	display: flex;

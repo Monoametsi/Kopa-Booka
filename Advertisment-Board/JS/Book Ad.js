@@ -22,27 +22,14 @@ window.onscroll = function() {
     let bodyScrol = document.body.scrollTop;
     let htmlScrol = document.documentElement.scrollTop;
 
-    if (bodyScrol > 0 || htmlScrol > 0) {
-        topNav.style.transition = "0.5s";
-        topNav.style.opacity = "0.6";
-        topNav.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "0.6";
-        }
+	if (bodyScrol > 0 || htmlScrol > 0) {
+		topNav.classList.add('scroll-down-menu');
+
     } else {
-        topNav.style.opacity = "1";
-		topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "1";
-        }
+		topNav.classList.remove('scroll-down-menu');
     }
-    return hideBar();
+
+	return hideBar();
 }
 
 //Scroll Top Function
@@ -62,12 +49,11 @@ scrollTop.onclick = function(){
 }
 
 //footer list dropdown
-let btn = document.getElementById('btn');
-let arrow = document.getElementById('arrow');
+let btn = document.getElementsByClassName('mobile-info-list-title-cont');
 
-function listDrop(list){
+function listSlider(list, arrow){
 	let divisionList = list.nextElementSibling;
-	arrow.classList.toggle('flip-up');
+	arrow.classList.toggle('flip-over');
 
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
@@ -77,10 +63,15 @@ function listDrop(list){
 		divisionList.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
 	}
+
 }
 
-btn.onclick = function(){
-	listDrop(this);
+for(i = 0; i < btn.length; i++){
+	btn[i].onclick = function(){
+		let arrow = this.children[1];
+
+		listSlider(this, arrow);
+	}
 }
 
 //Menu dropdown
@@ -92,25 +83,35 @@ let arrower = document.getElementById('menu-arrow');
 let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
+	let bodyScrol = document.body.scrollTop;
+    let htmlScrol = document.documentElement.scrollTop;
+
 	let divisionList = list.parentElement.nextElementSibling;
+
 	let divisionList2 = divisionList.nextElementSibling;
 	let divisionList3 = divisionList2.children[1].children[1];
-	
+
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
 		divisionList2.style.maxHeight = null;
-		divisionList3.style.maxHeight = null;
+		if(divisionList3 !== undefined){
+			divisionList3.style.maxHeight = null;
+			divisionList3.style.transition = '.3s'
+		}
+
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
-        divisionList3.style.transition = '.3s'
+
 
 	}else{
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
 		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
 		divisionList2.style.maxHeight = divisionList2.scrollHeight  + 'px';
-		divisionList3.style.transition = '.3s';
-    	divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		if(divisionList3 !== undefined){
+			divisionList3.style.transition = '.3s';
+			divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		}
 	}
 }
 
@@ -251,14 +252,17 @@ window.onclick = function(event) {
 	
 
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
-	let displayValue = window.getComputedStyle(loginMenu, null).display;
-	if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
-		arrower.classList.remove('rotater');
-		dashboardMenu.style.maxHeight = null;
-		dashboardMenu.style.transition = '.3s';
-		naver.style.maxHeight = null;
-		naver.style.transition = '.3s';
+	if(loginMenu !== undefined){
+		let displayValue = window.getComputedStyle(loginMenu, null).display;
+		if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
+			arrower.classList.remove('rotater');
+			dashboardMenu.style.maxHeight = null;
+			dashboardMenu.style.transition = '.3s';
+			naver.style.maxHeight = null;
+			naver.style.transition = '.3s';
+		}
 	}
+
 }
 
 //Category List dropdown

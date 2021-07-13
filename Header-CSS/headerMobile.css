@@ -62,7 +62,7 @@
 	.nav li, .regLogin-link{
 		cursor: pointer;
 		transition: 0.3s;
-		padding: 8px 1rem;
+		padding: 8px 6px;
 		border-bottom: 1px solid #000;
 	}
 	
@@ -78,7 +78,7 @@
 		cursor: pointer;
 		transition: 0.3s;
 		font-size: 1.4em;
-		padding: 8px 1rem;
+		padding: 8px 6px;
 	}
 
 	.dashboard-links li{
@@ -164,4 +164,16 @@
 	.place-post-btn{
 		font-size: 1.2rem;
 	}
+}
+
+@media screen and (max-width: 360px){
+
+	.nav li > a > span, .regLogin-link{
+		font-size: 1.2rem;
+	}
+	
+	.nav > li > a  i{
+		font-size: 1.4rem;
+	}
+
 }

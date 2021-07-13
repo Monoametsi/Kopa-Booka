@@ -219,6 +219,7 @@
 	
 	.RefineSearch-Cont{
 		display: flex;
+		width: 100%;
 	}
 	
 	.all-categories{
