@@ -2,7 +2,7 @@
 let topNav = document.getElementById("Topnav");
 let scrollUp = window.pageYOffset;
 
-// let num = document.getElementById('num');
+// let num = document.getElementById('num')
 
 // window.onresize = () => {
 	// num.innerHTML = window.innerWidth;
