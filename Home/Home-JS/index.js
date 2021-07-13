@@ -62,12 +62,11 @@ scrollTop.onclick = function(){
 }
 
 //footer list dropdown
-let btn = document.getElementById('btn');
-let arrow = document.getElementById('arrow');
+let btn = document.getElementsByClassName('mobile-info-list-title-cont');
 
-function listSlider(list,animeClass){
+function listSlider(list, arrow){
 	let divisionList = list.nextElementSibling;
-	arrow.classList.toggle('flip-up');
+	arrow.classList.toggle('flip-over');
 
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
@@ -79,8 +78,12 @@ function listSlider(list,animeClass){
 	}
 }
 
-btn.onclick = function(){
-	listSlider(this);
+for(i = 0; i < btn.length; i++){
+	btn[i].onclick = function(){
+		let arrow = this.children[1];
+
+		listSlider(this, arrow);
+	}
 }
 
 //Menu dropdown

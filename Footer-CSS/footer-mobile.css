@@ -1,68 +1,91 @@
-@media screen and (max-width: 1125px){
-	.foot-content{
-		margin-right: 0;
+@media screen and (max-width: 1000px){
+	
+	.site-info-list{
+		padding-left: 40px;
 	}
+
 }
 
-@media screen and (max-width: 890px){
-	.foot-web{
-		display: none;
-		flex-direction: row;
-	}
+@media screen and (max-width: 960px){
 	
-	.footMobile-web{
-		display: flex;
-		justify-content: center;
+	.footer-cont{
+		padding: 1rem 1rem;
 	}
-	
-	.foot-content{
-		margin-right: 2.5rem;
-	}
-	
-	.footMobileWeb-link{
-		white-space: nowrap;
-	}
-	
-	.foot-title{
-		margin-left: 0;
-	}
+
 }
 
-@media screen and (max-width: 790px){
-	.foot-title{
-		white-space: nowrap;
+@media screen and (max-width: 860px){
 	
+	.site-info-list{
+		width: 170px;
 	}
+
 }
 
-@media screen and (max-width: 670px){
-
-	.mobileLogo{
+@media screen and (max-width: 760px){
+	
+	.footer-img-cont-cont{
+		align-self: center;
+	}
+	
+	.footer-img-cont{
+		margin-top: 0;
+		margin-bottom: 2rem;
+	}
+	
+	.footer-site-info-cont{
 		display: flex;
-		justify-content: center;
-		margin-right: 1.1rem;
+		flex-wrap: nowrap;
+		flex-direction: column;
+		justify-content: stretch;
 	}
 	
-	.regMobile-title{
-		font-size: 2.4rem;
-		font-family: montserrat, sans-serif;
-		text-shadow: 0 0 2px rgba(0,0,0,0.6);
-	}
-	
-	.footMobile-web{
-		display: flex;
-		margin-right: 2.5rem;
-	}
-	
-	.foot-info > .logo{
+	.info-list-title-cont{
 		display: none;
 	}
 	
-	.foot-info{
-		justify-content: space-around;
+	.mobile-info-list-title-cont{
+		display: flex;
+	}
+
+	.site-info-list{
+		margin: 0;
+		padding: 0;
+		max-height: 0;
+		overflow: hidden;
+		width: 100%;
+		max-width: 100%;
 	}
 	
-	.foot-title{
-		white-space: nowrap;
+	.site-info-list-cont{
+		flex-direction: column;
+		border-bottom: 1px solid #0acdff;
 	}
+	
+	.site-info-list-cont:nth-of-type(2){
+		border-top: 1px solid #0acdff;
+	}
+	
+	.fa-chevron-up{
+		padding: 1rem;
+	}
+
+}
+
+@media screen and (max-width: 550px){
+	
+	.footer-copyright-info-cont{
+		margin-top: 8px;
+		flex-direction: column;
+		justify-content: stretch;
+	}
+	
+	.socials-cont{
+		margin-bottom: 0;
+	}
+	
+	.coyright-info-cont{
+		margin-top: 0;
+	}
+	
 }

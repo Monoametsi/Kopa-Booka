@@ -2,141 +2,187 @@
 	transform: rotate(-180deg);
 }
 
-.mobileLogo{
-	display: none;
-	justify-content: center;
-	margin-right: 1.1rem;
+.footer-cont{
+	background-color: #2f4f4f;
+	padding: 1rem 4rem;
 }
 
-.footMobileWeb-title{
+.footer{
 	display: flex;
-	position: relative;
+	flex-direction: column;
+}
+
+.footer-site-info-cont{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.footer-img-cont-cont{
+	/* background-color: red; */
+	width: 200px;
+	max-width: 100%;
+}
+
+.footer-img-cont{
+	display: flex;
+	margin-top: 21px;
+	width: 180px;
+	max-width: 100%;
+	overflow: hidden;
+	user-select: none;
+}
+
+.footer-img{
+	max-width: 100%;
+}
+
+.site-info-list-cont{
+	display: flex;
+	padding-top: 0;
+}
+
+.site-info-list{
+	display: flex;
+	margin-top: 0;
+	padding-left: 0;
+	padding-top: 0;
+	flex-direction: column;
+	list-style: none;
+	width: 200px;
+	max-width: 100%;
+}
+
+.mobile-info-list-title-cont{
+	display: none;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+
+.fa-chevron-down{
+	padding-right: 12px;
+	color: #fff;
+	transition: 0.4s;
+}
+
+.flip-over{
+	transform: rotateX(180deg);
+}
+
+.info-list-title-cont h5, .mobile-info-list-title-cont h5{
+	font-family:  montserrat, sans-serif;
+	line-height: 1.2rem;
+	font-weight: 600;
+	color: #fff;
+}
+
+.site-info-list li{
+	display: flex;
+	margin-bottom: 12px;
+}
+
+.site-info-list li a{
+	transition: 0.3s;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 300;
+}
+
+.site-info-list li a:hover{
+	color: #0acdff;
+}
+
+.footer-copyright-info-cont{
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: 10%;
-	cursor: pointer;
 }
 
-.footMobile-title{
-	font-size: 1.2rem;
-	color: #fff;
-}
-
-.arrowDown{
-	color: #fff;
-	cursor: pointer;
-	font-size: 1.2rem;
-	transition: 0.3s;
-}
-
-.footMobile-web{
-	display: none;
-	margin: 1.5rem;
-	flex-direction: column;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
-}
-
-.footMobile-list{
-	list-style: none;
-	overflow: hidden;
-	max-height: 0;
-	transition: 1s;
-	opacity: 1;
-}
-
-.footMobileWeb-link{
-	font-size: 1.2rem;
-	color: #fff;
-	transition: 0.3s;
-	text-decoration: none;
-}
-
-.footMobile-list li{
-	padding: 5px;
-	list-style: none;
-}
-
-.foot-link{
-	font-size: 1.2rem;
-	padding-right: 1rem;
-	color: #fff; 
-	transition: 0.6s;
-	text-decoration: none;
-}
-
-.foot-info{
+.socials-cont{
 	display: flex;
-	justify-content: space-between;
-	align-items:center;
-	background-color: #2f4f4f;
+	list-style: none;
+	padding: 0;
+}
+
+.socials-cont li{
+	display: flex;
+	margin-right: 1rem;
+}
+
+.socials-cont li:last-child{
+	margin-right: 0;
+}
+
+.socials-cont li > a > i{
+	font-size: 16px;
+	transition: background-color 350ms;
+}
+
+.socials-cont li > a > i:hover{
+	background-color: orange;
+}
+
+.facebook, .twitter, .linkedin{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	text-align: center;
+	width: 2.5rem;
+	height: 2rem;
+	border-radius: 3px;
+	font-weight: 400;
+}
+
+.facebook{
+	background-color: rgba(66, 103, 178, 1);
+}
+
+.twitter{
+	background-color: #00acee;
+}
+
+.linkedin{
+	background-color: #0e76a8;
+}
+
+.coyright-info-cont h6{
 	font-family: montserrat, sans-serif;
+	color: #C9C7C3;
+	font-weight: 300;
+	line-height: 1.6rem;
+	text-align: center;
 }
 
-.foot-title{
-	align-self: center;
-	font-size: 0.5rem;
-	color: #fff;
-	margin-left: -2.8rem;
-}
-
-.foot-title a{
+.coyright-info-cont h6 a{
 	color: #0acdff;
-	text-decoration: none;
-	transition: 0.5s;
+	font-size: 12px;
+	transition: 0.3s;
 }
 
-.foot-title a:hover{
-	color: #fff;
+.coyright-info-cont h6 a:hover{
+	color: orange;
 }
 
-.foot-content{
+.shooter{
 	display: flex;
-	flex-direction: column;
-	margin-right: 4.5rem;
-}
-
-.foot-web{
-	display: flex;
-	flex-direction: row;
-}
-
-.foot-link{
-	font-size: 1.2rem;
-	padding-right: 1rem;
-	color: #fff; 
-	transition: 0.6s;
-	text-decoration: none;
-}
-
-.foot-link:hover, .footMobileWeb-link:hover{
-	color:#0acdff;
+	justify-content: flex-end;
 }
 
 .fa-chevron-up{
-	padding: 1rem;
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	padding: 1.5rem;
 	border-radius:100%;
 	font-size: 1.5rem;
-	margin-right:2rem;
-	background:#fff;
+	margin: 2rem 1rem;
+	background: #fff;
 	cursor: pointer;
 	text-align: center;
-	transition: 0.3s; 
+	transition: background-color 350ms, color 350ms; 
 }
 
 .fa-chevron-up:hover{
 	background-color:#0acdff;
 	color: #fff;
-}
-
-.bot-name{
-	font-family: montserrat, sans-serif;
-	transition: 0.35s;
-	font-size: 1.5em;
-	text-decoration: none;
-	color: #fff;
-}
-
-.bot-name:hover{
-	color:#0acdff;
 }

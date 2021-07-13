@@ -1,57 +1,150 @@
-	<footer id="foot">
-		<div class="foot-info">
-			<div class="logo"style="margin-left: 0.5rem;" >
-				<a href="/" class="bot-name log-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
-			</div>
+<footer id="footer">
 
-			<div class="foot-content">
-				<div class="foot-web">
-				<%	if(req.url === "/privacy-policy" || req.url === "/privacy-policy/") { %>
-					<h1><a href="/privacy-policy" class="foot-link" id="active">Privacy Policy</a></h1>
-				<% } else {%>
-					<h1><a href="/privacy-policy" class="foot-link">Privacy Policy</a></h1>
-				<% } %>
+		<div class="shooter">
+			<i class="fa fa-chevron-up shoot" id="scrollTopper"></i>
+		</div>
 
-				<% if(req.url === "/terms-of-use" || req.url === "/terms-of-use/") {%>
-					<h1><a href="/terms-of-use" class="foot-link" id="active">Terms of Use</a></h1>
-				<% }else { %>
-					<h1><a href="/terms-of-use" class="foot-link">Terms of Use</a></h1>
-				<% } %>
-					<h1><a href="#" class="foot-link">Browser Support</a></h1>
+		<div class="footer-cont">
+
+			<div class="footer">
+
+				<div class="footer-site-info-cont">
+
+					<div class="footer-img-cont-cont">
+						<a href="/" class="footer-img-cont">
+
+							<img src="../../KB-Images/Kopa-Booka-logo.png" class="footer-img">
+
+						</a>
+					</div>
+
+					<div class="site-info-list-cont">
+
+						<div class="mobile-info-list-title-cont">
+
+							<h5>Get to Know Us</h5>
+							<i class="fa fa-chevron-down"></i>
+
+						</div>
+
+						<ul class="site-info-list">
+
+							<div class="info-list-title-cont">
+								<h5>Get to Know Us</h5>
+							</div>
+
+							<li>
+								<a href="/About-Us">About Kopa-Booka</a>
+							</li>
+						
+						</ul>
+
+					</div>
+
+					<div class="site-info-list-cont">
+					
+						<div class="mobile-info-list-title-cont">
+						
+							<h5>Our Policies</h5>
+							<i class="fa fa-chevron-down"></i>
+						
+						</div>
+
+						<ul class="site-info-list">
+							
+							<div class="info-list-title-cont">
+								<h5>Our Policies</h5>
+							</div>
+							
+							<li>
+							
+								<a href="/privacy-policy">Privacy Policy</a>
+							
+							</li>
+							
+							<li>
+							
+								<a href="/terms-of-use">Term of Use</a>
+							
+							</li>
+							
+							<li>
+							
+								<a href="#">Cookies Policy</a>
+							
+							</li>
+							
+							<li>
+							
+								<a href="#">Advertising Policy/Rules</a>
+							
+							</li>
+
+						</ul>
+
+					</div>
+					
+					<div class="site-info-list-cont">
+					
+						<div class="mobile-info-list-title-cont">
+
+							<h5>Tips &#38; Help</h5>
+							<i class="fa fa-chevron-down"></i>
+
+						</div>
+
+						<ul class="site-info-list">
+	
+							<div class="info-list-title-cont">
+								<h5>Tips &#38; Help</h5>
+							</div>
+							
+							<li>
+							
+								<a href="/contact-us">Contact Us</a>
+							
+							</li>
+
+						</ul>	
+
+					</div>
+
 				</div>
-				
-				<div class="mobileLogo">
-					<a href="/" class="log-name bot-name" style="font-family: montserrat, sans-serif;"><i class="fa fa-book" style="font-size: 1.5rem;  padding: 8px;"></i>Kopa Booka</a>
+
+				<div class="footer-copyright-info-cont">
+
+					<ul class="socials-cont">
+					
+						<li>
+							<a href="#">
+								<i class="fa fa-facebook facebook"></i>
+							</a>
+						</li>
+
+						<li>
+							<a href="#">
+								<i class="fa fa-twitter twitter"></i>
+							</a>
+						</li>
+
+						<li>
+							<a href="#">
+								<i class="fa fa-linkedin linkedin"></i>
+							</a>
+						</li>
+
+					</ul>
+
+					<div class="coyright-info-cont">
+
+						<h6>Copyright &copy; <a href="https://glacial-atoll-14823.herokuapp.com/" target="_blank">MJ Solutions</a> 2021, All Rights Reserved</h6>
+
+					</div>
+
 				</div>
 			
-				<div class="footMobile-web">
-					<div class="footMobileWeb-title" id="btn">
-						<span class="footMobile-title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Our policies</span>
-						<i class="fa fa-caret-up arrowDown flip-up" id="arrow"></i>
-					</div>
-					<ul class="footMobile-list">
-				<%	if(req.url === "/privacy-policy" || req.url === "/privacy-policy/") { %>
-						<li><a href="/privacy-policy" class="footMobileWeb-link" id="active">Privacy Policy</a></li>
-				<% } else { %>
-						<li><a href="/privacy-policy" class="footMobileWeb-link">Privacy Policy</a></li>
-				<% } %>
-				
-				<% if(req.url === "/terms-of-use" || req.url === "/terms-of-use/"){ %>
-					<li><a href="/terms-of-use" class="footMobileWeb-link" id="active">Terms of Use</a></li>
-				<% }else { %>
-					<li><a href="/terms-of-use" class="footMobileWeb-link">Terms of Use</a></li>
-				<% } %>
-					<li><a href="#" class="footMobileWeb-link">Browser Support</a></li>
-					</ul>
-				</div>
-
-				<div class="foot-title">
-					<h1>&copy; 2021 <a href="#" target="_blank">MJ Solutions</a> All Rights Reserved</h1>
-				</div>
 			</div>
 
-			<div class="shooter" >
-				<i class="fa fa-chevron-up shoot" id="scrollTopper"></i>
-			</div>
 		</div>
+		
 	</footer>
