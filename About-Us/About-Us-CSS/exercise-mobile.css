@@ -1,0 +1,23 @@
+@media screen and (max-width: 1000px){
+	
+	.site-info-list{
+		padding-left: 40px;
+	}
+
+}
+
+@media screen and (max-width: 960px){
+	
+	.footer-cont{
+		padding: 1rem 1rem;
+	}
+
+}
+
+@media screen and (max-width: 860px){
+	
+	.site-info-list{
+		width: 170px;
+	}
+
+}

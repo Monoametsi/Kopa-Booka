@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="/Home-Images/favicon.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round">
-<link rel="stylesheet" href="/fontawesome-free-5.13.0-web/css/fontawesome.min.css">
-<link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/Header-CSS/header.css">
-<link rel="stylesheet" href="/Header-CSS/headerMobile.css">
-<link rel="stylesheet" href="/Footer-CSS/footer.css">
-<link rel="stylesheet" href="/Footer-CSS/footer-mobile.css">
+
+<%- include("partials/head-info"); -%>
+
 <link rel="stylesheet" href="/Home-CSS/index.css">
 <link rel="stylesheet" href="/Home-CSS/index-mobile.css">
 <title>Kopa Booka | Home</title>
@@ -54,6 +47,7 @@
 		%>
 
 				<a href="<%= `/view-ad/${ _id } ` %>">
+
 					<li class="categorieyBox-link">
 						<div class="categorieyBox-image">
 							<img src="<%= imgStr %>">
@@ -65,24 +59,27 @@
 							<h5 class="categorieyBox-time"><%= dateDisplayer(Date_Created) %></h5>
 						</div>
 					</li>
+
 				</a>
 
 	<% } %>
-	
 
 	<section id="browserCategory-cont">
+
 		<div class="browserCategory-cont">
+
 			<div class="browserCategory-title">
 				<h1>Browse Textbooks By Category</h1>
 			</div>
 
 			<div class="categories">
-			
+
 			<% 
-			
-			if(result.length === 0){ 
+
+			if(result.length === 0){
+
 			%>
-				
+
 				<div class="messageBox-cont">
 					<div class="message-box">
 						<div class="messageTitle-cont">
@@ -104,9 +101,9 @@
 				outcome.map((catObj) => {
 					catObj.Main_Category.map((mainCategory) => {
 						if(mainCatAdsDisplay(mainCategory).length > 0){ 
-							
+
 				%>
-				
+
 				<div class="categorieyBox-cont">
 					<div class="categoriey-box">
 						<div class="categorieyBox-header">
@@ -124,7 +121,7 @@
 						</div>
 					</div>
 				</div>		
-	
+
 				<%		}
 					})	
 				});
@@ -143,7 +140,7 @@
 
 		</div>
 	</section>
-	
+
 	<%- include("partials/footer"); -%>
 
 	<script src="/Home-JS/index.js"></script>

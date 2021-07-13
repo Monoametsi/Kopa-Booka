@@ -9,45 +9,54 @@
 .menu{
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	background-color: #fff;
 	box-shadow: 0 0 25px rgba(0,0,0,0.3);
 	font-family: 'Roboto', sans-serif;
 	position: fixed;
 	width: 100%;
 	margin: 0;
-	padding: 0;
+	padding: 10px 1.2rem;
 	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 50;
 	white-space: nowrap;
 }
 
+.kb-logo-cont{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	width: 130px;
+	overflow: hidden;
+}
+
+.kb-logo{
+	display: flex;
+	user-select: none;
+	max-width: 100%;
+}
+
 .logo{
-	padding: 1rem;
+	
 }
 
 .logo > .fa-bars{
 	display: none;
 	color: #000;
-	padding-right: 1.7rem;
 }
 
-.logo i, .nav i, .mobileLogo i{
-	font-size: 1.8rem;
+.logo i, .nav > li > a  i{
+	font-size: 1.4rem;
 	color: orange;
 	transition: 0.2s;
 	cursor: pointer;
 }
 
-.nav i{
+.nav  > li > a  i{
 	padding-right: 0.5rem;
-}
-
-.log-name{
-	font-family: montserrat, sans-serif;
-	transition: 0.2s;
-	font-size: 2rem;
-	font-weight: 600;
-	padding: 9px 5px;
 }
 
 .log-name, .link, .share a{
@@ -57,15 +66,23 @@
 
 .nav{
 	list-style-type: none;
-	align-self: center;
 }
 
 .nav li{
 	display: inline-block;
 	cursor: pointer;
 	transition: 0.2s;
-	font-size: 1.4em;
-	padding: 11.5px 15px;
+	margin-right: 1.8rem;
+	padding: 0;
+}
+
+.nav li > a > span {
+	font-size: 1.2rem;
+	white-space: nowrap;
+}
+
+.nav li:last-child{
+	margin-right: 0;
 }
 
 .link{
@@ -76,36 +93,39 @@
 	color:#0acdff;
 }
 
-.log-name:hover .fa-book{
-	color: #0acdff;
-}
-
 .register-logIn{
 	display: flex;
 	align-items: center;
-	padding-right: 1rem;
 }
 
-.dashboard-link > i, .regLogin-link > i, .register-logIn > .regLogin-link:first-child{
+.dashboard-link > i{
 	padding-right: 10px;
+}
+
+.regLogin-link > i{
+	padding-right: 0.5rem;
+}
+
+.register-logIn > .regLogin-link:first-child{
+	margin-right: 1.8rem;
 }
 
 .dashboard-link > i{
 	color: orange;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	transition: 0.2s;
 	text-align: center;
 }
 
 .regLogin-link > i{
 	color: orange;
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	transition: 0.2s;
 	text-align: center;
 }
 
 .regLogin-link{
-	font-size: 1.4em;
+	font-size: 1.2rem;
 	transition: 0.2s;
 	color: #000;
 }

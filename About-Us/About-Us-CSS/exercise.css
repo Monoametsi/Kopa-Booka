@@ -1,0 +1,148 @@
+.footer-cont{
+	background-color: #2f4f4f;
+	padding: 1rem 4rem;
+}
+
+.footer{
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-site-info-cont{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.footer-img-cont-cont{
+	/* background-color: red; */
+	width: 200px;
+	max-width: 100%;
+}
+
+.footer-img-cont{
+	display: flex;
+	margin-top: 21px;
+	width: 180px;
+	max-width: 100%;
+	overflow: hidden;
+	user-select: none;
+}
+
+.footer-img{
+	max-width: 100%;
+}
+
+.site-info-list-cont{
+	display: flex;
+	padding-top: 0;
+	background-color: red;
+}
+
+.site-info-list{
+	display: flex;
+	margin-top: 0;
+	padding-left: 0;
+	padding-top: 0;
+	flex-direction: column;
+	list-style: none;
+	width: 200px;
+	max-width: 100%;
+}
+
+.info-list-title-cont h5{
+	font-family:  montserrat, sans-serif;
+	line-height: 1.2rem;
+	font-weight: 600;
+	color: #fff;
+}
+
+.site-info-list li{
+	display: flex;
+	margin-bottom: 12px;
+}
+
+.site-info-list li a{
+	transition: 0.3s;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 300;
+}
+
+.site-info-list li a:hover{
+	color: #0acdff;
+}
+
+.footer-copyright-info-cont{
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+.socials-cont{
+	display: flex;
+	list-style: none;
+	padding: 0;
+}
+
+.socials-cont li{
+	display: flex;
+	margin-right: 1rem;
+}
+
+.socials-cont li:last-child{
+	margin-right: 0;
+}
+
+.socials-cont li > a > i{
+	font-size: 16px;
+	transition: background-color 350ms;
+}
+
+.socials-cont li > a > i:hover{
+	background-color: orange;
+}
+
+.facebook, .twitter, .linkedin{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	text-align: center;
+	width: 2.5rem;
+	height: 2rem;
+	border-radius: 3px;
+	font-weight: 400;
+}
+
+.facebook{
+	background-color: rgba(66, 103, 178, 1);
+}
+
+.twitter{
+	background-color: #00acee;
+}
+
+.linkedin{
+	background-color: #0e76a8;
+}
+
+.coyright-info-cont{
+	display: flex;
+}
+
+.coyright-info-cont h6{
+	font-family: montserrat, sans-serif;
+	color: #C9C7C3;
+	font-weight: 300;
+}
+
+.coyright-info-cont h6 a{
+	color: #0acdff;
+	font-size: 12px;
+	transition: 0.3s;
+}
+
+.coyright-info-cont h6 a:hover{
+	color: orange;
+}

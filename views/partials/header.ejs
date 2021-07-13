@@ -2,7 +2,14 @@
 <nav class="menu" id="Topnav">
 		<div class="logo">
 			<i class="fa fa-bars" id="menu-DropDown"></i>
-			<a href="/" class="log-name"><i class="fa fa-book" style="padding: 8px;"></i><span>Kopa Booka</span></a>
+			
+			<a href="/" class="kb-logo-cont">
+
+				<img src="/KB-Images/Kopa-Booka-logo.png" class="kb-logo">
+			
+			</a>
+			
+			
 			<% if (user && req.url !== "/place-advert") { %>
 				<a href="/place-advert" class="mobile-btn"><button class="place-post-btn">Place an Ad</button></a>
 			<% } else { %>
@@ -12,38 +19,38 @@
 
 	<% if(req.url.search("/Ad-board") !== -1) { %>
 			<div class="nav">
-				<li><a href="/" class="link"><i class="fa fa-home" ></i><span style="white-space: nowrap;" id="width-num">Home</span></a></li>
-				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper" id="active"></i><span style="white-space: nowrap;" class="active">Books For Sale</span></a></li>
-				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span style="white-space: nowrap;">About Us</span></a></li>
-				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span style="white-space: nowrap;">Contact Us</span></a></li>
+				<li><a href="/" class="link"><i class="fa fa-home" ></i><span id="width-num">Home</span></a></li>
+				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper" id="active"></i><span class="active">Books For Sale</span></a></li>
+				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span>About Us</span></a></li>
+				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span>Contact Us</span></a></li>
 			</div>
 	<% }else if(req.url === "/") { %>
 			<div class="nav">
-				<li><a href="/" class="link"><i class="fa fa-home" id="active"></i><span style="white-space: nowrap;" class="active" id="num">Home</span></a></li>
-				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span style="white-space: nowrap;">Books For Sale</span></a></li>
-				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span style="white-space: nowrap;">About Us</span></a></li>
-				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span style="white-space: nowrap;">Contact Us</span></a></li>
+				<li><a href="/" class="link"><i class="fa fa-home" id="active"></i><span class="active" id="num">Home</span></a></li>
+				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span>Books For Sale</span></a></li>
+				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span>About Us</span></a></li>
+				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span>Contact Us</span></a></li>
 			</div>
 	<% }else if(req.url === "/About-Us/") { %>
 			<div class="nav">
-				<li><a href="/" class="link"><i class="fa fa-home"></i><span style="white-space: nowrap;" id="num">Home</span></a></li>
-				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span style="white-space: nowrap;">Books For Sale</span></a></li>
-				<li><a href="/About-Us" class="link"><i class="fa fa-users" id="active"></i><span style="white-space: nowrap;" class="active">About Us</span></a></li>
-				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span style="white-space: nowrap;">Contact Us</span></a></li>
+				<li><a href="/" class="link"><i class="fa fa-home"></i><span id="num">Home</span></a></li>
+				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span>Books For Sale</span></a></li>
+				<li><a href="/About-Us" class="link"><i class="fa fa-users" id="active"></i><span class="active">About Us</span></a></li>
+				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span>Contact Us</span></a></li>
 			</div>
 	<% } else if(req.url === "/contact-us") { %>
 			<div class="nav">
-				<li><a href="/" class="link"><i class="fa fa-home"></i><span style="white-space: nowrap;" id="num">Home</span></a></li>
-				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span style="white-space: nowrap;">Books For Sale</span></a></li>
-				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span style="white-space: nowrap;">About Us</span></a></li>
-				<li><a href="/contact-us" class="link"><i class="fa fa-phone" id="active"></i><span style="white-space: nowrap;" class="active">Contact Us</span></a></li>
+				<li><a href="/" class="link"><i class="fa fa-home"></i><span id="num">Home</span></a></li>
+				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span>Books For Sale</span></a></li>
+				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span>About Us</span></a></li>
+				<li><a href="/contact-us" class="link"><i class="fa fa-phone" id="active"></i><span class="active">Contact Us</span></a></li>
 			</div>
 	<% } else { %>
 			<div class="nav">
-				<li><a href="/" class="link"><i class="fa fa-home"></i><span style="white-space: nowrap;" id="width-num">Home</span></a></li>
-				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span style="white-space: nowrap;">Books For Sale</span></a></li>
-				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span style="white-space: nowrap;">About Us</span></a></li>
-				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span style="white-space: nowrap;">Contact Us</span></a></li>
+				<li><a href="/" class="link"><i class="fa fa-home"></i><span id="width-num">Home</span></a></li>
+				<li><a href="/Ad-board" class="link"><i class="fa fa-newspaper"></i><span>Books For Sale</span></a></li>
+				<li><a href="/About-Us" class="link"><i class="fa fa-users"></i><span>About Us</span></a></li>
+				<li><a href="/contact-us" class="link"><i class="fa fa-phone"></i><span>Contact Us</span></a></li>
 			</div>
 	<% } %>
 
@@ -55,19 +62,19 @@
 			<a href="/place-advert" class="regLogin-link post-btn"><button class="place-post-btn">Place an Ad</button></a>
 		<% } %>
 			<div class="login-menuCont">
-				  <div class="login-menu" id="login-menu">
-					  <div class="user-card off-target"><h1 class="off-target"><%= user[0] %></h1></div>
-					  <div class="menu-arrow off-target" id="menu-arrow"> &#8249; </div>
-				  </div>
+			  <div class="login-menu" id="login-menu">
+				  <div class="user-card off-target"><h1 class="off-target"><%= user[0] %></h1></div>
+				  <div class="menu-arrow off-target" id="menu-arrow"> &#8249; </div>
+			  </div>
 
-				  <ul class="dashboard-links off-target" id="dashboard-links">
-					<li><a href="/Dashboard" class="dashboard-link off-target"><i class="fa fa-th fa-fw"></i><span>Dashboard</span></a></li>
-					<li><a href="/Profile" class="dashboard-link off-target"><i class="fa fa-user"></i>My Profile</a></li>
-					<li><a href="/my-ads" class="dashboard-link off-target"><i class="fa fa-adn"></i>My Ads</a></li>
-					<li><a href="/my-messages" class="dashboard-link off-target"><i class="fa fa-comment-alt"></i>My Messages</a></li>
-					<li><a href="#" class="dashboard-link off-target"><i class="fa fa-heart"></i>My Wishlist</a></li>
-					<li><a href="/logout" class="dashboard-link off-target"><i class="fa fa-power-off"></i>Logout</a></li>
-				  </ul>
+			  <ul class="dashboard-links off-target" id="dashboard-links">
+				<li><a href="/Dashboard" class="dashboard-link off-target"><i class="fa fa-th fa-fw"></i><span>Dashboard</span></a></li>
+				<li><a href="/Profile" class="dashboard-link off-target"><i class="fa fa-user"></i>My Profile</a></li>
+				<li><a href="/my-ads" class="dashboard-link off-target"><i class="fa fa-adn"></i>My Ads</a></li>
+				<li><a href="/my-messages" class="dashboard-link off-target"><i class="fa fa-comment-alt"></i>My Messages</a></li>
+				<li><a href="#" class="dashboard-link off-target"><i class="fa fa-heart"></i>My Wishlist</a></li>
+				<li><a href="/logout" class="dashboard-link off-target"><i class="fa fa-power-off"></i>Logout</a></li>
+			  </ul>
 			</div>
 		</div>
 	<% } else { %>

@@ -270,6 +270,7 @@ submitBtn.onclick = function(){
 		fetch(formActionAttr, {
 			body: formData,
 			method: 'POST'
+			// ,loading
 		}).then( async (response) => {
 			let formdata = await response;
 
