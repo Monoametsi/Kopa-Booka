@@ -1,43 +1,43 @@
 //Topnav  and scroll
-let topNav = document.getElementById("Topnav");
-let scrollUp = window.pageYOffset;
+// let topNav = document.getElementById("Topnav");
+// let scrollUp = window.pageYOffset;
 
-let hideBar = function() {
-    let scrollDown = window.pageYOffset;
-    if (scrollUp > scrollDown) {
-        topNav.style.top = "0";
-    } else {
-        topNav.style.top = '-' +  topNav.scrollHeight  + 'px';
-    }
-    scrollUp = scrollDown;
-}
+// let hideBar = function() {
+    // let scrollDown = window.pageYOffset;
+    // if (scrollUp > scrollDown) {
+        // topNav.style.top = "0";
+    // } else {
+        // topNav.style.top = '-' +  topNav.scrollHeight  + 'px';
+    // }
+    // scrollUp = scrollDown;
+// }
 
-window.onscroll = function() {
-    let bodyScrol = document.body.scrollTop;
-    let htmlScrol = document.documentElement.scrollTop;
+// window.onscroll = function() {
+    // let bodyScrol = document.body.scrollTop;
+    // let htmlScrol = document.documentElement.scrollTop;
 
-    if (bodyScrol > 0 || htmlScrol > 0) {
-        topNav.style.transition = "0.5s";
-        topNav.style.opacity = "0.6";
-        topNav.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "0.6";
-        }
-    } else {
-        topNav.style.opacity = "1";
-		topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "1";
-        }
-    }
-    return hideBar();
-}
+    // if (bodyScrol > 0 || htmlScrol > 0) {
+        // topNav.style.transition = "0.5s";
+        // topNav.style.opacity = "0.6";
+        // topNav.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
+        // topNav.onmouseover = function() {
+            // topNav.style.opacity = "1";
+        // }
+        // topNav.onmouseout = function() {
+            // topNav.style.opacity = "0.6";
+        // }
+    // } else {
+        // topNav.style.opacity = "1";
+		// topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
+        // topNav.onmouseover = function() {
+            // topNav.style.opacity = "1";
+        // }
+        // topNav.onmouseout = function() {
+            // topNav.style.opacity = "1";
+        // }
+    // }
+    // return hideBar();
+// }
 
 //Scroll Top Function
 let scrollTop = document.getElementById("scrollTopper");
@@ -56,12 +56,11 @@ scrollTop.onclick = function(){
 }
 
 //footer list dropdown
-let btn = document.getElementById('btn');
-let arrow = document.getElementById('arrow');
+let btn = document.getElementsByClassName('mobile-info-list-title-cont');
 
-function listSlider(list,animeClass){
+function listSlider(list, arrow){
 	let divisionList = list.nextElementSibling;
-	arrow.classList.toggle('flip-up');
+	arrow.classList.toggle('flip-over');
 
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
@@ -73,8 +72,12 @@ function listSlider(list,animeClass){
 	}
 }
 
-btn.onclick = function(){
-	listSlider(this);
+for(i = 0; i < btn.length; i++){
+	btn[i].onclick = function(){
+		let arrow = this.children[1];
+
+		listSlider(this, arrow);
+	}
 }
 
 //Menu dropdown
@@ -115,27 +118,27 @@ function menuDropDown(list){
 	}
 }
 
-listDropper.onclick = function(){
-	menuDropDown(this);
-}
+// listDropper.onclick = function(){
+	// menuDropDown(this);
+// }
 
-let menuCollapser = () => {
-    arrower.classList.toggle('rotater');
+// let menuCollapser = () => {
+    // arrower.classList.toggle('rotater');
     
-	if(dashboardMenu.style.maxHeight){
-    	dashboardMenu.style.maxHeight = null;
-        dashboardMenu.style.transition = '.3s';
-    }else{
-    	dashboardMenu.style.transition = '.3s';
-    	dashboardMenu.style.maxHeight = dashboardMenu.scrollHeight + 'px';
-    }
-}
+	// if(dashboardMenu.style.maxHeight){
+    	// dashboardMenu.style.maxHeight = null;
+        // dashboardMenu.style.transition = '.3s';
+    // }else{
+    	// dashboardMenu.style.transition = '.3s';
+    	// dashboardMenu.style.maxHeight = dashboardMenu.scrollHeight + 'px';
+    // }
+// }
 
-if(roundIcon !== null){
-	roundIcon.onclick = () => {
-		menuCollapser();
-	}
-}
+// if(roundIcon !== null){
+	// roundIcon.onclick = () => {
+		// menuCollapser();
+	// }
+// }
 
 window.onclick = (event) => {
 	let loginMenu = document.getElementsByClassName('login-menu')[0];

@@ -12,6 +12,11 @@ a{
 	text-decoration: none;
 }
 
+.flip-over{
+	transform: rotateX(180deg);
+	perspective: 600px;
+}
+
 section{
 	margin-bottom: 2rem;
 }
