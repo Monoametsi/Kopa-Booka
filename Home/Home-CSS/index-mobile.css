@@ -53,10 +53,6 @@
 	.homePage-Tite{
 		display: none;
 	}
-	
-	.categorieyBox-title{
-		overflow: hidden;
-	}
 }
 
 @media screen and (max-width: 670px){
