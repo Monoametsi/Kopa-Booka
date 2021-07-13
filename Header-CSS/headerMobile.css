@@ -66,6 +66,10 @@
 		border-bottom: 1px solid #000;
 	}
 	
+	.nav li:last-child{
+		border-bottom: 0;
+	}
+	
 	.regLogin-link:first-child{
 		border-top: 1px solid #000;
 	}
