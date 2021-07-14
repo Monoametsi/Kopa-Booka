@@ -255,11 +255,10 @@
 	}
 	
 	.modal{
-		padding: 1rem;
+		padding: 2rem 1rem;
 	}
-	
+
 	.modal-content{
-		width: 100%;
 		max-width: 100%;
 	}
 
@@ -299,9 +298,9 @@
 	
 @media screen and (max-width: 568px){
 
-	.ikon{
+	/* .ikon{
 		width: 7.5%;
-	}
+	} */
 
 }
 
@@ -311,9 +310,9 @@
 		padding: 3rem;
 	}
 	
-	.ikon{
+	/* .ikon{
 		width: 8%;
-	}
+	} */
 }
 
 @media screen and (max-width: 490px){
@@ -322,24 +321,25 @@
 		font-size: 1.2rem;
 	}
 	
-	.formhead{
-		white-space: normal;
-		line-height: 2.5rem;
-		text-align: center;
+	.formhead h1{
+		font-size: 23px;
 	}
 	
-	.ikon{
-		width: 10%;
+	.formhead{
+		white-space: nowrap;
+		line-height: 2.5rem;
+		text-align: center;
+		top: 50%;
+		left: 30%;
+		margin-left: 1rem;
 	}
+	
+	/* .ikon{
+		width: 10%;
+	} */
 	
 	.modal-closer{
 		font-size: 2.5rem;
-	}
-
-	.formhead{
-		top: 50%;
-		left: 40%;
-		font-size: 1.3rem;
 	}
 }
 
@@ -349,9 +349,9 @@
 		font-size: 13px;
 	}
 
-	.ikon{
-		width: 12%;
-	}
+	/* .ikon{ */
+		/* width: 12%; */
+	/* } */
 
 	.MobileTextbook-Img{
 		max-width: 100%;
@@ -385,5 +385,23 @@
 	.categories-cont{
 		padding: 5rem 1rem;
 	}
+	
+	.modal{
+		padding: 2rem 0.5rem;
+	}
 
+}
+
+@media screen and (max-width: 330px){
+	
+	.ikon{
+		font-size: 1.2rem;
+		padding: 10px;
+		max-width: 30px;
+	}
+	
+	textarea{
+		height: 8rem;
+	}
+	
 }

@@ -27,6 +27,8 @@ for (i = 0; i < mobileCardbtn.length; i++) {
 }
 
 let sellersContactNum = document.getElementById('Post-Id');
+let formResultsLoader = document.getElementById('modal-preloader');
+let failureBoxCont = document.getElementById('box-cont-failure'); 
 
 function modalOpener(headerTitle, advertId){
 	let adTitle = headerTitle;
@@ -38,8 +40,10 @@ function modalOpener(headerTitle, advertId){
 	sellersContactNum.value = `${ advertId }`;
 	modalContent.classList.remove('slideUp');
 	successBoxCont.classList.remove('slideUp');
+	failureBoxCont.classList.remove('slideUp');
 	modal.classList.remove('fadeOut');
-	modal.style.display = "block";
+	formResultsLoader.style.display = "none";
+	modal.style.display = "flex";
 	modalContent.style.display = "flex";
 	messageToSeller.value = `Hi, I am interested in ${ adTitle }`;
 
@@ -47,6 +51,7 @@ function modalOpener(headerTitle, advertId){
 		messageToSellerErr.style.display = 'none';
 		messageToSeller.classList.remove('Message-redBox');
 	}
+
 }
 
 let modalCloser = document.getElementsByClassName("modal-closer");
@@ -55,6 +60,7 @@ for (i = 0; i < modalCloser.length; i++) {
     modalCloser[i].onclick = function() {
 		modalContent.classList.add('slideUp');
 		successBoxCont.classList.add('slideUp');
+		failureBoxCont.classList.add('slideUp');
 		modal.classList.add('fadeOut');
 
 		setTimeout(function(){
@@ -62,6 +68,7 @@ for (i = 0; i < modalCloser.length; i++) {
 			document.documentElement.style.overflow = 'auto';
 			modal.style.display = "none";
 			successBoxCont.style.display = "none";
+			failureBoxCont.style.display = "none";
 		},900);
     }
 }
@@ -100,20 +107,34 @@ window.onclick = function(event) {
 			sortByList.style.display = 'none';
 		},300)
 	}
-	
-	 if (event.target == modal || event.target == successBoxCont) {
+
+	 if (event.target == modal || event.target == successBoxCont  || event.target == failureBoxCont) {
         modalContent.classList.add('slideUp');
 		successBoxCont.classList.add('slideUp');
+		failureBoxCont.classList.add('slideUp');
 		modal.classList.add('fadeOut');
 		
 		setTimeout(function(){
 			document.body.style.overflow = 'auto';
 			document.documentElement.style.overflow = 'auto';
-			 modal.style.display = "none";
-			 successBoxCont.style.display = "none";
+			modal.style.display = "none";
+			successBoxCont.style.display = "none";
+			failureBoxCont.style.display = "none";
+			formResultsLoader.style.display = "none";
 		},900);
     }
 
+}
+
+let formResultsLoaderFunc = (showOrHide, formResult) => {
+	
+	modalContent.style.display = "none";
+	formResultsLoader.style.display = showOrHide;
+
+	if(formResult){
+		formResult.style.display = "flex";
+	}
+	
 }
 
 //Category List dropdown

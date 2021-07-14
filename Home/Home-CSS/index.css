@@ -16,11 +16,6 @@ a{
 	text-decoration: none;
 }
 
-::selection{
-	background-color: #0acdff;
-	color: #fff;
-}
-
 .homePageTite-cont{
 	background-attachment: fixed;
 	background-size: cover;

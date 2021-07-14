@@ -347,7 +347,6 @@
 
 			<% } %>
 			
-			
 		<%	if(notFound === false && noAdsAvailable !== true){ %>
 				<div class="AdTracker-SortByDiv">
 					<div class="AdTracker-TotalNum">
@@ -381,20 +380,24 @@
 		<% } %>
 			
 			<div id="formMod" class="modal">
+
 				<div class="modal-content" id="modal-content">
+
 					<div class="formTitle">
 						<div class="formhead">
 							<h1>Contact Seller</h1>
 						</div>
+
 						<div class="modalCloser-cont">
-							<span class="modal-closer">&times </span>
+							<span class="modal-closer"> &times </span>
 						</div>
 					</div>
+
 					<div class="form">
 						<% let returnUrl = `/return-url?${ req.url }`%>
 						
-						 <form method="POST" action="<%= returnUrl.replace("?/", "?")%>" style="width:95%;" id="form">
-						 
+						 <form method="POST" action="<%= returnUrl.replace("?/", "?")%>" id="form" class="contact-form">
+
 							<div class="validifier-cont">
 								<label for="Username" class="validifier" id="Username-Err">
 								</label>
@@ -439,13 +442,17 @@
 						 </form>
 						 
 						 <div class="termPol">
+
 							<p>By sending a reply to the advertiser, you accept our <a href="/terms-of-use">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
+						
 						</div>
 					</div>
+
 				</div>
 
 			<!-- Success -->	
 				<div class="box-cont" id="box-cont">
+
 				  <div class="box">
 
 					  <div class="title-close-cont">
@@ -463,8 +470,41 @@
 					  </div>
 
 				  </div>
+
 				</div>
-			<!-- Success -->	
+			<!-- Success -->
+
+
+			<!-- Failure -->	
+				<div class="box-cont" id="box-cont-failure">
+
+				  <div class="box">
+
+					  <div class="title-close-cont">
+						  <h1 class="box-title">Contact Advertiser</h1>
+						  <i class="modal-closer fa fa-times box-closer" ></i>
+					  </div>
+
+					  <div class="box-message-cont"> 
+
+						  <i class="fa fa-times failure"></i>
+						  <h1 class="failure">Failure!</h1>
+						  <p>Oops something went wrong</p>
+						  <p>Your message failed to submit successfully, please check your connection and try again.</p>
+
+					  </div>
+
+				  </div>
+
+				</div>
+			<!-- Failure -->
+			
+
+			<!-- Loader -->
+
+				<div class="modal-preloader" id="modal-preloader"></div>
+
+			<!-- Loader -->
 				
 			</div>
 			

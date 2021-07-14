@@ -36,16 +36,25 @@ function titleValidator(){
 //Contact Number validation
 let contactNum = document.getElementById('Users-contact');
 
-contactNum.oninput = function (){
-	let icon = document.getElementsByClassName("ikon")[1];
+let onfocusFields = (contactNumValidator, icon) => {
+	contactNumValidator;
 	
-	contactNumValidator();
-	
-	if(contactNumValidator() === false){
+	if(contactNumValidator === false){
 		icon.classList.add('redBorder', 'Shadow');
 	}else{
 		icon.classList.add('Icon-boxShadower');
 	}
+}
+
+contactNum.oninput = function (){
+	
+	let icon = document.getElementsByClassName("ikon")[1];
+
+	contactNum.onblur = () => {
+		onfocusFields(contactNumValidator(), icon);
+		fieldOnBlur(this);
+	}
+	
 }
 
 function contactNumValidator(){
@@ -118,13 +127,10 @@ let email = document.getElementById('Users-email');
 
 email.oninput =	function (){
 	let icon = document.getElementsByClassName("ikon")[2];
-	
-	emailValidator();
 
-	if(emailValidator() === false){
-		icon.classList.add('redBorder', 'Shadow');
-	}else{
-		icon.classList.add('Icon-boxShadower');
+	this.onblur = () => {
+		onfocusFields(emailValidator(), icon);
+		fieldOnBlur(this);
 	}
 }
 
@@ -270,17 +276,19 @@ submitBtn.onclick = function(){
 		fetch(formActionAttr, {
 			body: formData,
 			method: 'POST'
-			// ,loading
-		}).then( async (response) => {
-			let formdata = await response;
+		}, formResultsLoaderFunc("flex")).then( async (response) => {
 
+			let formdata = await response;
 			return formdata;
+
 		}).then((result) => {
 
-			modalContent.style.display = "none";
-			successBoxCont.style.display = "flex";
+			formResultsLoaderFunc("none", successBoxCont)
 
 		}).catch((err) => {
+
+			formResultsLoaderFunc("none", failureBoxCont)
+
 			console.log(err);
 		});
 

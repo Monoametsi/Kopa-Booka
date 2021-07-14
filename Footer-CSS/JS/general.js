@@ -88,7 +88,7 @@ if(roundIcon !== null){
 
 let dashboardDropdown = (event) => {
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
-	
+
 	if(loginMenu !== undefined){
 		let displayValue = window.getComputedStyle(loginMenu, null).display;
 		if(event.target.className.search('off-target') === -1 && displayValue !== 'none'){
@@ -117,6 +117,6 @@ window.onload = () => {
 		document.body.style.overflow = "auto" ;
 		preloader.style.display = 'none';
 		
-	}, 200)
+	}, 250)
 	
 }

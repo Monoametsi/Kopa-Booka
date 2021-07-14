@@ -6,6 +6,11 @@
 	color: #0acdff;
 }
 
+::selection{
+	background-color: #0acdff;
+	color: #fff;
+}
+
 .preloader-bg-cont{
 	position: fixed;
     width: 100%;
@@ -30,7 +35,7 @@
     transform: translate(-50%, -50%);	
 }
 
-.preloader{
+.preloader, .modal-preloader{
 	animation-name: preloader;
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -51,7 +56,7 @@
 
 .close-preloader{
 	animation-name: close-preloader;
-    animation-duration: 0.3s;
+    animation-duration: 0.4s;
 }
 
 @keyframes close-preloader{

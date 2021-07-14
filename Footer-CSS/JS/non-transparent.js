@@ -19,7 +19,6 @@ window.onscroll = function() {
 
 menuClassLister();
 
-
 //Menu dropdown
 
 function menuDropDown(list){
