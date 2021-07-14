@@ -72,6 +72,7 @@ const dotenv = require('dotenv');
 app.use(express.static(path.join(dirname, 'Home')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(dirname, 'Registration')));
+app.use(express.static(path.join(dirname, 'Footer-CSS')));
 app.use(express.static(path.join(dirname, 'Account-verification')));
 app.use(express.static(path.join(dirname, 'register-outcome')));
 app.use(express.static(path.join(dirname, 'Dashboard')));

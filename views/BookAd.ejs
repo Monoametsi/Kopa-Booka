@@ -28,8 +28,8 @@
 				<%
 				
 				let artsCat, businessCat, eduCat, engCat, healthCat, humanCate, lawCat, scienceCat, campusCat;
-				
-				function catey(){
+
+				let catey = () => {
 					let num;
 					for(i = 0; i < cat_camp_list.length; i++){
 						let { 
@@ -108,9 +108,10 @@
 					<% if(artsCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Art Design and Architecture</span>
+							<span>Art Design and Architecture</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
+
 						<ul class="department-list">
 							<% 
 							  for(i = 0; i < cat_camp_list.length; i++){
@@ -132,7 +133,7 @@
 					<% if(businessCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">College of Business and Economics</span>
+							<span >College of Business and Economics</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 
@@ -159,7 +160,7 @@
 					<% if(eduCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Education</span>
+							<span >Education</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
@@ -180,7 +181,7 @@
 					<% if(engCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Engineering and Built Environment</span>
+							<span >Engineering and Built Environment</span>
 							<i class="faculty-arrow fa fa-caret-down " ></i>
 						</div>
 						<ul class="department-list">
@@ -201,7 +202,7 @@
 					<% if(healthCat) {%>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Health Sciences</span>
+							<span >Health Sciences</span>
 							<i class="faculty-arrow fa fa-caret-down " ></i>
 						</div>
 						<ul class="department-list">
@@ -223,7 +224,7 @@
 					<% if(humanCate) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Humanities</span>
+							<span >Humanities</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
@@ -245,7 +246,7 @@
 					<% if(lawCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Law</span>
+							<span >Law</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
@@ -266,7 +267,7 @@
 					<% if(scienceCat) { %>
 					<li class="faculty-list">
 						<div class="faculty-title clicker">
-							<span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Science</span>
+							<span >Science</span>
 							<i class="faculty-arrow fa fa-caret-down" ></i>
 						</div>
 						<ul class="department-list">
@@ -287,7 +288,7 @@
 				
 				<% if(campusCat) { %>
 				<div class="category clicker">
-					<h4 class="arrow category-title"><span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Campus</span></h4>
+					<h4 class="arrow category-title"><span >Campus</span></h4>
 					<i class="fa fa-caret-down"></i>
 				</div>
 				
@@ -316,7 +317,7 @@
 	<% let sortListUrl = req.url === `/Ad-board/latest-Ads` || req.url === `/Ad-board/price-low-to-high` || req.url === `/Ad-board/price-high-to-low` %>
 
 	  <div class="advertisements">
-			<div class="Ad-title">
+			<div class="Ad-title" id="Ad-title">
 		  <% if(Object.keys(req.params).length === 0 || searchQuery.toLowerCase().search(/page-\d/) !== -1 || sortListUrl ) { %>
 				
 				<% if(noAdsAvailable) { %>
@@ -325,23 +326,25 @@
 					<h1><b>All Ads</b> on Kopa-Booka</h1>
 				<% } %>
 				
-				
+
 		  <% } else if(req.url.search("/category/") !== -1){ %>
-				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
+				<h1><b>"<%= `${ searchQuery }` %>"</b> Ads on Kopa-Booka</h1>
 		  <% } else { %>
-				<h1><b>"<%= `${searchQuery}` %>"</b> Ads on Kopa-Booka</h1>
+				<h1><b>"<%= `${ searchQuery }` %>"</b> Ads on Kopa-Booka</h1>
 		 <% } %>
 			</div>
 			
 			<% if(noAdsAvailable) { %>
 	
 			<% } else { %>
+
 			<div class="search-engine">
 				<div class="searcher">
 					<button type="submit" class="but search-btn" id="search-btn"><i class="fa fa-search fa-fw search-btn"></i></button>
 					<input type="text" class="search" id="searcher" name="search-engine" placeholder="Search for textbook title...">
 				</div>
 			</div>
+
 			<% } %>
 			
 			
@@ -594,9 +597,6 @@
 		<% } %>
 		
 		
-		
-		
-		
 		<% let displayCategoryNexSecAds = (sortLIstMethod, arr, sortMethod) => { %>
 
 			
@@ -748,7 +748,7 @@
 			<div class="Sellers-item">
 				<div class="textBook-img">
 					<a href="<%= `/view-ad/${ _id }` %>">
-						<img src= "<%= imgStr %>" id="img" alt="Textbook">
+						<img src= "<%= imgStr %>" class="img" alt="Textbook">
 						<h1 class="Camera-cont">
 							<i class="fa fa-camera"></i>
 						<%= `+${UploadedImages.length}` %>
@@ -791,21 +791,24 @@
 					</div>
 				 </div>
 			</div>
-			
+
 			<div class="MobileSellers-Cont">
+
 				<div class="MobileSellers-Card">
+
 					<div class="MobileCard-Header">
 						<a href="<%= `/view-ad/${ _id }` %>">
 							<h1 class="MobileCard-Title"><%= Text_Book_Title %></h1>
 						</a>
 							<h3 class="MobileCard-Price"><%= Text_Book_Price %></h3>
 					</div>
+
 					<div class="MobileTextbook-Img">
 						<a href="<%= `/view-ad/${ _id }` %>">
-							<img src= "<%= imgStr %>" id="Mobile-Img" alt="Textbook">
+							<img src= "<%= imgStr %>" class="Mobile-Img" alt="Textbook">
 							<h1 class="MobileCamera-Cont">
 								<i class="fa fa-camera"></i>
-								<%= `+${UploadedImages.length}` %>
+								<%= `+${ UploadedImages.length }` %>
 							</h1>
 						</a>
 					</div>
@@ -828,6 +831,7 @@
 						</button>
 					</div>
 				</div>
+
 			</div>
 		<%	} %>
 

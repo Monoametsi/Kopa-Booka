@@ -148,3 +148,15 @@
 		</div>
 		
 	</footer>
+	
+	<script src="/JS/general.js"></script>
+
+	<% if(req.url !== "/" && req.url !== "/About-Us") { %>
+
+		<script src="/JS/non-transparent.js"></script>
+		
+	<% }else{ %>
+		
+		<script src="/JS/transparent.js"></script>
+		
+	<% } %>

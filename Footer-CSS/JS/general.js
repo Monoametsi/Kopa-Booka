@@ -1,12 +1,12 @@
-/* //Topnav  and scroll
-let topNav = document.getElementById("Topnav");
-let scrollUp = window.pageYOffset;
-
 // let num = document.getElementById('num')
 
 // window.onresize = () => {
 	// num.innerHTML = window.innerWidth;
 // }
+
+//Nav hider
+let topNav = document.getElementById("Topnav");
+let scrollUp = window.pageYOffset;
 
 let hideBar = function() {
     let scrollDown = window.pageYOffset;
@@ -17,27 +17,6 @@ let hideBar = function() {
     }
     scrollUp = scrollDown;
 }
-
-let menuClassLister = () => {
-	let bodyScrol = document.body.scrollTop;
-    let htmlScrol = document.documentElement.scrollTop;
-
-    if (bodyScrol > 0 || htmlScrol > 0) {
-		topNav.classList.remove('home-menu');
-		topNav.classList.add('scroll-down-menu');
-
-    } else {
-		topNav.classList.remove('scroll-down-menu');
-        topNav.classList.add('home-menu');
-    }
-}
-
-window.onscroll = function() {
-   menuClassLister();
-   hideBar();
-}
-
-menuClassLister();
 
 //Scroll Top Function
 let scrollTop = document.getElementById("scrollTopper");
@@ -58,7 +37,7 @@ scrollTop.onclick = function(){
 //footer list dropdown
 let btn = document.getElementsByClassName('mobile-info-list-title-cont');
 
-function listSlider(list, arrow){
+function footDropDown(list, arrow){
 	let divisionList = list.nextElementSibling;
 	arrow.classList.toggle('flip-over');
 
@@ -77,62 +56,17 @@ for(i = 0; i < btn.length; i++){
 	btn[i].onclick = function(){
 		let arrow = this.children[1];
 
-		listSlider(this, arrow);
+		footDropDown(this, arrow);
 	}
 }
 
-//Menu dropdown
+//Dashboard and nav dropdown
 let listDropper =  document.getElementById('menu-DropDown');
 let naver =  document.getElementsByClassName('nav')[0];
 
 let roundIcon = document.getElementById('login-menu');
 let arrower = document.getElementById('menu-arrow');
 let dashboardMenu = document.getElementById('dashboard-links');
-
-function menuDropDown(list){
-	let bodyScrol = document.body.scrollTop;
-    let htmlScrol = document.documentElement.scrollTop;
-
-	let divisionList = list.parentElement.nextElementSibling;
-
-	let divisionList2 = divisionList.nextElementSibling;
-	let divisionList3 = divisionList2.children[1].children[1];
-
-	if(divisionList.style.maxHeight){
-		divisionList.style.maxHeight = null;
-		divisionList2.style.maxHeight = null;
-		if(divisionList3 !== undefined){
-			divisionList3.style.maxHeight = null;
-			divisionList3.style.transition = '.3s'
-		}
-
-		divisionList.style.transition = '0.3s';
-		divisionList2.style.transition = '0.3s';
-
-		if(htmlScrol === 0){
-			topNav.classList.add('home-menu');
-		}
-
-	}else{
-		divisionList.style.transition = '0.3s';
-		divisionList2.style.transition = '0.3s';
-		divisionList.style.maxHeight = divisionList.scrollHeight  + 'px';
-		divisionList2.style.maxHeight = divisionList2.scrollHeight  + 'px';
-		if(divisionList3 !== undefined){
-			divisionList3.style.transition = '.3s';
-			divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
-		}
-		
-		
-		if(htmlScrol === 0){
-			topNav.classList.remove('home-menu');
-		}
-	}
-}
-
-listDropper.onclick = function(){
-	menuDropDown(this);
-}
 
 let menuCollapser = () => {
     arrower.classList.toggle('rotater');
@@ -152,7 +86,7 @@ if(roundIcon !== null){
 	}
 }
 
-window.onclick = (event) => {
+let dashboardDropdown = (event) => {
 	let loginMenu = document.getElementsByClassName('login-menu')[0];
 	
 	if(loginMenu !== undefined){
@@ -167,20 +101,22 @@ window.onclick = (event) => {
 	}
 }
 
+window.addEventListener("onclick", dashboardDropdown);
+
+/* Preloader */
 let preloader = document.getElementById('preloader-bg-cont');
 document.documentElement.style.overflow = "hidden" ;
 document.body.style.overflow = "hidden" ;
 
 window.onload = () => {
-	
+
 	preloader.classList.add('close-preloader');
-	
 	setTimeout(() => {
 		
 		document.documentElement.style.overflow = "auto" ;
 		document.body.style.overflow = "auto" ;
 		preloader.style.display = 'none';
-
+		
 	}, 200)
 	
-} */
+}
