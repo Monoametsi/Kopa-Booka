@@ -325,3 +325,17 @@ if(refineSearchBtn !== null){
 		}
 	}
 }
+
+let preloader = document.getElementById('preloader-bg-cont');
+
+window.onload = () => {
+	
+	preloader.classList.add('close-preloader');
+	
+	setTimeout(() => {
+
+		preloader.style.display = 'none';
+
+	}, 200)
+	
+}

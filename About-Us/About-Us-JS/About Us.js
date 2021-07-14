@@ -1,4 +1,4 @@
-Topnav  and scroll
+/* Topnav  and scroll */
 let topNav = document.getElementById("Topnav");
 let scrollUp = window.pageYOffset;
 
@@ -12,32 +12,26 @@ let hideBar = function() {
     scrollUp = scrollDown;
 }
 
-window.onscroll = function() {
-    let bodyScrol = document.body.scrollTop;
+let menuClassLister = () => {
+	let bodyScrol = document.body.scrollTop;
     let htmlScrol = document.documentElement.scrollTop;
 
     if (bodyScrol > 0 || htmlScrol > 0) {
-        topNav.style.transition = "0.5s";
-        topNav.style.opacity = "0.6";
-        topNav.style.boxShadow = "0 0 10px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "0.6";
-        }
+		topNav.classList.remove('home-menu');
+		topNav.classList.add('scroll-down-menu');
+
     } else {
-        topNav.style.opacity = "1";
-		topNav.style.boxShadow = "0 0 25px rgba(0,0,0,0.3)";
-        topNav.onmouseover = function() {
-            topNav.style.opacity = "1";
-        }
-        topNav.onmouseout = function() {
-            topNav.style.opacity = "1";
-        }
+		topNav.classList.remove('scroll-down-menu');
+        topNav.classList.add('home-menu');
     }
-    return hideBar();
 }
+
+window.onscroll = function() {
+   menuClassLister();
+   hideBar();
+}
+
+menuClassLister();
 
 //Scroll Top Function
 let scrollTop = document.getElementById("scrollTopper");
@@ -89,11 +83,14 @@ let arrower = document.getElementById('menu-arrow');
 let dashboardMenu = document.getElementById('dashboard-links');
 
 function menuDropDown(list){
+	let bodyScrol = document.body.scrollTop;
+    let htmlScrol = document.documentElement.scrollTop;
+
 	let divisionList = list.parentElement.nextElementSibling;
 
 	let divisionList2 = divisionList.nextElementSibling;
 	let divisionList3 = divisionList2.children[1].children[1];
-	
+
 	if(divisionList.style.maxHeight){
 		divisionList.style.maxHeight = null;
 		divisionList2.style.maxHeight = null;
@@ -101,10 +98,13 @@ function menuDropDown(list){
 			divisionList3.style.maxHeight = null;
 			divisionList3.style.transition = '.3s'
 		}
-		
+
 		divisionList.style.transition = '0.3s';
 		divisionList2.style.transition = '0.3s';
-        
+
+		if(htmlScrol === 0){
+			topNav.classList.add('home-menu');
+		}
 
 	}else{
 		divisionList.style.transition = '0.3s';
@@ -114,6 +114,11 @@ function menuDropDown(list){
 		if(divisionList3 !== undefined){
 			divisionList3.style.transition = '.3s';
 			divisionList3.style.maxHeight = divisionList3.scrollHeight + 30 + 'px';
+		}
+		
+		
+		if(htmlScrol === 0){
+			topNav.classList.remove('home-menu');
 		}
 	}
 }
@@ -153,4 +158,18 @@ window.onclick = (event) => {
 			naver.style.transition = '.3s';
 		}
 	}
+}
+
+let preloader = document.getElementById('preloader-bg-cont');
+
+window.onload = () => {
+	
+	preloader.classList.add('close-preloader');
+	
+	setTimeout(() => {
+
+		preloader.style.display = 'none';
+
+	}, 300)
+	
 }
