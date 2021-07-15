@@ -1,34 +1,5 @@
-*{
-	box-sizing: border-box;
-}
-
-body{
-	background-color: #eee7;
-	font-family: 'Roboto', sans-serif;
-	margin: 0;
-}
-
-a{
-	text-decoration: none;
-}
-
-.flip-over{
-	transform: rotateX(180deg);
-	perspective: 600px;
-}
-
 section{
 	margin-bottom: 2rem;
-}
-
-#about-header{
-	height: 100vh;
-	min-height: 40rem;
-	background-attachment: fixed;
-	/* background-position: bottom right; */
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../About-Us-Images/uj2.jpg'); 
 }
 
 #about-header{
@@ -37,6 +8,13 @@ section{
 	align-items: center;
 	flex-direction: column;
 	transition: .6s;
+	height: 100vh;
+	min-height: 40rem;
+	background-attachment: fixed;
+	/* background-position: bottom right; */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/About-Us-Images/uj2.jpg'); 
 }
 
 .aboutHeader-title{
@@ -45,7 +23,7 @@ section{
 	font-size: 2.8rem;
 	color: #fff;
 	font-family: montserrat, sans-serif;
-	z-index: 0;
+	padding: 0 1rem;
 }
 
 .aboutHeaderMobile-title{
@@ -57,82 +35,92 @@ section{
 	font-size: 2.5rem;
 	color: #fff;
 	font-family: montserrat, sans-serif;
-	z-index: 0;
+	padding: 0 1rem;
 }
 
-.goal-header{
+.about-intro-cont-cont{
+	width: 100%;
+	padding: 0 5rem;
+}
+
+.about-intro-cont{
 	display: flex;
-	justify-content: center;
-	font-size: 2.2rem;
-	color: grey;
-	text-shadow: 0px 0px 2px #000;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 4rem 0;
+}
+
+.about-info-cont-cont, .about-img-cont-cont-1{
+	display: flex;
+	flex: 1;
+	/* background-color: red; */
+}
+
+.about-info-cont-cont{
+	padding: 0;
+	margin-right: 1.5rem;
+}
+
+.about-img-cont-cont-1{
+	padding-top: 1.5rem;
+	margin-left: 1.5rem;
+}
+
+.about-info-cont, .about-info-title-cont{
+	display: flex;
+	flex-direction: column;
+}
+
+.about-info-title-cont h2 span{
+	font-size: 2.5rem;
+}
+
+.about-info-title-cont h2, .about-info-title-cont h4{
 	font-family: montserrat, sans-serif;
+	line-height: 3.9rem;
 }
 
-.goal-description{
+.about-info-title-cont h4{
+	font-size: 1.1rem;
+	margin-bottom: -0.5rem;
+}
+
+.kopa{
+	color: #0acdff;
+}
+
+.booka{
+	color: orange;
+}
+
+.about-info-descript-cont p{
+	line-height: 1.9rem;
+}
+
+.about-img-cont-cont-1{
+	width: 100%;
+}
+
+.about-img-cont-2{
 	display: flex;
-	justify-content: center;
+	width: 100%;
+	max-width: 100%;
+	background-color: #fff;
+	box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
 }
 
-.goal-description p{
-	font-size: 1.2rem;
-	line-height: 2rem;
-	width: 74%;
-	text-align: center;
-}
-
-.MJ{
-	color: #007cc2;
-	text-decoration: none;
-	transition: 0.3s;
-}
-
-.MJ:hover{
-	color: rgba(0,0,250,1);
-	text-decoration: underline;
-}
-
-.followUs-header{
+.about-img-cont{
 	display: flex;
-	justify-content: center;
-	font-size: 2.2rem;
-	color: grey;
-	text-shadow: 0px 0px 2px #000;
-	font-family: montserrat, sans-serif;
-}
-
-.followUsMobile-header{
-	display: none;
-	justify-content: center;
-	text-align: center;
-	font-size: 2.2rem;
-	color: grey;
-	text-shadow: 0px 0px 2px #000;
-	font-family: montserrat, sans-serif;
-}
-
-.socials{
-	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	width: 100%;
+	max-width: 100%;
+	user-select: none;
 }
 
-.icons{
-	margin: 2rem;
-	font-size: 4rem;
-	color: #fff;
-	transition: color 650ms;
-	text-shadow: 0 0 4px #000;
-}
-
-.fa-facebook-square:hover{
-	color: #4267b2
-}
-
-.fa-twitter-square:hover{
-	color: #38a1f3;
-}
-
-.fa-instagram:hover{
-  color: #e3e3;
+.about-img{
+	user-select: none;
+	vertical-align: middle;
+	max-width: 100%;
 }
